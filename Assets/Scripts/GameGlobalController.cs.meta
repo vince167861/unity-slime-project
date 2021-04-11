@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: d108e5487c20d894fa95544858010d30
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slimePrefab: {fileID: 6591067462164887369, guid: 49e6f459fa8709f41b03fbcad43bac37,
+      type: 3}
+  - slifePrefab: {fileID: 576646216626900787, guid: 41090d26fbf478c44823204892427e1b,
+      type: 3}
+  - enemyPrefab: {fileID: 5631634512493566121, guid: 17000a19acf70ca4ea3d27d090b5f0c8,
+      type: 3}
+  - brickPrefab: {fileID: 1037504761596959189, guid: cddce27e0e55c03448db5931ddd88950,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
