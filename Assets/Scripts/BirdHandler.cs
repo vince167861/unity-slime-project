@@ -38,6 +38,7 @@ public class BirdHandler : Entity, Attackable
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
+            case GameGlobalController.GameState.Animation:
                 transform.Find("Progress Bar").Find("Fillings").localScale = new Vector3(((float)health) / 150, 1, 1);
                 if (stayRed <= 0)
                 {

@@ -1983,7 +1983,7 @@ GameObject:
   - component: {fileID: 850150105}
   - component: {fileID: 850150106}
   m_Layer: 5
-  m_Name: Cb
+  m_Name: Dialog Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

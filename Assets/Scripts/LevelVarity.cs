@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelVarity
 {
     public static List<List<int>> littlech = new List<List<int>> {
-        new List<int> {0,0,0,0,1,2,1,2}
+        new List<int> {2,2,2,2,1,2,1,2}
     };
     public static List<List<string>> teller = new List<List<string>> {
         new List<string> {"世界の声","世界の声","世界の声","世界の声","我","魔龍王","我","魔龍王"}

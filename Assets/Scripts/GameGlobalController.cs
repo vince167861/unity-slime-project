@@ -41,7 +41,7 @@ public class GameGlobalController : MonoBehaviour
     {
         gameState = GameState.MenuPrepare;
         brand = GameObject.Find("Brand").GetComponent<Image>();
-        cb = GameObject.Find("Cb").GetComponent<Image>();
+        cb = GameObject.Find("Dialog Box").GetComponent<Image>();
         titleText = GameObject.Find("Title").GetComponent<Text>();
         subtitleText = GameObject.Find("Subtitle").GetComponent<Text>();
         background = GetComponent<SpriteRenderer>();
@@ -120,6 +120,7 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.Playing:
+                Time.timeScale = 1.0f;
                 if (Input.GetKey(KeyCode.Escape))
                 {
                     titleText.text = "Game Paused.";
@@ -129,6 +130,7 @@ public class GameGlobalController : MonoBehaviour
                 if (slimeInstance == null) gameState = GameState.End;
                 break;
             case GameState.Pause:
+                Time.timeScale = 0;
                 if (Input.GetKey(KeyCode.Q))
                 {
                     titleText.text = "";
@@ -141,6 +143,7 @@ public class GameGlobalController : MonoBehaviour
             case GameState.Lobby:
                 break;
             case GameState.Animation:
+                Time.timeScale = 0.05f;
                 break;
             case GameState.Shaking:
                 break;
@@ -159,4 +162,6 @@ public class GameGlobalController : MonoBehaviour
     }
 
     public static bool isPlaying { get => gameState == GameState.Playing; }
+    public static void play() { gameState = GameState.Playing; }
+    public static void animate() { gameState = GameState.Animation; }
 }
