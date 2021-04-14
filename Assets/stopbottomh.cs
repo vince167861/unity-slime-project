@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class stopbottomh : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GameStop()
     {
-        
+      GameGlobalController.gameState = GameGlobalController.GameState.Pause;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void GameStart()
     {
-        
+      GameGlobalController.gameState = GameGlobalController.GameState.Playing;
     }
 }
