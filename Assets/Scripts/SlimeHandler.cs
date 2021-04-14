@@ -22,13 +22,11 @@ public class SlimeHandler : Entity
     public bool allowMove = true;
     public bool isTouchingWall = false;
 
-    float delta = 0;
-    int life = 6;
+    float immuneResetTimer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        life=6;
         anim = GetComponent<Animator>();
         rg2d = GetComponent<Rigidbody2D>();
         scrCtrPos = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -42,15 +40,16 @@ public class SlimeHandler : Entity
         {
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
-                if(Input.GetKey(KeyCode.O) && GameGlobalController.isPlaying) transform.position = new Vector2(1,15);
-                if (delta <= 0) GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
-                if (life > health && life != 7)
+                if (immuneResetTimer <= 0)
+                    GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
+                else
+                    immuneResetTimer -= Time.deltaTime;
+                if (isAttacked)
                 {
-                    delta = 0.2f;
+                    immuneResetTimer = 0.2f;
                     GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
+                    isAttacked = false;
                 }
-                life = health;
-                delta -= Time.deltaTime;
                 MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
                 rg2d.bodyType = RigidbodyType2D.Dynamic;
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S))
@@ -102,7 +101,6 @@ public class SlimeHandler : Entity
                 }
                 break;
             case GameGlobalController.GameState.Pause:
-                rg2d.bodyType = RigidbodyType2D.Static;
                 break;
         }
     }

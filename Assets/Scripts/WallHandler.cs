@@ -24,8 +24,6 @@ public class WallHandler : MonoBehaviour
             case "Enemy":
                 BirdHandler bh = col.GetComponent<BirdHandler>();
                 bh.flyingDirection = bh.flyingDirection != true;
-                SpriteRenderer sr = col.GetComponent<SpriteRenderer>();
-                sr.flipX = sr.flipX != true;
                 break;
             case "Bomb":
                 Destroy(col.gameObject);

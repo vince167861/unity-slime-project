@@ -7,6 +7,7 @@ public abstract class Entity : MonoBehaviour
 {
     int _health;
     int def;
+    public bool isAttacked = false;
     public Entity(int defaultHealth)
     {
         _health = def = defaultHealth;
@@ -20,6 +21,7 @@ public abstract class Entity : MonoBehaviour
             if (ignoreMin) _health = 0; else Destroy(gameObject);
             return false;
         }
+        isAttacked = true;
         return true;
     }
 

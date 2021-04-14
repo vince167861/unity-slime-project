@@ -143,7 +143,7 @@ public class GameGlobalController : MonoBehaviour
             case GameState.Lobby:
                 break;
             case GameState.Animation:
-                Time.timeScale = 0.05f;
+                Time.timeScale = 0.2f;
                 break;
             case GameState.Shaking:
                 break;
