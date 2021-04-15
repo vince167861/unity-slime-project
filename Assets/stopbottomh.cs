@@ -12,4 +12,8 @@ public class stopbottomh : MonoBehaviour
     {
       GameGlobalController.gameState = GameGlobalController.GameState.Playing;
     }
+    public void MusicTo0()
+    {
+      
+    }
 }
