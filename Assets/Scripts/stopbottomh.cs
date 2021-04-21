@@ -14,6 +14,5 @@ public class stopbottomh : MonoBehaviour
     public void GameStart()
     {
         GameGlobalController.gameState = nowState;
-        //test
     }
 }
