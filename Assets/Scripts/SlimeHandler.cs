@@ -28,7 +28,6 @@ public class SlimeHandler : Entity
     // Start is called before the first frame update
     void Start()
     {
-        life=6;
         anim = GetComponent<Animator>();
         rg2d = GetComponent<Rigidbody2D>();
         scrCtrPos = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -49,8 +48,8 @@ public class SlimeHandler : Entity
                 {
                     immuableTime = 0.2f;
                     GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
-                    life = health;
                 }
+                life = health;
                 immuableTime -= Time.deltaTime;
                 // Control camera postion
                 MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
