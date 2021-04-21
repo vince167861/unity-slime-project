@@ -17,25 +17,37 @@ public class BirdHandler : Entity, Attackable
     public int flyingDirection = -1;
     bool isDead = false;
 
+    GameObject progressBar;
+    Transform fillings;
+
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        progressBar = transform.Find("Progress Bar").gameObject;
+        fillings = transform.Find("Progress Bar").Find("Fillings");
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.localScale = new Vector2(-flyingDirection * 0.5f, 0.5f);
+        if (health != 150)
+        {
+            progressBar.SetActive(true);
+            fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
+        }
+        else
+            progressBar.SetActive(false);
+        
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Lobby:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
-                transform.Find("Progress Bar").Find("Fillings").localScale = new Vector3(((float)health) / 150, 1, 1);
                 if (stayRed <= 0)
                 {
                     if (isDead)
