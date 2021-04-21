@@ -8,7 +8,7 @@ public class SlimeHandler : Entity
     public SlimeHandler() : base(6) { }
 
     public GameObject Bomb;
-    public int bombdirect = 1;//-1=left,1=right
+    public int bombdirect = 1; //-1=left,1=right
     float moveSpeed = 1.2e2f; //main character movement speed
     float jumpStrenght = 2e4f; //main character jump strenght
     float dropStrenght = 100f; //main character drop strenght
@@ -22,7 +22,8 @@ public class SlimeHandler : Entity
     public bool allowMove = true;
     public bool isTouchingWall = false;
 
-    float immuneResetTimer = 0;
+    float immuableTime = 0;
+    int life = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -40,18 +41,21 @@ public class SlimeHandler : Entity
         {
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
-                if (immuneResetTimer <= 0)
-                    GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
-                else
-                    immuneResetTimer -= Time.deltaTime;
-                if (isAttacked)
+                // if(Input.GetKey(KeyCode.O) && GameGlobalController.isPlaying) transform.position = new Vector2(1,15);
+                // Control immuable
+                if (immuableTime <= 0) GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
+                if (life > health && life != 7)
                 {
-                    immuneResetTimer = 0.2f;
+                    immuableTime = 0.2f;
                     GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
-                    isAttacked = false;
                 }
+                life = health;
+                immuableTime -= Time.deltaTime;
+                // Control camera postion
                 MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
+                // Set Slime to follow physics engine
                 rg2d.bodyType = RigidbodyType2D.Dynamic;
+                // Response to keyboard input
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S))
                 {
                     rg2d.AddForce(new Vector2(0, -dropStrenght));
@@ -72,7 +76,7 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.A) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(-moveSpeed, 0));
+                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingBrick?1f:0.1f), 0));
                     anim.Play("slime_left");
                     bombdirect = -1;
                 }
@@ -85,22 +89,19 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.D) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(moveSpeed, 0));
+                    rg2d.AddForce(new Vector2(moveSpeed * (isTouchingBrick?1f:0.1f), 0));
                     anim.Play("slime_right");
                     bombdirect = 1;
                 }
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     Vector3 pos = transform.position;
-                    BulletHandler bulletScript = Instantiate(Bomb, pos, transform.rotation).GetComponent<BulletHandler>();
-                    bulletScript.moveSpeed *= bombdirect;
+                    Instantiate(Bomb, pos, transform.rotation).GetComponent<BulletHandler>().moveSpeed *= bombdirect;
                 }
-                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-                {
-                    allowMove = true;
-                }
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) allowMove = true;
                 break;
             case GameGlobalController.GameState.Pause:
+                rg2d.bodyType = RigidbodyType2D.Static;
                 break;
         }
     }
@@ -149,15 +150,33 @@ public class SlimeHandler : Entity
         switch (col.tag)
         {
             case "Enemy":
-                if(GameGlobalController.gameState!=GameGlobalController.GameState.Animation){
+                if(!GameGlobalController.isAnimation){
                     SlimeLifeCanvas.Shake();
-                    Suffer(col.GetComponent<Attackable>().AttackDamage);
+                    if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
+                    {
+                        transform.position = new Vector3(-5, -5, -10);
+                    }
                     SlimeLifeCanvas.life = health;
                 }
                 break;
             case "EventTrigger":
                 Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
                 Destroy(col.gameObject);
+                break;
+            case "Mushroom":
+                col.GetComponent<MushroomHandler>().trigger();
+                break;
+            case "Ground":
+                isTouchingBrick = true;
+                break;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        switch (col.tag)
+        {
+            case "Ground":
+                isTouchingBrick = false;
                 break;
         }
     }

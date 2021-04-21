@@ -7,7 +7,6 @@ public abstract class Entity : MonoBehaviour
 {
     int _health;
     int def;
-    public bool isAttacked = false;
     public Entity(int defaultHealth)
     {
         _health = def = defaultHealth;
@@ -21,7 +20,6 @@ public abstract class Entity : MonoBehaviour
             if (ignoreMin) _health = 0; else Destroy(gameObject);
             return false;
         }
-        isAttacked = true;
         return true;
     }
 
@@ -32,6 +30,11 @@ public abstract class Entity : MonoBehaviour
         _health += Math.Abs(amount);
         if (_health >= def)
             _health = def;
+    }
+
+    public void Reset()
+    {
+        _health = def;
     }
 
     public int health { get { return _health; } }

@@ -8,39 +8,46 @@ public class BirdHandler : Entity, Attackable
     public BirdHandler() : base(150) { }
     public int AttackDamage { get => 1; }
 
-    float moveSpeed = 12f; // units per second
+    float moveSpeed = 0.03f; //bird movement speed
     public float stayRed = 0;
     public float delta2 = 0;
     float offset = 0;
     Animator animator;
-    Component[] sprite;
-    /// <summary>
-    /// False is to left.
-    /// </summary>
-    public bool flyingDirection = false;
+    SpriteRenderer sprite;
+    public int flyingDirection = -1;
     bool isDead = false;
+
+    GameObject progressBar;
+    Transform fillings;
 
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        sprite = GetComponentsInChildren<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
+        progressBar = transform.Find("Progress Bar").gameObject;
+        fillings = transform.Find("Progress Bar").Find("Fillings");
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (SpriteRenderer s in sprite)
-            s.flipX = flyingDirection;
+        transform.localScale = new Vector2(-flyingDirection * 0.5f, 0.5f);
+        if (health != 150)
+        {
+            progressBar.SetActive(true);
+            fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
+        }
+        else
+            progressBar.SetActive(false);
+        
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Lobby:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
-            case GameGlobalController.GameState.Animation:
-                transform.Find("Progress Bar").Find("Fillings").localScale = new Vector3(((float)health) / 150, 1, 1);
                 if (stayRed <= 0)
                 {
                     if (isDead)
@@ -48,11 +55,7 @@ public class BirdHandler : Entity, Attackable
                         GetComponentInParent<EnemySpawnerHandler>().isActive = true;
                         Destroy(gameObject);
                     }
-                    else
-                    {
-                        foreach (SpriteRenderer s in sprite)
-                            s.color = new Color(255, 255, 255, 90);
-                    }
+                    else GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
                 } else stayRed -= Time.deltaTime;
                 float newY;
                 do
@@ -60,7 +63,7 @@ public class BirdHandler : Entity, Attackable
                     newY = Random.Range(-0.03f, 0.03f);
                 } while (Mathf.Abs(newY + offset) >= 0.6);
                 offset += newY;
-                transform.Translate(new Vector2(Time.deltaTime * moveSpeed * (flyingDirection ? 1 : -1), newY));
+                transform.Translate(new Vector2(moveSpeed * flyingDirection, newY));
                 animator.speed = 1.0f;
                 break;
         }
@@ -72,8 +75,7 @@ public class BirdHandler : Entity, Attackable
         {
             case "Bomb":
                 Destroy(col.gameObject);
-                foreach (SpriteRenderer s in sprite)
-                    s.color = new Color(255, 0, 0, 90);
+                GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
                 stayRed = 0.2f;
                 isDead = !Suffer(col.GetComponent<Attackable>().AttackDamage, true);
                 break;

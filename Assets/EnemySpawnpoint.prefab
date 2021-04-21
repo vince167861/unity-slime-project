@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9dae26f75dc01458f3810d00114627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5880670342780443031, guid: 42c6246a0a5701341b46ce675ea0355b,
+  enemyPrefab: {fileID: 5631634512493566121, guid: 17000a19acf70ca4ea3d27d090b5f0c8,
     type: 3}
   flyingDirection: 0
-  isActive: 1

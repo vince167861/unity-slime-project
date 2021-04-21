@@ -455,7 +455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 56067829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 399919441}
+        m_TargetAssemblyTypeName: stopbottomh, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &56067829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,13 +1333,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 399919441}
+        m_TargetAssemblyTypeName: stopbottomh, Assembly-CSharp
+        m_MethodName: GameStop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1983,7 +1995,7 @@ GameObject:
   - component: {fileID: 850150105}
   - component: {fileID: 850150106}
   m_Layer: 5
-  m_Name: Dialog Box
+  m_Name: Cb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2120,7 +2132,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.2, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2332,6 +2344,7 @@ GameObject:
   - component: {fileID: 925872846}
   - component: {fileID: 925872845}
   - component: {fileID: 925872844}
+  - component: {fileID: 925872847}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -2400,7 +2413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 925872845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 925872847}
+        m_TargetAssemblyTypeName: MusicControllerHandler, Assembly-CSharp
+        m_MethodName: MusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &925872845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2464,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925872842}
   m_CullTransparentMesh: 0
+--- !u!114 &925872847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925872842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf4dd7cbdcd17845a008e58756e43fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music_C: {fileID: 1254430070}
+  Music:
+  - {fileID: 21300000, guid: b7bee4ca05e47404b8e25fbaae7fe7b8, type: 3}
+  - {fileID: 21300000, guid: b48361cff6905714d8a13da0c28556b9, type: 3}
 --- !u!1 &993221193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,7 +2998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1206195932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3100,12 +3141,24 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 868872596}
   m_HandleRect: {fileID: 868872595}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.2
+  m_Value: 1
+  m_Size: 0.12
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 925872847}
+        m_TargetAssemblyTypeName: MusicControllerHandler, Assembly-CSharp
+        m_MethodName: Musicchange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1254430071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,7 +3559,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3695,7 +3748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1534606894}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: GameLossInit
+        m_MethodName: GameInit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

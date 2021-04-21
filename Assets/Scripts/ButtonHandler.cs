@@ -10,12 +10,6 @@ public class ButtonHandler : MonoBehaviour
         MainCameraHandler.allSound=3;
         GameGlobalController.GameReset();
     }
-    public void GameLossInit()
-    {
-        Instantiate(slimePrefab);
-        MainCameraHandler.allSound=3;
-        GameGlobalController.GameReset();
-    }
     /*public void NextLevel()
     {
         GameGlobalController.currentLevel++;
