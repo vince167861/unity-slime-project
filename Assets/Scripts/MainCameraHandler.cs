@@ -17,6 +17,7 @@ public class MainCameraHandler : MonoBehaviour
 
     Vector2 scrCtrPos;
     SpriteRenderer backgroundSpriteRenderer;
+    Vector3 mousePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,13 @@ public class MainCameraHandler : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
         scrCtrPos = new Vector2(Screen.width / 2, Screen.height / 2);
         backgroundSpriteRenderer = GameObject.Find("Background").GetComponent<SpriteRenderer>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Update mouse position
+        mousePosition = Input.mousePosition;
         // Place camera in right position
         switch (GameGlobalController.gameState){
             case GameGlobalController.GameState.Start:
@@ -39,41 +41,49 @@ public class MainCameraHandler : MonoBehaviour
                 audiosource.Stop();
                 break;
             case GameGlobalController.GameState.Playing:
-                if (!this.music) {
-                    audiosource.clip = backgroundclip[GameGlobalController.currentLevel];
-                    audiosource.loop = true;
-                    audiosource.Play();
-                    this.music = true;
-                }
-                break;
             case GameGlobalController.GameState.Lobby:
-                if (!this.music) {
+                if (GameGlobalController.isPlaying)
+                    audiosource.clip = backgroundclip[GameGlobalController.currentLevel];
+                else
                     audiosource.clip = lobbyclip[GameGlobalController.currentLevel];
+                if (!this.music)
+                {
                     audiosource.loop = true;
                     audiosource.Play();
                     this.music = true;
                 }
                 break;
         }
-        if(allSound>0){
+        if(allSound>0)
+        {
             audiosource.PlayOneShot(entityclip[allSound]);
             allSound=0;
         }
+
         // Update camera view position
         Vector3 mPos = Input.mousePosition;
-        float camera_x = targetPosition.x + (mPos.x - scrCtrPos.x) / Screen.width;
-        float camera_y = targetPosition.y + (mPos.y - scrCtrPos.y) / Screen.height;
-        float camera_ctr_x = Camera.main.orthographicSize * Camera.main.aspect;
-        float camera_ctr_y = Camera.main.orthographicSize;
-        if (camera_x < camera_ctr_x) camera_x = camera_ctr_x;
-        if (camera_x > backgroundSpriteRenderer.bounds.size.x - camera_ctr_x) camera_x = backgroundSpriteRenderer.bounds.size.x - camera_ctr_x;
-        if (camera_y < camera_ctr_y) camera_y = camera_ctr_y;
-        if (camera_y > backgroundSpriteRenderer.bounds.size.y - camera_ctr_y) camera_y = backgroundSpriteRenderer.bounds.size.y - camera_ctr_y;
+        float camera_x = targetPosition.x + mouseDeltaX;
+        float camera_y = targetPosition.y + mouseDeltaY;
+        // Fix the position to prevent rendering void
+        if (camera_x < cameraCtrX) camera_x = cameraCtrX;
+        if (camera_x > backgroundSizeX - cameraCtrX) camera_x = backgroundSizeX - cameraCtrX;
+        if (camera_y < cameraCtrY) camera_y = cameraCtrY;
+        if (camera_y > backgroundSizeY - cameraCtrY) camera_y = backgroundSizeY - cameraCtrY;
+        // Move towards the target point
         Vector3 newTarget = new Vector3(camera_x, camera_y, targetPosition.z);
         transform.position = Vector3.MoveTowards(transform.position, newTarget, Vector3.Distance(transform.position, newTarget) * cameraSpeedFactor / 100);
         
-        if(Input.GetMouseButtonDown(0)){
-            Instantiate(clickPrefab).GetComponent<Transform>().position = new Vector2((mPos.x - scrCtrPos.x) / Screen.width * camera_ctr_x * 2 + transform.position.x ,(mPos.y - scrCtrPos.y) / Screen.height * camera_ctr_y * 2 + transform.position.y);
-        }
+        // Show ripple
+        if(Input.GetMouseButtonDown(0))
+            Instantiate(clickPrefab).GetComponent<Transform>().position =
+                new Vector2(mouseDeltaX * cameraCtrX * 2 + transform.position.x, mouseDeltaY * cameraCtrY * 2 + transform.position.y);
     }
+
+    // Utilities
+    float mouseDeltaX { get => (mousePosition.x - scrCtrPos.x) / Screen.width; }
+    float mouseDeltaY { get => (mousePosition.y - scrCtrPos.y) / Screen.height; }
+    float cameraCtrX { get => Camera.main.orthographicSize * Camera.main.aspect; }
+    float cameraCtrY { get => Camera.main.orthographicSize; }
+    float backgroundSizeX { get => backgroundSpriteRenderer.bounds.size.x; }
+    float backgroundSizeY { get => backgroundSpriteRenderer.bounds.size.y; }
 }

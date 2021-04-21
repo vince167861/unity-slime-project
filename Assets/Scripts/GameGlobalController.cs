@@ -53,13 +53,14 @@ public class GameGlobalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Show or hide items
         brand.gameObject.SetActive(gameState == GameState.Lobby && currentLevel > 0);
         lobbyCanvas.SetActive((/*gameState == GameState.Brightening || */gameState == GameState.Lobby) && currentLevel == 0 && !battle);
         passCanvas.SetActive(gameState == GameState.End && !battle);
         deadCanvas.SetActive(gameState == GameState.End && battle);
         slimeHealthCanvas.SetActive(gameState == GameState.Playing || gameState == GameState.Animation);
         cb.gameObject.SetActive(gameState == GameState.Animation);
+
         switch (gameState)
         {
             case GameState.Init:
@@ -163,4 +164,6 @@ public class GameGlobalController : MonoBehaviour
     }
 
     public static bool isPlaying { get => gameState == GameState.Playing; }
+    public static bool isLobby { get => gameState == GameState.Lobby; }
+    public static bool isAnimation { get => gameState == GameState.Animation; }
 }
