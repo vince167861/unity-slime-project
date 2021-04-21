@@ -163,6 +163,21 @@ public class SlimeHandler : Entity
                 Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
                 Destroy(col.gameObject);
                 break;
+            case "Mushroom":
+                col.GetComponent<MushroomHandler>().trigger();
+                break;
+            case "Ground":
+                isTouchingBrick = true;
+                break;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        switch (col.tag)
+        {
+            case "Ground":
+                isTouchingBrick = false;
+                break;
         }
     }
 }

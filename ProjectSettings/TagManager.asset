@@ -12,6 +12,7 @@ TagManager:
   - Brick
   - Floor
   - EventTrigger
+  - Mushroom
   layers:
   - Default
   - TransparentFX
