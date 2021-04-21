@@ -8,7 +8,7 @@ public class Animation1_1 : Animation
     public static bool[] initialPoint = { false, false, false, true, true, false, false, false, true };
     public static bool[] playPoint = { false, false, false, true, true, false, false, false, true };
     public static bool isplayed =  false ;
-    public static float timer =  2f ;
+    public static float timer =  1f ;
     
     // Start is called before the first frame update
     void Start()
@@ -24,9 +24,9 @@ public class Animation1_1 : Animation
             case GameGlobalController.GameState.Interval:
                 if(playPoint[DialogBoxHandler.cbnum]){
                     playPoint[DialogBoxHandler.cbnum]=false;
-                    GameGlobalController.play();
+                    GameGlobalController.gameState=GameGlobalController.GameState.Playing;
                 }
-                else GameGlobalController.animate();
+                else GameGlobalController.gameState=GameGlobalController.GameState.Animation;
                 break;
             case GameGlobalController.GameState.Playing:
                 if(!isplayed)
@@ -59,7 +59,7 @@ public class Animation1_1 : Animation
         switch (id)
         {
             case 0:
-                GameGlobalController.animate();
+                GameGlobalController.gameState = GameGlobalController.GameState.Animation;
                 break;
             case 1:
                 GameGlobalController.gameState = GameGlobalController.GameState.Shaking;

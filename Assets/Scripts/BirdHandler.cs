@@ -8,12 +8,12 @@ public class BirdHandler : Entity, Attackable
     public BirdHandler() : base(150) { }
     public int AttackDamage { get => 1; }
 
-    float moveSpeed = 12f; // units per second
+    float moveSpeed = 0.03f; //bird movement speed
     public float stayRed = 0;
     public float delta2 = 0;
     float offset = 0;
     Animator animator;
-    Component[] sprite;
+    SpriteRenderer sprite;
     /// <summary>
     /// False is to left.
     /// </summary>
@@ -25,21 +25,19 @@ public class BirdHandler : Entity, Attackable
     void Start()
     {
         animator = GetComponent<Animator>();
-        sprite = GetComponentsInChildren<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.flipX = flyingDirection;
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (SpriteRenderer s in sprite)
-            s.flipX = flyingDirection;
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Lobby:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
-            case GameGlobalController.GameState.Animation:
                 transform.Find("Progress Bar").Find("Fillings").localScale = new Vector3(((float)health) / 150, 1, 1);
                 if (stayRed <= 0)
                 {
@@ -48,11 +46,7 @@ public class BirdHandler : Entity, Attackable
                         GetComponentInParent<EnemySpawnerHandler>().isActive = true;
                         Destroy(gameObject);
                     }
-                    else
-                    {
-                        foreach (SpriteRenderer s in sprite)
-                            s.color = new Color(255, 255, 255, 90);
-                    }
+                    else GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
                 } else stayRed -= Time.deltaTime;
                 float newY;
                 do
@@ -60,7 +54,7 @@ public class BirdHandler : Entity, Attackable
                     newY = Random.Range(-0.03f, 0.03f);
                 } while (Mathf.Abs(newY + offset) >= 0.6);
                 offset += newY;
-                transform.Translate(new Vector2(Time.deltaTime * moveSpeed * (flyingDirection ? 1 : -1), newY));
+                transform.Translate(new Vector2(moveSpeed * (flyingDirection ? 1 : -1), newY));
                 animator.speed = 1.0f;
                 break;
         }
@@ -72,8 +66,7 @@ public class BirdHandler : Entity, Attackable
         {
             case "Bomb":
                 Destroy(col.gameObject);
-                foreach (SpriteRenderer s in sprite)
-                    s.color = new Color(255, 0, 0, 90);
+                GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
                 stayRed = 0.2f;
                 isDead = !Suffer(col.GetComponent<Attackable>().AttackDamage, true);
                 break;

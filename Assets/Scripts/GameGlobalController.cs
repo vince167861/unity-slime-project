@@ -13,6 +13,8 @@ public class GameGlobalController : MonoBehaviour
     static Text subtitleText;
     static Image brand;
     static Image cb;
+    static Button stop;
+    static Image Board;
 
     public GameObject lobbyCanvas;
     public GameObject passCanvas;
@@ -41,7 +43,7 @@ public class GameGlobalController : MonoBehaviour
     {
         gameState = GameState.MenuPrepare;
         brand = GameObject.Find("Brand").GetComponent<Image>();
-        cb = GameObject.Find("Dialog Box").GetComponent<Image>();
+        cb = GameObject.Find("Cb").GetComponent<Image>();
         titleText = GameObject.Find("Title").GetComponent<Text>();
         subtitleText = GameObject.Find("Subtitle").GetComponent<Text>();
         background = GetComponent<SpriteRenderer>();
@@ -51,6 +53,7 @@ public class GameGlobalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         brand.gameObject.SetActive(gameState == GameState.Lobby && currentLevel > 0);
         lobbyCanvas.SetActive((/*gameState == GameState.Brightening || */gameState == GameState.Lobby) && currentLevel == 0 && !battle);
         passCanvas.SetActive(gameState == GameState.End && !battle);
@@ -120,30 +123,27 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.Playing:
-                Time.timeScale = 1.0f;
-                if (Input.GetKey(KeyCode.Escape))
+                /*if (Input.GetKey(KeyCode.Escape))
                 {
                     titleText.text = "Game Paused.";
                     subtitleText.text = "Press Q to resume.";
                     gameState = GameState.Pause;
-                }
+                }*/
                 if (slimeInstance == null) gameState = GameState.End;
                 break;
             case GameState.Pause:
-                Time.timeScale = 0;
-                if (Input.GetKey(KeyCode.Q))
+                /*if (Input.GetKey(KeyCode.Q))
                 {
                     titleText.text = "";
                     subtitleText.text = "";
                     gameState = GameState.Playing;
-                }
+                }*/
                 break;
             case GameState.End:
                 break;
             case GameState.Lobby:
                 break;
             case GameState.Animation:
-                Time.timeScale = 0.2f;
                 break;
             case GameState.Shaking:
                 break;
@@ -162,6 +162,4 @@ public class GameGlobalController : MonoBehaviour
     }
 
     public static bool isPlaying { get => gameState == GameState.Playing; }
-    public static void play() { gameState = GameState.Playing; }
-    public static void animate() { gameState = GameState.Animation; }
 }

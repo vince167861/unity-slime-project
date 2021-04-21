@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class MainCameraHandler : MonoBehaviour
     public static Vector3 targetPosition;
     public float cameraSpeedFactor = 10;
     bool music=false;
+    public static float soundLoud = 0;
     public GameObject clickPrefab;
 
     Vector2 scrCtrPos;
@@ -29,7 +30,7 @@ public class MainCameraHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //this.delta+=Time.deltaTime;
+        
         switch(GameGlobalController.gameState){
             case GameGlobalController.GameState.Start:
                 targetPosition = new Vector3(48.0f, 32.0f, -10f);
