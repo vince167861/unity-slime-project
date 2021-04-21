@@ -30,32 +30,28 @@ public class MainCameraHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        switch(GameGlobalController.gameState){
+        // Place camera in right position
+        switch (GameGlobalController.gameState){
             case GameGlobalController.GameState.Start:
-                targetPosition = new Vector3(48.0f, 32.0f, -10f);
-                this.music=false;
-                audiosource.Stop();
-                break;
             case GameGlobalController.GameState.MenuPrepare:
                 targetPosition = new Vector3(48.0f, 32.0f, -10f);
-                this.music=false;
+                this.music = false;
                 audiosource.Stop();
                 break;
             case GameGlobalController.GameState.Playing:
-                if(!this.music){
+                if (!this.music) {
                     audiosource.clip = backgroundclip[GameGlobalController.currentLevel];
                     audiosource.loop = true;
                     audiosource.Play();
-                    this.music=true;
+                    this.music = true;
                 }
                 break;
             case GameGlobalController.GameState.Lobby:
-                if(!this.music){
+                if (!this.music) {
                     audiosource.clip = lobbyclip[GameGlobalController.currentLevel];
                     audiosource.loop = true;
                     audiosource.Play();
-                    this.music=true;
+                    this.music = true;
                 }
                 break;
         }
@@ -63,21 +59,21 @@ public class MainCameraHandler : MonoBehaviour
             audiosource.PlayOneShot(entityclip[allSound]);
             allSound=0;
         }
+        // Update camera view position
         Vector3 mPos = Input.mousePosition;
         float camera_x = targetPosition.x + (mPos.x - scrCtrPos.x) / Screen.width;
         float camera_y = targetPosition.y + (mPos.y - scrCtrPos.y) / Screen.height;
-        if(Input.GetMouseButtonDown(0)){
-            Instantiate(clickPrefab).GetComponent<Transform>().position = new Vector2(mPos.x/scrCtrPos.x*Camera.main.orthographicSize * Camera.main.aspect,mPos.y/scrCtrPos.y*Camera.main.orthographicSize);
-        }
-        if (camera_x < Camera.main.orthographicSize * Camera.main.aspect)
-            camera_x = Camera.main.orthographicSize * Camera.main.aspect;
-        if (camera_x > backgroundSpriteRenderer.bounds.size.x - Camera.main.orthographicSize * Camera.main.aspect)
-            camera_x = backgroundSpriteRenderer.bounds.size.x - Camera.main.orthographicSize * Camera.main.aspect;
-        if (camera_y < Camera.main.orthographicSize)
-            camera_y = Camera.main.orthographicSize;
-        if (camera_y > backgroundSpriteRenderer.bounds.size.y - Camera.main.orthographicSize)
-            camera_y = backgroundSpriteRenderer.bounds.size.y - Camera.main.orthographicSize;
+        float camera_ctr_x = Camera.main.orthographicSize * Camera.main.aspect;
+        float camera_ctr_y = Camera.main.orthographicSize;
+        if (camera_x < camera_ctr_x) camera_x = camera_ctr_x;
+        if (camera_x > backgroundSpriteRenderer.bounds.size.x - camera_ctr_x) camera_x = backgroundSpriteRenderer.bounds.size.x - camera_ctr_x;
+        if (camera_y < camera_ctr_y) camera_y = camera_ctr_y;
+        if (camera_y > backgroundSpriteRenderer.bounds.size.y - camera_ctr_y) camera_y = backgroundSpriteRenderer.bounds.size.y - camera_ctr_y;
         Vector3 newTarget = new Vector3(camera_x, camera_y, targetPosition.z);
         transform.position = Vector3.MoveTowards(transform.position, newTarget, Vector3.Distance(transform.position, newTarget) * cameraSpeedFactor / 100);
+        
+        if(Input.GetMouseButtonDown(0)){
+            Instantiate(clickPrefab).GetComponent<Transform>().position = new Vector2((mPos.x - scrCtrPos.x) / Screen.width * camera_ctr_x * 2 + transform.position.x ,(mPos.y - scrCtrPos.y) / Screen.height * camera_ctr_y * 2 + transform.position.y);
+        }
     }
 }

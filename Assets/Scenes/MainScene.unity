@@ -3506,7 +3506,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3695,7 +3695,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1534606894}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: GameLossInit
+        m_MethodName: GameInit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

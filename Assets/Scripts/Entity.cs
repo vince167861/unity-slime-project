@@ -32,5 +32,10 @@ public abstract class Entity : MonoBehaviour
             _health = def;
     }
 
+    public void Reset()
+    {
+        _health = def;
+    }
+
     public int health { get { return _health; } }
 }

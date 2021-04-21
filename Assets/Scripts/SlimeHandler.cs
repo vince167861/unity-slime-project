@@ -8,7 +8,7 @@ public class SlimeHandler : Entity
     public SlimeHandler() : base(6) { }
 
     public GameObject Bomb;
-    public int bombdirect = 1;//-1=left,1=right
+    public int bombdirect = 1; //-1=left,1=right
     float moveSpeed = 1.2e2f; //main character movement speed
     float jumpStrenght = 2e4f; //main character jump strenght
     float dropStrenght = 100f; //main character drop strenght
@@ -153,7 +153,10 @@ public class SlimeHandler : Entity
             case "Enemy":
                 if(GameGlobalController.gameState!=GameGlobalController.GameState.Animation){
                     SlimeLifeCanvas.Shake();
-                    Suffer(col.GetComponent<Attackable>().AttackDamage);
+                    if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
+                    {
+                        transform.position = new Vector3(-5, -5, -10);
+                    }
                     SlimeLifeCanvas.life = health;
                 }
                 break;

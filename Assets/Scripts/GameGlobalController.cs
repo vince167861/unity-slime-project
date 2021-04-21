@@ -129,7 +129,7 @@ public class GameGlobalController : MonoBehaviour
                     subtitleText.text = "Press Q to resume.";
                     gameState = GameState.Pause;
                 }*/
-                if (slimeInstance == null) gameState = GameState.End;
+                if (slimeInstance.GetComponent<SlimeHandler>().health == 0) gameState = GameState.End;
                 break;
             case GameState.Pause:
                 /*if (Input.GetKey(KeyCode.Q))
@@ -153,6 +153,7 @@ public class GameGlobalController : MonoBehaviour
     public static void GameReset()
     {
         gameState = GameState.Init;
+        slimeInstance.GetComponent<SlimeHandler>().Reset();
     }
 
     public static void WinPass()
