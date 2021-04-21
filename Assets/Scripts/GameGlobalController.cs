@@ -24,7 +24,7 @@ public class GameGlobalController : MonoBehaviour
     public GameObject[] levelPrefab;
 
     public GameObject slimePrefab;
-    static GameObject slimeInstance = null;
+    public static GameObject slimeInstance = null;
     public GameObject enemySpawnerPrefab;
     public GameObject brickPrefab;
     public GameObject portalPrefab;
