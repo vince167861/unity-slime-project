@@ -8,6 +8,7 @@ public class MainCameraHandler : MonoBehaviour
     public AudioClip[] backgroundclip= new AudioClip[5];
     public AudioClip[] lobbyclip= new AudioClip[2];
     public AudioSource audiosource;
+    public static float prevolume = 1f;
     public static int allSound = 0;
     public static Vector3 targetPosition;
     public float cameraSpeedFactor = 10;
@@ -32,6 +33,7 @@ public class MainCameraHandler : MonoBehaviour
     {
         // Update mouse position
         mousePosition = Input.mousePosition;
+        audiosource.volume = prevolume;
         // Place camera in right position
         switch (GameGlobalController.gameState){
             case GameGlobalController.GameState.Start:
