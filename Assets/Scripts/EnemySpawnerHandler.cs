@@ -9,7 +9,7 @@ public class EnemySpawnerHandler : MonoBehaviour
     float timeFromLastSpawn = 0;
     float timeBetweenSpawn = 2f;
     float timeBetweenSpawn2 = 5f;
-    public bool flyingDirection = false;
+    public int flyingDirection = -1;
     public bool isActive = true;
     // Start is called before the first frame update
     void Start()

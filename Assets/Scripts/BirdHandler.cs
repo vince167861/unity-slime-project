@@ -14,10 +14,7 @@ public class BirdHandler : Entity, Attackable
     float offset = 0;
     Animator animator;
     SpriteRenderer sprite;
-    /// <summary>
-    /// False is to left.
-    /// </summary>
-    public bool flyingDirection = false;
+    public int flyingDirection = -1;
     bool isDead = false;
 
 
@@ -26,12 +23,12 @@ public class BirdHandler : Entity, Attackable
     {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        sprite.flipX = flyingDirection;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.localScale = new Vector2(-flyingDirection * 0.5f, 0.5f);
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Lobby:
@@ -54,7 +51,7 @@ public class BirdHandler : Entity, Attackable
                     newY = Random.Range(-0.03f, 0.03f);
                 } while (Mathf.Abs(newY + offset) >= 0.6);
                 offset += newY;
-                transform.Translate(new Vector2(moveSpeed * (flyingDirection ? 1 : -1), newY));
+                transform.Translate(new Vector2(moveSpeed * flyingDirection, newY));
                 animator.speed = 1.0f;
                 break;
         }
