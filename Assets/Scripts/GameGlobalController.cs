@@ -14,7 +14,7 @@ public class GameGlobalController : MonoBehaviour
     static Image brand;
     static Image cb;
     static Button stop;
-    static Image Board;
+    static Image board;
 
     public GameObject lobbyCanvas;
     public GameObject passCanvas;
@@ -42,6 +42,8 @@ public class GameGlobalController : MonoBehaviour
     void Start()
     {
         gameState = GameState.MenuPrepare;
+        stop = GameObject.Find("Stop").GetComponent<Button>();
+        board = GameObject.Find("Board").GetComponent<Image>();
         brand = GameObject.Find("Brand").GetComponent<Image>();
         cb = GameObject.Find("Cb").GetComponent<Image>();
         titleText = GameObject.Find("Title").GetComponent<Text>();
@@ -60,6 +62,8 @@ public class GameGlobalController : MonoBehaviour
         deadCanvas.SetActive(gameState == GameState.End && battle);
         slimeHealthCanvas.SetActive(gameState == GameState.Playing || gameState == GameState.Animation);
         cb.gameObject.SetActive(gameState == GameState.Animation);
+        stop.gameObject.SetActive(gameState != GameState.Pause);
+        board.gameObject.SetActive(gameState == GameState.Pause);
 
         switch (gameState)
         {
