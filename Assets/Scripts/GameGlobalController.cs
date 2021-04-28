@@ -9,8 +9,6 @@ public class GameGlobalController : MonoBehaviour
     public enum GameState { Init, Start, MenuPrepare, Darking, Brightening, Playing, Pause, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
     public static int currentLevel = 0;
 
-    static Text titleText;
-    static Text subtitleText;
     static Image brand;
     static Image cb;
     static Button stop;
@@ -42,12 +40,10 @@ public class GameGlobalController : MonoBehaviour
     void Start()
     {
         gameState = GameState.MenuPrepare;
-        stop = GameObject.Find("Stop").GetComponent<Button>();
+        stop = GameObject.Find("Pause Button").GetComponent<Button>();
         board = GameObject.Find("Board").GetComponent<Image>();
         brand = GameObject.Find("Brand").GetComponent<Image>();
-        cb = GameObject.Find("Cb").GetComponent<Image>();
-        titleText = GameObject.Find("Title").GetComponent<Text>();
-        subtitleText = GameObject.Find("Subtitle").GetComponent<Text>();
+        cb = GameObject.Find("Dialog Box").GetComponent<Image>();
         background = GetComponent<SpriteRenderer>();
         slimeInstance = Instantiate(slimePrefab);
     }
@@ -68,8 +64,6 @@ public class GameGlobalController : MonoBehaviour
         switch (gameState)
         {
             case GameState.Init:
-                titleText.text = "";
-                subtitleText.text = "";
                 battle = true;
                 // sprite.sprite = menuBackground[0];
                 gameState = GameState.Darking;
@@ -128,21 +122,9 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.Playing:
-                /*if (Input.GetKey(KeyCode.Escape))
-                {
-                    titleText.text = "Game Paused.";
-                    subtitleText.text = "Press Q to resume.";
-                    gameState = GameState.Pause;
-                }*/
                 if (slimeInstance.GetComponent<SlimeHandler>().health == 0) gameState = GameState.End;
                 break;
             case GameState.Pause:
-                /*if (Input.GetKey(KeyCode.Q))
-                {
-                    titleText.text = "";
-                    subtitleText.text = "";
-                    gameState = GameState.Playing;
-                }*/
                 break;
             case GameState.End:
                 break;

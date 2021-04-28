@@ -95,7 +95,7 @@ public class SlimeHandler : Entity
                 }
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    Vector3 pos = transform.position;
+                    Vector3 pos = transform.position + new Vector3(bombdirect * 5, 0, 0);
                     Instantiate(Bomb, pos, transform.rotation).GetComponent<BulletHandler>().moveSpeed *= bombdirect;
                 }
                 if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) allowMove = true;
@@ -110,7 +110,7 @@ public class SlimeHandler : Entity
         switch (col.collider.tag)
         {
             case "Enemy":
-                Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
+                Suffer(col.collider.GetComponent<Attackable>().AttackDamage, true);
                 SlimeLifeCanvas.life = health;
                 break;
             case "Walls":

@@ -70,25 +70,18 @@ public class BirdHandler : Entity, Attackable
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        switch (col.tag)
-        {
-            case "Bomb":
-                Destroy(col.gameObject);
-                GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
-                stayRed = 0.2f;
-                isDead = !Suffer(col.GetComponent<Attackable>().AttackDamage, true);
-                break;
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D col)
     {
         switch (col.collider.tag)
         {
             case "Walls":
                 flyingDirection *= -1;
+                break;
+            case "Bomb":
+                Destroy(col.gameObject);
+                GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
+                stayRed = 0.2f;
+                isDead = !Suffer(col.gameObject.GetComponent<Attackable>().AttackDamage, true);
                 break;
         }
     }
