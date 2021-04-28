@@ -10,7 +10,6 @@ TagManager:
   - Enemy
   - Slime
   - Brick
-  - Floor
   - EventTrigger
   - Mushroom
   layers:
