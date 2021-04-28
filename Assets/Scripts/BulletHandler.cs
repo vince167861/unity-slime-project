@@ -36,4 +36,14 @@ public class BulletHandler : MonoBehaviour, Attackable
                 break;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        switch (col.collider.tag)
+        {
+            case "Walls":
+                Destroy(gameObject);
+                break;
+        }
+    }
 }

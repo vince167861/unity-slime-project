@@ -83,5 +83,15 @@ public class BirdHandler : Entity, Attackable
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        switch (col.collider.tag)
+        {
+            case "Walls":
+                flyingDirection *= -1;
+                break;
+        }
+    }
+
 
 }
