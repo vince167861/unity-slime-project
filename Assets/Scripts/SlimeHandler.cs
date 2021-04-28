@@ -113,12 +113,6 @@ public class SlimeHandler : Entity
                 Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 SlimeLifeCanvas.life = health;
                 break;
-            case "Floor":
-                isTouchingBrick = true;
-                break;
-            case "Ground":
-                isTouchingBrick = true;
-                break;
             case "Walls":
                 isTouchingWall = true;
                 break;
@@ -131,12 +125,6 @@ public class SlimeHandler : Entity
     {
         switch (col.collider.tag)
         {
-            case "Floor":
-                isTouchingBrick = false;
-                break;
-            case "Ground":
-                isTouchingBrick = false;
-                break;
             case "Walls":
                 isTouchingWall = false;
                 break;
@@ -165,18 +153,6 @@ public class SlimeHandler : Entity
                 break;
             case "Mushroom":
                 col.GetComponent<MushroomHandler>().trigger();
-                break;
-            case "Ground":
-                isTouchingBrick = true;
-                break;
-        }
-    }
-    void OnTriggerExit2D(Collider2D col)
-    {
-        switch (col.tag)
-        {
-            case "Ground":
-                isTouchingBrick = false;
                 break;
         }
     }

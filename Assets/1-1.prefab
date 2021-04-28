@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588507044874812921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: 5, y: 0, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 767456664788682167}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 5509413523337594173}
   - component: {fileID: 1026004189137461317}
   m_Layer: 0
-  m_Name: _all
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4331811868296263187}
   - component: {fileID: 3305036315158444505}
   m_Layer: 0
-  m_Name: _all (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 7799113688476174745}
   - component: {fileID: 2515755438981098739}
   m_Layer: 0
-  m_Name: _all
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,7 @@ PrefabInstance:
     - target: {fileID: 7401531624215970949, guid: 2b6fad2a4f11a8941a4e10ee044d4e79,
         type: 3}
       propertyPath: m_Name
-      value: EnemySpawnpoint (3)
+      value: EnemySpawnpoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b6fad2a4f11a8941a4e10ee044d4e79, type: 3}
@@ -920,7 +920,7 @@ PrefabInstance:
     - target: {fileID: 7401531624215970949, guid: 2b6fad2a4f11a8941a4e10ee044d4e79,
         type: 3}
       propertyPath: m_Name
-      value: EnemySpawnpoint (2)
+      value: EnemySpawnpoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b6fad2a4f11a8941a4e10ee044d4e79, type: 3}
@@ -1005,7 +1005,7 @@ PrefabInstance:
     - target: {fileID: 7401531624215970949, guid: 2b6fad2a4f11a8941a4e10ee044d4e79,
         type: 3}
       propertyPath: m_Name
-      value: EnemySpawnpoint (1)
+      value: EnemySpawnpoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b6fad2a4f11a8941a4e10ee044d4e79, type: 3}

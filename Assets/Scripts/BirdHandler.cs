@@ -37,6 +37,7 @@ public class BirdHandler : Entity, Attackable
         if (health != 150)
         {
             progressBar.SetActive(true);
+            progressBar.transform.localScale = new Vector3(-flyingDirection, 1, 1);
             fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
         }
         else
