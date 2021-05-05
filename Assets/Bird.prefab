@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4015146704636075721}
   - component: {fileID: 5157314830154941636}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Bird
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0
+  m_LinearDrag: 1000000
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
