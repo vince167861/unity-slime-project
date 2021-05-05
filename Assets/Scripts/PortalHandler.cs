@@ -35,7 +35,7 @@ public class PortalHandler : MonoBehaviour
                     if(GameGlobalController.isPlaying)
                         GameGlobalController.GoodEnd();
                     else
-                        GameGlobalController.GameReset();
+                        GameGlobalController.StartNewGame();
                 }
                 break;
 
@@ -49,7 +49,6 @@ public class PortalHandler : MonoBehaviour
             case "Slime":
                 trigger = true;
                 break;
-
         }
     }
     void OnTriggerExit2D(Collider2D col)
@@ -59,7 +58,6 @@ public class PortalHandler : MonoBehaviour
             case "Slime":
                 trigger = false;
                 break;
-
         }
     }
 }

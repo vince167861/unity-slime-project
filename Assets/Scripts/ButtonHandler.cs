@@ -8,7 +8,7 @@ public class ButtonHandler : MonoBehaviour
     public void GameInit()
     {
         MainCameraHandler.allSound=3;
-        GameGlobalController.GameReset();
+        GameGlobalController.StartNewGame();
     }
     /*public void NextLevel()
     {
