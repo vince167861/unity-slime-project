@@ -132,7 +132,7 @@ public class GameGlobalController : MonoBehaviour
         }
     }
 
-    public static void GameReset()
+    public static void StartNewGame()
     {
         battle = true; // Starts the battle
         slimeInstance.GetComponent<SlimeHandler>().Reset();
@@ -141,7 +141,7 @@ public class GameGlobalController : MonoBehaviour
 
     public static void GoodEnd()
     {
-        battle = false; // End the battle
+        battle = false; // Ends the battle
         gameState = GameState.End;
     }
 

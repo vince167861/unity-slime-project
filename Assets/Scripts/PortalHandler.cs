@@ -35,7 +35,7 @@ public class PortalHandler : MonoBehaviour
                     if(GameGlobalController.isPlaying)
                         GameGlobalController.GoodEnd();
                     else
-                        GameGlobalController.GameReset();
+                        GameGlobalController.StartNewGame();
                 }
                 break;
 
