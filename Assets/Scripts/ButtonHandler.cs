@@ -7,7 +7,7 @@ public class ButtonHandler : MonoBehaviour
     public GameObject slimePrefab;
     public void GameInit()
     {
-        MainCameraHandler.allSound=3;
+        MainCameraHandler.allSound = 3;
         GameGlobalController.StartNewGame();
     }
     /*public void NextLevel()
@@ -17,8 +17,9 @@ public class ButtonHandler : MonoBehaviour
     }*/
     public void ShowLobby()
     {
+        if (!GameGlobalController.battle) GameGlobalController.currentLevel++;
+        GameGlobalController.battle = false;
         MainCameraHandler.allSound = 3;
-        if(!GameGlobalController.battle) GameGlobalController.currentLevel++;
         GameGlobalController.gameState = GameGlobalController.GameState.Darking;
     }
 }

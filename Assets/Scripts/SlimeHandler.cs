@@ -110,8 +110,7 @@ public class SlimeHandler : Entity
         switch (col.collider.tag)
         {
             case "Enemy":
-                Suffer(col.collider.GetComponent<Attackable>().AttackDamage, true);
-                SlimeLifeCanvas.life = health;
+                UnderAttack(col.collider);
                 break;
             case "Walls":
                 isTouchingWall = true;
@@ -138,14 +137,7 @@ public class SlimeHandler : Entity
         switch (col.tag)
         {
             case "Enemy":
-                if(!GameGlobalController.isAnimation){
-                    SlimeLifeCanvas.Shake();
-                    if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
-                    {
-                        transform.position = new Vector3(-5, -5, -10);
-                    }
-                    SlimeLifeCanvas.life = health;
-                }
+                UnderAttack(col);
                 break;
             case "EventTrigger":
                 Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
@@ -154,6 +146,16 @@ public class SlimeHandler : Entity
             case "Mushroom":
                 col.GetComponent<MushroomHandler>().trigger();
                 break;
+        }
+    }
+    
+    void UnderAttack(Collider2D col)
+    {
+        if(!GameGlobalController.isAnimation){
+            SlimeLifeCanvas.Shake();
+            if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
+                transform.position = new Vector3(-5, -5, -10);
+            SlimeLifeCanvas.life = health;
         }
     }
 }
