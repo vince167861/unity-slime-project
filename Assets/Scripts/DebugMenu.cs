@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class DebugMenu : MonoBehaviour
 {
-    
+    public void GotoL2()
+    {
+        GameGlobalController.currentLevel = 1;
+        GameGlobalController.StartNewGame();
+    }
 }
