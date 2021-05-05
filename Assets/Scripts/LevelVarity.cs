@@ -24,29 +24,4 @@ public class LevelVarity
     public static List<Vector2> spawnpoint = new List<Vector2> {
         new Vector2(5, 12), new Vector2(5, 40), new Vector2(1, 1)
     };
-    public static List<Vector2> portalpoint = new List<Vector2> {
-    	new Vector2(1,14),
-    	new Vector2(14,11)
-    };
-    /// <summary>
-    /// False is to left.
-    /// </summary>
-    public static List<List<bool>> enemyDirection = new List<List<bool>>
-    {
-        new List<bool> {false, true, false},
-        new List<bool> {false, true, false, true, false}
-    };
-    public static List<List<Vector2>> enemyPos = new List<List<Vector2>>
-    {
-        new List<Vector2> {
-            new Vector2(30, 1), new Vector2(1, 5), new Vector2(30, 9)
-        },
-        new List<Vector2> {
-            new Vector2(30, 1), new Vector2(1, 3), new Vector2(30, 5), new Vector2(1, 7), new Vector2(30, 9)
-        }
-    };
-    public static List<List<float>> enemySpawnRate = new List<List<float>>
-    {
-        new List<float> {10.0f, 10.0f, 10.0f}
-    };
 }
