@@ -17,7 +17,7 @@ public class ButtonHandler : MonoBehaviour
     }*/
     public void ShowLobby()
     {
-        MainCameraHandler.allSound=3;
+        MainCameraHandler.allSound = 3;
         if(!GameGlobalController.battle) GameGlobalController.currentLevel++;
         GameGlobalController.gameState = GameGlobalController.GameState.Darking;
     }
