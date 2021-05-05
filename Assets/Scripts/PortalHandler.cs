@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gotoportal : MonoBehaviour
+public class PortalHandler : MonoBehaviour
 {
     Animator anim;
     bool trigger = false;
@@ -32,8 +32,8 @@ public class gotoportal : MonoBehaviour
                 if (delta >= 0.5f && delta <= 1)
                 {
                     trigger = false;
-                    if(GameGlobalController.gameState==GameGlobalController.GameState.Playing)
-                        GameGlobalController.WinPass();
+                    if(GameGlobalController.isPlaying)
+                        GameGlobalController.GoodEnd();
                     else
                         GameGlobalController.GameReset();
                 }

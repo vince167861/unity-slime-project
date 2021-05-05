@@ -8,10 +8,10 @@ public class SlimeHandler : Entity
     public SlimeHandler() : base(6) { }
 
     public GameObject Bomb;
-    public int bombdirect = 1; //-1=left,1=right
-    float moveSpeed = 1.2e2f; //main character movement speed
-    float jumpStrenght = 2e4f; //main character jump strenght
-    float dropStrenght = 100f; //main character drop strenght
+    public int bombdirect = 1; // -1 = left, 1 = right
+    float moveSpeed = 120f; // main character movement speed
+    float jumpStrenght = 2e4f; // main character jump strenght
+    float dropStrenght = 100f; // main character drop strenght
 
     Animator anim;
     Transform camera_T;

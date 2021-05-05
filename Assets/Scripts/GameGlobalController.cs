@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameGlobalController : MonoBehaviour
 {
-    public enum GameState { Init, Start, MenuPrepare, Darking, Brightening, Playing, Pause, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
     public static int currentLevel = 0;
 
     static Image brand;
@@ -63,11 +63,6 @@ public class GameGlobalController : MonoBehaviour
 
         switch (gameState)
         {
-            case GameState.Init:
-                battle = true;
-                // sprite.sprite = menuBackground[0];
-                gameState = GameState.Darking;
-                break;
             case GameState.Lighting:
                 delta += Time.deltaTime;
                 if(delta >= 1)
@@ -139,13 +134,14 @@ public class GameGlobalController : MonoBehaviour
 
     public static void GameReset()
     {
-        gameState = GameState.Init;
+        battle = true; // Starts the battle
         slimeInstance.GetComponent<SlimeHandler>().Reset();
+        gameState = GameState.Darking;
     }
 
-    public static void WinPass()
+    public static void GoodEnd()
     {
-        battle = false;
+        battle = false; // End the battle
         gameState = GameState.End;
     }
 
