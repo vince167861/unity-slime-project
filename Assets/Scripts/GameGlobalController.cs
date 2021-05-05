@@ -148,4 +148,6 @@ public class GameGlobalController : MonoBehaviour
     public static bool isPlaying { get => gameState == GameState.Playing; }
     public static bool isLobby { get => gameState == GameState.Lobby; }
     public static bool isAnimation { get => gameState == GameState.Animation; }
+    public static bool isMenuPrepare { get => gameState == GameState.MenuPrepare; }
+    public static bool isDarking { get => gameState == GameState.Darking; }
 }
