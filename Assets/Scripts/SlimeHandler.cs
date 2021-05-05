@@ -18,7 +18,7 @@ public class SlimeHandler : Entity
     Rigidbody2D rg2d;
     Vector2 scrCtrPos;
     SpriteRenderer backgroundSpriteRenderer;
-    public bool isTouchingBrick = false;
+    public bool isTouchingGround = false;
     public bool allowMove = true;
     public bool isTouchingWall = false;
 
@@ -61,7 +61,7 @@ public class SlimeHandler : Entity
                     rg2d.AddForce(new Vector2(0, -dropStrenght));
                     anim.Play("slime_crouch");
                 }
-                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isTouchingBrick)
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isTouchingGround)
                 {
                     MainCameraHandler.allSound=2;
                     rg2d.AddForce(new Vector2(0, jumpStrenght));
@@ -76,7 +76,7 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.A) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingBrick?1f:0.1f), 0));
+                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.1f), 0));
                     anim.Play("slime_left");
                     bombdirect = -1;
                 }
@@ -89,7 +89,7 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.D) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(moveSpeed * (isTouchingBrick?1f:0.1f), 0));
+                    rg2d.AddForce(new Vector2(moveSpeed * (isTouchingGround?1f:0.1f), 0));
                     anim.Play("slime_right");
                     bombdirect = 1;
                 }
@@ -115,9 +115,6 @@ public class SlimeHandler : Entity
             case "Walls":
                 isTouchingWall = true;
                 break;
-            case "Brick":
-                isTouchingBrick = true;
-                break;
         }
     }
     void OnCollisionExit2D(Collision2D col)
@@ -126,9 +123,6 @@ public class SlimeHandler : Entity
         {
             case "Walls":
                 isTouchingWall = false;
-                break;
-            case "Brick":
-                isTouchingBrick = false;
                 break;
         }
     }

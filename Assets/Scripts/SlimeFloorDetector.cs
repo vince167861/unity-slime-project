@@ -16,7 +16,7 @@ public class SlimeFloorDetector : MonoBehaviour
         switch(col.collider.tag)
         {
             case "Ground":
-                parent.isTouchingBrick = true;
+                parent.isTouchingGround = true;
                 break;
         }
     }
@@ -26,7 +26,7 @@ public class SlimeFloorDetector : MonoBehaviour
         switch(col.collider.tag)
         {
             case "Ground":
-                parent.isTouchingBrick = false;
+                parent.isTouchingGround = false;
                 break;
         }
     }

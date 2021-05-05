@@ -75,6 +75,7 @@ public class BirdHandler : Entity, Attackable
         switch (col.collider.tag)
         {
             case "Walls":
+            case "Ground":
                 flyingDirection *= -1;
                 break;
             case "Bomb":
