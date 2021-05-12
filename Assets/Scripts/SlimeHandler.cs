@@ -76,7 +76,7 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.A) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.1f), 0));
+                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.5f), 0));
                     anim.Play("slime_left");
                     bombdirect = -1;
                 }
@@ -89,7 +89,7 @@ public class SlimeHandler : Entity
                 }
                 else if (Input.GetKey(KeyCode.D) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(moveSpeed * (isTouchingGround?1f:0.1f), 0));
+                    rg2d.AddForce(new Vector2(moveSpeed * (isTouchingGround?1f:0.5f), 0));
                     anim.Play("slime_right");
                     bombdirect = 1;
                 }
