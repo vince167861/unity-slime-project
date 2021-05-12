@@ -11,6 +11,9 @@ public class WallHandler : MonoBehaviour
             case "Enemy":
                 collision.GetComponent<BirdHandler>().flyingDirection *= -1;
                 break;
+            case "Bomb":
+                Destroy(collision.gameObject);
+                break;
         }
     }
 }
