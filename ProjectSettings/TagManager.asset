@@ -11,6 +11,7 @@ TagManager:
   - Slime
   - EventTrigger
   - Mushroom
+  - Potion
   layers:
   - Default
   - TransparentFX
