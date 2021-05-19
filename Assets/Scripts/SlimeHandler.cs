@@ -65,7 +65,7 @@ public class SlimeHandler : Entity
                 }
                 if (Input.GetKey(KeyCode.A) && allowMove)
                 {
-                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.5f), 0));
+                    rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.65f), 0));
                     anim.Play("slime_left");
                     bombdirect = -1;
                 }
