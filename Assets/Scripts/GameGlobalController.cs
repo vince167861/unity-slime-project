@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class GameGlobalController : MonoBehaviour
 {
-    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
     public static int currentLevel = 0;
 
     static Image brand;
     static Image cb;
     static Button stop;
     static Image board;
+    static Image help;
 
     public GameObject lobbyCanvas;
     public GameObject passCanvas;
@@ -43,6 +44,8 @@ public class GameGlobalController : MonoBehaviour
         stop = GameObject.Find("Pause Button").GetComponent<Button>();
         board = GameObject.Find("Board").GetComponent<Image>();
         brand = GameObject.Find("Brand").GetComponent<Image>();
+        help = GameObject.Find("Help").GetComponent<Image>();
+
         cb = GameObject.Find("Dialog Box").GetComponent<Image>();
         background = GetComponent<SpriteRenderer>();
         slimeInstance = Instantiate(slimePrefab);
@@ -60,6 +63,7 @@ public class GameGlobalController : MonoBehaviour
         cb.gameObject.SetActive(gameState == GameState.Animation);
         stop.gameObject.SetActive(gameState != GameState.Pause);
         board.gameObject.SetActive(gameState == GameState.Pause);
+        help.gameObject.SetActive(gameState == GameState.Instruction);
 
         switch (gameState)
         {
@@ -128,6 +132,8 @@ public class GameGlobalController : MonoBehaviour
             case GameState.Animation:
                 break;
             case GameState.Shaking:
+                break;
+            case GameState.Instruction:
                 break;
         }
     }

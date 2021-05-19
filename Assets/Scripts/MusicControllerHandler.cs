@@ -31,4 +31,8 @@ public class MusicControllerHandler : MonoBehaviour
     {
         MainCameraHandler.prevolume = Music_C.value;
     }
+    public void Instruction()
+    {
+        GameGlobalController.gameState = GameGlobalController.GameState.Instruction;
+    }
 }
