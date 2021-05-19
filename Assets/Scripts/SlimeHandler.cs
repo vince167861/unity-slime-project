@@ -25,7 +25,6 @@ public class SlimeHandler : Entity
     float immuableTime = 0;
     int life = 6;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,14 +33,12 @@ public class SlimeHandler : Entity
         backgroundSpriteRenderer = GameObject.Find("Background").GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
-                // if(Input.GetKey(KeyCode.O) && GameGlobalController.isPlaying) transform.position = new Vector2(1,15);
                 // Control immuable
                 if (immuableTime <= 0) GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 90);
                 if (life > health && life != 7)
@@ -142,7 +139,17 @@ public class SlimeHandler : Entity
                 break;
         }
     }
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Potion":
+                Destroy(collision.gameObject);
+                break;
+        }
+        Debug.Log(collision.tag);
+    }
+
     void UnderAttack(Collider2D col)
     {
         if(!GameGlobalController.isAnimation){
