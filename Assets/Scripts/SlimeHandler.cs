@@ -20,7 +20,6 @@ public class SlimeHandler : Entity
     SpriteRenderer backgroundSpriteRenderer;
     public bool isTouchingGround = false;
     public bool allowMove = true;
-    public bool isTouchingWall = false;
 
     float immuableTime = 0;
     int life = 6;
@@ -64,27 +63,13 @@ public class SlimeHandler : Entity
                     rg2d.AddForce(new Vector2(0, jumpStrenght));
                     anim.Play("slime_jump");
                 }
-                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && Input.GetKey(KeyCode.A) && isTouchingWall && allowMove)
-                {
-                    MainCameraHandler.allSound=2;
-                    rg2d.AddForce(new Vector2(100 * moveSpeed, jumpStrenght));
-                    anim.Play("slime_jump");
-                    allowMove = false;
-                }
-                else if (Input.GetKey(KeyCode.A) && allowMove)
+                if (Input.GetKey(KeyCode.A) && allowMove)
                 {
                     rg2d.AddForce(new Vector2(-moveSpeed * (isTouchingGround?1f:0.65f), 0));
                     anim.Play("slime_left");
                     bombdirect = -1;
                 }
-                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && Input.GetKey(KeyCode.D) && isTouchingWall && allowMove)
-                {
-                    MainCameraHandler.allSound=2;
-                    rg2d.AddForce(new Vector2(100 * -moveSpeed, jumpStrenght));
-                    allowMove = false;
-                    anim.Play("slime_jump");
-                }
-                else if (Input.GetKey(KeyCode.D) && allowMove)
+                if (Input.GetKey(KeyCode.D) && allowMove)
                 {
                     rg2d.AddForce(new Vector2(moveSpeed * (isTouchingGround?1f:0.5f), 0));
                     anim.Play("slime_right");
@@ -109,20 +94,32 @@ public class SlimeHandler : Entity
             case "Enemy":
                 UnderAttack(col.collider);
                 break;
-            case "Walls":
-                isTouchingWall = true;
-                break;
         }
     }
-    void OnCollisionExit2D(Collision2D col)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        switch (col.collider.tag)
+        switch (collision.collider.tag)
         {
             case "Walls":
-                isTouchingWall = false;
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && Input.GetKey(KeyCode.A) && allowMove)
+                {
+                    MainCameraHandler.allSound = 2;
+                    rg2d.AddForce(new Vector2(100 * moveSpeed, jumpStrenght));
+                    anim.Play("slime_jump");
+                    allowMove = false;
+                }
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && Input.GetKey(KeyCode.D) && allowMove)
+                {
+                    MainCameraHandler.allSound = 2;
+                    rg2d.AddForce(new Vector2(100 * -moveSpeed, jumpStrenght));
+                    allowMove = false;
+                    anim.Play("slime_jump");
+                }
                 break;
         }
     }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         switch (col.tag)
