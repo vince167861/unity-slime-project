@@ -1023,7 +1023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -245, y: 10}
+  m_AnchoredPosition: {x: -245, y: 10.000061}
   m_SizeDelta: {x: 245, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &237284979
@@ -1435,6 +1435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffcfcc4d2222c94dae93008fdfa971e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stop:
+  - {fileID: 21300000, guid: 0ef7d5425ee73a045bee901824b4ea11, type: 3}
+  - {fileID: 21300000, guid: 07a7a65a87010be40b5abb3966b23e5c, type: 3}
 --- !u!114 &399919442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,7 +2832,7 @@ SpriteRenderer:
   m_SortingLayerID: 788853741
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ae14708bf86563045a4b4b6293ac27f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b879d1779528a6439dfd6991b2eec8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2892,7 +2895,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   menuBackground:
-  - {fileID: 21300000, guid: ae14708bf86563045a4b4b6293ac27f6, type: 3}
+  - {fileID: 21300000, guid: 5b879d1779528a6439dfd6991b2eec8b, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
