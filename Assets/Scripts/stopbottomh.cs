@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class stopbottomh : MonoBehaviour
 {
@@ -9,13 +10,18 @@ public class stopbottomh : MonoBehaviour
     // Start is called before the first frame update
     public void GameStop()
     {
-        nowState = GameGlobalController.gameState;
-        prenowState = nowState;
-        GameGlobalController.gameState = GameGlobalController.GameState.Pause;
+        if(GameGlobalController.gameState == GameGlobalController.GameState.Instruction)
+        {
+            GameGlobalController.gameState = GameGlobalController.GameState.Pause;
+        }
+        else
+        {
+            nowState = GameGlobalController.gameState;
+            GameGlobalController.gameState = GameGlobalController.GameState.Pause;
+        }
     }
     public void GameStart()
     {
-        nowState = prenowState;
         GameGlobalController.gameState = nowState;
     }
     void Start()
