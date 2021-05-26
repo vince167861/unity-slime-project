@@ -22,7 +22,8 @@ public class Slime : Entity
 
     float immuableTime = 0;
     int life = 6;
-    int potionCount = 0;
+    public static int potionCount = 0;
+    public static int potionMax = 100;
 
     void Start()
     {
