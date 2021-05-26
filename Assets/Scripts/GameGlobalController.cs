@@ -121,7 +121,7 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.Playing:
-                if (slimeInstance.GetComponent<SlimeHandler>().health == 0) gameState = GameState.End;
+                if (slimeInstance.GetComponent<Slime>().health == 0) gameState = GameState.End;
                 break;
             case GameState.Pause:
                 break;
@@ -141,7 +141,7 @@ public class GameGlobalController : MonoBehaviour
     public static void StartNewGame()
     {
         battle = true; // Starts the battle
-        slimeInstance.GetComponent<SlimeHandler>().Reset();
+        slimeInstance.GetComponent<Slime>().Reset();
         gameState = GameState.Darking;
     }
 
