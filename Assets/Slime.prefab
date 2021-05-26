@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.25444984, y: 0.14441681}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.5, y: 0.1}
+  m_Size: {x: 3.7532501, y: 0.11375427}
   m_EdgeRadius: 0
 --- !u!114 &6767927650798453594
 MonoBehaviour:
@@ -146,8 +146,7 @@ SpriteRenderer:
   m_SortingLayerID: 969866915
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -458641133534639524, guid: 898f6974a34258b4dbc06d9fedc26258,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e4f0bafaca704142b117578dfee1edb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,9 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bomb: {fileID: 5246916899251585217, guid: ff921ac50801c734b82d6912b979a036, type: 3}
   bombdirect: 1
-  isTouchingBrick: 0
+  isTouchingGround: 0
   allowMove: 1
-  isTouchingWall: 0
 --- !u!95 &1977730639100548441
 Animator:
   serializedVersion: 3
@@ -232,7 +230,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.95, y: 3.65}
+    oldSize: {x: 5.45, y: 3.5}
     newSize: {x: 2.48, y: 1.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -240,16 +238,24 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.8265549, y: 1.8364136}
-      - {x: 0.025, y: 1.825}
-      - {x: -1.6521624, y: 0.9423742}
-      - {x: -2.3336475, y: 0.0065156966}
-      - {x: -2.5365086, y: -1.0505915}
-      - {x: -3.0164843, y: -1.3957062}
-      - {x: -3.036183, y: -1.5679613}
-      - {x: -2.758042, y: -1.825}
-      - {x: 2.792299, y: -1.825}
-      - {x: 3.1112287, y: -1.6025198}
-      - {x: 3.111847, y: -1.432332}
-      - {x: 2.810295, y: -1.2585335}
-      - {x: 2.6608129, y: 0.6135855}
+    - - {x: 1.9356518, y: 1.1172714}
+      - {x: 1.4229622, y: 1.4271832}
+      - {x: 0.8217083, y: 1.6284459}
+      - {x: -0.22257099, y: 1.7012141}
+      - {x: -0.80185795, y: 1.5731773}
+      - {x: -1.2928028, y: 1.4392567}
+      - {x: -1.7897023, y: 1.1761913}
+      - {x: -2.4217281, y: 0.52444935}
+      - {x: -2.649989, y: 0.0065156966}
+      - {x: -2.7096977, y: -0.5035248}
+      - {x: -2.5090008, y: -1.0230837}
+      - {x: -2.053708, y: -1.3681984}
+      - {x: -1.4819868, y: -1.6642395}
+      - {x: 0.089025736, y: -1.714968}
+      - {x: 1.4978905, y: -1.7066479}
+      - {x: 2.1596181, y: -1.577429}
+      - {x: 2.464794, y: -1.3824565}
+      - {x: 2.6304588, y: -1.1434994}
+      - {x: 2.68651, y: -0.7771454}
+      - {x: 2.5774765, y: 0.078074455}
+      - {x: 2.3032117, y: 0.73737144}
