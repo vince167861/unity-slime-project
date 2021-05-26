@@ -2165,9 +2165,9 @@ RectTransform:
   m_Father: {fileID: 176483923}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 311}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -345.6, y: -38.8}
   m_SizeDelta: {x: 300, y: 555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646512264
@@ -3913,7 +3913,7 @@ GameObject:
   - component: {fileID: 1279328696}
   - component: {fileID: 1279328695}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Potionnum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3935,8 +3935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 576, y: -207}
-  m_SizeDelta: {x: 788.4219, y: 719.6649}
+  m_AnchoredPosition: {x: 1416, y: -207}
+  m_SizeDelta: {x: 2468.6082, y: 719.6649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279328695
 MonoBehaviour:
@@ -3951,7 +3951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.73333335, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
