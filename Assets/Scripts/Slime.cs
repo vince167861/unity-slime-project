@@ -145,6 +145,7 @@ public class Slime : Entity
         {
             case "Potion":
                 Destroy(collision.gameObject);
+                potionCount++;
                 break;
         }
         Debug.Log(collision.tag);
