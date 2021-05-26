@@ -18,7 +18,7 @@ public class GameGlobalController : MonoBehaviour
     public static bool battle = false;
     float delta = 0;
 
-    static GameObject board, brand, dialogBox, help, pauseButton;
+    static GameObject board, brand, dialogBox, help, pauseButton, potionicon;
     // Global should exists only a slime instance.
     public static GameObject slimeInstance = null;
     SpriteRenderer background;
@@ -30,6 +30,7 @@ public class GameGlobalController : MonoBehaviour
         dialogBox = GameObject.Find("Dialog Box");
         help = GameObject.Find("Help");
         pauseButton = GameObject.Find("Pause Button");
+        potionicon = GameObject.Find("Potionicon");
         background = GetComponent<SpriteRenderer>();
         slimeInstance = Instantiate(slimePrefab);
     }
@@ -48,7 +49,8 @@ public class GameGlobalController : MonoBehaviour
         pauseButton.SetActive(!isPaused);
         board.SetActive(isPaused);
         help.SetActive(gameState == GameState.Instruction);
-
+        potionicon.SetActive(isPlaying || isAnimation);
+        
         switch (gameState)
         {
             case GameState.Lighting:
