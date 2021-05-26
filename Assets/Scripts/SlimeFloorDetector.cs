@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SlimeFloorDetector : MonoBehaviour
 {
-    SlimeHandler parent;
+    Slime parent;
 
     void Start()
     {
-        parent = transform.parent.GetComponent<SlimeHandler>();
+        parent = transform.parent.GetComponent<Slime>();
     }
 
     void OnCollisionEnter2D(Collision2D col)

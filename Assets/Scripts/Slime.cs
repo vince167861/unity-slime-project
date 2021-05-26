@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class SlimeHandler : Entity
+public class Slime : Entity
 {
-    public SlimeHandler() : base(6) { }
+    public Slime() : base(6) { }
 
     public GameObject Bomb;
     public int bombdirect = 1; // -1 = left, 1 = right
