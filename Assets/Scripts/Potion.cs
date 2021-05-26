@@ -2,5 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotionHandler : MonoBehaviour
+public class Potion : MonoBehaviour
 {}

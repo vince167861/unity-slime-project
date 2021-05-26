@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PortalHandler : MonoBehaviour
 {
-    Animator anim;
+    Animator animator;
     bool trigger = false;
     float delta = 3;
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class PortalHandler : MonoBehaviour
                 delta += Time.deltaTime;
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
-                    anim.Play("opendoor");
+                    animator.Play("opendoor");
                     delta = 0;
                 }
                 if (delta >= 0.5f && delta <= 1)

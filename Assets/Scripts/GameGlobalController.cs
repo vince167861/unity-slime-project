@@ -1,75 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Advertisements;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class GameGlobalController : MonoBehaviour
 {
-    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval};
-    public static int currentLevel = 0;
-
-    static Image brand;
-    static Image cb;
-    static Button stop;
-    static Image board;
-    static Image help;
-
-    public GameObject lobbyCanvas;
-    public GameObject passCanvas;
-    public GameObject deadCanvas;
-    public GameObject slimeHealthCanvas;
-
+    /// Imports
+    // Canvases
+    public GameObject lobbyCanvas, passCanvas, deadCanvas, slimeHealthCanvas;
+    // Prefabs
+    public GameObject slimePrefab, enemySpawnerPrefab, brickPrefab, portalPrefab, floorPrefab, instructPrefab;
+    // Level terrians
     public GameObject[] levelPrefab;
+    // Backgrounds
+    public Sprite[] gameBackground, menuBackground;
 
-    public GameObject slimePrefab;
-    public static GameObject slimeInstance = null;
-    public GameObject enemySpawnerPrefab;
-    public GameObject brickPrefab;
-    public GameObject portalPrefab;
-    public GameObject floorPrefab;
-    public GameObject instructPrefab;
-    public static GameState gameState;
-
-    SpriteRenderer background;
-    public Sprite[] gameBackground;
-    public Sprite[] menuBackground;
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval };
+    public static GameState gameState = GameState.MenuPrepare;
+    public static int currentLevel = 0;
     public static bool battle = false;
     float delta = 0;
 
-    // Start is called before the first frame update
+    static GameObject board, brand, dialogBox, help, pauseButton;
+    // Global should exists only a slime instance.
+    public static GameObject slimeInstance = null;
+    SpriteRenderer background;
+
     void Start()
     {
-        gameState = GameState.MenuPrepare;
-        stop = GameObject.Find("Pause Button").GetComponent<Button>();
-        board = GameObject.Find("Board").GetComponent<Image>();
-        brand = GameObject.Find("Brand").GetComponent<Image>();
-        help = GameObject.Find("Help").GetComponent<Image>();
-
-        cb = GameObject.Find("Dialog Box").GetComponent<Image>();
+        board = GameObject.Find("Board");
+        brand = GameObject.Find("Brand");
+        dialogBox = GameObject.Find("Dialog Box");
+        help = GameObject.Find("Help");
+        pauseButton = GameObject.Find("Pause Button");
         background = GetComponent<SpriteRenderer>();
         slimeInstance = Instantiate(slimePrefab);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Show or hide items
-        brand.gameObject.SetActive(gameState == GameState.Lobby && currentLevel > 0);
-        lobbyCanvas.SetActive((/*gameState == GameState.Brightening || */gameState == GameState.Lobby) && currentLevel == 0 && !battle);
-        passCanvas.SetActive(gameState == GameState.End && !battle);
-        deadCanvas.SetActive(gameState == GameState.End && battle);
-        slimeHealthCanvas.SetActive(gameState == GameState.Playing || gameState == GameState.Animation);
-        cb.gameObject.SetActive(gameState == GameState.Animation);
-        stop.gameObject.SetActive(gameState != GameState.Pause);
-        board.gameObject.SetActive(gameState == GameState.Pause);
-        help.gameObject.SetActive(gameState == GameState.Instruction);
+        /// Show or hide items
+        // Canvases
+        lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
+        passCanvas.SetActive(hasEnded && !battle);
+        deadCanvas.SetActive(hasEnded && battle);
+        slimeHealthCanvas.SetActive(isPlaying || isAnimation);
+        // GameObjects
+        brand.SetActive(gameState == GameState.Lobby && currentLevel > 0);
+        dialogBox.SetActive(isAnimation);
+        pauseButton.SetActive(!isPaused);
+        board.SetActive(isPaused);
+        help.SetActive(gameState == GameState.Instruction);
 
         switch (gameState)
         {
             case GameState.Lighting:
                 delta += Time.deltaTime;
-                if(delta >= 1)
+                if (delta >= 1)
                 {
                     delta = 0;
                     gameState = GameState.Unlighting;
@@ -88,17 +72,15 @@ public class GameGlobalController : MonoBehaviour
                 if (delta >= 1)
                 {
                     delta = 0;
-                    if (battle)
-                        gameState = GameState.Start;
-                    else
-                        gameState = GameState.MenuPrepare;
+                    gameState = battle ? GameState.Start : GameState.MenuPrepare;
                 }
                 break;
             case GameState.MenuPrepare:
-                if(currentLevel != 0){
-                    slimeInstance.GetComponent<Transform>().position = new Vector2(1f, 5f);
+                if (currentLevel != 0)
+                {
+                    slimeInstance.transform.position = new Vector2(1f, 5f);
                     Instantiate(floorPrefab);
-                    Instantiate(instructPrefab).GetComponent<Transform>().position = new Vector2(80,8f);
+                    Instantiate(instructPrefab).transform.position = new Vector2(80f, 8f);
                 }
                 gameState = GameState.Brightening;
                 break;
@@ -106,7 +88,7 @@ public class GameGlobalController : MonoBehaviour
                 SlimeLifeCanvas.life = 6;
                 if (currentLevel < LevelVarity.spawnpoint.Count)
                 {
-                    slimeInstance.GetComponent<Transform>().position = LevelVarity.spawnpoint[currentLevel];
+                    slimeInstance.transform.position = LevelVarity.spawnpoint[currentLevel];
                     Instantiate(levelPrefab[currentLevel]);
                 }
                 gameState = GameState.Brightening;
@@ -150,10 +132,11 @@ public class GameGlobalController : MonoBehaviour
         battle = false; // Ends the battle
         gameState = GameState.End;
     }
-
     public static bool isPlaying { get => gameState == GameState.Playing; }
+    public static bool isPaused { get => gameState == GameState.Pause; }
     public static bool isLobby { get => gameState == GameState.Lobby; }
     public static bool isAnimation { get => gameState == GameState.Animation; }
     public static bool isMenuPrepare { get => gameState == GameState.MenuPrepare; }
     public static bool isDarking { get => gameState == GameState.Darking; }
+    public static bool hasEnded { get => gameState == GameState.End; }
 }
