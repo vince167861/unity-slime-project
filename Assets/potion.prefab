@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4083624708054556850}
   - component: {fileID: 4456309258926617929}
   - component: {fileID: 1481813679953153438}
-  - component: {fileID: -6145388943178750207}
+  - component: {fileID: 5944097500866565738}
   m_Layer: 0
   m_Name: potion
   m_TagString: Potion
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b997338c0b037489f8604723db0ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-6145388943178750207
-BoxCollider2D:
+--- !u!60 &5944097500866565738
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -113,12 +113,38 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 1.11}
+    oldSize: {x: 3, y: 5.55}
     newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.87, y: 5.69}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.45, y: -1.975}
+      - {x: 1.5, y: -1.825}
+      - {x: 1.5, y: -1.475}
+      - {x: 1.45, y: -1.325}
+      - {x: 1.3000001, y: -0.825}
+      - {x: 0.8, y: 0.725}
+      - {x: 0.65000004, y: 1.225}
+      - {x: 0.4, y: 2.025}
+      - {x: 0.15, y: 2.525}
+      - {x: -0.2, y: 2.7250001}
+      - {x: -0.45000002, y: 2.7250001}
+      - {x: -0.8, y: 2.325}
+      - {x: -0.90000004, y: 1.725}
+      - {x: -1.5, y: -2.275}
+      - {x: -1.5, y: -2.775}
+      - {x: 0.4, y: -2.775}
+      - {x: 1.0500001, y: -2.7250001}
+      - {x: 1.15, y: -2.625}
+    - - {x: -0.15, y: 1.125}
+      - {x: -0.2, y: 1.225}
+      - {x: -0.15, y: 1.275}
+      - {x: -0.15, y: 1.475}
+      - {x: -0.2, y: 1.475}
+      - {x: -0.2, y: 1.4250001}
+      - {x: -0.15, y: 1.375}
+      - {x: -0.05, y: 1.075}
+      - {x: -0.1, y: 1.125}
