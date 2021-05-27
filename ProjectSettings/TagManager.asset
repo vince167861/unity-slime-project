@@ -13,6 +13,7 @@ TagManager:
   - Mushroom
   - Potion
   - Grass
+  - Key
   layers:
   - Default
   - TransparentFX
