@@ -24,6 +24,6 @@ public class LevelVarity
         "哼,想挑戰我就來吧。啊...多久沒人來挑戰我了。 \n 我等你,就在最後那道門前......"}
     };
     public static List<Vector2> spawnpoint = new List<Vector2> {
-        new Vector2(5, 12), new Vector2(5, 40), new Vector2(1, 1)
+        new Vector2(5, 12), new Vector2(5, 60), new Vector2(1, 1)
     };
 }
