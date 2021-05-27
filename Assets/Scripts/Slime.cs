@@ -24,6 +24,7 @@ public class Slime : Entity
     int life = 6;
     public static int potionCount = 0;
     public static int potionMax = 100;
+    public static int keyCount = 0;
 
     void Start()
     {
@@ -148,6 +149,10 @@ public class Slime : Entity
                 Destroy(collision.gameObject);
                 potionCount++;
                 break;
+             case "Key":
+                Destroy(collision.gameObject);
+                keyCount++;
+                break;   
         }
         Debug.Log(collision.tag);
     }
