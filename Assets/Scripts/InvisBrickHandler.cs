@@ -11,6 +11,16 @@ public class InvisBrickHandler : MonoBehaviour
         {
             case "Slime":
                 GetComponent<SpriteRenderer>().sprite = sprite;
+                break;    
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch(collision.tag)
+        {
+            case "Bomb":
+                GetComponent<SpriteRenderer>().sprite = sprite;
+                Destroy(collision.gameObject);
                 break;
         }
     }
