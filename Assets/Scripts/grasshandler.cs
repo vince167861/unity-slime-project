@@ -15,12 +15,12 @@ public class grasshandler : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collision2D col)
     {
         switch (col.collider.tag)
         {
             case "Bomb":
-                Destroy(gameObject);
+                Destroy(col.gameObject);
                 break;
         }
     }

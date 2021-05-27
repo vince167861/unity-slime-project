@@ -37,7 +37,7 @@ public class BulletHandler : MonoBehaviour, Attackable
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collision2D col)
     {
         switch (col.collider.tag)
         {
@@ -45,6 +45,7 @@ public class BulletHandler : MonoBehaviour, Attackable
                 Destroy(gameObject);
                 break;
             case "Grass":
+                Destroy(col.gameObject);
                 Destroy(gameObject);
                 break;
         }
