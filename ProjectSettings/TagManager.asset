@@ -12,6 +12,7 @@ TagManager:
   - EventTrigger
   - Mushroom
   - Potion
+  - Grass
   layers:
   - Default
   - TransparentFX
