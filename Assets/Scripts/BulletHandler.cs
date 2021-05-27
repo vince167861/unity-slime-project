@@ -44,6 +44,9 @@ public class BulletHandler : MonoBehaviour, Attackable
             case "Walls":
                 Destroy(gameObject);
                 break;
+            case "Grass":
+                Destroy(gameObject);
+                break;
         }
     }
 }
