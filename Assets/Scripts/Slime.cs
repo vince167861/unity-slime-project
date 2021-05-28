@@ -75,6 +75,7 @@ public class Slime : Entity
                 }
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    MainCameraHandler.allSound = 4;
                     Vector3 pos = transform.position + new Vector3(bulletDirection * 5, 0, 0);
                     Instantiate(Bomb, pos, transform.rotation).GetComponent<BulletHandler>().moveSpeed *= bulletDirection;
                 }
@@ -150,6 +151,7 @@ public class Slime : Entity
                 potionCount++;
                 break;
              case "Key":
+                MainCameraHandler.allSound = 5;
                 Destroy(collision.gameObject);
                 keyCount++;
                 break;   

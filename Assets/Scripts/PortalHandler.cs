@@ -26,6 +26,7 @@ public class PortalHandler : MonoBehaviour
                 delta += Time.deltaTime;
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
+                    MainCameraHandler.allSound = 7;
                     animator.Play("opendoor");
                     delta = 0;
                 }

@@ -20,6 +20,7 @@ public class grasshandler : MonoBehaviour
         switch (col.tag)
         {
             case "Bomb":
+                MainCameraHandler.allSound = 6;
                 Destroy(col.gameObject);
                 break;
         }
