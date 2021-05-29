@@ -16,6 +16,6 @@ public class Keyicon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        keyicon.text = " X  " + Slime.keyCount + " / " + LevelVarity.keyMax[GameGlobalController.currentLevel];
+        keyicon.text = " X  " + GameGlobalController.slimeInstance.GetComponent<Slime>().keyCount + " / " + LevelVarity.keyMax[GameGlobalController.currentLevel];
     }
 }

@@ -34,6 +34,7 @@ public class GameGlobalController : MonoBehaviour
         keyicon = GameObject.Find("Keyicon");
         background = GetComponent<SpriteRenderer>();
         slimeInstance = Instantiate(slimePrefab);
+        
     }
 
     void Update()
@@ -89,7 +90,7 @@ public class GameGlobalController : MonoBehaviour
                 gameState = GameState.Brightening;
                 break;
             case GameState.Start:
-                Slime.keyCount = 0;
+                slimeInstance.GetComponent<Slime>().keyCount = 0;
                 SlimeLifeCanvas.life = 6;
                 if (currentLevel < LevelVarity.spawnpoint.Count)
                 {
@@ -108,7 +109,6 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.Playing:
-                if (slimeInstance.GetComponent<Slime>().health == 0) gameState = GameState.End;
                 break;
             case GameState.Pause:
                 break;
@@ -137,11 +137,15 @@ public class GameGlobalController : MonoBehaviour
         battle = false; // Ends the battle
         gameState = GameState.End;
     }
-    public static bool isPlaying { get => gameState == GameState.Playing; }
-    public static bool isPaused { get => gameState == GameState.Pause; }
-    public static bool isLobby { get => gameState == GameState.Lobby; }
-    public static bool isAnimation { get => gameState == GameState.Animation; }
-    public static bool isMenuPrepare { get => gameState == GameState.MenuPrepare; }
-    public static bool isDarking { get => gameState == GameState.Darking; }
-    public static bool hasEnded { get => gameState == GameState.End; }
+    public static void BadEnd()
+    {
+        gameState = GameState.End;
+    }
+    public static bool isPlaying => gameState == GameState.Playing;
+    public static bool isPaused => gameState == GameState.Pause;
+    public static bool isLobby => gameState == GameState.Lobby;
+    public static bool isAnimation => gameState == GameState.Animation;
+    public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
+    public static bool isDarking => gameState == GameState.Darking;
+    public static bool hasEnded => gameState == GameState.End;
 }
