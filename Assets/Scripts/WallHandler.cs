@@ -9,7 +9,7 @@ public class WallHandler : MonoBehaviour
         switch(collision.tag)
         {
             case "Enemy":
-                collision.GetComponent<BirdHandler>().flyingDirection *= -1;
+                collision.GetComponent<Entity>().direction *= -1;
                 break;
             case "Bomb":
                 Destroy(collision.gameObject);

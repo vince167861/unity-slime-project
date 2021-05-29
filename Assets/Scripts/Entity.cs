@@ -5,11 +5,14 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    public int direction;
     int _health;
+    public int health { get => _health; }
     int def;
-    public Entity(int defaultHealth)
+    public Entity(int h, int d = 1)
     {
-        _health = def = defaultHealth;
+        _health = def = h;
+        direction = d;
     }
 
     public bool Suffer(int damage, bool ignoreMin = false)
@@ -36,6 +39,4 @@ public abstract class Entity : MonoBehaviour
     {
         _health = def;
     }
-
-    public int health { get { return _health; } }
 }
