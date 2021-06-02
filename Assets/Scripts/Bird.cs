@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, 1, () => false) { }
+    public Bird() : base(150, 1, ImmuneOn) { }
     public int AttackDamage { get => 1; }
 
     float moveSpeed = 0.03f; //bird movement speed
-    public float immuneTime = 0, delta2 = 0;
+    public float delta2 = 0;
     float offset = 0;
 
     GameObject progressBar;
@@ -55,10 +52,9 @@ public class Bird : Entity, Attackable
         switch (collision.tag)
         {
             case "Bomb":
-                if (immuneTime <= 0)
+                if (!invulnerable)
                 {
                     Destroy(collision.gameObject);
-                    animator.Play("suffer");
                     Suffer(collision.GetComponent<Attackable>().AttackDamage);
                 }
                 break;
@@ -66,8 +62,16 @@ public class Bird : Entity, Attackable
         }
     }
 
-    void ImmuneHandler()
+    static bool ImmuneOn(Entity entity)
     {
+        entity.invulnerable = true;
+        entity.GetComponent<Animator>().Play("suffer");
+        return false;
+    }
+
+    void ImmuneOff()
+    {
+        invulnerable = false;
         if (health <= 0)
         {
             Destroy(gameObject);

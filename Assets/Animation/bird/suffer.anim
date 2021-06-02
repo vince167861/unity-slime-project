@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: flying_suffer
+  m_Name: suffer
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -370,9 +370,10 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: ImmuneHandler
+    functionName: ImmuneOff
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: be5bca1fd18a1a84e8dbe2d967bb01a0,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
