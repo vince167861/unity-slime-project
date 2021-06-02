@@ -5,23 +5,22 @@ using UnityEngine.UI;
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, -1) { }
+    public Bird() : base(150, 1, () => false) { }
     public int AttackDamage { get => 1; }
 
     float moveSpeed = 0.03f; //bird movement speed
     public float immuneTime = 0, delta2 = 0;
     float offset = 0;
-    bool isDead = false;
 
     GameObject progressBar;
     Transform fillings;
-    SpriteRenderer sprite;
+    Animator animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         progressBar = transform.Find("Progress Bar").gameObject;
         progressBar.SetActive(false);
         fillings = transform.Find("Progress Bar").Find("Fillings");
@@ -43,15 +42,6 @@ public class Bird : Entity, Attackable
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
-                if (immuneTime <= 0)
-                {
-                    if (isDead)
-                    {
-                        GetComponentInParent<EnemySpawnerHandler>().isActive = true;
-                        Destroy(gameObject);
-                    }
-                    else sprite.color = new Color(255, 255, 255, 90);
-                } else immuneTime -= Time.deltaTime;
                 float newY;
                 do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
                 offset += newY;
@@ -68,14 +58,20 @@ public class Bird : Entity, Attackable
                 if (immuneTime <= 0)
                 {
                     Destroy(collision.gameObject);
-                    sprite.color = new Color(255, 0, 0, 90);
-                    immuneTime = 0.2f;
-                    isDead = !Suffer(collision.GetComponent<Attackable>().AttackDamage, true);
+                    animator.Play("suffer");
+                    Suffer(collision.GetComponent<Attackable>().AttackDamage);
                 }
                 break;
                 
         }
     }
 
-
+    void ImmuneHandler()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            GetComponentInParent<EnemySpawnerHandler>().isActive = true;
+        }
+    }
 }

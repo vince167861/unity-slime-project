@@ -177,11 +177,13 @@ public class Slime : Entity
         {
             SlimeLifeCanvas.Shake();
             SlimeLifeCanvas.life = health;
-            if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
-            {
-                transform.position = new Vector3(-5, -5, -10);
-                GameGlobalController.BadEnd();
-            }
+            Suffer(col.GetComponent<Attackable>().AttackDamage);
         }
+    }
+
+    void DeathHandler()
+    {
+        transform.position = new Vector3(-5, -5, -10);
+        GameGlobalController.BadEnd();
     }
 }
