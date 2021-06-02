@@ -23,7 +23,7 @@ public class Slime : Entity
     private float immuableTime = 0;
     public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
-    public Slime() : base(6) {
+    public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
     }
 
@@ -165,16 +165,14 @@ public class Slime : Entity
     }
 
 
-    static bool ImmuneOn(Entity entity)
+    static void ImmuneOn(Entity entity)
     {
-        entity.invulnerable = true;
         SlimeLifeCanvas.Shake();
         SlimeLifeCanvas.life = entity.health;
-        entity.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
-        return false;
+        animator.Play("Suffer");
     }
 
-    void DeathHandler()
+    static void DeathHandler(Entity entity)
     {
         transform.position = new Vector3(-5, -5, -10);
         GameGlobalController.BadEnd();
