@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LevelVarity
 {
-    public static List<int> keyMax = new List<int> {1,3,};
-    public static List<int> doorKey = new List<int> {0,2,};
+    public static List<int> keyMax = new List<int> { 1, 3, };
+    public static List<int> doorKey = new List<int> { 0, 2, };
     public static List<List<int>> littlech = new List<List<int>> {
         new List<int> {0,0,0,0,1,2,1,2}
     };

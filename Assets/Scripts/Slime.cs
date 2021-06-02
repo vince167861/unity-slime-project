@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#pragma warning disable CS0108
+using UnityEngine;
 
 /**
  * Pickup potion: line 142
@@ -7,29 +8,32 @@
 
 public class Slime : Entity
 {
-    public Slime() : base(6) { }
+    public static Slime instance;
+    public static Animator animator;
+    public static Rigidbody2D rigidbody2d;
+    public static SpriteRenderer spriteRender;
+    public static Transform transform;
+
 
     public GameObject Bomb;
-    float moveSpeed = 120f; // main character movement speed
-    readonly float jumpStrength = 2e4f; // main character jump strenght
-    readonly float dropStrength = 100f; // main character drop strenght
+    readonly float moveSpeed = 120f, jumpStrength = 2e4f, dropStrength = 100f;
 
-    static Animator animator;
-    Rigidbody2D rigidbody2d;
-    SpriteRenderer spriteRender;
-    public bool isTouchingGround = false, bouncable = false, allowMove = false;
+    public static bool isTouchingGround = false, bouncable = false, allowMove = false;
 
-    float immuableTime = 0;
-    int life = 6;
-    public static int potionCount = 0;
-    public static int potionMax = 100;
-    public int keyCount = 0;
+    private float immuableTime = 0;
+    private int lastHealth = 6;
+    public static int potionCount = 0, potionMax = 100, keyCount = 0;
+
+    public Slime() : base(6) {
+        instance = this;
+    }
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteRender = GetComponent<SpriteRenderer>();
+        transform = GetComponent<Transform>();
     }
 
     void Update()
@@ -40,12 +44,12 @@ public class Slime : Entity
             case GameGlobalController.GameState.Lobby:
                 // Control immuable
                 if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
-                if (life > health && life != 7)
+                if (lastHealth > health)
                 {
                     immuableTime = 0.2f;
                     spriteRender.color = new Color(255, 0, 0, 90);
                 }
-                life = health;
+                lastHealth = health;
                 immuableTime -= Time.deltaTime;
                 // Control camera postion, except for the time in the welcome screen
                 if (!(GameGlobalController.currentLevel == 0 && GameGlobalController.isLobby))
@@ -56,7 +60,7 @@ public class Slime : Entity
                 if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
                 {
                     MainCameraHandler.allSound = 2;
-                    rigidbody2d.AddForce(new Vector2(200 * moveSpeed, jumpStrength));
+                    rigidbody2d.AddForce(new Vector2(150 * moveSpeed, jumpStrength));
                     animator.Play("Jump Right");
                     direction = 1;
                     allowMove = bouncable = false;
@@ -64,7 +68,7 @@ public class Slime : Entity
                 if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
                 {
                     MainCameraHandler.allSound = 2;
-                    rigidbody2d.AddForce(new Vector2(200 * -moveSpeed, jumpStrength));
+                    rigidbody2d.AddForce(new Vector2(150 * -moveSpeed, jumpStrength));
                     animator.Play("Jump Left");
                     direction = -1;
                     allowMove = bouncable = false;
@@ -172,12 +176,12 @@ public class Slime : Entity
         if (!GameGlobalController.isAnimation && immuableTime <= 0)
         {
             SlimeLifeCanvas.Shake();
+            SlimeLifeCanvas.life = health;
             if (!Suffer(col.GetComponent<Attackable>().AttackDamage, true))
             {
                 transform.position = new Vector3(-5, -5, -10);
                 GameGlobalController.BadEnd();
             }
-            SlimeLifeCanvas.life = health;
         }
     }
 }

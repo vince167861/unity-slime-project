@@ -19,8 +19,6 @@ public class GameGlobalController : MonoBehaviour
     float delta = 0;
 
     static GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon;
-    // Global should exists only a slime instance.
-    public static GameObject slimeInstance = null;
     SpriteRenderer background;
 
     void Start()
@@ -33,7 +31,7 @@ public class GameGlobalController : MonoBehaviour
         potionicon = GameObject.Find("Potionicon");
         keyicon = GameObject.Find("Keyicon");
         background = GetComponent<SpriteRenderer>();
-        slimeInstance = Instantiate(slimePrefab);
+        Instantiate(slimePrefab);
         
     }
 
@@ -83,18 +81,18 @@ public class GameGlobalController : MonoBehaviour
             case GameState.MenuPrepare:
                 if (currentLevel != 0)
                 {
-                    slimeInstance.transform.position = new Vector2(1f, 5f);
+                    Slime.instance.gameObject.transform.position = new Vector2(1f, 5f);
                     Instantiate(floorPrefab);
                     Instantiate(instructPrefab).transform.position = new Vector2(80f, 8f);
                 }
                 gameState = GameState.Brightening;
                 break;
             case GameState.Start:
-                slimeInstance.GetComponent<Slime>().keyCount = 0;
+                Slime.keyCount = 0;
                 SlimeLifeCanvas.life = 6;
                 if (currentLevel < LevelVarity.spawnpoint.Count)
                 {
-                    slimeInstance.transform.position = LevelVarity.spawnpoint[currentLevel];
+                    Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
                     Instantiate(levelPrefab[currentLevel]);
                 }
                 gameState = GameState.Brightening;
@@ -128,7 +126,7 @@ public class GameGlobalController : MonoBehaviour
     public static void StartNewGame()
     {
         battle = true; // Starts the battle
-        slimeInstance.GetComponent<Slime>().Reset();
+        Slime.instance.ResetHealth();
         gameState = GameState.Darking;
     }
 

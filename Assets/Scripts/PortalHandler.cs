@@ -27,7 +27,7 @@ public class PortalHandler : MonoBehaviour
                 break;
             case GameGlobalController.GameState.Playing:
                 need.text = " x " + LevelVarity.doorKey[GameGlobalController.currentLevel];
-                if (Input.GetKey(KeyCode.G) && trigger && (GameGlobalController.slimeInstance.GetComponent<Slime>().keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel]))
+                if (Input.GetKey(KeyCode.G) && trigger && (Slime.keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel]))
                 {
                     MainCameraHandler.allSound = 7;
                     animator.Play("opendoor");
@@ -39,10 +39,7 @@ public class PortalHandler : MonoBehaviour
                     GameGlobalController.GoodEnd();
                 }
                 break;
-
-
         }
-
     }
     void OnTriggerEnter2D(Collider2D col)
     {
