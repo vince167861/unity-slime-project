@@ -22,7 +22,7 @@ public class PortalHandler : MonoBehaviour
     {
         switch (GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.End:
+            case GameGlobalController.GameState.Darking:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
