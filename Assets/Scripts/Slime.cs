@@ -14,7 +14,7 @@ public class Slime : Entity
     readonly float jumpStrength = 2e4f; // main character jump strenght
     readonly float dropStrength = 100f; // main character drop strenght
 
-    Animator animator;
+    static Animator animator;
     Rigidbody2D rigidbody2d;
     SpriteRenderer spriteRender;
     public bool isTouchingGround = false, bouncable = false, allowMove = false;
@@ -113,6 +113,10 @@ public class Slime : Entity
                 rigidbody2d.bodyType = RigidbodyType2D.Static;
                 break;
         }
+    }
+    public static void disappear()
+    {
+        animator.Play("Slime_disappear");
     }
     void OnCollisionEnter2D(Collision2D col)
     {

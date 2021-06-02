@@ -9,7 +9,7 @@ public class PortalHandler : MonoBehaviour
     Animator animator;
     static TextMeshPro need;
     bool trigger = false;
-    float delta = 3;
+    public bool Anim = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,24 +26,20 @@ public class PortalHandler : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
-            case GameGlobalController.GameState.Lobby:
                 need.text = " x " + LevelVarity.doorKey[GameGlobalController.currentLevel];
-                delta += Time.deltaTime;
                 if (Input.GetKey(KeyCode.G) && trigger && (GameGlobalController.slimeInstance.GetComponent<Slime>().keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel]))
                 {
                     MainCameraHandler.allSound = 7;
                     animator.Play("opendoor");
-                    delta = 0;
                 }
-                if (delta >= 0.5f && delta <= 1)
+                if (Anim == true)
                 {
+                    Anim = false;
                     trigger = false;
-                    if(GameGlobalController.isPlaying)
-                        GameGlobalController.GoodEnd();
-                    else
-                        GameGlobalController.StartNewGame();
+                    GameGlobalController.GoodEnd();
                 }
                 break;
+
 
         }
 
