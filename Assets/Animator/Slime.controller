@@ -53,6 +53,9 @@ AnimatorStateMachine:
     m_Position: {x: 530, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5378754570348101430}
+    m_Position: {x: 520, y: -160, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5378754570348101430}
     m_Position: {x: 580, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
@@ -1391,8 +1394,7 @@ AnimatorState:
   m_Name: Slime_disappear
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -5659048436409834889}
+  m_Transitions: [{fileID: -5659048436409834889}]
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

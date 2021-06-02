@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
     public int direction;
-    int _health;
-    public int health { get => _health; }
-    int def;
+    readonly int def;
+    private int _health;
+    public int health => _health;
     public Entity(int h, int d = 1)
     {
         _health = def = h;
@@ -35,7 +33,7 @@ public abstract class Entity : MonoBehaviour
             _health = def;
     }
 
-    public void Reset()
+    public void ResetHealth()
     {
         _health = def;
     }

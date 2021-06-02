@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class SlimeFloorDetector : MonoBehaviour
 {
-    Slime parent;
-
-    void Start()
-    {
-        parent = transform.parent.GetComponent<Slime>();
-    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         switch(col.collider.tag)
         {
             case "Ground":
-                parent.isTouchingGround = true;
+                Slime.isTouchingGround = true;
                 break;
             case "Grass":
-                parent.isTouchingGround = true;
+                Slime.isTouchingGround = true;
                 break;
         }
     }
@@ -29,10 +23,10 @@ public class SlimeFloorDetector : MonoBehaviour
         switch(col.collider.tag)
         {
             case "Ground":
-                parent.isTouchingGround = false;
+                Slime.isTouchingGround = false;
                 break;
             case "Grass":
-                parent.isTouchingGround = false;
+                Slime.isTouchingGround = false;
                 break;
         }
     }
