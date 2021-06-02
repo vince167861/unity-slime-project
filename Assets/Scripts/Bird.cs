@@ -2,7 +2,7 @@
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, 1, ImmuneOn) { }
+    public Bird() : base(150, 1, ImmuneOn, entity => { }) { }
     public int AttackDamage { get => 1; }
 
     float moveSpeed = 0.03f; //bird movement speed
@@ -11,13 +11,11 @@ public class Bird : Entity, Attackable
 
     GameObject progressBar;
     Transform fillings;
-    Animator animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
         progressBar = transform.Find("Progress Bar").gameObject;
         progressBar.SetActive(false);
         fillings = transform.Find("Progress Bar").Find("Fillings");
@@ -52,21 +50,17 @@ public class Bird : Entity, Attackable
         switch (collision.tag)
         {
             case "Bomb":
-                if (!invulnerable)
-                {
-                    Destroy(collision.gameObject);
-                    Suffer(collision.GetComponent<Attackable>().AttackDamage);
-                }
+                Destroy(collision.gameObject);
+                Suffer(collision.GetComponent<Attackable>().AttackDamage);
                 break;
                 
         }
     }
 
-    static bool ImmuneOn(Entity entity)
+    static void ImmuneOn(Entity entity)
     {
         entity.invulnerable = true;
         entity.GetComponent<Animator>().Play("suffer");
-        return false;
     }
 
     void ImmuneOff()

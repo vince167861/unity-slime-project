@@ -21,7 +21,6 @@ public class Slime : Entity
     public static bool isTouchingGround = false, bouncable = false, allowMove = false;
 
     private float immuableTime = 0;
-    private int lastHealth = 6;
     public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
     public Slime() : base(6) {
@@ -44,13 +43,6 @@ public class Slime : Entity
             case GameGlobalController.GameState.Lobby:
                 // Control immuable
                 if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
-                if (lastHealth > health)
-                {
-                    immuableTime = 0.2f;
-                    spriteRender.color = new Color(255, 0, 0, 90);
-                }
-                lastHealth = health;
-                immuableTime -= Time.deltaTime;
                 // Control camera postion, except for the time in the welcome screen
                 if (!(GameGlobalController.currentLevel == 0 && GameGlobalController.isLobby))
                     MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
@@ -128,7 +120,7 @@ public class Slime : Entity
         switch (col.collider.tag)
         {
             case "Enemy":
-                UnderAttack(col.collider);
+                Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
             case "Ground":
                 bouncable = false;
@@ -145,7 +137,7 @@ public class Slime : Entity
         switch (col.tag)
         {
             case "Enemy":
-                UnderAttack(col);
+                Suffer(col.GetComponent<Attackable>().AttackDamage);
                 break;
             case "EventTrigger":
                 Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
@@ -172,14 +164,14 @@ public class Slime : Entity
         }
     }
 
-    void UnderAttack(Collider2D col)
+
+    static bool ImmuneOn(Entity entity)
     {
-        if (!GameGlobalController.isAnimation && immuableTime <= 0)
-        {
-            SlimeLifeCanvas.Shake();
-            SlimeLifeCanvas.life = health;
-            Suffer(col.GetComponent<Attackable>().AttackDamage);
-        }
+        entity.invulnerable = true;
+        SlimeLifeCanvas.Shake();
+        SlimeLifeCanvas.life = entity.health;
+        entity.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 90);
+        return false;
     }
 
     void DeathHandler()

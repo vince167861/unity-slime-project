@@ -5,37 +5,39 @@ public abstract class Entity : MonoBehaviour
 {
     public int direction;
     readonly int def;
-    readonly Func<Entity, bool> sufferCallback, deathCallback;
-    private int _health;
+    readonly Action<Entity> sufferCallback, deathCallback;
+    private int __health;
     public bool invulnerable = false;
-    public int health => _health;
-    public Entity(int h, int d = 1, Func<Entity, bool> scb = null, Func<Entity, bool> dcb = null)
+    public int health => __health;
+
+    static void __default_death_callback(Entity entity) {Destroy(entity.gameObject);}
+    public Entity(int h, int d = 1, Action<Entity> scb = null, Action<Entity> dcb = null)
     {
-        _health = def = h;
+        __health = def = h;
         direction = d;
         sufferCallback = scb;
-        deathCallback = dcb;
+        deathCallback = dcb ?? __default_death_callback;
     }
 
     public void Suffer(int damage)
     {
         if (!invulnerable)
         {
-            _health -= Math.Abs(damage);
+            __health -= Math.Abs(damage);
             sufferCallback(this);
-            if (_health <= 0) if (deathCallback(this)) Destroy(gameObject);
+            if (__health <= 0) deathCallback(this);
         }
     }
 
     public void Heal(int amount, bool ignoreMax = false)
     {
-        if (_health >= def && !ignoreMax) return;
-        _health += Math.Abs(amount);
-        if (_health >= def && !ignoreMax) _health = def;
+        if (__health >= def && !ignoreMax) return;
+        __health += Math.Abs(amount);
+        if (__health >= def && !ignoreMax) __health = def;
     }
 
     public void ResetHealth()
     {
-        _health = def;
+        __health = def;
     }
 }
