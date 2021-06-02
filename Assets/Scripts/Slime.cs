@@ -107,6 +107,7 @@ public class Slime : Entity
                 {
                     if (potionCount > 0)
                     {
+                        Heal(2);
                         potionCount--;
                     }
                 }
