@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6632736314085427731}
   - component: {fileID: -8235026547755268230}
   m_Layer: 0
-  m_Name: EnemySpawnpoint
+  m_Name: Bird Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5631634512493566121, guid: 17000a19acf70ca4ea3d27d090b5f0c8,
     type: 3}
-  flyingDirection: 0
+  defDirection: 1
+  isActive: 1
