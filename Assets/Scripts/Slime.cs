@@ -42,7 +42,7 @@ public class Slime : Entity
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
                 // Control immuable
-                if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
+                //if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
                 // Control camera postion, except for the time in the welcome screen
                 if (!(GameGlobalController.currentLevel == 0 && GameGlobalController.isLobby))
                     MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
@@ -113,7 +113,7 @@ public class Slime : Entity
     }
     public static void disappear()
     {
-        animator.Play("Slime_disappear");
+        animator.Play("Disappear");
     }
     void OnCollisionEnter2D(Collision2D col)
     {
