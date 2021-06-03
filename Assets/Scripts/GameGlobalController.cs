@@ -12,13 +12,13 @@ public class GameGlobalController : MonoBehaviour
     // Backgrounds
     public Sprite[] gameBackground, menuBackground;
 
-    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval };
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval, LobbyInfo };
     public static GameState gameState = GameState.MenuPrepare;
     public static int currentLevel = 0;
     public static bool battle = false;
     float delta = 0;
 
-    static GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon;
+    static GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo;
     SpriteRenderer background;
 
     void Start()
@@ -30,6 +30,7 @@ public class GameGlobalController : MonoBehaviour
         pauseButton = GameObject.Find("Pause Button");
         potionicon = GameObject.Find("Potionicon");
         keyicon = GameObject.Find("Keyicon");
+        lobbyinfo = GameObject.Find("LobbyInfo");
         background = GetComponent<SpriteRenderer>();
         Instantiate(slimePrefab);
         
@@ -51,6 +52,7 @@ public class GameGlobalController : MonoBehaviour
         help.SetActive(gameState == GameState.Instruction);
         potionicon.SetActive(isPlaying || isAnimation);
         keyicon.SetActive(isPlaying || isAnimation);
+        lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
         
         switch (gameState)
         {
