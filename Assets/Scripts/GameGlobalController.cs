@@ -122,6 +122,8 @@ public class GameGlobalController : MonoBehaviour
                 break;
             case GameState.Instruction:
                 break;
+            case GameState.LobbyInfo:
+                break;
         }
     }
 

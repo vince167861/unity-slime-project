@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5989389777563406080}
   - component: {fileID: 3387322359428037152}
   - component: {fileID: 2490831189402855065}
+  - component: {fileID: 4366723434843258001}
   m_Layer: 0
   m_Name: "\u544A\u793A\u724C"
   m_TagString: Untagged
@@ -96,6 +97,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27863654ac3bf474b8466e95079097b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &4366723434843258001
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290256916760384151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 19.05, y: 11.1}
+    newSize: {x: 3.81, y: 2.22}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.125, y: 3}
+      - {x: 0.77500004, y: 5.2000003}
+      - {x: -0.22500001, y: 5.55}
+      - {x: -8.925, y: 5.55}
+      - {x: -9.525001, y: 4.3}
+      - {x: -9.525001, y: 2.3}
+      - {x: -7.875, y: 2.55}
+      - {x: -8.025001, y: -5.1}
+      - {x: -7.875, y: -5.55}
+      - {x: -6.725, y: -5.55}
+      - {x: -6.5750003, y: -3.05}
+      - {x: -0.725, y: -2.95}
+      - {x: -0.825, y: -5.5}
+      - {x: -0.725, y: -5.55}
+      - {x: 0.425, y: -5.55}
+      - {x: 0.575, y: -5.2000003}
+      - {x: 0.46891832, y: 0.93868697}
+      - {x: 0.48842657, y: 2.0125403}
+      - {x: 1.2884378, y: 2.0414612}
+      - {x: 1.2695274, y: 2.8036327}
+      - {x: 2.125, y: 2.6890788}
 --- !u!1001 &8701468298247638982
 PrefabInstance:
   m_ObjectHideFlags: 0

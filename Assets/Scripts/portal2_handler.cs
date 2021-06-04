@@ -24,9 +24,16 @@ public class portal2_handler : MonoBehaviour
             case GameGlobalController.GameState.Lobby:
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
-                    MainCameraHandler.allSound = 7;
-                    animator.Play("gotoportal");
-                    Slime.disappear();
+                    if(!Instruction.isNews)
+                    {
+                        MainCameraHandler.allSound = 7;
+                        animator.Play("gotoportal");
+                        Slime.disappear();
+                    }
+                    else
+                    {
+                        
+                    }
                 }
                 if (Anim2 == true)
                 {
