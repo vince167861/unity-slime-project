@@ -26,6 +26,7 @@ public class Instruction : MonoBehaviour
                 if(Input.GetKey(KeyCode.G) && trigger)
                 {
                     isNews = false;
+                    MainCameraHandler.allSound = 11;
                     GameGlobalController.gameState = GameGlobalController.GameState.LobbyInfo;
                 }
                 break;

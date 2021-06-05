@@ -153,6 +153,7 @@ public class Slime : Entity
         switch (collision.tag)
         {
             case "Potion":
+                MainCameraHandler.allSound = 9;
                 Destroy(collision.gameObject);
                 potionCount++;
                 break;

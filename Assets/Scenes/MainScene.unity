@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 117310116}
   - component: {fileID: 117310118}
   - component: {fileID: 117310117}
+  - component: {fileID: 117310119}
   m_Layer: 5
   m_Name: LobbyInfo
   m_TagString: Untagged
@@ -682,9 +683,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 874593385}
-  - {fileID: 494717317}
   m_Father: {fileID: 176483923}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -729,6 +729,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117310115}
   m_CullTransparentMesh: 0
+--- !u!95 &117310119
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117310115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7c307b3c27701c4380e90237817fe4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &148671823
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +962,7 @@ RectTransform:
   - {fileID: 435444294}
   - {fileID: 646512263}
   - {fileID: 1680933738}
+  - {fileID: 494717317}
   - {fileID: 117310116}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2021,16 +2041,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494717316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 117310116}
-  m_RootOrder: 1
+  m_Father: {fileID: 176483923}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441.2, y: 216}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -79.13962, y: -65.00065}
   m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494717318
@@ -2329,6 +2349,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4aa7350cf6cb26247b9c8a3ac84a007c, type: 3}
   - {fileID: 8300000, guid: 546dfa992622c0647a62558a0a91f3dd, type: 3}
   - {fileID: 8300000, guid: f244e8fbe991f614d8292bf1608bc96b, type: 3}
+  - {fileID: 8300000, guid: e55b1e3b845d482498ca43a6e2a955d7, type: 3}
+  - {fileID: 8300000, guid: b48fb68e3e659d842be324986f13fd2d, type: 3}
+  - {fileID: 8300000, guid: 332d9fa2e393c5b43a0a77e5c2ab987d, type: 3}
+  - {fileID: 8300000, guid: d905ccfb7bc8ded4ba957ad5cbd9d6a2, type: 3}
   backgroundclip:
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}

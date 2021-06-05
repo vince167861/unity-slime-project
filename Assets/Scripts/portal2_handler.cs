@@ -26,8 +26,8 @@ public class portal2_handler : MonoBehaviour
                 {
                     if(!Instruction.isNews)
                     {
-                        MainCameraHandler.allSound = 7;
                         animator.Play("gotoportal");
+                        MainCameraHandler.allSound = 8;
                         Slime.disappear();
                     }
                     else
@@ -47,7 +47,7 @@ public class portal2_handler : MonoBehaviour
         }
 
     }
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         switch (col.tag)
         {

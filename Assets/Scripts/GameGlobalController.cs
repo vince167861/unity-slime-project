@@ -18,7 +18,7 @@ public class GameGlobalController : MonoBehaviour
     public static bool battle = false;
     float delta = 0;
 
-    static GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo;
+    static GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
     SpriteRenderer background;
 
     void Start()
@@ -31,6 +31,7 @@ public class GameGlobalController : MonoBehaviour
         potionicon = GameObject.Find("Potionicon");
         keyicon = GameObject.Find("Keyicon");
         lobbyinfo = GameObject.Find("LobbyInfo");
+        turnBack = GameObject.Find("TurnBack");
         background = GetComponent<SpriteRenderer>();
         Instantiate(slimePrefab);
         
@@ -53,6 +54,7 @@ public class GameGlobalController : MonoBehaviour
         potionicon.SetActive(isPlaying || isAnimation);
         keyicon.SetActive(isPlaying || isAnimation);
         lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
+        turnBack.SetActive(gameState == GameState.LobbyInfo);
         
         switch (gameState)
         {
