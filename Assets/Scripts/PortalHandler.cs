@@ -49,7 +49,7 @@ public class PortalHandler : MonoBehaviour
                 break;
         }
     }
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         switch (col.tag)
         {
