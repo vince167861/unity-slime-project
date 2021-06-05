@@ -12,7 +12,7 @@ public class GameGlobalController : MonoBehaviour
     // Backgrounds
     public Sprite[] gameBackground, menuBackground;
 
-    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval, LobbyInfo };
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval, LobbyInfo, Advice };
     public static GameState gameState = GameState.MenuPrepare;
     public static int currentLevel = 0;
     public static bool battle = false;
@@ -47,7 +47,7 @@ public class GameGlobalController : MonoBehaviour
         slimeHealthCanvas.SetActive(isPlaying || isAnimation);
         // GameObjects
         brand.SetActive(gameState == GameState.Lobby && currentLevel > 0);
-        dialogBox.SetActive(isAnimation);
+        dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
         pauseButton.SetActive(!isPaused);
         board.SetActive(isPaused);
         help.SetActive(gameState == GameState.Instruction);
@@ -125,6 +125,8 @@ public class GameGlobalController : MonoBehaviour
             case GameState.Instruction:
                 break;
             case GameState.LobbyInfo:
+                break;
+            case GameState.Advice:
                 break;
         }
     }

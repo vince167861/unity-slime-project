@@ -32,7 +32,8 @@ public class portal2_handler : MonoBehaviour
                     }
                     else
                     {
-                        
+                        MainCameraHandler.allSound = 12;
+                        DialogBoxHandler.advice(0,1);
                     }
                 }
                 if (Anim2 == true)

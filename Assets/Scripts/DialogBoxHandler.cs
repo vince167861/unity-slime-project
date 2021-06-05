@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class DialogBoxHandler : MonoBehaviour
 {
     public static int cbnum = 0;
+    public static int adviceperson, adwhich = 0;
     public Sprite[] ch;
     static Text story;
     static Text teller;
     static Image littlech;
+    public static GameGlobalController.GameState lastgameState;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,24 @@ public class DialogBoxHandler : MonoBehaviour
                     Animation.handler.handle();
                 }
                 break;
+            case GameGlobalController.GameState.Advice:
+                story.text = LevelVarity.advice[adviceperson][adwhich];
+                teller.text = LevelVarity.adteller[adviceperson];
+                littlech.sprite = ch[adviceperson];
+                if (Input.GetMouseButtonDown(0))
+                {
+                    story.text = "";
+                    teller.text = "";
+                    GameGlobalController.gameState = lastgameState;
+                }
+                break;
         }
+    }
+    public static void advice(int person, int which)
+    {
+        adviceperson = person;
+        adwhich = which;
+        lastgameState = GameGlobalController.gameState;
+        GameGlobalController.gameState = GameGlobalController.GameState.Advice;
     }
 }

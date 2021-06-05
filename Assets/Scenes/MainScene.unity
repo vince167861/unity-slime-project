@@ -2353,6 +2353,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b48fb68e3e659d842be324986f13fd2d, type: 3}
   - {fileID: 8300000, guid: 332d9fa2e393c5b43a0a77e5c2ab987d, type: 3}
   - {fileID: 8300000, guid: d905ccfb7bc8ded4ba957ad5cbd9d6a2, type: 3}
+  - {fileID: 8300000, guid: 4652c76aa3e12e34c8ac79f8e7895df3, type: 3}
   backgroundclip:
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}

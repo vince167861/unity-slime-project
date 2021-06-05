@@ -27,10 +27,18 @@ public class PortalHandler : MonoBehaviour
                 break;
             case GameGlobalController.GameState.Playing:
                 need.text = " x " + LevelVarity.doorKey[GameGlobalController.currentLevel];
-                if (Input.GetKey(KeyCode.G) && trigger && (Slime.keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel]))
+                if (Input.GetKey(KeyCode.G) && trigger)
                 {
-                    MainCameraHandler.allSound = 7;
-                    animator.Play("opendoor");
+                    if(Slime.keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel])
+                    {
+                        MainCameraHandler.allSound = 7;
+                        animator.Play("opendoor");
+                    }
+                    else
+                    {
+                        MainCameraHandler.allSound = 12;
+                        DialogBoxHandler.advice(0,0);
+                    }
                 }
                 if (Anim == true)
                 {
