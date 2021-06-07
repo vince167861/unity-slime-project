@@ -10,6 +10,7 @@ public class stopbottomh : MonoBehaviour
     // Start is called before the first frame update
     public void GameStop()
     {
+        MainCameraHandler.allSound = 3;
         if(GameGlobalController.gameState == GameGlobalController.GameState.Instruction)
         {
             GameGlobalController.gameState = GameGlobalController.GameState.Pause;
@@ -22,6 +23,7 @@ public class stopbottomh : MonoBehaviour
     }
     public void GameStart()
     {
+        MainCameraHandler.allSound = 3;
         GameGlobalController.gameState = nowState;
     }
     void Start()

@@ -14,11 +14,11 @@ public class LevelVarity
     };
     public static List<List<int>> littlech = new List<List<int>> {
         new List<int> {0,0,0,0,1,2,1,2},
-        new List<int> {0,0,1,0,1,0,0}
+        new List<int> {0,0,1,0,1,0,0,0,0}
     };
     public static List<List<string>> teller = new List<List<string>> {
         new List<string> {"世界の声","世界の声","世界の声","世界の声","我","魔龍王","我","魔龍王"},
-        new List<string> {"世界の声","世界の声","我","世界の声","我","世界の声","世界の声"}
+        new List<string> {"世界の声","世界の声","我","世界の声","我","世界の声","世界の声","世界の声","世界の声"}
     };
     public static List<List<string>> story = new List<List<string>> {
         new List<string> {
@@ -37,7 +37,9 @@ public class LevelVarity
         "啊不是搞錯了,是：「心之所嚮,均歸虛空!」 \n 放開雙手去冒險吧!!!",
         "放開雙手要怎麼操作啊......",
         "小心草叢!",
-        "謹慎行事是冒險者公會的第一守則!"
+        "謹慎行事是冒險者公會的第一守則!",
+        "只有右邊這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!",
+        "只有下面這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!"
         }
     };
     public static List<Vector2> spawnpoint = new List<Vector2> {

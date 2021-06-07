@@ -55,6 +55,7 @@ public class Instruction : MonoBehaviour
 
     public void turnback()
     {
+        MainCameraHandler.allSound = 3;
         GameGlobalController.gameState = GameGlobalController.GameState.Lobby;
     }
 }
