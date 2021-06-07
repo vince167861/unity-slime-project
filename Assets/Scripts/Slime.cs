@@ -155,11 +155,13 @@ public class Slime : Entity
             case "Potion":
                 MainCameraHandler.allSound = 9;
                 Destroy(collision.gameObject);
+                potionicon.getP();
                 potionCount++;
                 break;
              case "Key":
                 MainCameraHandler.allSound = 5;
                 Destroy(collision.gameObject);
+                Keyicon.getK();
                 keyCount++;
                 break;   
         }
