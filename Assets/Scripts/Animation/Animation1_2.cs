@@ -5,8 +5,8 @@ using UnityEngine;
 public class Animation1_2 : Animation
 {
     float delta = 0;
-    public static bool[] initialPoint = { false, false, false, false, false, true, true, true, true, true, true };
-    public static bool[] playPoint = { false, false, false, false, false, true, true, true, true, true, true };
+    public static bool[] initialPoint = { false, false, false, false, false, true, true, true, true, true };
+    public static bool[] playPoint = { false, false, false, false, false, true, true, true, true, true };
     public static bool isplayed =  false ;
     public static float timer =  1f ;
 
