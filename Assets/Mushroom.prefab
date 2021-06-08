@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348076725699917575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ed65c0e71670b45a0c654a48275834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  invulnerable: 0
 --- !u!58 &1348076725699917593
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 1.45, y: 1.44}
   m_EdgeRadius: 0
 --- !u!95 &6812717820916569024
 Animator:

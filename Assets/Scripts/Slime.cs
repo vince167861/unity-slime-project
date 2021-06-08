@@ -20,7 +20,6 @@ public class Slime : Entity
 
     public static bool isTouchingGround = false, bouncable = false, allowMove = false;
 
-    private float immuableTime = 0;
     public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
     public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
@@ -93,7 +92,7 @@ public class Slime : Entity
                 {
                     MainCameraHandler.allSound = 4;
                     Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
-                    Instantiate(Bomb, pos, transform.rotation).GetComponent<BulletHandler>().moveSpeed *= direction;
+                    Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;
                 }
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
@@ -119,7 +118,8 @@ public class Slime : Entity
     {
         switch (col.collider.tag)
         {
-            case "Enemy":
+            case "bird":
+            case "Mushroom":
                 Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
             case "Ground":
@@ -144,7 +144,7 @@ public class Slime : Entity
                 Destroy(col.gameObject);
                 break;
             case "Mushroom":
-                col.GetComponent<MushroomHandler>().trigger();
+                col.GetComponent<Mushroom>().trigger();
                 break;
         }
     }
