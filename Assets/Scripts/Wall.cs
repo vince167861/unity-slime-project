@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallHandler : MonoBehaviour
+public class Wall : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch(collision.tag)
         {
-            case "Enemy":
+            case "bird":
                 collision.GetComponent<Entity>().direction *= -1;
                 break;
-            case "Bomb":
+            case "bullet":
                 Destroy(collision.gameObject);
                 break;
         }
