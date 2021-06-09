@@ -88,7 +88,6 @@ public class GameGlobalController : MonoBehaviour
                 {
                     Slime.instance.gameObject.transform.position = new Vector2(1f, 5f);
                     Instantiate(floorPrefab);
-                    Instantiate(instructPrefab).transform.position = new Vector2(80f, 8f);
                 }
                 gameState = GameState.Brightening;
                 break;
