@@ -136,15 +136,9 @@ public class Slime : Entity
     {
         switch (col.tag)
         {
-            case "Enemy":
-                Suffer(col.GetComponent<Attackable>().AttackDamage);
-                break;
             case "EventTrigger":
                 Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
                 Destroy(col.gameObject);
-                break;
-            case "Mushroom":
-                col.GetComponent<Mushroom>().trigger();
                 break;
         }
     }
@@ -163,7 +157,7 @@ public class Slime : Entity
                 Destroy(collision.gameObject);
                 Keyicon.getK();
                 keyCount++;
-                break;   
+                break;
         }
     }
 

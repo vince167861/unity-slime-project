@@ -9,16 +9,6 @@ public class Mushroom : Entity, Attackable
     readonly float forceMultiplier = 50.0f;
     float living = 0;
 
-    void Start()
-    {
-
-    }
-    public void trigger()
-    {
-        GetComponent<Rigidbody2D>().AddForce((Slime.transform.position - transform.position) * forceMultiplier);
-        living += Time.deltaTime;
-    }
-
     void OnTriggerEnter2D(Collider2D collider)
     {
         switch(collider.tag)
@@ -26,6 +16,10 @@ public class Mushroom : Entity, Attackable
             case "bullet":
                 Destroy(collider.gameObject);
                 Suffer(collider.GetComponent<Attackable>().AttackDamage);
+                break;
+            case "Slime":
+                GetComponent<Rigidbody2D>().AddForce((Slime.transform.position - transform.position) * forceMultiplier);
+                living += Time.deltaTime;
                 break;
         }
     }

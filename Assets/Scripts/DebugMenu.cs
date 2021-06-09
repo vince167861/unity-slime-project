@@ -9,4 +9,9 @@ public class DebugMenu : MonoBehaviour
         GameGlobalController.currentLevel = lvl;
         GameGlobalController.StartNewGame();
     }
+
+    public void GotoLobby()
+    {
+        GameGlobalController.GotoLobby();
+    }
 }

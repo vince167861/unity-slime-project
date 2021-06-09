@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class TrapHandler : MonoBehaviour , Attackable
 {
-    public int AttackDamage { get => 6; }
+    public int AttackDamage => 6;
     void OnTriggerEnter2D(Collider2D col) 
     {
         switch(col.tag)
         {
             case "Slime":
                 MainCameraHandler.allSound = 10;
+                col.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
         }
     }
