@@ -83,6 +83,7 @@ public class GameGlobalController : MonoBehaviour
                 }
                 break;
             case GameState.MenuPrepare:
+                guildwoman.startanim = true;
                 if (currentLevel != 0)
                 {
                     Slime.instance.gameObject.transform.position = new Vector2(1f, 5f);

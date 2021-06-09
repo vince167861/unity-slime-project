@@ -92,6 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2537696519196346625}
   - component: {fileID: 4576194452365129762}
+  - component: {fileID: 86694929206018872}
+  - component: {fileID: 3552062729620289249}
   m_Layer: 0
   m_Name: Table_front
   m_TagString: Untagged
@@ -164,6 +166,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &86694929206018872
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543200606712626082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.22, y: 1.74}
+    newSize: {x: 4.22, y: 1.74}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.07, y: 0.87}
+      - {x: 2, y: 0.87}
+      - {x: 1.48, y: 0.51}
+      - {x: -2.09, y: 0.5}
+      - {x: -2.11, y: 0.48}
+      - {x: -2.11, y: -0.85999995}
+      - {x: -2.1, y: -0.87}
+      - {x: 1.61, y: -0.87}
+      - {x: 2.11, y: -0.5}
+      - {x: 2.11, y: 0.84}
+--- !u!114 &3552062729620289249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543200606712626082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1c5d729b4919f4e989c24e131a8cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1343095897241252739
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +502,6 @@ GameObject:
   - component: {fileID: 3092323713117845904}
   - component: {fileID: 1424534089206510669}
   - component: {fileID: 4052280657597712118}
-  - component: {fileID: 7730945880199762191}
   m_Layer: 0
   m_Name: Gulidwoman
   m_TagString: Untagged
@@ -556,18 +604,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7730945880199762191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5879455180067687653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1c5d729b4919f4e989c24e131a8cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5996898910619280074
 GameObject:
   m_ObjectHideFlags: 0

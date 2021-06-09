@@ -48,6 +48,7 @@ public class DialogBoxHandler : MonoBehaviour
                 {
                     story.text = "";
                     teller.text = "";
+                    guildwoman.trigger2 = false;
                     GameGlobalController.gameState = lastgameState;
                 }
                 break;
