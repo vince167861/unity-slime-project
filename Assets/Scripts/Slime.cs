@@ -118,7 +118,6 @@ public class Slime : Entity
     {
         switch (col.collider.tag)
         {
-            case "bird":
             case "Mushroom":
                 Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
