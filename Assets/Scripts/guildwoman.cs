@@ -6,7 +6,9 @@ public class guildwoman : MonoBehaviour
 {
     bool trigger1 = false;
     public static bool trigger2 = false;
-    public static bool startanim = true;
+    public static bool startanim = false;
+    float timer =  0.3f ;
+    float delta = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,20 @@ public class guildwoman : MonoBehaviour
         {
             case GameGlobalController.GameState.MenuPrepare:
                 break;
-            case GameGlobalController.GameState.Darking:
+            case GameGlobalController.GameState.Start:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Lobby:
-                if(startanim == true) trigger2 = true;
+                if(startanim)
+                    this.delta+=Time.deltaTime;
+                if(startanim && this.delta >= timer)   {
+                    this.delta = 0;
+                    startanim = false;
+                    trigger2 = true;
+                } 
                 if (trigger2)
                 {
                     DialogBoxHandler.advice(3,GameGlobalController.currentLevel-1);
-                    startanim = false;
                 }
                 if (Input.GetKey(KeyCode.G) && trigger1) trigger2 = true;
                 break;

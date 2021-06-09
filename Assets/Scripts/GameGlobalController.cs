@@ -44,15 +44,15 @@ public class GameGlobalController : MonoBehaviour
         lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
         passCanvas.SetActive(hasEnded && !battle);
         deadCanvas.SetActive(hasEnded && battle);
-        slimeHealthCanvas.SetActive(isPlaying || isAnimation);
+        slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
         // GameObjects
-        brand.SetActive(gameState == GameState.Lobby && currentLevel > 0);
+        brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
         dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
         pauseButton.SetActive(!isPaused);
         board.SetActive(isPaused);
         help.SetActive(gameState == GameState.Instruction);
-        potionicon.SetActive(isPlaying || isAnimation);
-        keyicon.SetActive(isPlaying || isAnimation);
+        potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+        keyicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
         lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
         turnBack.SetActive(gameState == GameState.LobbyInfo);
         
