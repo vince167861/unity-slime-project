@@ -11,6 +11,7 @@ public class Bush : MonoBehaviour
             case "bullet":
                 MainCameraHandler.allSound = 6;
                 Destroy(col.gameObject);
+                Destroy(gameObject);
                 break;
         }
     }
