@@ -2,7 +2,7 @@
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, 1, ImmuneOn, entity => { }) { }
+    public Bird() : base(150, 1, OnSuffer, OnDie) { }
     public int AttackDamage { get => 1; }
 
     float moveSpeed = 0.03f; //bird movement speed
@@ -57,19 +57,13 @@ public class Bird : Entity, Attackable
         }
     }
 
-    static void ImmuneOn(Entity entity)
+    static void OnSuffer(Entity entity) { entity.GetComponent<Animator>().Play("suffer"); }
+    static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); }
+
+    void DieAnimationEnd()
     {
-        entity.invulnerable = true;
-        entity.GetComponent<Animator>().Play("suffer");
+        Destroy(gameObject);
+        GetComponentInParent<EnemySpawnerHandler>().isActive = true;
     }
 
-    void ImmuneOff()
-    {
-        invulnerable = false;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            GetComponentInParent<EnemySpawnerHandler>().isActive = true;
-        }
-    }
 }
