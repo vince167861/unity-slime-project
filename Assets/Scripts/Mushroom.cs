@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class Mushroom : Entity, Attackable
 {
-    public Mushroom() : base(1) {}
+    public Mushroom() : base(1, 0) {}
     public int AttackDamage => 4;
-    readonly float forceMultiplier = 50.0f;
-    float living = 0;
+    public float jumpSpan = 0, jumpWait = 0;
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
         switch(collider.tag)
         {
-            case "bullet":
-                Destroy(collider.gameObject);
-                Suffer(collider.GetComponent<Attackable>().AttackDamage);
-                break;
             case "Slime":
-                GetComponent<Rigidbody2D>().AddForce((Slime.transform.position - transform.position) * forceMultiplier);
-                living += Time.deltaTime;
+                direction = (Slime.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+                break;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        switch(collision.collider.tag)
+        {
+            case "Ground":
+                jumpSpan += Time.deltaTime;
+                if (jumpSpan >= jumpWait)
+                {
+                    GetComponent<Rigidbody2D>().AddForce(new Vector3(direction * 100, 300, 0));
+                }
+                break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.collider.tag)
+        {
+            case "Ground":
+                jumpSpan = 0;
+                jumpWait = Random.Range(0.5f, 1.5f);
                 break;
         }
     }

@@ -6,7 +6,6 @@ public class Bird : Entity, Attackable
     public int AttackDamage => 1;
 
     readonly float moveSpeed = 0.03f; //bird movement speed
-    public float delta2 = 0;
     float offset = 0;
 
     GameObject progressBar;
