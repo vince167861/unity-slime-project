@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour, Attackable
 {
@@ -30,17 +28,14 @@ public class Bullet : MonoBehaviour, Attackable
         }
     }
 
-    /*void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (col.tag)
+        switch (collision.tag)
         {
-            case "Walls":
-                Destroy(gameObject);
-                break;
-            case "Grass":
-                Destroy(col.gameObject);
+            case "bird":
+                collision.GetComponent<Entity>().Suffer(AttackDamage);
                 Destroy(gameObject);
                 break;
         }
-    }*/
+    }
 }

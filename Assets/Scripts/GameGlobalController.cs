@@ -138,6 +138,12 @@ public class GameGlobalController : MonoBehaviour
         gameState = GameState.Darking;
     }
 
+    public static void GotoLobby()
+    {
+        battle = false;
+        gameState = GameState.Darking;
+    }
+
     public static void GoodEnd()
     {
         battle = false; // Ends the battle

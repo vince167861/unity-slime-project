@@ -3,9 +3,9 @@
 public class Bird : Entity, Attackable
 {
     public Bird() : base(150, 1, OnSuffer, OnDie) { }
-    public int AttackDamage { get => 1; }
+    public int AttackDamage => 1;
 
-    float moveSpeed = 0.03f; //bird movement speed
+    readonly float moveSpeed = 0.03f; //bird movement speed
     public float delta2 = 0;
     float offset = 0;
 
@@ -49,16 +49,14 @@ public class Bird : Entity, Attackable
     {
         switch (collision.tag)
         {
-            case "bullet":
-                Destroy(collision.gameObject);
-                Suffer(collision.GetComponent<Attackable>().AttackDamage);
+            case "Slime":
+                collision.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
-                
         }
     }
 
     static void OnSuffer(Entity entity) { entity.GetComponent<Animator>().Play("suffer"); }
-    static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); }
+    static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
 
     void DieAnimationEnd()
     {
