@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 3092323713117845904}
   - component: {fileID: 1424534089206510669}
   - component: {fileID: 4052280657597712118}
+  - component: {fileID: 7730945880199762191}
   m_Layer: 0
   m_Name: Gulidwoman
   m_TagString: Untagged
@@ -555,6 +556,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7730945880199762191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879455180067687653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1c5d729b4919f4e989c24e131a8cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5996898910619280074
 GameObject:
   m_ObjectHideFlags: 0
