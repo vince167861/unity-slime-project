@@ -7,13 +7,14 @@ TagManager:
   - Bomb
   - Ground
   - Walls
-  - Enemy
   - Slime
   - EventTrigger
   - Mushroom
   - Potion
   - Grass
   - Key
+  - bullet
+  - bird
   layers:
   - Default
   - TransparentFX

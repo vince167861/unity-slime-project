@@ -49,7 +49,7 @@ public class Bird : Entity, Attackable
     {
         switch (collision.tag)
         {
-            case "Bomb":
+            case "bullet":
                 Destroy(collision.gameObject);
                 Suffer(collision.GetComponent<Attackable>().AttackDamage);
                 break;

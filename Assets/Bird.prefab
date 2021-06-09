@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5157314830154941636}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Enemy
+  m_TagString: bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: -1
-  immuneTime: 0
+  invulnerable: 0
   delta2: 0
 --- !u!95 &5157314830154941636
 Animator:
