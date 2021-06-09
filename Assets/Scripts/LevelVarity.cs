@@ -10,7 +10,10 @@ public class LevelVarity
     public static List<List<string>> advice = new List<List<string>> {
         new List<string> {
         "勇者啊,你是腦袋浸水還是沒腦袋? \n你沒看到這門上的鑰匙孔數嗎?你鑰匙不夠啊!!!",
-        "勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"}
+        "勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"},
+        new List<string> {
+        "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)"
+        }
     };
     public static List<List<int>> littlech = new List<List<int>> {
         new List<int> {0,0,0,0,1,2,1,2},
