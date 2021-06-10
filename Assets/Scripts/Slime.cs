@@ -163,9 +163,9 @@ public class Slime : Entity
 
     static void ImmuneOn(Entity entity)
     {
-        SlimeLifeCanvas.Shake();
-        SlimeLifeCanvas.life = entity.health;
-        animator.Play("Suffer");
+        //SlimeLifeCanvas.Shake();
+        //SlimeLifeCanvas.life = entity.health;
+        //animator.Play("Suffer");
     }
 
     static void DeathHandler(Entity entity)

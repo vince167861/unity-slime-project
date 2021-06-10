@@ -93,7 +93,7 @@ public class GameGlobalController : MonoBehaviour
                 break;
             case GameState.Start:
                 Slime.keyCount = 0;
-                SlimeLifeCanvas.life = 6;
+                LifeHandler.targetamount = 100f;
                 if (currentLevel < LevelVarity.spawnpoint.Count)
                 {
                     Slime.transform.position = LevelVarity.spawnpoint[currentLevel];

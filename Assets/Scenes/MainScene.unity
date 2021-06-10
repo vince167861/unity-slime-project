@@ -2274,10 +2274,10 @@ GameObject:
   - component: {fileID: 558742143}
   - component: {fileID: 558742146}
   - component: {fileID: 558742145}
-  - component: {fileID: 558742144}
   - component: {fileID: 558742147}
+  - component: {fileID: 558742144}
   m_Layer: 5
-  m_Name: Slife
+  m_Name: CharacterLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2312,17 +2312,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 558742142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9143f047c06e08141bbc3f9d649636bd, type: 3}
+  m_Script: {fileID: 11500000, guid: a6bb92fb46ff0cc4db363535fe791fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f:
-  - {fileID: -1633538109048244972, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: 3919854789289939799, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: 4121092227727285680, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: 4152253821079344153, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: -4980941538157720072, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: -5465792886489706600, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
-  - {fileID: 4043083591351577550, guid: 8263ce8506023a2419d874f50156acd0, type: 3}
+  changeamount: 0
 --- !u!114 &558742145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5019,7 +5012,7 @@ GameObject:
   - component: {fileID: 1625024329}
   - component: {fileID: 1625024328}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5065,10 +5058,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8e5b2ecedc350c544a589764f9416886, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
+  m_Type: 3
+  m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
