@@ -24,6 +24,26 @@ public class LifeHandler : MonoBehaviour
         {
             case GameGlobalController.GameState.Playing:
                 targetlife = currentlife + changeproperty*changeamount;
+                GameObject.Find("Bar").GetComponent<Image>().fillAmount = targetlife/100;
+                if(Input.GetKey(KeyCode.U))
+                {
+                    changeproperty = 1;
+                    targetamount = 30;
+                    animator.Play("lifechange");
+                }
+                if(Input.GetKey(KeyCode.I))
+                {
+                    changeproperty = -1;
+                    targetamount = 30;
+                    animator.Play("lifechange");
+                }
+                if(changeamount >= targetamount)
+                {
+                    currentlife = targetlife;
+                    animator.speed = 0;
+                    changeamount = 0;
+                    targetamount = 0;
+                }
                 break;
         }
     }
