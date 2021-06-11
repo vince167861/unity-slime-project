@@ -8,7 +8,8 @@ public class LifeHandler : MonoBehaviour
     // Start is called before the first frame update
     public float currentlife = 100f;
     public static float targetlife = 100f;
-    public float healamount, sufferamount = 0f;
+    public float healamount = 0f;
+    public float sufferamount = 0f;
     public float tghealamount = 0f;
     public float tgsufferamount = 0f;
     static Animator animator;
