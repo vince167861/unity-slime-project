@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class LifeHandler : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float currentlife = 100f;
-    public static float targetlife = 100f;
-    public float healamount, sufferamount = 0f;
-    public float tghealamount = 0f;
-    public float tgsufferamount = 0f;
+    public float targetlife = 100;
+    public float lastlife = 100;
+    public float healamount = 0;
+    public float sufferamount = 0;
+    public float tghealamount = 0;
+    public float tgsufferamount = 0;
     static Animator animator;
+    static Animation anim1;
     Image Bar;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        anim1 = GetComponent<Animation>();
         Bar = GameObject.Find("Bar").GetComponent<Image>();
         
     }
@@ -27,42 +30,49 @@ public class LifeHandler : MonoBehaviour
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Playing:
-                if(currentlife > 100) currentlife = 100;
-                targetlife = currentlife + healamount - sufferamount;
+                targetlife = lastlife + healamount - sufferamount;
                 Bar.fillAmount = targetlife/100;
                 Bar.color = Color.HSVToRGB(0.2f*(targetlife/100),1,1);
                 if(Input.GetKeyDown(KeyCode.U))
                 {
-                    animator.SetBool("Heal", true);
                     if(targetlife > 70)
                         tghealamount = 100 - targetlife;
-                    else
+                    else  tghealamount +=30;
+                    if(tghealamount > 100 - targetlife)  tghealamount = 100 - targetlife;
+                    if(tghealamount != 0)  
                     {
-                        if(tghealamount > 100 - targetlife) tghealamount = 100 - targetlife;
-                        else tghealamount += 30;
+                        animator.enabled = true;
+                        animator.Play("lifeheal");
                     }
                 }
                 if(Input.GetKeyDown(KeyCode.I))
                 {
-                    animator.SetBool("Suffer", true);
-                    if(targetlife < 30)
-                        tgsufferamount += targetlife;
-                    else
-                        tgsufferamount += 30;
+                    tgsufferamount += 30;
+                    animator.enabled = true;
+                    animator.Play("lifesuffer",1,0);
                 }
-                if(healamount >= tghealamount)
+                if(healamount > tghealamount)
                 {
-                    currentlife = targetlife;
-                    animator.SetBool("Heal", false);
-                    healamount = 0;
-                    tghealamount = 0;
+                    animator.enabled = false;
+                    healamount = tghealamount;
+                    if(sufferamount >= tgsufferamount)
+                    {
+                        lastlife = targetlife;
+                        healamount = 0;
+                        tghealamount = 0;
+                    }
+                    
                 }
-                if(sufferamount >= tgsufferamount)
+                if(sufferamount > tgsufferamount)
                 {
-                    currentlife = targetlife;
-                    animator.SetBool("Suffer", false);
-                    sufferamount = 0;
-                    tgsufferamount = 0;
+                    animator.enabled = false;
+                    sufferamount = tgsufferamount;
+                    if(healamount >= tghealamount)
+                    {
+                        lastlife = targetlife;
+                        sufferamount = 0;
+                        tgsufferamount = 0;
+                    }
                 }
                 break;
         }
