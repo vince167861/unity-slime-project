@@ -13,6 +13,7 @@ public class LifeHandler : MonoBehaviour
     public float tghealamount = 0;
     public float tgsufferamount = 0;
     public static bool isSuffer = false;
+    public bool anim1,anim2 = false;
     static Animator animator;
     static Animator animator2;
     Image Bar;
@@ -42,16 +43,24 @@ public class LifeHandler : MonoBehaviour
                     if(tghealamount > 100 - targetlife)  tghealamount = 100 - targetlife;
                     if(tghealamount != 0)  
                     {
-                        animator.enabled = true;
-                        animator.Play("lifeheal",0,healamount/100);
+                        if(!animator.enabled || !anim1)
+                        {
+                            anim1 = true;
+                            animator.enabled = true;
+                            animator.Play("lifeheal",0,0);
+                        }
                     }
                 }
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     tgsufferamount += 30;
                     isSuffer = true;
-                    animator2.enabled = true;
-                    animator2.Play("lifesuffer2",0,sufferchange.sufferamount/100);
+                    if(!animator2.enabled || !anim2)
+                    {
+                        anim2 = true;
+                        animator2.enabled = true;
+                        animator2.Play("lifesuffer2",0,0);
+                    }
                 }
                 if(healamount > tghealamount)
                 {
@@ -74,6 +83,8 @@ public class LifeHandler : MonoBehaviour
                         lastlife = targetlife;
                         isSuffer = false;
                         tgsufferamount = 0;
+                        healamount = 0;
+                        tghealamount = 0;
                     }
                 }
                 break;
