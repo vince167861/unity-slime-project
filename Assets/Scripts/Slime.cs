@@ -6,8 +6,9 @@ using UnityEngine;
  * Consume potion: line 83
  */
 
-public class Slime : Entity
+public class Slime : MonoBehaviour//Entity
 {
+    public int direction;
     public static Slime instance;
     public static Animator animator;
     public static Rigidbody2D rigidbody2d;
@@ -22,9 +23,9 @@ public class Slime : Entity
 
     public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
-    public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
+    /*public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
-    }
+    }*/
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Slime : Entity
         {
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
+                if(LifeHandler.targetlife <= 0)  DeathHandler();
                 // Control immuable
                 //if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
                 // Control camera postion, except for the time in the welcome screen
@@ -98,7 +100,7 @@ public class Slime : Entity
                 {
                     if (potionCount > 0)
                     {
-                        Heal(2);
+                        LifeHandler.Heal(30);
                         potionCount--;
                     }
                 }
@@ -119,7 +121,7 @@ public class Slime : Entity
         switch (col.collider.tag)
         {
             case "Mushroom":
-                Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
+                LifeHandler.Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
             case "Ground":
                 bouncable = false;
@@ -161,14 +163,14 @@ public class Slime : Entity
     }
 
 
-    static void ImmuneOn(Entity entity)
+    public static void ImmuneOn()//static void ImmuneOn(Entity entity)
     {
         //SlimeLifeCanvas.Shake();
         //SlimeLifeCanvas.life = entity.health;
-        //animator.Play("Suffer");
+        animator.Play("Suffer");
     }
 
-    static void DeathHandler(Entity entity)
+    static void DeathHandler()//static void DeathHandler(Entity entity)
     {
         transform.position = new Vector3(-5, -5, -10);
         GameGlobalController.BadEnd();

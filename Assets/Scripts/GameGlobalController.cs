@@ -134,7 +134,7 @@ public class GameGlobalController : MonoBehaviour
     public static void StartNewGame()
     {
         battle = true; // Starts the battle
-        Slime.instance.ResetHealth();
+        //Slime.instance.ResetHealth();
         gameState = GameState.Darking;
     }
 

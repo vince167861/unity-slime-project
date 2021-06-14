@@ -3,7 +3,7 @@
 public class Bird : Entity, Attackable
 {
     public Bird() : base(150, 1, OnSuffer, OnDie) { }
-    public int AttackDamage => 1;
+    public int AttackDamage => 15;
 
     readonly float moveSpeed = 0.03f; //bird movement speed
     float offset = 0;
@@ -49,7 +49,8 @@ public class Bird : Entity, Attackable
         switch (collision.tag)
         {
             case "Slime":
-                collision.GetComponent<Entity>().Suffer(AttackDamage);
+                LifeHandler.Suffer(AttackDamage);
+                //collision.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
         }
     }

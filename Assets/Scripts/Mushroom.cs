@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mushroom : Entity, Attackable
 {
     public Mushroom() : base(1, 0) {}
-    public int AttackDamage => 4;
+    public int AttackDamage => 40;
     public float jumpSpan = 0, jumpWait = 0;
 
     void OnTriggerStay2D(Collider2D collider)

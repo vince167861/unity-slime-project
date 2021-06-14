@@ -37,6 +37,8 @@ public class LifeHandler : MonoBehaviour
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Playing:
+                animator.speed = tghealamount/30;
+                animator2.speed = tgsufferamount/30;
                 Name.text = "Slime";
                 Life.text = (int)targetlife + " / " + entitylife;
                 if(targetlife > 100)
@@ -93,6 +95,7 @@ public class LifeHandler : MonoBehaviour
     }
     public static void Suffer(float amount)
     {
+        Slime.ImmuneOn();
         tgsufferamount += amount;
         isSuffer = true;
         if(!animator2.enabled || !anim2)
@@ -101,6 +104,6 @@ public class LifeHandler : MonoBehaviour
             animator2.enabled = true;
             animator2.Play("lifesuffer",0,0);
         }
-    }            
+    }
 }
 
