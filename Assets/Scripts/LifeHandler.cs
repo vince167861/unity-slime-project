@@ -9,17 +9,18 @@ public class LifeHandler : MonoBehaviour
     public float targetlife = 100;
     public float lastlife = 100;
     public float healamount = 0;
-    public float sufferamount = 0;
+    //public float sufferamount = 0;
     public float tghealamount = 0;
     public float tgsufferamount = 0;
+    public static bool isSuffer = false;
     static Animator animator;
-    static Animation anim1;
+    static Animator animator2;
     Image Bar;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        anim1 = GetComponent<Animation>();
+        animator2 = GameObject.Find("Suffer").GetComponent<Animator>();
         Bar = GameObject.Find("Bar").GetComponent<Image>();
         
     }
@@ -30,7 +31,7 @@ public class LifeHandler : MonoBehaviour
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Playing:
-                targetlife = lastlife + healamount - sufferamount;
+                targetlife = lastlife + healamount - sufferchange.sufferamount;
                 Bar.fillAmount = targetlife/100;
                 Bar.color = Color.HSVToRGB(0.2f*(targetlife/100),1,1);
                 if(Input.GetKeyDown(KeyCode.U))
@@ -42,20 +43,21 @@ public class LifeHandler : MonoBehaviour
                     if(tghealamount != 0)  
                     {
                         animator.enabled = true;
-                        animator.Play("lifeheal");
+                        animator.Play("lifeheal",0,healamount/100);
                     }
                 }
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     tgsufferamount += 30;
-                    animator.enabled = true;
-                    animator.Play("lifesuffer",1,0);
+                    isSuffer = true;
+                    animator2.enabled = true;
+                    animator2.Play("lifesuffer2",0,sufferchange.sufferamount/100);
                 }
                 if(healamount > tghealamount)
                 {
                     animator.enabled = false;
                     healamount = tghealamount;
-                    if(sufferamount >= tgsufferamount)
+                    if(sufferchange.sufferamount >= tgsufferamount)
                     {
                         lastlife = targetlife;
                         healamount = 0;
@@ -63,14 +65,14 @@ public class LifeHandler : MonoBehaviour
                     }
                     
                 }
-                if(sufferamount > tgsufferamount)
+                if(sufferchange.sufferamount > tgsufferamount)
                 {
-                    animator.enabled = false;
-                    sufferamount = tgsufferamount;
+                    animator2.enabled = false;
+                    sufferchange.sufferamount = tgsufferamount;
                     if(healamount >= tghealamount)
                     {
                         lastlife = targetlife;
-                        sufferamount = 0;
+                        isSuffer = false;
                         tgsufferamount = 0;
                     }
                 }
