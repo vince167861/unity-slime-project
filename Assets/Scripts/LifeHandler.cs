@@ -6,23 +6,28 @@ using UnityEngine.UI;
 public class LifeHandler : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float targetlife = 100;
-    public float lastlife = 100;
-    public float healamount = 0;
+    public static float entitylife = 100;
+    public static float targetlife = entitylife;
+    public static float lastlife = entitylife;
+    //public static float healamount = 0;
     //public float sufferamount = 0;
-    public float tghealamount = 0;
-    public float tgsufferamount = 0;
-    public static bool isSuffer = false;
-    public bool anim1,anim2 = false;
+    public static float tghealamount = 0;
+    public static float tgsufferamount = 0;
+    public static bool isSuffer,isHeal = false;
+    public static bool anim1,anim2 = false;
     static Animator animator;
     static Animator animator2;
     Image Bar;
+    Text Life;
+    Text Name;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GameObject.Find("Heal").GetComponent<Animator>();
         animator2 = GameObject.Find("Suffer").GetComponent<Animator>();
         Bar = GameObject.Find("Bar").GetComponent<Image>();
+        Life = GameObject.Find("TargetLife").GetComponent<Text>();
+        Name = GameObject.Find("CharacterName").GetComponent<Text>();
         
     }
 
@@ -32,44 +37,27 @@ public class LifeHandler : MonoBehaviour
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Playing:
-                targetlife = lastlife + healamount - sufferchange.sufferamount;
-                Bar.fillAmount = targetlife/100;
-                Bar.color = Color.HSVToRGB(0.2f*(targetlife/100),1,1);
-                if(Input.GetKeyDown(KeyCode.U))
+                Name.text = "Slime";
+                Life.text = (int)targetlife + " / " + entitylife;
+                if(targetlife > 100)
                 {
-                    if(targetlife > 70)
-                        tghealamount = 100 - targetlife;
-                    else  tghealamount +=30;
-                    if(tghealamount > 100 - targetlife)  tghealamount = 100 - targetlife;
-                    if(tghealamount != 0)  
-                    {
-                        if(!animator.enabled || !anim1)
-                        {
-                            anim1 = true;
-                            animator.enabled = true;
-                            animator.Play("lifeheal",0,0);
-                        }
-                    }
+                    lastlife = entitylife;
+                    isHeal = false;
+                    tghealamount = 0;
                 }
-                if(Input.GetKeyDown(KeyCode.I))
-                {
-                    tgsufferamount += 30;
-                    isSuffer = true;
-                    if(!animator2.enabled || !anim2)
-                    {
-                        anim2 = true;
-                        animator2.enabled = true;
-                        animator2.Play("lifesuffer2",0,0);
-                    }
-                }
-                if(healamount > tghealamount)
+                targetlife = lastlife + healchange.healamount - sufferchange.sufferamount;
+                Bar.fillAmount = targetlife/entitylife;
+                Bar.color = Color.HSVToRGB(0.2f*(targetlife/entitylife),1,1);
+                if(Input.GetKeyDown(KeyCode.U))  Heal(30);
+                if(Input.GetKeyDown(KeyCode.I))  Suffer(30);
+                if(healchange.healamount > tghealamount)
                 {
                     animator.enabled = false;
-                    healamount = tghealamount;
+                    healchange.healamount = tghealamount;
                     if(sufferchange.sufferamount >= tgsufferamount)
                     {
                         lastlife = targetlife;
-                        healamount = 0;
+                        isHeal = false;
                         tghealamount = 0;
                     }
                     
@@ -78,17 +66,41 @@ public class LifeHandler : MonoBehaviour
                 {
                     animator2.enabled = false;
                     sufferchange.sufferamount = tgsufferamount;
-                    if(healamount >= tghealamount)
+                    if(healchange.healamount >= tghealamount)
                     {
                         lastlife = targetlife;
                         isSuffer = false;
                         tgsufferamount = 0;
-                        healamount = 0;
                         tghealamount = 0;
                     }
                 }
                 break;
         }
     }
+    public static void Heal(float amount)
+    {
+        tghealamount += amount;
+        isHeal = true;
+        if(tghealamount != 0)  
+        {
+            if(!animator.enabled || !anim1)
+            {
+                anim1 = true;
+                animator.enabled = true;
+                animator.Play("lifeheal",0,0);
+            }
+        }
+    }
+    public static void Suffer(float amount)
+    {
+        tgsufferamount += amount;
+        isSuffer = true;
+        if(!animator2.enabled || !anim2)
+        {
+            anim2 = true;
+            animator2.enabled = true;
+            animator2.Play("lifesuffer",0,0);
+        }
+    }            
 }
 
