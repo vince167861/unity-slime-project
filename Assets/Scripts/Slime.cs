@@ -121,7 +121,7 @@ public class Slime : MonoBehaviour//Entity
         switch (col.collider.tag)
         {
             case "Mushroom":
-                if(GameGlobalController.gameState != GameGlobalController.GameState.Animation)
+                if(GameGlobalController.gameState == GameGlobalController.GameState.Playing)
                     LifeHandler.Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
             case "Ground":

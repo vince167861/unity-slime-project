@@ -44,7 +44,7 @@ public class GameGlobalController : MonoBehaviour
         lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
         passCanvas.SetActive(hasEnded && !battle);
         deadCanvas.SetActive(hasEnded && battle);
-        slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+        slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Interval || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
         // GameObjects
         brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
         dialogBox.SetActive(isAnimation || gameState == GameState.Advice);

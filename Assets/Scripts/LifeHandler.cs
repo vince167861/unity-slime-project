@@ -38,6 +38,8 @@ public class LifeHandler : MonoBehaviour
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Animation:
+            case GameGlobalController.GameState.Shaking:
+            case GameGlobalController.GameState.Interval:
             case GameGlobalController.GameState.Playing:
                 if(start)
                 {

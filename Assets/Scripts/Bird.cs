@@ -49,7 +49,8 @@ public class Bird : Entity, Attackable
         switch (collision.tag)
         {
             case "Slime":
-                LifeHandler.Suffer(AttackDamage);
+                if(GameGlobalController.gameState == GameGlobalController.GameState.Playing)
+                    LifeHandler.Suffer(AttackDamage);
                 //collision.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
         }
