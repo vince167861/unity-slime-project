@@ -86,14 +86,13 @@ public class GameGlobalController : MonoBehaviour
                 guildwoman.startanim = true;
                 if (currentLevel != 0)
                 {
-                    Slime.instance.gameObject.transform.position = new Vector2(1f, 5f);
+                    Slime.transform.position = new Vector2(1f, 5f);
                     Instantiate(floorPrefab);
                 }
                 gameState = GameState.Brightening;
                 break;
             case GameState.Start:
                 Slime.keyCount = 0;
-                //LifeHandler.targetlife = 100f;
                 if (currentLevel < LevelVarity.spawnpoint.Count)
                 {
                     Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
@@ -102,6 +101,7 @@ public class GameGlobalController : MonoBehaviour
                 gameState = GameState.Brightening;
                 break;
             case GameState.Brightening:
+                LifeHandler.start = true;
                 background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
                 delta += Time.deltaTime;
                 if (delta >= 1)
@@ -134,7 +134,6 @@ public class GameGlobalController : MonoBehaviour
     public static void StartNewGame()
     {
         battle = true; // Starts the battle
-        //Slime.instance.ResetHealth();
         gameState = GameState.Darking;
     }
 

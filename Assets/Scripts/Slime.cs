@@ -41,7 +41,7 @@ public class Slime : MonoBehaviour//Entity
         {
             case GameGlobalController.GameState.Playing:
             case GameGlobalController.GameState.Lobby:
-                if(LifeHandler.targetlife <= 0)  DeathHandler();
+                if(LifeHandler.targetlife <= 0 && !LifeHandler.start)  DeathHandler();
                 // Control immuable
                 //if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
                 // Control camera postion, except for the time in the welcome screen
@@ -121,7 +121,8 @@ public class Slime : MonoBehaviour//Entity
         switch (col.collider.tag)
         {
             case "Mushroom":
-                LifeHandler.Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
+                if(GameGlobalController.gameState != GameGlobalController.GameState.Animation)
+                    LifeHandler.Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
                 break;
             case "Ground":
                 bouncable = false;
@@ -162,6 +163,10 @@ public class Slime : MonoBehaviour//Entity
         }
     }
 
+    public static void Healanim()
+    {
+        animator.Play("Heal");
+    }
 
     public static void ImmuneOn()//static void ImmuneOn(Entity entity)
     {

@@ -15,6 +15,7 @@ public class LifeHandler : MonoBehaviour
     public static float tgsufferamount = 0;
     public static bool isSuffer,isHeal = false;
     public static bool anim1,anim2 = false;
+    public static bool start = true;
     static Animator animator;
     static Animator animator2;
     Image Bar;
@@ -36,7 +37,22 @@ public class LifeHandler : MonoBehaviour
     {
         switch (GameGlobalController.gameState)
         {
+            case GameGlobalController.GameState.Animation:
             case GameGlobalController.GameState.Playing:
+                if(start)
+                {
+                    targetlife = entitylife;
+                    lastlife = targetlife;
+                    tghealamount = 0;
+                    tgsufferamount = 0;
+                    healchange.healamount = 0;
+                    sufferchange.sufferamount = 0;
+                    isHeal = false;
+                    isSuffer = false;
+                    anim1 = false;
+                    anim2 = false;
+                    start = false;
+                }
                 animator.speed = tghealamount/30;
                 animator2.speed = tgsufferamount/30;
                 Name.text = "Slime";
@@ -81,6 +97,7 @@ public class LifeHandler : MonoBehaviour
     }
     public static void Heal(float amount)
     {
+        Slime.Healanim();
         tghealamount += amount;
         isHeal = true;
         if(tghealamount != 0)  

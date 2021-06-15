@@ -8,10 +8,6 @@ public class ButtonHandler : MonoBehaviour
     public void GameInit()
     {
         MainCameraHandler.allSound = 3;
-        LifeHandler.targetlife = LifeHandler.entitylife;
-        LifeHandler.lastlife = LifeHandler.entitylife;
-        LifeHandler.tghealamount = 0;
-        LifeHandler.tgsufferamount = 0;
         GameGlobalController.StartNewGame();
     }
     /*public void NextLevel()

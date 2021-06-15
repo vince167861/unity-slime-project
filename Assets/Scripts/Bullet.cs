@@ -2,7 +2,7 @@
 
 public class Bullet : MonoBehaviour, Attackable
 {
-    public float moveSpeed = 0.1f; //bullet movement speed
+    public float moveSpeed = 0.3f; //bullet movement speed
 
     public int AttackDamage => 50;
 
