@@ -55,8 +55,10 @@ public class LifeHandler : MonoBehaviour
                     anim2 = false;
                     start = false;
                 }
-                animator.speed = tghealamount/30;
-                animator2.speed = tgsufferamount/30;
+                if(tghealamount > 30)  animator.speed = tghealamount/30;
+                else  animator.speed = 1;
+                if(tgsufferamount > 30)  animator2.speed = tgsufferamount/30;
+                else animator.speed = 1;
                 Name.text = "Slime";
                 Life.text = (int)targetlife + " / " + entitylife;
                 if(targetlife > 100)
