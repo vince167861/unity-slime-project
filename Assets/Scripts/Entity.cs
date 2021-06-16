@@ -11,11 +11,12 @@ public abstract class Entity : MonoBehaviour
     public int health => __health;
 
     static void __default_death_callback(Entity entity) {Destroy(entity.gameObject);}
+    static void __default_suffer_callback(Entity entity) { }
     public Entity(int h, int d = 1, Action<Entity> scb = null, Action<Entity> dcb = null)
     {
         __health = def = h;
         direction = d;
-        sufferCallback = scb;
+        sufferCallback = scb ?? __default_suffer_callback;
         deathCallback = dcb ?? __default_death_callback;
     }
 

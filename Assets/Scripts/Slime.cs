@@ -117,13 +117,16 @@ public class Slime : MonoBehaviour//Entity
     {
         animator.Play("Disappear");
     }
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (col.collider.tag)
+        switch (collision.collider.tag)
         {
             case "Mushroom":
                 if(GameGlobalController.gameState == GameGlobalController.GameState.Playing)
-                    LifeHandler.Suffer(col.collider.GetComponent<Attackable>().AttackDamage);
+				{
+                    LifeHandler.Suffer(collision.collider.GetComponent<Attackable>().AttackDamage);
+                    Destroy(collision.gameObject);
+                }
                 break;
             case "Ground":
                 bouncable = false;
