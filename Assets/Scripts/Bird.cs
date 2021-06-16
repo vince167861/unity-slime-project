@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, 1, OnSuffer, OnDie) { }
+    public Bird() : base(150, 1, OnSuffer, OnDie, LifeBar) { }
     public int AttackDamage => 15;
 
     readonly float moveSpeed = 0.03f; //bird movement speed
     float offset = 0;
 
+    public static Image LifeBar = null;
     GameObject progressBar;
     Transform fillings;
 
@@ -15,6 +17,7 @@ public class Bird : Entity, Attackable
     // Start is called before the first frame update
     void Start()
     {
+        LifeBar = transform.Find("Bar").gameObject.GetComponent<Image>();
         progressBar = transform.Find("Progress Bar").gameObject;
         progressBar.SetActive(false);
         fillings = transform.Find("Progress Bar").Find("Fillings");
