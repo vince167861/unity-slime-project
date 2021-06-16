@@ -39,7 +39,7 @@ public class EnergyHandler : MonoBehaviour
                     targetenergy = entityenergy;
                 }
                 delta += Time.deltaTime;
-                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy <= 100)  changeamount(30);
+                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy < 100)  changeamount(30);
                 if(targetenergy < nextenergy) EHeal(speed);
                 if(targetenergy > nextenergy)
                 {
@@ -57,20 +57,22 @@ public class EnergyHandler : MonoBehaviour
     public static void EHeal(float amount)
     {
         targetenergy += amount;
+        if(targetenergy > nextenergy)  targetenergy = nextenergy;
     }
     public static void ESuffer(float amount)
     {
         targetenergy -= amount;
+        if(targetenergy < nextenergy)  targetenergy = nextenergy;
     }
     public static void changeamount(float amount)
     {
+        nextenergy += amount;
         if(amount < 0)
         {
-            speed = -1 * amount/30;
+            speed = (targetenergy - nextenergy)/30;
             delta = 0;
         }
         else  speed = 1;
-        nextenergy += amount;
     }
 }
 
