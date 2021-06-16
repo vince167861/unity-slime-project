@@ -17,6 +17,7 @@ public abstract class Entity : MonoBehaviour
     public Image LifeBar;
 
     static void __default_death_callback(Entity entity) {Destroy(entity.gameObject);}
+    static void __default_suffer_callback(Entity entity) { }
     void Update()
     {
         switch (GameGlobalController.gameState)
@@ -57,7 +58,7 @@ public abstract class Entity : MonoBehaviour
         LifeBar = Bar;
         __health = def = h;
         direction = d;
-        sufferCallback = scb;
+        sufferCallback = scb ?? __default_suffer_callback;
         deathCallback = dcb ?? __default_death_callback;
         targethealth = __health;
         nexthealth = __health;
