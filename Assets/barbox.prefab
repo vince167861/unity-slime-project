@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2510579980171268276}
   - component: {fileID: 3501467554114458201}
+  - component: {fileID: 1005502826199040920}
   m_Layer: 0
   m_Name: barbox
   m_TagString: Untagged
@@ -165,6 +166,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1005502826199040920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857483539444128489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724278b46b681b749a2faa2cbfcc7543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7067571300300427276
 GameObject:
   m_ObjectHideFlags: 0

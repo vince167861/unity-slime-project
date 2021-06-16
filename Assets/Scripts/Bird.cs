@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class Bird : Entity, Attackable
 {
-    public Bird() : base(150, 1, OnSuffer, OnDie, LifeBar) { }
+    public Bird() : base(150, 1, OnSuffer, OnDie) { }
     public int AttackDamage => 15;
 
 	readonly float moveSpeed = 0.03f; //bird movement speed
 	float offset = 0;
 
-    public static Image LifeBar = null;
+    GameObject LifeBar;
+	Image Bar;
     GameObject progressBar;
     Transform fillings;
 
@@ -17,7 +18,8 @@ public class Bird : Entity, Attackable
     // Start is called before the first frame update
     void Start()
     {
-        LifeBar = transform.Find("Bar").gameObject.GetComponent<Image>();
+		LifeBar = this.transform.Find("barbox").gameObject;
+        Bar = LifeBar.transform.Find("Bar").gameObject.GetComponent<Image>();
         progressBar = transform.Find("Progress Bar").gameObject;
         progressBar.SetActive(false);
         fillings = transform.Find("Progress Bar").Find("Fillings");
@@ -27,6 +29,7 @@ public class Bird : Entity, Attackable
 	void Update()
 	{
 		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
+		LifeBar.GetComponent<Transform>().localScale = new Vector2(1,1);
 		if (health != 150)
 		{
 			progressBar.SetActive(true);
@@ -59,7 +62,11 @@ public class Bird : Entity, Attackable
 		}
 	}
 
-	static void OnSuffer(Entity entity) { entity.GetComponent<Animator>().Play("suffer"); }
+	static void OnSuffer(Entity entity) 
+	{ 
+		entity.GetComponent<Animator>().Play("suffer"); 
+		//lifebarprefab.changeamount(damage);
+	}
 	static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
 
 	void DieAnimationEnd()
