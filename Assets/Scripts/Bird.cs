@@ -6,8 +6,8 @@ public class Bird : Entity, Attackable
     public Bird() : base(150, 1, OnSuffer, OnDie, LifeBar) { }
     public int AttackDamage => 15;
 
-    readonly float moveSpeed = 0.03f; //bird movement speed
-    float offset = 0;
+	readonly float moveSpeed = 0.03f; //bird movement speed
+	float offset = 0;
 
     public static Image LifeBar = null;
     GameObject progressBar;
@@ -23,49 +23,49 @@ public class Bird : Entity, Attackable
         fillings = transform.Find("Progress Bar").Find("Fillings");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
-        if (health != 150)
-        {
-            progressBar.SetActive(true);
-            progressBar.transform.localScale = new Vector3(-direction, 1, 1);
-            fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
-        }
-        switch (GameGlobalController.gameState)
-        {
-            case GameGlobalController.GameState.Lobby:
-                Destroy(gameObject);
-                break;
-            case GameGlobalController.GameState.Playing:
-                float newY;
-                do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
-                offset += newY;
-                transform.Translate(new Vector2(moveSpeed * direction, newY));
-                break;
-        }
-    }
+	// Update is called once per frame
+	void Update()
+	{
+		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
+		if (health != 150)
+		{
+			progressBar.SetActive(true);
+			progressBar.transform.localScale = new Vector3(-direction, 1, 1);
+			fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
+		}
+		switch (GameGlobalController.gameState)
+		{
+			case GameGlobalController.GameState.Lobby:
+				Destroy(gameObject);
+				break;
+			case GameGlobalController.GameState.Playing:
+				float newY;
+				do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
+				offset += newY;
+				transform.Translate(new Vector2(moveSpeed * direction, newY));
+				break;
+		}
+	}
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.tag)
-        {
-            case "Slime":
-                if(GameGlobalController.gameState == GameGlobalController.GameState.Playing)
-                    LifeHandler.Suffer(AttackDamage);
-                //collision.GetComponent<Entity>().Suffer(AttackDamage);
-                break;
-        }
-    }
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "Slime":
+				if (GameGlobalController.gameState == GameGlobalController.GameState.Playing)
+					LifeHandler.Suffer(AttackDamage);
+				//collision.GetComponent<Entity>().Suffer(AttackDamage);
+				break;
+		}
+	}
 
-    static void OnSuffer(Entity entity) { entity.GetComponent<Animator>().Play("suffer"); }
-    static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
+	static void OnSuffer(Entity entity) { entity.GetComponent<Animator>().Play("suffer"); }
+	static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
 
-    void DieAnimationEnd()
-    {
-        Destroy(gameObject);
-        GetComponentInParent<EnemySpawnerHandler>().isActive = true;
-    }
+	void DieAnimationEnd()
+	{
+		Destroy(gameObject);
+		GetComponentInParent<EnemySpawnerHandler>().isActive = true;
+	}
 
 }
