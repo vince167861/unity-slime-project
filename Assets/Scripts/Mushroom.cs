@@ -9,7 +9,7 @@ public class Mushroom : Entity, Attackable
 	public int AttackDamage => 40;
 	public float jumpSpan = 0, jumpWait = 0;
 	private Animator animator;
-	public float multiplier = 0.5f;
+	public float multiplier = 0.8f;//0.5f
 
 	private void Start()
 	{
@@ -25,7 +25,7 @@ public class Mushroom : Entity, Attackable
 				if (jumpSpan >= jumpWait)
 				{
 					animator.Play("Jump");
-					GetComponent<Rigidbody2D>().AddForce(new Vector3(direction * 100, 300, 0) * multiplier);
+					GetComponent<Rigidbody2D>().AddForce(new Vector3(direction * 80, 250, 0) * multiplier);//direction * 100, 300, 0
 				}
 				break;
 		}

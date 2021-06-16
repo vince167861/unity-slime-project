@@ -15,7 +15,7 @@ public class MushroomDetector : MonoBehaviour
 		switch (collision.tag)
 		{
 			case "Slime":
-				parent.multiplier = 1.0f;
+				parent.multiplier = 1.5f;//1f
 				int a = parent.direction = (Slime.transform.position.x - transform.position.x) > 0 ? 1 : -1;
 				Vector3 current = transform.parent.localScale;
 				transform.parent.localScale = new Vector3(-a * Math.Abs(current.x), current.y, current.z);
