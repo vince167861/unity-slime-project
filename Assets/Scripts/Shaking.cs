@@ -31,6 +31,7 @@ public class Shaking : MonoBehaviour
                 if (this.delta >= timer[10] && this.delta <= timer[11])
                 {
                     if(!this.dragon){
+                        MainCameraHandler.allSound = 1;
                         Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector2(16, 69);
                         this.dragon=true;
                     }
