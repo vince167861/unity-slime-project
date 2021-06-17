@@ -4,13 +4,15 @@ using UnityEngine.UI;
 public class Bird : Entity, Attackable
 {
     public Bird() : base(150, 1, OnSuffer, OnDie) { }
+	public static float health = 150;
+	public float viewhealth = health;
     public int AttackDamage => 15;
 
 	readonly float moveSpeed = 0.03f; //bird movement speed
 	float offset = 0;
 
     GameObject LifeBar;
-	Image Bar;
+	GameObject Bar;
     GameObject progressBar;
     Transform fillings;
 
@@ -18,23 +20,30 @@ public class Bird : Entity, Attackable
     // Start is called before the first frame update
     void Start()
     {
-		LifeBar = this.transform.Find("barbox").gameObject;
-        Bar = LifeBar.transform.Find("Bar").gameObject.GetComponent<Image>();
-        progressBar = transform.Find("Progress Bar").gameObject;
-        progressBar.SetActive(false);
-        fillings = transform.Find("Progress Bar").Find("Fillings");
+		LifeBar = GameObject.Find("barbox");
+        Bar = GameObject.Find("Bar");
+		lifebarprefab.name = "Bird";
+		LifeBar.SetActive(false);
+        //progressBar = transform.Find("Progress Bar").gameObject;
+        //progressBar.SetActive(false);
+        //fillings = transform.Find("Progress Bar").Find("Fillings");
     }
 
 	// Update is called once per frame
 	void Update()
 	{
+		health = lifebarprefab.targethealth;
+		viewhealth = health;
 		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
 		LifeBar.GetComponent<Transform>().localScale = new Vector2(1,1);
 		if (health != 150)
 		{
-			progressBar.SetActive(true);
+			LifeBar.SetActive(true);
+			LifeBar.transform.localScale = new Vector3(Mathf.Abs(direction),1,1);
+			//Bar.transform.position +=
+			/*progressBar.SetActive(true);
 			progressBar.transform.localScale = new Vector3(-direction, 1, 1);
-			fillings.localScale = new Vector3(((float)health) / 150, 1, 1);
+			fillings.localScale = new Vector3(((float)health) / 150, 1, 1);*/
 		}
 		switch (GameGlobalController.gameState)
 		{
@@ -65,7 +74,7 @@ public class Bird : Entity, Attackable
 	static void OnSuffer(Entity entity) 
 	{ 
 		entity.GetComponent<Animator>().Play("suffer"); 
-		//lifebarprefab.changeamount(damage);
+		lifebarprefab.changeamount(30);
 	}
 	static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
 

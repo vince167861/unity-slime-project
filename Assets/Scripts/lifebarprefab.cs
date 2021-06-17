@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
+using TMPro;
 
 public class lifebarprefab : MonoBehaviour
 {
-    public float totalhealth;
-    public float targethealth;
-    public float nexthealth;
-    public float delta = 0;
-    public float speed = 1;
-    public Image LifeBar;
+    static float totalhealth = Bird.health;
+    public static float targethealth = totalhealth;
+    static float nexthealth = targethealth;
+    static float speed = 1;
+    public static string name = null;
+    TextMeshPro Name;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Name = this.transform.Find("Charactername").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
     void Update()
     {
+		Name.text = name;
         switch (GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Animation:
@@ -30,47 +32,32 @@ public class lifebarprefab : MonoBehaviour
                 {
                     nexthealth = totalhealth;
                     targethealth = totalhealth;
-                    delta = 0;
                 }
-                if(targethealth > 100)
+                if(targethealth > totalhealth)
                 {
                     nexthealth = totalhealth;
                     targethealth = totalhealth;
                 }
-                delta += Time.deltaTime;
-                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targethealth < 100)  changeamount(30);
                 if(targethealth < nexthealth) Heal(speed);
-                if(targethealth > nexthealth)
-                {
-                    if(nexthealth < 0)
-                    {
-                        LifeHandler.Suffer(-1/1.5f * nexthealth);
-                        nexthealth = 0;
-                    }
-                    else  Suffer(speed);
-                }
-                LifeBar.fillAmount = targethealth/totalhealth;
+                if(targethealth > nexthealth) Suffer(speed);
+                //LifeBar.fillAmount = targethealth/totalhealth;
                 break;
         }
     }
-    public void Heal(float amount)
+    public static void Heal(float amount)
     {
         targethealth += amount;
         if(targethealth > nexthealth)  targethealth = nexthealth;
     }
-    public void Suffer(float amount)
+    public static void Suffer(float amount)
     {
         targethealth -= amount;
         if(targethealth < nexthealth)  targethealth = nexthealth;
     }
-    public void changeamount(float amount)
+    public static void changeamount(float amount)
     {
         nexthealth += amount;
-        if(amount < 0)
-        {
-            speed = (targethealth - nexthealth)/30;
-            delta = 0;
-        }
+        if(amount < 0)  speed = (targethealth - nexthealth)/30;
         else  speed = 1;
     }
 }
