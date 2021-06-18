@@ -13,7 +13,8 @@ public class LevelVarity
         "勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"},
         new List<string> {""},new List<string> {""},
         new List<string> {
-        "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)"
+        "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)",
+        ""
         }
     };
     public static List<List<int>> littlech = new List<List<int>> {
