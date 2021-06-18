@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: -1
   invulnerable: 0
+  viewhealth: 150
 --- !u!95 &5157314830154941636
 Animator:
   serializedVersion: 3
@@ -499,6 +500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501467554114458201, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3501467554114458201, guid: dc658e4cd373828428ff7446f77c773c,
         type: 3}

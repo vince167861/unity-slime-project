@@ -10,11 +10,6 @@ public class lifebarprefab : MonoBehaviour
 	public static float targethealth = totalhealth;
 	static float nexthealth = targethealth;
 	static float speed = 1;
-
-	/*
-	警告		CS0108	'lifebarprefab.name' 會隱藏繼承的成員 'Object.name'。若本意即為要隱藏，請使用 new 關鍵字。
-	宣告的變數名稱與基底類型中的變數相同，但未使用 new 關鍵字。此警告是為了通知您應使用 new; 宣告變數的方式就如同宣告中使用了 new。
-	*/
 	public static string name = null;
 
 	TextMeshPro Name;

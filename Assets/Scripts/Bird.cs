@@ -21,9 +21,10 @@ public class Bird : Entity, Attackable
     private void Start()
     {
 		LifeBar = GameObject.Find("barbox");
-        Bar = GameObject.Find("Bar");
+        Bar = LifeBar.transform.Find("Bar").gameObject;
 		lifebarprefab.name = "Bird";
-		LifeBar.SetActive(false);
+		LifeBar.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,0);
+		Bar.SetActive(false);
         //progressBar = transform.Find("Progress Bar").gameObject;
         //progressBar.SetActive(false);
         //fillings = transform.Find("Progress Bar").Find("Fillings");
@@ -38,7 +39,8 @@ public class Bird : Entity, Attackable
 		LifeBar.GetComponent<Transform>().localScale = new Vector2(1,1);
 		if (health != 150)
 		{
-			LifeBar.SetActive(true);
+			LifeBar.GetComponent<SpriteRenderer>().color = new Color(255,255,255,255);
+			Bar.SetActive(true);
 			LifeBar.transform.localScale = new Vector3(Mathf.Abs(direction),1,1);
 			//Bar.transform.position +=
 			/*progressBar.SetActive(true);
