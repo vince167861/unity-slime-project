@@ -39,7 +39,7 @@ public class LifeHandler : MonoBehaviour
         {
             case GameGlobalController.GameState.Animation:
             case GameGlobalController.GameState.Shaking:
-            case GameGlobalController.GameState.Interval:
+            case GameGlobalController.GameState.PrepareDialog:
             case GameGlobalController.GameState.Playing:
                 if(start)
                 {

@@ -12,7 +12,7 @@ public class GameGlobalController : MonoBehaviour
     // Backgrounds
     public Sprite[] gameBackground, menuBackground;
 
-    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, Interval, LobbyInfo, Advice };
+    public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
     public static GameState gameState = GameState.MenuPrepare;
     public static int currentLevel = 0;
     public static bool battle = false;
@@ -25,7 +25,7 @@ public class GameGlobalController : MonoBehaviour
     {
         background = GetComponent<SpriteRenderer>();
         Instantiate(slimePrefab);
-        
+
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class GameGlobalController : MonoBehaviour
         lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
         passCanvas.SetActive(hasEnded && !battle);
         deadCanvas.SetActive(hasEnded && battle);
-        slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Interval || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+        slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
         // GameObjects
         brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
         dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
@@ -46,7 +46,7 @@ public class GameGlobalController : MonoBehaviour
         keyicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
         lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
         turnBack.SetActive(gameState == GameState.LobbyInfo);
-        
+
         switch (gameState)
         {
             case GameState.Lighting:
@@ -150,4 +150,7 @@ public class GameGlobalController : MonoBehaviour
     public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
     public static bool isDarking => gameState == GameState.Darking;
     public static bool hasEnded => gameState == GameState.End;
+
+    public static void SetPlaying() { gameState = GameState.Playing; }
+    public static void SetAnimation() { gameState = GameState.Animation; }
 }
