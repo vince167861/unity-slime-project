@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: barbox
       objectReference: {fileID: 0}
+    - target: {fileID: 7067571300300427276, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_Name
+      value: entityBar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc658e4cd373828428ff7446f77c773c, type: 3}
 --- !u!4 &3514850072116783270 stripped

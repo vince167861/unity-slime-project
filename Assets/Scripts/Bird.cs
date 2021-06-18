@@ -21,7 +21,7 @@ public class Bird : Entity, Attackable
     private void Start()
     {
 		LifeBar = GameObject.Find("barbox");
-        Bar = LifeBar.transform.Find("Bar").gameObject;
+        Bar = GameObject.Find("entityBar");
 		lifebarprefab.name = "Bird";
 		LifeBar.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,0);
 		Bar.SetActive(false);
