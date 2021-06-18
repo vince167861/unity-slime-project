@@ -28,7 +28,6 @@ public class lifebarprefab : MonoBehaviour
 		{
 			case GameGlobalController.GameState.Animation:
 			case GameGlobalController.GameState.Shaking:
-			case GameGlobalController.GameState.PrepareDialog:
 			case GameGlobalController.GameState.Playing:
 				if (LifeHandler.start)
 				{

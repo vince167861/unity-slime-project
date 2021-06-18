@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DarkAnimatorController : MonoBehaviour
 {
-	Animator anim;
+	Animator animator;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -16,20 +18,20 @@ public class DarkAnimatorController : MonoBehaviour
         switch(GameGlobalController.gameState)
 		{
 		    case GameGlobalController.GameState.Darking:
-				GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0,0,0);
-		    	anim.Play("black");
+                spriteRenderer.color = Color.HSVToRGB(0,0,0);
+		    	animator.Play("black");
         		break;
         	case GameGlobalController.GameState.Brightening:
-				GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0,0,0);
-    			anim.Play("light");
+                spriteRenderer.color = Color.HSVToRGB(0,0,0);
+    			animator.Play("light");
         		break;
 			case GameGlobalController.GameState.Lighting:
-				GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0,0,100);
-		    	anim.Play("black");
+                spriteRenderer.color = Color.HSVToRGB(0,0,100);
+		    	animator.Play("black");
         		break;
 			case GameGlobalController.GameState.Unlighting:
-				GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0,0,100);
-		    	anim.Play("light");
+                spriteRenderer.color = Color.HSVToRGB(0,0,100);
+		    	animator.Play("light");
         		break;
         	}
     }

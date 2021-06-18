@@ -7,13 +7,12 @@ public class Animation1_1 : Animation
 	float hasDelayed = 0;
 	bool isplayed = false;
 	public bool[] doContinuePlaying = { false, false, false, true, true, false, false, false, true };
-	public static float timer = 1f;
+	public float timer = 1f;
 
 	void Start() { Animation.handler = this; }
 
 	void Update()
 	{
-		// Implement auto playing
 		switch (GameGlobalController.gameState)
 		{
 			case GameGlobalController.GameState.Playing:
