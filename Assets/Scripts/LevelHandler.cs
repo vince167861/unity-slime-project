@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class LevelHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (GameGlobalController.isMenuPrepare || GameGlobalController.isDarking)
-        {
-            DialogBoxHandler.cbnum = 0;
-            Animation.handler.handle();
-            Destroy(gameObject);
-        }
-    }
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		if (GameGlobalController.isMenuPrepare || GameGlobalController.isDarking)
+		{
+			DialogBoxHandler.cbnum = 0;
+			Destroy(gameObject);
+		}
+	}
 }
