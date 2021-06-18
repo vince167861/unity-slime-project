@@ -21,7 +21,7 @@ public class Animation1_2 : Animation
     {
         switch (GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.Interval:
+            case GameGlobalController.GameState.PrepareDialog:
                 if(playPoint[DialogBoxHandler.cbnum]){
                     playPoint[DialogBoxHandler.cbnum]=false;
                     GameGlobalController.gameState=GameGlobalController.GameState.Playing;
@@ -34,7 +34,7 @@ public class Animation1_2 : Animation
                 if(!isplayed&&this.delta>=timer)   {
                     this.delta=0;
                     isplayed=true;
-                    GameGlobalController.gameState=GameGlobalController.GameState.Interval;
+                    GameGlobalController.gameState=GameGlobalController.GameState.PrepareDialog;
                 } 
                 break;
         }
