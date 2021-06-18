@@ -18,7 +18,7 @@ public class Bird : Entity, Attackable
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 		LifeBar = GameObject.Find("barbox");
         Bar = GameObject.Find("Bar");
@@ -30,7 +30,7 @@ public class Bird : Entity, Attackable
     }
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
 		health = lifebarprefab.targethealth;
 		viewhealth = health;
@@ -59,7 +59,7 @@ public class Bird : Entity, Attackable
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
@@ -76,7 +76,11 @@ public class Bird : Entity, Attackable
 		entity.GetComponent<Animator>().Play("suffer"); 
 		lifebarprefab.changeamount(30);
 	}
-	static void OnDie(Entity entity) { entity.GetComponent<Animator>().Play("die"); entity.direction = 0; }
+
+	static void OnDie(Entity entity) {
+		entity.GetComponent<Animator>().Play("die");
+		entity.direction = 0;
+	}
 
 	void DieAnimationEnd()
 	{
