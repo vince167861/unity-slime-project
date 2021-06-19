@@ -2,7 +2,7 @@
 
 public class Bird : Entity, Attackable
 {
-	public Bird() : base(150, 1, OnSuffer, OnDie) { }
+	public Bird() : base("Bird", 150, 1, OnSuffer, OnDie) { }
 	public int AttackDamage => 15;
 
 	readonly float moveSpeed = 0.03f; //bird movement speed

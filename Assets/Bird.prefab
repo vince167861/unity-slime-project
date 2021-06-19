@@ -322,6 +322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5631634512493566166}
     m_Modifications:
+    - target: {fileID: 2091354781250474736, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2510579980171268276, guid: dc658e4cd373828428ff7446f77c773c,
         type: 3}
       propertyPath: m_RootOrder
@@ -381,6 +386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Life Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978197769962803571, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc658e4cd373828428ff7446f77c773c, type: 3}

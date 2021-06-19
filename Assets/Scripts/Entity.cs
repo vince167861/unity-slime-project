@@ -7,17 +7,20 @@ public abstract class Entity : MonoBehaviour
 	public readonly int defaultHealth;
 	private readonly Action<Entity> healCallback, sufferCallback, deathCallback;
 	private float __health;
+	private string __name;
 	static float __amount = 0;
 	public bool invulnerable = false;
 	public float health => __health;
 	public float healthPercentage => __health / defaultHealth;
+	public string name => __name;
 	public static float amount => __amount;
 
 	static void __default_death_callback(Entity entity) { Destroy(entity.gameObject); }
 	static void __default_callback(Entity entity) { }
 
-	public Entity(int h, int d = 1, Action<Entity> scb = null, Action<Entity> dcb = null, Action<Entity> hcb = null)
+	public Entity(string n, int h, int d = 1, Action<Entity> scb = null, Action<Entity> dcb = null, Action<Entity> hcb = null)
 	{
+		__name = n;
 		__health = defaultHealth = h;
 		direction = d;
 		sufferCallback = scb ?? __default_callback;
