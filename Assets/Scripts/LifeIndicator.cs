@@ -1,35 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
 using TMPro;
 
-public class lifebarprefab : MonoBehaviour
+public class LifeIndicator : MonoBehaviour
 {
-	static float totalhealth = Bird.health;
-	public static float targethealth = totalhealth;
-	static float nexthealth = targethealth;
-	static float speed = 1;
-	public static string name = null;
 
-	TextMeshPro Name;
+	Entity parent;
+	Transform fillings;
 
-	// Start is called before the first frame update
 	void Start()
 	{
-		Name = this.transform.Find("Charactername").GetComponent<TextMeshPro>();
+		parent = GetComponentInParent<Entity>();
+		fillings = transform.Find("Sprite Mask/Fillings");
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
-		Name.text = name;
 		switch (GameGlobalController.gameState)
 		{
 			case GameGlobalController.GameState.Animation:
 			case GameGlobalController.GameState.Shaking:
 			case GameGlobalController.GameState.Playing:
-				if (LifeHandler.start)
+				if (fillings.localScale.x - parent.healthPercentage > 0.02)
+					fillings.localScale -= new Vector3(0.01f, 0, 0);
+				if (fillings.localScale.x - parent.healthPercentage < -0.02)
+					fillings.localScale += new Vector3(0.01f, 0, 0);
+				/*if (LifeHandler.start)
 				{
 					nexthealth = totalhealth;
 					targethealth = totalhealth;
@@ -40,12 +35,12 @@ public class lifebarprefab : MonoBehaviour
 					targethealth = totalhealth;
 				}
 				if (targethealth < nexthealth) Heal(speed);
-				if (targethealth > nexthealth) Suffer(speed);
+				if (targethealth > nexthealth) Suffer(speed);*/
 				//LifeBar.fillAmount = targethealth/totalhealth;
 				break;
 		}
 	}
-	public static void Heal(float amount)
+	/*public static void Heal(float amount)
 	{
 		targethealth += amount;
 		if (targethealth > nexthealth) targethealth = nexthealth;
@@ -61,5 +56,5 @@ public class lifebarprefab : MonoBehaviour
 		Debug.Log(nexthealth);
 		if (amount < 0) speed = (targethealth - nexthealth) / 30;
 		else speed = 1;
-	}
+	}*/
 }
