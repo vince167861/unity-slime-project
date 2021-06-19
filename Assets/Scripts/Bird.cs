@@ -5,14 +5,13 @@ public class Bird : Entity, Attackable
 {
     public Bird() : base(150, 1, OnSuffer, OnDie) { }
 	public static float health = 150;
-	public float viewhealth = health;
     public int AttackDamage => 15;
 
 	readonly float moveSpeed = 0.03f; //bird movement speed
 	float offset = 0;
 
-    GameObject LifeBar;
-	GameObject Bar;
+    public GameObject LifeBar;
+	public GameObject Bar;
     GameObject progressBar;
     Transform fillings;
 
@@ -20,9 +19,6 @@ public class Bird : Entity, Attackable
     // Start is called before the first frame update
     private void Start()
     {
-		LifeBar = GameObject.Find("barbox");
-        Bar = GameObject.Find("entityBar");
-		lifebarprefab.name = "Bird";
 		LifeBar.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,0);
 		Bar.SetActive(false);
         //progressBar = transform.Find("Progress Bar").gameObject;
@@ -34,14 +30,15 @@ public class Bird : Entity, Attackable
 	private void Update()
 	{
 		health = lifebarprefab.targethealth;
-		viewhealth = health;
+		Debug.Log(health);
 		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
 		LifeBar.GetComponent<Transform>().localScale = new Vector2(1,1);
 		if (health != 150)
 		{
+			lifebarprefab.name = "Bird";
 			LifeBar.GetComponent<SpriteRenderer>().color = new Color(255,255,255,255);
 			Bar.SetActive(true);
-			LifeBar.transform.localScale = new Vector3(Mathf.Abs(direction),1,1);
+			LifeBar.transform.localScale = new Vector3(-1 * direction,1,1);
 			//Bar.transform.position +=
 			/*progressBar.SetActive(true);
 			progressBar.transform.localScale = new Vector3(-direction, 1, 1);
@@ -76,7 +73,7 @@ public class Bird : Entity, Attackable
 	static void OnSuffer(Entity entity) 
 	{ 
 		entity.GetComponent<Animator>().Play("suffer"); 
-		lifebarprefab.changeamount(30);
+		lifebarprefab.changeamount(amount);
 	}
 
 	static void OnDie(Entity entity) {

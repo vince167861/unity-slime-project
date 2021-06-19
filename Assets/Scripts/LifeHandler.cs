@@ -69,8 +69,8 @@ public class LifeHandler : MonoBehaviour
                 targetlife = lastlife + healchange.healamount - sufferchange.sufferamount;
                 Bar.fillAmount = targetlife/entitylife;
                 Bar.color = Color.HSVToRGB(0.2f*(targetlife/entitylife),1,1);
-                if(Input.GetKeyDown(KeyCode.U))  Heal(30);
-                if(Input.GetKeyDown(KeyCode.I))  Suffer(30);
+                //if(Input.GetKeyDown(KeyCode.U))  Heal(30);
+                //if(Input.GetKeyDown(KeyCode.I))  Suffer(30);
                 if(healchange.healamount > tghealamount)
                 {
                     animator.enabled = false;

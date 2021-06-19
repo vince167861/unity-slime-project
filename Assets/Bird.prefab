@@ -320,6 +320,8 @@ MonoBehaviour:
   direction: -1
   invulnerable: 0
   viewhealth: 150
+  LifeBar: {fileID: 5564956304573850363}
+  Bar: {fileID: 8071875580690245662}
 --- !u!95 &5157314830154941636
 Animator:
   serializedVersion: 3
@@ -538,9 +540,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc658e4cd373828428ff7446f77c773c, type: 3}
+--- !u!1 &5564956304573850363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6857483539444128489, guid: dc658e4cd373828428ff7446f77c773c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301574051173906450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3514850072116783270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510579980171268276, guid: dc658e4cd373828428ff7446f77c773c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301574051173906450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8071875580690245662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067571300300427276, guid: dc658e4cd373828428ff7446f77c773c,
     type: 3}
   m_PrefabInstance: {fileID: 1301574051173906450}
   m_PrefabAsset: {fileID: 0}

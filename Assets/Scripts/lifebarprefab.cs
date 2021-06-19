@@ -58,6 +58,7 @@ public class lifebarprefab : MonoBehaviour
 	public static void changeamount(float amount)
 	{
 		nexthealth += amount;
+		Debug.Log(nexthealth);
 		if (amount < 0) speed = (targethealth - nexthealth) / 30;
 		else speed = 1;
 	}
