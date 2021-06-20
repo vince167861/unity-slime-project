@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour, Attackable
 			case "bird":
 			case "Mushroom":
 				collision.GetComponent<Entity>().Suffer(AttackDamage);
-				//Destroy(gameObject);
+				Destroy(gameObject);
 				break;
 		}
 	}
