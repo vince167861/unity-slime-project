@@ -10,21 +10,10 @@ public class Mushroom : Entity, Attackable
 	public float jumpSpan = 0, jumpWait = 0;
 	private Animator animator;
 	public float multiplier = 0.8f;//0.5f
-	GameObject barbox;
 
 	private void Start()
 	{
-		barbox = transform.Find("Life Indicator").gameObject;
-		barbox.SetActive(false);
 		animator = GetComponent<Animator>();
-	}
-	private void Update()
-	{
-		if (health != 200)
-		{
-			barbox.SetActive(true);
-			barbox.transform.localScale = new Vector3(-1 * direction, 1, 1);
-		}
 	}
 	void OnCollisionStay2D(Collision2D collision)
 	{
