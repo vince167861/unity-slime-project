@@ -9,7 +9,6 @@ public class Bird : Entity, Attackable
 	float offset = 0;
 
 	//GameObject progressBar;
-	//Transform fillings;
 
 	private void Start()
 	{

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ed65c0e71670b45a0c654a48275834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
+  direction: -1
   invulnerable: 0
   jumpSpan: 0
   jumpWait: 0

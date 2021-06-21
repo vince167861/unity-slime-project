@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Mushroom : Entity, Attackable
 {
-	public Mushroom() : base("PiPi", 200, 1) { }
+	public Mushroom() : base("PiPi", 200, -1) { }
 	public int AttackDamage => 40;
 	public float jumpSpan = 0, jumpWait = 0;
 	private Animator animator;
