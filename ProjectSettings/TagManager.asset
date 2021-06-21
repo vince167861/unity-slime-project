@@ -15,6 +15,7 @@ TagManager:
   - Key
   - bullet
   - bird
+  - Enemy
   layers:
   - Default
   - TransparentFX
