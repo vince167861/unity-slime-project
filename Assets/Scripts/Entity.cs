@@ -9,6 +9,7 @@ public abstract class Entity : MonoBehaviour
 	private float __health;
 	private string __name;
 	static float __amount = 0;
+	public bool isDied = false;
 	public bool invulnerable = false;
 	public float health => __health;
 	public float healthPercentage => __health / defaultHealth;
@@ -34,7 +35,7 @@ public abstract class Entity : MonoBehaviour
 			__health -= Math.Abs(damage);
 			__amount -= Math.Abs(damage);
 			sufferCallback(this);
-			if (__health <= 0) deathCallback(this);
+			//if (__health <= 0) deathCallback(this);
 		}
 	}
 
@@ -46,6 +47,11 @@ public abstract class Entity : MonoBehaviour
 		__amount -= Math.Abs(amount);
 		healCallback(this);
 		if (__health >= defaultHealth && !ignoreMax) __health = defaultHealth;
+	}
+
+	public void Die()
+	{
+		deathCallback(this);
 	}
 
 	public void ResetHealth()
