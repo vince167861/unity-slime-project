@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour, Attackable
 	public float moveSpeed = 0.3f; //bullet movement speed
 
 	public int AttackDamage => 50;
+	
+	public GameObject particle;
 
 	void Start()
 	{
@@ -35,6 +37,7 @@ public class Bullet : MonoBehaviour, Attackable
 			case "bird":
 			case "Mushroom":
 				collision.GetComponent<Entity>().Suffer(AttackDamage);
+				Instantiate(particle).GetComponent<Transform>().position = this.transform.position;
 				Destroy(gameObject);
 				break;
 		}
