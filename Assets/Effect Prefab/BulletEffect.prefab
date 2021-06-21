@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5483285789485201611}
   - component: {fileID: 5936632025043023153}
   m_Layer: 0
-  m_Name: Particle spot
+  m_Name: BulletEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

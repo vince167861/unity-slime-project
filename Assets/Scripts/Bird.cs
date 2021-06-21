@@ -7,6 +7,8 @@ public class Bird : Entity, Attackable
 
 	readonly float moveSpeed = 0.03f; //bird movement speed
 	float offset = 0;
+	bool isEffect = false;
+	public GameObject effect;
 
 	//GameObject progressBar;
 
@@ -29,6 +31,11 @@ public class Bird : Entity, Attackable
 				Destroy(gameObject);
 				break;
 			case GameGlobalController.GameState.Playing:
+				if(health <= 0 && !isEffect)
+				{
+					Instantiate(effect).GetComponent<Transform>().position = this.transform.position;
+					isEffect = true;
+				}
 				float newY;
 				do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
 				offset += newY;

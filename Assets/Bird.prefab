@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: -1
+  isDied: 0
   invulnerable: 0
+  effect: {fileID: 5766629297962172634, guid: 45c34fc8ded7d8243acb2ca54ada080c, type: 3}
 --- !u!95 &5157314830154941636
 Animator:
   serializedVersion: 3

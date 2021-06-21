@@ -5,10 +5,11 @@ using UnityEngine;
 public class particlehandler : MonoBehaviour
 {
     float delta = 0;
+    public float time = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
-        delta = 0.5f;
+        delta = time;
     }
 
     // Update is called once per frame
