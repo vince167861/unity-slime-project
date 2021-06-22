@@ -5,23 +5,25 @@ using UnityEngine;
 public class ChamberControl : MonoBehaviour
 {
 	public float dx, dy, dz;
+	private bool triggered = false;
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("ChamberStopper"))
+		if (collision.CompareTag("Slime") && Input.GetKeyDown(KeyCode.K))
+			triggered = true;
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.CompareTag("ChamberRail"))
 			Destroy(gameObject);
-		if (collision.CompareTag("Slime") && Input.GetKey(KeyCode.K))
-		{
-            transform.parent.Translate(dx, dy, dz);
-			Slime.transform.Translate(dx, dy, dz);
-		}
 	}
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.J))
+		if (triggered)
 		{
-			transform.parent.Translate(-dx, -dy, -dz);
-			Slime.transform.Translate(-dx, -dy, -dz);
+			transform.parent.Translate(dx, dy, dz);
+			Slime.transform.Translate(dx, dy, dz);
 		}
 	}
 }
