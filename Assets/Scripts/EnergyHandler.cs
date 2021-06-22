@@ -38,7 +38,7 @@ public class EnergyHandler : MonoBehaviour
                     targetenergy = entityenergy;
                 }
                 delta += Time.deltaTime;
-                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy < 100)  changeamount(30);
+                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy < 100)  changeamount(1);
                 if(targetenergy < nextenergy) EHeal(speed);
                 if(targetenergy > nextenergy)
                 {

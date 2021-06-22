@@ -13,7 +13,7 @@ public abstract class Entity : MonoBehaviour
 	public bool invulnerable = false;
 	public float health => __health;
 	public float healthPercentage => __health / defaultHealth;
-	public string name => __name;
+	public string spriteName => __name;
 	public static float amount => __amount;
 
 	static void __default_death_callback(Entity entity) { Destroy(entity.gameObject); }
