@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Mushroom : Entity, Attackable
 {
-	public Mushroom() : base("PiPi", 200, -1) { }
+	public Mushroom() : base("PiPi", 200, -1, null, OnDie) { }
 	public int AttackDamage => 40;
 	public float jumpSpan = 0, jumpWait = 0;
 	private Animator animator;
 	public float multiplier = 0.8f;//0.5f
+	public GameObject effect;
 
 	private void Start()
 	{
@@ -40,4 +41,17 @@ public class Mushroom : Entity, Attackable
 				break;
 		}
 	}
+
+	static void OnDie(Entity entity)
+	{
+		entity.GetComponent<Animator>().Play("die");
+		entity.direction = 0;
+	}
+
+	void DieAnimationEnd()
+	{
+		Instantiate(effect).GetComponent<Transform>().position = this.transform.position;
+		Destroy(gameObject);
+	}
+
 }

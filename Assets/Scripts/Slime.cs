@@ -23,7 +23,7 @@ public class Slime : MonoBehaviour//Entity
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
-	public GameObject keyCountObject, potionCountObject;
+	public GameObject keyCountObject, potionCountObject, paralysis;
 
 	/*public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
@@ -128,6 +128,7 @@ public class Slime : MonoBehaviour//Entity
 			case "Mushroom":
 				if (GameGlobalController.gameState == GameGlobalController.GameState.Playing)
 				{
+					Instantiate(paralysis).GetComponent<Transform>().position = collision.transform.position;
 					LifeHandler.Suffer(collision.collider.GetComponent<Attackable>().AttackDamage);
 					Destroy(collision.gameObject);
 				}

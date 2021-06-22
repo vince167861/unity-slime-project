@@ -102,10 +102,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: -1
+  isDied: 0
   invulnerable: 0
   jumpSpan: 0
   jumpWait: 0
   multiplier: 0.8
+  effect: {fileID: 5766629297962172634, guid: 45c34fc8ded7d8243acb2ca54ada080c, type: 3}
 --- !u!50 &1348076725699917574
 Rigidbody2D:
   serializedVersion: 4

@@ -191,8 +191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  invulnerable: 0
   Bomb: {fileID: 5246916899251585217, guid: ff921ac50801c734b82d6912b979a036, type: 3}
+  keyCountObject: {fileID: 0}
+  potionCountObject: {fileID: 0}
+  paralysis: {fileID: 6176592211074141307, guid: 895dc67d510c4bd4d8258ee2e5d2a6ef,
+    type: 3}
 --- !u!95 &1977730639100548441
 Animator:
   serializedVersion: 3
