@@ -17,7 +17,8 @@ public class Slime : MonoBehaviour//Entity
 
 
 	public GameObject Bomb;
-	readonly float moveSpeed = 120f, jumpStrength = 2e4f, dropStrength = 100f;
+	float moveSpeed = 120f, jumpStrength = 2e4f, dropStrength = 100f;
+	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
 
@@ -45,6 +46,9 @@ public class Slime : MonoBehaviour//Entity
 		{
 			case GameGlobalController.GameState.Playing:
 			case GameGlobalController.GameState.Lobby:
+				moveSpeed = 120 * suppression;
+				jumpStrength = 2e4f * suppression;
+				dropStrength = 100 * suppression;
 				if (LifeHandler.targetlife <= 0 && !LifeHandler.start) DeathHandler();
 				// Control immuable
 				//if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
@@ -130,6 +134,7 @@ public class Slime : MonoBehaviour//Entity
 				{
 					Instantiate(paralysis).GetComponent<Transform>().position = collision.transform.position;
 					LifeHandler.Suffer(collision.collider.GetComponent<Attackable>().AttackDamage);
+					GameObject.Find("CharacterLife").GetComponent<Animator>().Play("paralysis");
 					Destroy(collision.gameObject);
 				}
 				break;

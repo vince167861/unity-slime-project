@@ -16,9 +16,12 @@ public class LifeHandler : MonoBehaviour
     public static bool isSuffer,isHeal = false;
     public static bool anim1,anim2 = false;
     public static bool start = true;
+    public int situation = 0;
+    public Sprite[] icon;
     static Animator animator;
     static Animator animator2;
     Image Bar;
+    Image Icon;
     Text Life;
     Text Name;
 
@@ -29,7 +32,7 @@ public class LifeHandler : MonoBehaviour
         Bar = GameObject.Find("Bar").GetComponent<Image>();
         Life = GameObject.Find("TargetLife").GetComponent<Text>();
         Name = GameObject.Find("CharacterName").GetComponent<Text>();
-        
+        Icon = GameObject.Find("Situationicon").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class LifeHandler : MonoBehaviour
             case GameGlobalController.GameState.Playing:
                 if(start)
                 {
+                    situation = 0;
                     targetlife = entitylife;
                     lastlife = targetlife;
                     tghealamount = 0;
@@ -54,10 +58,20 @@ public class LifeHandler : MonoBehaviour
                     anim2 = false;
                     start = false;
                 }
+                switch(situation)
+                {
+                    case 0 :
+                        Slime.suppression = 1;
+                        break;
+                    case 1 :
+                        Slime.suppression = 0.4f;
+                        break;
+                }
                 if(tghealamount > 30)  animator.speed = tghealamount/30;
                 else  animator.speed = 1;
                 if(tgsufferamount > 30)  animator2.speed = tgsufferamount/30;
                 else animator.speed = 1;
+                Icon.sprite = icon[situation];
                 Name.text = "Slime";
                 Life.text = (int)targetlife + " / " + entitylife;
                 if(targetlife > 100)
