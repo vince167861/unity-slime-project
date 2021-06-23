@@ -40,15 +40,15 @@ public class EnergyHandler : MonoBehaviour
                 delta += Time.deltaTime;
                 if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy < 100)  changeamount(1);
                 if(targetenergy < nextenergy) EHeal(speed);
-                if(targetenergy > nextenergy)
-                {
+                if(targetenergy > nextenergy) ESuffer(speed);
+                /*{
                     if(nextenergy < 0)
                     {
                         LifeHandler.Suffer(-1/1.5f * nextenergy);
                         nextenergy = 0;
                     }
                     else  ESuffer(speed);
-                }
+                }*/
                 EBar.fillAmount = targetenergy/entityenergy;
                 break;
         }

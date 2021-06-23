@@ -100,10 +100,15 @@ public class Slime : MonoBehaviour//Entity
 				}
 				if (Input.GetKeyDown(KeyCode.F) && GameGlobalController.gameState == GameGlobalController.GameState.Playing)
 				{
-					MainCameraHandler.allSound = 4;
-					Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
-					Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;
-					EnergyHandler.changeamount(-25);
+					if(EnergyHandler.nextenergy < 25 || EnergyHandler.targetenergy < 25)
+						MainCameraHandler.allSound = 12;
+					else
+					{	
+						MainCameraHandler.allSound = 4;
+						Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
+						Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;
+						EnergyHandler.changeamount(-25);
+					}
 				}
 				if (Input.GetKeyDown(KeyCode.Q))
 				{
