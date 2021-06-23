@@ -16,7 +16,6 @@ TagManager:
   - bullet
   - bird
   - Enemy
-  - ChamberRail
   layers:
   - Default
   - TransparentFX

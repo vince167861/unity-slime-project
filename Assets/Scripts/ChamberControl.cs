@@ -1,29 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+#pragma warning disable CS0108 // 成員隱藏所繼承的成員; 遺漏 new 關鍵字
 using UnityEngine;
 
 public class ChamberControl : MonoBehaviour
 {
-	public float dx, dy, dz;
-	private bool triggered = false;
-	private void OnTriggerStay2D(Collider2D collision)
+	public float dx, dy;
+	public bool fx, fy;
+	private Chamber parent;
+
+	private void Start()
 	{
-		if (collision.CompareTag("Slime") && Input.GetKeyDown(KeyCode.K))
-			triggered = true;
+		parent = GetComponentInParent<Chamber>();
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Slime"))
+		{
+			parent.dx = dx;
+			parent.dy = dy;
+			parent.rigidbody2d.constraints = (fx ? RigidbodyConstraints2D.FreezePositionX : 0) | (fy ? RigidbodyConstraints2D.FreezePositionY : 0) | RigidbodyConstraints2D.FreezeRotation;
+		}
+	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (collision.CompareTag("ChamberRail"))
-			Destroy(gameObject);
-	}
-
-	private void Update()
-	{
-		if (triggered)
+		if (collision.CompareTag("Slime"))
 		{
-			transform.parent.Translate(dx, dy, dz);
-			Slime.transform.Translate(dx, dy, dz);
+			parent.dx = 0;
+			parent.dy = 0;
+			parent.rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
 	}
 }
