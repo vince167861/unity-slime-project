@@ -48,6 +48,6 @@ public class LevelVarity
         }
     };
     public static List<Vector2> spawnpoint = new List<Vector2> {
-        new Vector2(5, 12), new Vector2(5, 60), new Vector2(1, 1)
+        new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
     };
 }
