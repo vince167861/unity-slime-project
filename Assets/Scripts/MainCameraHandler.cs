@@ -6,7 +6,7 @@ public class MainCameraHandler : MonoBehaviour
 {
     public AudioClip[] entityclip, backgroundclip, lobbyclip;
     public AudioSource audiosource;
-    public static float prevolume = 1f;
+    public static float prevolume = 0.5f;
     public static int allSound = 0;
     public static Vector3 targetPosition;
     public float cameraSpeedFactor = 10;
