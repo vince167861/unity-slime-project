@@ -12,7 +12,7 @@ public class GameGlobalController : MonoBehaviour
 	// Backgrounds
 	public Sprite[] gameBackground, menuBackground;
 
-	public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.MenuPrepare;
 	public static int currentLevel = 0;
 	public static bool battle = false;
@@ -49,6 +49,8 @@ public class GameGlobalController : MonoBehaviour
 
 		switch (gameState)
 		{
+			case GameState.StartGame:
+				break;
 			case GameState.Lighting:
 				delta += Time.deltaTime;
 				if (delta >= 1)
