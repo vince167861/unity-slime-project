@@ -15,4 +15,14 @@ public class SkeletonWarriorHandler : MonoBehaviour
     {
         
     }
+
+    void Attacking()
+    {
+        this.transform.Find("武士刀").gameObject.GetComponent<ParticleSystem>().Play();
+    }
+
+    void noAttack()
+    {
+        this.transform.Find("武士刀").gameObject.GetComponent<ParticleSystem>().Stop();
+    }
 }
