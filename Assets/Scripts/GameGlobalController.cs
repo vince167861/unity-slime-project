@@ -19,13 +19,12 @@ public class GameGlobalController : MonoBehaviour
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
-	SpriteRenderer background;
+	public SpriteRenderer background;
 
 	void Start()
 	{
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
-
 	}
 
 	void Update()
