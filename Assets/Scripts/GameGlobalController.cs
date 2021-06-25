@@ -99,7 +99,7 @@ public class GameGlobalController : MonoBehaviour
 					delta = 0;
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
-				break;
+        break;
 			case GameState.Playing:
 				break;
 			case GameState.Pause:
@@ -148,7 +148,8 @@ public class GameGlobalController : MonoBehaviour
 	public static bool isAnimation => gameState == GameState.Animation;
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
 	public static bool isDarking => gameState == GameState.Darking;
-	public static bool hasEnded => gameState == GameState.End;
+  public static bool isBrightening => gameState == GameState.Brightening;
+  public static bool hasEnded => gameState == GameState.End;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
 	public static void SetAnimation() { gameState = GameState.Animation; }
