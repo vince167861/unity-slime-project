@@ -660,6 +660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6c27c9261d31748a2b5d454e3a4cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doContinuePlaying: 00000000000101010101
+  timer: 1
 --- !u!114 &-2560519588239666159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,7 +2428,7 @@ PrefabInstance:
     - target: {fileID: 5057673706452038648, guid: 07550fb5f54771040bc76d958649a358,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.25
+      value: 5.35
       objectReference: {fileID: 0}
     - target: {fileID: 5057673706452038648, guid: 07550fb5f54771040bc76d958649a358,
         type: 3}
