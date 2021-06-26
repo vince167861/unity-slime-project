@@ -2090,6 +2090,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2300,6 +2301,14 @@ MonoBehaviour:
   cameraSpeedFactor: 8
   clickPrefab: {fileID: 7420119034599500130, guid: 26c980da95037f5419502911604eafd6,
     type: 3}
+--- !u!124 &519420034
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
 --- !u!1 &558742142
 GameObject:
   m_ObjectHideFlags: 0
