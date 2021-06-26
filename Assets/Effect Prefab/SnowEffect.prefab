@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4307801252546633073}
   - component: {fileID: 8102228831364828272}
   - component: {fileID: 3715500287388656930}
+  - component: {fileID: 2783990214505835968}
   m_Layer: 0
   m_Name: SnowEffect
   m_TagString: Untagged
@@ -4807,6 +4808,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2783990214505835968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265072900609138716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2477e291aec02a54a92908f3bb765281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5521141061284039102
 GameObject:
   m_ObjectHideFlags: 0

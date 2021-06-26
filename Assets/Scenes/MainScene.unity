@@ -3765,6 +3765,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
+  weather:
+  - {fileID: 2260508476365745424, guid: ebd7f891f2527744eb6e84690834efa7, type: 3}
+  - {fileID: 4422876165089381806, guid: c9e7dfcc56e674a4cba0e7516b8e5068, type: 3}
+  - {fileID: 9189951960497569282, guid: 7ffe4c6410668f64eadf2288cb7c2538, type: 3}
+  - {fileID: 2265072900609138716, guid: 204d9ca8d5f0e0143aee05c8fd584909, type: 3}
   board: {fileID: 1206195931}
   brand: {fileID: 1135110845}
   dialogBox: {fileID: 850150101}
