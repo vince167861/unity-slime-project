@@ -41,7 +41,7 @@ public class GameGlobalController : MonoBehaviour
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
-		pauseButton.SetActive(!isPaused);
+		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame);
 		board.SetActive(isPaused);
 		help.SetActive(gameState == GameState.Instruction);
 		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
