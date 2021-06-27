@@ -1547,7 +1547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &399919440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2464,7 +2464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &646512263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3772,6 +3772,8 @@ MonoBehaviour:
   - {fileID: 4422876165089381806, guid: c9e7dfcc56e674a4cba0e7516b8e5068, type: 3}
   - {fileID: 9189951960497569282, guid: 7ffe4c6410668f64eadf2288cb7c2538, type: 3}
   - {fileID: 2265072900609138716, guid: 204d9ca8d5f0e0143aee05c8fd584909, type: 3}
+  force:
+  - {fileID: 5444501380995761271, guid: f05349121bac68e4d8b298c5cadd0fe8, type: 3}
   board: {fileID: 1206195931}
   brand: {fileID: 1135110845}
   dialogBox: {fileID: 850150101}
@@ -4032,7 +4034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 90}
+  m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075055340
@@ -6122,7 +6124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1680933738
 RectTransform:
   m_ObjectHideFlags: 0

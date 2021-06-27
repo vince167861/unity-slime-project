@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelVarity
 {
+    public static List<List<int>> LevelWeather = new List<List<int>> {
+        new List<int> {-1, 0, -1}
+    };
     public static List<List<string>> LevelName = new List<List<string>> {
         new List<string> {"陌生的世界", "新手村", "初次的冒險"}
     };

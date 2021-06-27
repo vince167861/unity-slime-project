@@ -12,7 +12,7 @@ public class GameGlobalController : MonoBehaviour
 	// Backgrounds
 	public Sprite[] gameBackground, menuBackground;
 	// Effects
-	public GameObject[] weather;
+	public GameObject[] weather, force;
 
 	public enum GameState { StartGame, Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
@@ -79,6 +79,7 @@ public class GameGlobalController : MonoBehaviour
 						if(currentLevel == 1)  Instantiate(weather[1]);
 						else  Instantiate(weather[Random.Range(1,4)]);
 					}
+					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 					gameState = battle ? GameState.Start : GameState.MenuPrepare;
 				}
 				break;
