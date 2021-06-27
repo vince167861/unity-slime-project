@@ -58,23 +58,26 @@ public class MainCameraHandler : MonoBehaviour
             allSound = 0;
         }
 
-        // Update camera view position
-        Vector3 mPos = Input.mousePosition;
-        float camera_x = targetPosition.x + mouseDeltaX;
-        float camera_y = targetPosition.y + mouseDeltaY;
-        // Fix the position to prevent rendering void
-        if (camera_x < cameraCtrX) camera_x = cameraCtrX;
-        if (camera_x > backgroundSizeX - cameraCtrX) camera_x = backgroundSizeX - cameraCtrX;
-        if (camera_y < cameraCtrY) camera_y = cameraCtrY;
-        if (camera_y > backgroundSizeY - cameraCtrY) camera_y = backgroundSizeY - cameraCtrY;
-        // Move towards the target point
-        Vector3 newTarget = new Vector3(camera_x, camera_y, targetPosition.z);
-        transform.position = Vector3.MoveTowards(transform.position, newTarget, Vector3.Distance(transform.position, newTarget) * cameraSpeedFactor / 100);
+        if(GameGlobalController.gameState != GameGlobalController.GameState.StartGame)
+        {
+            // Update camera view position
+            Vector3 mPos = Input.mousePosition;
+            float camera_x = targetPosition.x + mouseDeltaX;
+            float camera_y = targetPosition.y + mouseDeltaY;
+            // Fix the position to prevent rendering void
+            if (camera_x < cameraCtrX) camera_x = cameraCtrX;
+            if (camera_x > backgroundSizeX - cameraCtrX) camera_x = backgroundSizeX - cameraCtrX;
+            if (camera_y < cameraCtrY) camera_y = cameraCtrY;
+            if (camera_y > backgroundSizeY - cameraCtrY) camera_y = backgroundSizeY - cameraCtrY;
+            // Move towards the target point
+            Vector3 newTarget = new Vector3(camera_x, camera_y, targetPosition.z);
+            transform.position = Vector3.MoveTowards(transform.position, newTarget, Vector3.Distance(transform.position, newTarget) * cameraSpeedFactor / 100);
 
-        // Show ripple
-        if (Input.GetMouseButtonDown(0))
-            Instantiate(clickPrefab).GetComponent<Transform>().position =
-                new Vector2(mouseDeltaX * cameraCtrX * 2 + transform.position.x, mouseDeltaY * cameraCtrY * 2 + transform.position.y);
+            // Show ripple
+            if (Input.GetMouseButtonDown(0))
+                Instantiate(clickPrefab).GetComponent<Transform>().position =
+                    new Vector2(mouseDeltaX * cameraCtrX * 2 + transform.position.x, mouseDeltaY * cameraCtrY * 2 + transform.position.y);
+        }
     }
 
     // Utilities

@@ -15,7 +15,7 @@ public class GameGlobalController : MonoBehaviour
 	public GameObject[] weather;
 
 	public enum GameState { StartGame, Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
-	public static GameState gameState = GameState.MenuPrepare;
+	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false;
 	float delta = 0;

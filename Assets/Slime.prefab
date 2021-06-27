@@ -196,6 +196,7 @@ MonoBehaviour:
   potionCountObject: {fileID: 0}
   paralysis: {fileID: 6176592211074141307, guid: 895dc67d510c4bd4d8258ee2e5d2a6ef,
     type: 3}
+  heal: {fileID: 787739648073670837, guid: dc519cc1ca4ec904497f2c9bfa8db010, type: 3}
 --- !u!95 &1977730639100548441
 Animator:
   serializedVersion: 3

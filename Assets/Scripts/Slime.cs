@@ -24,7 +24,7 @@ public class Slime : MonoBehaviour//Entity
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
-	public GameObject keyCountObject, potionCountObject, paralysis;
+	public GameObject keyCountObject, potionCountObject, paralysis, heal;
 
 	/*public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
@@ -114,6 +114,7 @@ public class Slime : MonoBehaviour//Entity
 				{
 					if (potionCount > 0)
 					{
+						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
 						LifeHandler.Heal(30);
 						potionCountObject.GetComponent<CountLabel>().updateCount(--potionCount);
 					}
@@ -196,5 +197,19 @@ public class Slime : MonoBehaviour//Entity
 	{
 		transform.position = new Vector3(-5, -5, -10);
 		GameGlobalController.BadEnd();
+	}
+
+	void start2()
+	{
+		animator.Play("Disappear");
+		DarkAnimatorController.animator.speed = 1;
+	}
+
+	void jump()
+	{
+		MainCameraHandler.allSound = 2;
+		rigidbody2d.AddForce(new Vector2(12000f, 1.5e4f));
+		animator.Play("Jump Right");
+		direction = 1;
 	}
 }
