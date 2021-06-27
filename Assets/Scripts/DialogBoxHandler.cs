@@ -38,7 +38,8 @@ public class DialogBoxHandler : MonoBehaviour
 				}
 				break;
 			case GameGlobalController.GameState.Advice:
-				story.text = LevelVarity.advice[adviceperson][adwhich];
+				if(adwhich != -1)  story.text = LevelVarity.advice[adviceperson][adwhich];
+				else  story.text = LevelVarity.chat[adviceperson][Random.Range(0,LevelVarity.chat[adviceperson].Count)];
 				teller.text = LevelVarity.adteller[adviceperson];
 				littlech.sprite = ch[adviceperson];
 				if (Input.GetMouseButtonDown(0))

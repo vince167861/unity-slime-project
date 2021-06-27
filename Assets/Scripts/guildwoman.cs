@@ -38,7 +38,10 @@ public class guildwoman : MonoBehaviour
 				{
 					DialogBoxHandler.advice(3, GameGlobalController.currentLevel - 1);
 				}
-				if (Input.GetKey(KeyCode.G) && trigger1) trigger2 = true;
+				if (Input.GetKey(KeyCode.G) && trigger1)
+				{
+					DialogBoxHandler.advice(3, -1);
+				}
 				break;
 		}
 	}
