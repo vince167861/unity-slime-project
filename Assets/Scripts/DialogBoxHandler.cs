@@ -11,6 +11,7 @@ public class DialogBoxHandler : MonoBehaviour
 	static Text story;
 	static Text teller;
 	static Image littlech;
+	public static bool isChat = false;
 	public static GameGlobalController.GameState lastgameState;
 
 	void Start()
@@ -38,8 +39,8 @@ public class DialogBoxHandler : MonoBehaviour
 				}
 				break;
 			case GameGlobalController.GameState.Advice:
-				if(adwhich != -1)  story.text = LevelVarity.advice[adviceperson][adwhich];
-				else  story.text = LevelVarity.chat[adviceperson][Random.Range(0,LevelVarity.chat[adviceperson].Count)];
+				if(isChat)  story.text = LevelVarity.chat[adviceperson][adwhich];
+				else  story.text = LevelVarity.advice[adviceperson][adwhich];
 				teller.text = LevelVarity.adteller[adviceperson];
 				littlech.sprite = ch[adviceperson];
 				if (Input.GetMouseButtonDown(0))
@@ -55,6 +56,7 @@ public class DialogBoxHandler : MonoBehaviour
 	{
 		adviceperson = person;
 		adwhich = which;
+		Debug.Log(adwhich);
 		lastgameState = GameGlobalController.gameState;
 		GameGlobalController.gameState = GameGlobalController.GameState.Advice;
 	}

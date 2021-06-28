@@ -14,17 +14,20 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false;
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
+	public static GameObject keyCountObject;
 	SpriteRenderer background;
 
 	void Start()
 	{
+		
+		keyCountObject = GameObject.Find("Key Count");
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
 
@@ -53,6 +56,8 @@ public class GameGlobalController : MonoBehaviour
 		{
 			case GameState.StartGame:
 				break;
+			case GameState.Loading:
+				break;
 			case GameState.Lighting:
 				delta += Time.deltaTime;
 				if (delta >= 1)
@@ -80,6 +85,7 @@ public class GameGlobalController : MonoBehaviour
 						else  Instantiate(weather[Random.Range(1,4)]);
 					}
 					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
+					if(currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
 					gameState = battle ? GameState.Start : GameState.MenuPrepare;
 				}
 				break;
@@ -90,7 +96,8 @@ public class GameGlobalController : MonoBehaviour
 					Slime.transform.position = new Vector2(1f, 5f);
 					Instantiate(floorPrefab);
 				}
-				gameState = GameState.Brightening;
+				DarkAnimatorController.start = true;
+				gameState = GameState.Loading;
 				break;
 			case GameState.Start:
 				Slime.keyCount = 0;
@@ -99,7 +106,8 @@ public class GameGlobalController : MonoBehaviour
 					Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
 					Instantiate(levelPrefab[currentLevel]);
 				}
-				gameState = GameState.Brightening;
+				DarkAnimatorController.start = true;
+				gameState = GameState.Loading;
 				break;
 			case GameState.Brightening:
 				LifeHandler.start = true;
@@ -147,10 +155,12 @@ public class GameGlobalController : MonoBehaviour
 	public static void GoodEnd()
 	{
 		battle = false; // Ends the battle
+		keyCountObject.GetComponent<CountLabel>().updateCount(0);
 		gameState = GameState.End;
 	}
 	public static void BadEnd()
 	{
+		keyCountObject.GetComponent<CountLabel>().updateCount(0);
 		gameState = GameState.End;
 	}
 	public static bool isPlaying => gameState == GameState.Playing;

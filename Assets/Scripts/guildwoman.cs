@@ -36,11 +36,13 @@ public class guildwoman : MonoBehaviour
 				}
 				if (trigger2)
 				{
+					DialogBoxHandler.isChat = false;
 					DialogBoxHandler.advice(3, GameGlobalController.currentLevel - 1);
 				}
 				if (Input.GetKey(KeyCode.G) && trigger1)
 				{
-					DialogBoxHandler.advice(3, -1);
+					DialogBoxHandler.isChat = true;
+					DialogBoxHandler.advice(3, Random.Range(0, LevelVarity.chat[3].Count));
 				}
 				break;
 		}

@@ -14,9 +14,14 @@ public class LevelVarity
     public static List<int> doorKey = new List<int> { 0, 2, };
     public static List<string> adteller = new List<string> { "世界の声", "", "","嚮導", };
     public static List<List<string>> chat = new List<List<string>> {
+        new List<string>{},
+        new List<string>{},
+        new List<string>{},
         new List<string>{
-        "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)",
-        "一說到冒險,就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。"}
+        "ルーキーの村這裡的天氣可說是千變萬化,而且還是永晝呢!",
+        "你問我是誰? \n我是不可思議的小魔女--瑪莉~",
+        "據說這個世界的傳送門都異常兇猛!?",
+        "勇者啊,繼續前進吧!"}
     };
     public static List<List<string>> advice = new List<List<string>> {
         new List<string> {

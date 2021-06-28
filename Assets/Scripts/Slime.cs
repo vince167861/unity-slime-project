@@ -212,4 +212,18 @@ public class Slime : MonoBehaviour//Entity
 		animator.Play("Jump Right");
 		direction = 1;
 	}
+
+	void littlejump()
+	{
+		rigidbody2d.AddForce(new Vector2(6000f, 0.5e4f));
+		animator.Play("Jump Right");
+		direction = 1;
+	}
+
+	void moveback()
+	{
+		rigidbody2d.AddForce(new Vector2(-6000f, 0));
+		animator.Play("right");
+		direction = 1;
+	}
 }
