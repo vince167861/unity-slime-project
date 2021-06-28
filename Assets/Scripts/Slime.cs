@@ -239,4 +239,12 @@ public class Slime : MonoBehaviour//Entity
 		animator.Play("Right");
 		direction = 1;
 	}
+
+	public static void normal()
+	{
+		animator.SetBool("right", false);
+		animator.SetBool("left", false);
+		animator.SetBool("jump", false);
+		animator.SetBool("crouch", false);
+	}
 }

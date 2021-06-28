@@ -31,6 +31,7 @@ public class DarkAnimatorController : MonoBehaviour
 				if(GameGlobalController.currentLevel == 0)  loadIn();
 				else if(start)
 				{
+					Slime.normal();
 					loading.SetActive(true);
 					if(GameGlobalController.battle)
 					{
