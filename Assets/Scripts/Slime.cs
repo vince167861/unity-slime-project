@@ -26,6 +26,8 @@ public class Slime : MonoBehaviour//Entity
 
 	public GameObject keyCountObject, potionCountObject, paralysis, heal;
 
+	public Behaviour flareLayer;
+
 	/*public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
     }*/
@@ -38,12 +40,23 @@ public class Slime : MonoBehaviour//Entity
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		spriteRender = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
+		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
 	}
 
 	void Update()
 	{
 		switch (GameGlobalController.gameState)
 		{
+			case GameGlobalController.GameState.Loading:
+				flareLayer.enabled = false;
+				spriteRender.sortingLayerName = "Black Screen";
+				spriteRender.sortingOrder = 3;
+				break;
+			case GameGlobalController.GameState.Brightening:
+				flareLayer.enabled = true;
+				spriteRender.sortingLayerName = "Main Objects";
+				spriteRender.sortingOrder = 8;
+				break;
 			case GameGlobalController.GameState.Playing:
 			case GameGlobalController.GameState.Lobby:
 				moveSpeed = 120 * suppression;
@@ -215,7 +228,7 @@ public class Slime : MonoBehaviour//Entity
 
 	void littlejump()
 	{
-		rigidbody2d.AddForce(new Vector2(6000f, 0.5e4f));
+		rigidbody2d.AddForce(new Vector2(4000f, 0.5e4f));
 		animator.Play("Jump Right");
 		direction = 1;
 	}
@@ -223,7 +236,7 @@ public class Slime : MonoBehaviour//Entity
 	void moveback()
 	{
 		rigidbody2d.AddForce(new Vector2(-6000f, 0));
-		animator.Play("right");
+		animator.Play("Right");
 		direction = 1;
 	}
 }

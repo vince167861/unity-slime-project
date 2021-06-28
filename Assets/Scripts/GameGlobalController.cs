@@ -17,7 +17,7 @@ public class GameGlobalController : MonoBehaviour
 	public enum GameState { StartGame, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
-	public static bool battle = false;
+	public static bool battle = false, isMake = false;
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
@@ -86,36 +86,33 @@ public class GameGlobalController : MonoBehaviour
 					}
 					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 					if(currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					gameState = battle ? GameState.Start : GameState.MenuPrepare;
+					GameGlobalController.gameState = GameGlobalController.battle ? GameState.Start : GameState.MenuPrepare;
 				}
 				break;
 			case GameState.MenuPrepare:
 				guildwoman.startanim = true;
-				if (currentLevel != 0)
-				{
-					Slime.transform.position = new Vector2(1f, 5f);
-					Instantiate(floorPrefab);
-				}
 				DarkAnimatorController.start = true;
 				gameState = GameState.Loading;
 				break;
 			case GameState.Start:
 				Slime.keyCount = 0;
-				if (currentLevel < LevelVarity.spawnpoint.Count)
-				{
-					Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
-					Instantiate(levelPrefab[currentLevel]);
-				}
 				DarkAnimatorController.start = true;
 				gameState = GameState.Loading;
 				break;
 			case GameState.Brightening:
+				if(!isMake)
+				{
+					if(battle)	MakeMap(0);
+					else  MakeMap(1);
+					isMake = true;
+				}
 				LifeHandler.start = true;
 				background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
+					isMake = false;
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
@@ -162,6 +159,26 @@ public class GameGlobalController : MonoBehaviour
 	{
 		keyCountObject.GetComponent<CountLabel>().updateCount(0);
 		gameState = GameState.End;
+	}
+
+	void MakeMap(int which)
+	{
+		if(which == 0)
+		{
+			if (currentLevel < LevelVarity.spawnpoint.Count)
+			{
+				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+				Instantiate(levelPrefab[currentLevel]);
+			}
+		}
+		else
+		{
+			if (currentLevel != 0)
+			{
+				Slime.transform.position = new Vector2(1f, 5f);
+				Instantiate(floorPrefab);
+			}
+		}
 	}
 	public static bool isPlaying => gameState == GameState.Playing;
 	public static bool isPaused => gameState == GameState.Pause;

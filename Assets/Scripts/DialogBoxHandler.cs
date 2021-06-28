@@ -56,7 +56,6 @@ public class DialogBoxHandler : MonoBehaviour
 	{
 		adviceperson = person;
 		adwhich = which;
-		Debug.Log(adwhich);
 		lastgameState = GameGlobalController.gameState;
 		GameGlobalController.gameState = GameGlobalController.GameState.Advice;
 	}

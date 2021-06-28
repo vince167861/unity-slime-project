@@ -6,9 +6,11 @@ public class DarkAnimatorController : MonoBehaviour
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
 	public static bool start = true;
+	GameObject loading;
 
 	void Start()
 	{
+		loading = GameObject.Find("Loading...");
 		animator = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
@@ -20,15 +22,16 @@ public class DarkAnimatorController : MonoBehaviour
 			case GameGlobalController.GameState.StartGame:
 				if(start)
 				{
-					GameObject.Find("Loading...").SetActive(false);
+					loading.SetActive(false);
 					animator.Play("startgame");
 					start = false;
 				}
 				break;
 			case GameGlobalController.GameState.Loading:
-				if(start)
+				if(GameGlobalController.currentLevel == 0)  loadIn();
+				else if(start)
 				{
-					GameObject.Find("Loading...").SetActive(true);
+					loading.SetActive(true);
 					if(GameGlobalController.battle)
 					{
 						Slime.animator.Play("load1");
@@ -39,7 +42,7 @@ public class DarkAnimatorController : MonoBehaviour
 						Slime.animator.Play("load2");
 						animator.Play("loadlobby");
 					}
-					Slime.transform.position = new Vector3(-3, 11, 0);
+					Slime.transform.position = new Vector3(46, 14, 0);
 					start = false;
 				}
 				break;
@@ -77,7 +80,7 @@ public class DarkAnimatorController : MonoBehaviour
 
 	void loadIn()
 	{
+		loading.SetActive(false);
 		GameGlobalController.gameState = GameGlobalController.GameState.Brightening;
-		GameObject.Find("Loading...").SetActive(false);
 	}
 }
