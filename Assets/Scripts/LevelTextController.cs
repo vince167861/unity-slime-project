@@ -21,7 +21,7 @@ public class LevelTextController : MonoBehaviour
                     case GameGlobalController.GameState.Playing:
                         animator.SetInteger("level",GameGlobalController.currentLevel);
                         break;
-                    case GameGlobalController.GameState.Darking:
+                    case GameGlobalController.GameState.fadeOut:
                         animator.SetInteger("level",-1);
                         break;
         }

@@ -35,8 +35,8 @@ public class MainCameraHandler : MonoBehaviour
         // Place camera in right position
         switch (GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.Start:
-            case GameGlobalController.GameState.MenuPrepare:
+            case GameGlobalController.GameState.LevelPrepare:
+            case GameGlobalController.GameState.lobbyPrepare:
                 targetPosition = new Vector3(33f, 24f, -10f);
                 this.music = false;
                 audiosource.Stop();
@@ -59,7 +59,7 @@ public class MainCameraHandler : MonoBehaviour
         }
 
         // Update camera view position
-        Vector3 mPos = Input.mousePosition;
+        //Vector3 mPos = Input.mousePosition;
         float camera_x = targetPosition.x + mouseDeltaX;
         float camera_y = targetPosition.y + mouseDeltaY;
         // Fix the position to prevent rendering void

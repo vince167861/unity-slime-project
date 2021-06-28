@@ -11,6 +11,7 @@ public class Map : MonoBehaviour
 	RectTransform rect;
 	Image image;
 	List<RectTransform> childrenList;
+	private bool isUpdated = false;
 
 	void Start()
 	{
@@ -22,7 +23,15 @@ public class Map : MonoBehaviour
 
 	void Update()
 	{
-		if (GameGlobalController.isStart && GameGlobalController.battle) UpdateMap();
+		switch (GameGlobalController.gameState)
+		{
+			case GameGlobalController.GameState.LevelPrepare:
+				if (GameGlobalController.battle) isUpdated = false;
+				break;
+			case GameGlobalController.GameState.fadeIn:
+				if (!isUpdated) UpdateMap();
+				break;
+		}
 		image.enabled = GameGlobalController.isPlaying;
 		rect.anchoredPosition = Slime.transform.position * -1;
 		int xtarget = Mathf.FloorToInt(-rect.anchoredPosition.x / 4), ytarget = Mathf.FloorToInt(-rect.anchoredPosition.y / 4);
@@ -43,6 +52,9 @@ public class Map : MonoBehaviour
 
 	private void UpdateMap()
 	{
+		isUpdated = true;
+		foreach (RectTransform r in childrenList) if (r != null) Destroy(r.gameObject);
+		childrenList.Clear();
 		image.sprite = terrains[GameGlobalController.currentLevel];
 		rect.sizeDelta = backgroundRenderer.bounds.size;
 		x = backgroundRenderer.bounds.size.x;

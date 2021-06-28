@@ -20,9 +20,9 @@ public class guildwoman : MonoBehaviour
 	{
 		switch (GameGlobalController.gameState)
 		{
-			case GameGlobalController.GameState.MenuPrepare:
+			case GameGlobalController.GameState.lobbyPrepare:
 				break;
-			case GameGlobalController.GameState.Start:
+			case GameGlobalController.GameState.LevelPrepare:
 				Destroy(gameObject);
 				break;
 			case GameGlobalController.GameState.Lobby:

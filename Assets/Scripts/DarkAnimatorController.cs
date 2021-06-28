@@ -15,11 +15,11 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		switch (GameGlobalController.gameState)
 		{
-			case GameGlobalController.GameState.Darking:
+			case GameGlobalController.GameState.fadeOut:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
 				animator.Play("black");
 				break;
-			case GameGlobalController.GameState.Brightening:
+			case GameGlobalController.GameState.fadeIn:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
 				animator.Play("light");
 				break;

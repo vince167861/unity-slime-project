@@ -12,8 +12,8 @@ public class GameGlobalController : MonoBehaviour
 	// Backgrounds
 	public Sprite[] gameBackground, menuBackground;
 
-	public enum GameState { Start, MenuPrepare, Darking, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
-	public static GameState gameState = GameState.MenuPrepare;
+	public enum GameState { LevelPrepare, lobbyPrepare, fadeOut, fadeIn, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public static GameState gameState = GameState.lobbyPrepare;
 	public static int currentLevel = 0;
 	public static bool battle = false;
 	float delta = 0;
@@ -64,35 +64,32 @@ public class GameGlobalController : MonoBehaviour
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
-			case GameState.Darking:
+			case GameState.fadeOut:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					gameState = battle ? GameState.Start : GameState.MenuPrepare;
+					background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
+					gameState = battle ? GameState.LevelPrepare : GameState.lobbyPrepare;
 				}
 				break;
-			case GameState.MenuPrepare:
+			case GameState.lobbyPrepare:
 				guildwoman.startanim = true;
 				if (currentLevel != 0)
 				{
 					Slime.transform.position = new Vector2(1f, 5f);
 					Instantiate(floorPrefab);
 				}
-				gameState = GameState.Brightening;
+				gameState = GameState.fadeIn;
 				break;
-			case GameState.Start:
+			case GameState.LevelPrepare:
 				Slime.keyCount = 0;
-				if (currentLevel < LevelVarity.spawnpoint.Count)
-				{
-					Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
-					Instantiate(levelPrefab[currentLevel]);
-				}
-				gameState = GameState.Brightening;
+				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+				Instantiate(levelPrefab[currentLevel]);
+				gameState = GameState.fadeIn;
 				break;
-			case GameState.Brightening:
+			case GameState.fadeIn:
 				LifeHandler.start = true;
-				background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
@@ -124,13 +121,13 @@ public class GameGlobalController : MonoBehaviour
 	public static void StartNewGame()
 	{
 		battle = true; // Starts the battle
-		gameState = GameState.Darking;
+		gameState = GameState.fadeOut;
 	}
 
 	public static void GotoLobby()
 	{
 		battle = false;
-		gameState = GameState.Darking;
+		gameState = GameState.fadeOut;
 	}
 
 	public static void GoodEnd()
@@ -146,11 +143,11 @@ public class GameGlobalController : MonoBehaviour
 	public static bool isPaused => gameState == GameState.Pause;
 	public static bool isLobby => gameState == GameState.Lobby;
 	public static bool isAnimation => gameState == GameState.Animation;
-	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
-	public static bool isDarking => gameState == GameState.Darking;
-	public static bool isBrightening => gameState == GameState.Brightening;
+	public static bool isMenuPrepare => gameState == GameState.lobbyPrepare;
+	public static bool isDarking => gameState == GameState.fadeOut;
+	public static bool isBrightening => gameState == GameState.fadeIn;
 	public static bool hasEnded => gameState == GameState.End;
-	public static bool isStart => gameState == GameState.Start;
+	public static bool isStart => gameState == GameState.LevelPrepare;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
 	public static void SetAnimation() { gameState = GameState.Animation; }
