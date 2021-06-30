@@ -17,7 +17,7 @@ public class GameGlobalController : MonoBehaviour
 	public enum GameState { StartGame, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
-	public static bool battle = false, isMake = false;
+	public static bool battle = false, isMake = false, isPlot = false;
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
@@ -113,6 +113,12 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
+					if(!isPlot) 
+					{
+						Instantiate(weather[5]);
+						isPlot = true;
+						//gameState = 
+					}
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
