@@ -3876,7 +3876,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   menuBackground:
-  - {fileID: 21300000, guid: 78ee7e8383200dd4cbc461878816f58e, type: 3}
+  - {fileID: 21300000, guid: a46b49cc16b1ac3469af1458b5c35903, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
