@@ -17,7 +17,7 @@ public class Slime : MonoBehaviour//Entity
 
 
 	public GameObject Bomb;
-	float moveSpeed = 120f, jumpStrength = 2e4f, dropStrength = 100f;
+	float moveSpeed = 160f, jumpStrength = 2e4f, dropStrength = 100f;
 	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
@@ -59,7 +59,7 @@ public class Slime : MonoBehaviour//Entity
 				break;
 			case GameGlobalController.GameState.Playing:
 			case GameGlobalController.GameState.Lobby:
-				moveSpeed = 120 * suppression;
+				moveSpeed = 160 * suppression;
 				jumpStrength = 2e4f * suppression;
 				dropStrength = 100 * suppression;
 				if (LifeHandler.targetlife <= 0 && !LifeHandler.start) DeathHandler();

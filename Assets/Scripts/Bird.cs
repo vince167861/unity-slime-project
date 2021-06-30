@@ -4,6 +4,7 @@ public class Bird : Entity, Attackable
 {
 	public Bird() : base("Bird", 150, 1, OnSuffer, OnDie) { }
 	public int AttackDamage => 15;
+	public bool isWall = false;
 
 	readonly float moveSpeed = 0.03f; //bird movement speed
 	float offset = 0;
@@ -13,6 +14,7 @@ public class Bird : Entity, Attackable
 
 	private void Start()
 	{
+		GetComponent<Animator>().Play("colliderchange");
 		//progressBar = transform.Find("Progress Bar").gameObject;
 		//progressBar.SetActive(false);
 		//fillings = transform.Find("Progress Bar").Find("Fillings");
@@ -30,6 +32,7 @@ public class Bird : Entity, Attackable
 				Destroy(gameObject);
 				break;
 			case GameGlobalController.GameState.Playing:
+				
 				float newY;
 				do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
 				offset += newY;
@@ -71,5 +74,10 @@ public class Bird : Entity, Attackable
 	void DieEffectStart()
 	{
 		Instantiate(effect).GetComponent<Transform>().position = this.transform.position;
+	}
+
+	void WallK()
+	{
+		isWall = true;
 	}
 }

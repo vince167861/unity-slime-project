@@ -9,7 +9,7 @@ public class EnemySpawnerHandler : MonoBehaviour
     float timeFromLastSpawn = 0;
     readonly float timeBetweenSpawnMin = 2f;
     readonly float timeBetweenSpawnMax = 5f;
-    public int defDirection = -1;
+    public int defDirection = 1;
     public bool isActive = true;
 
     void Start()
