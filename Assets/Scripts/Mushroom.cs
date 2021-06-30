@@ -20,9 +20,10 @@ public class Mushroom : Entity, Attackable
 		switch (collision.collider.tag)
 		{
 			case "Ground":
-				jumpSpan += Time.deltaTime;
+				if (jumpSpan >= 0) jumpSpan += Time.deltaTime;
 				if (jumpSpan >= jumpWait)
 				{
+					jumpSpan = -1;
 					animator.Play("Jump");
 					direction = hasTarget ? (Slime.transform.position.x - transform.position.x) > 0 ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
 					Vector3 current = transform.localScale;
