@@ -9,7 +9,8 @@ public class Wall : MonoBehaviour
         switch(collision.tag)
         {
             case "bird":
-                collision.GetComponent<Entity>().direction *= -1;
+                if(collision.GetComponent<Bird>().isWall)
+                    collision.GetComponent<Entity>().direction *= -1;
                 break;
             case "bullet":
                 Destroy(collision.gameObject);

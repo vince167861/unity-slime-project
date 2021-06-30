@@ -17,14 +17,16 @@ public class Slime : MonoBehaviour//Entity
 
 
 	public GameObject Bomb;
-	float moveSpeed = 500f, jumpStrength = 2e4f, dropStrength = 100f;
+	float moveSpeed = 160f, jumpStrength = 2e4f, dropStrength = 100f;
 	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
-	public GameObject keyCountObject, potionCountObject, paralysis;
+	public GameObject keyCountObject, potionCountObject, paralysis, heal;
+
+	public Behaviour flareLayer;
 
 	/*public Slime() : base(6, 1, ImmuneOn, DeathHandler) {
         instance = this;
@@ -38,15 +40,26 @@ public class Slime : MonoBehaviour//Entity
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		spriteRender = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
+		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
 	}
 
 	void Update()
 	{
 		switch (GameGlobalController.gameState)
 		{
+			case GameGlobalController.GameState.Loading:
+				flareLayer.enabled = false;
+				spriteRender.sortingLayerName = "Black Screen";
+				spriteRender.sortingOrder = 3;
+				break;
+			case GameGlobalController.GameState.Brightening:
+				flareLayer.enabled = true;
+				spriteRender.sortingLayerName = "Main Objects";
+				spriteRender.sortingOrder = 8;
+				break;
 			case GameGlobalController.GameState.Playing:
 			case GameGlobalController.GameState.Lobby:
-				moveSpeed = 120 * suppression;
+				moveSpeed = 160 * suppression;
 				jumpStrength = 2e4f * suppression;
 				dropStrength = 100 * suppression;
 				if (LifeHandler.targetlife <= 0 && !LifeHandler.start) DeathHandler();
@@ -114,6 +127,7 @@ public class Slime : MonoBehaviour//Entity
 				{
 					if (potionCount > 0)
 					{
+						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
 						LifeHandler.Heal(30);
 						potionCountObject.GetComponent<CountLabel>().updateCount(--potionCount);
 					}
@@ -153,20 +167,14 @@ public class Slime : MonoBehaviour//Entity
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		switch (col.tag)
-		{
-			case "EventTrigger":
-				Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
-				Destroy(col.gameObject);
-				break;
-		}
-	}
-	private void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
+			case "EventTrigger":
+				Animation.handler.trigger(collision.GetComponent<TriggerHandler>().triggerId);
+				Destroy(collision.gameObject);
+				break;
 			case "Potion":
 				MainCameraHandler.allSound = 9;
 				Destroy(collision.gameObject);
@@ -196,5 +204,41 @@ public class Slime : MonoBehaviour//Entity
 	{
 		transform.position = new Vector3(-5, -5, -10);
 		GameGlobalController.BadEnd();
+	}
+
+	void start2()
+	{
+		animator.Play("Disappear");
+		DarkAnimatorController.animator.speed = 1;
+	}
+
+	void jump()
+	{
+		MainCameraHandler.allSound = 2;
+		rigidbody2d.AddForce(new Vector2(12000f, 1.5e4f));
+		animator.Play("Jump Right");
+		direction = 1;
+	}
+
+	void littlejump()
+	{
+		rigidbody2d.AddForce(new Vector2(4000f, 0.5e4f));
+		animator.Play("Jump Right");
+		direction = 1;
+	}
+
+	void moveback()
+	{
+		rigidbody2d.AddForce(new Vector2(-6000f, 0));
+		animator.Play("Right");
+		direction = 1;
+	}
+
+	public static void normal()
+	{
+		animator.SetBool("right", false);
+		animator.SetBool("left", false);
+		animator.SetBool("jump", false);
+		animator.SetBool("crouch", false);
 	}
 }

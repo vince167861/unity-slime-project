@@ -16,6 +16,7 @@ TagManager:
   - bullet
   - bird
   - Enemy
+  - Katana
   layers:
   - Default
   - TransparentFX

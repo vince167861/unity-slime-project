@@ -4,9 +4,25 @@ using UnityEngine;
 
 public class LevelVarity
 {
+    public static List<List<int>> LevelWeather = new List<List<int>> {
+        new List<int> {-1, 0, -1}
+    };
+    public static List<List<string>> LevelName = new List<List<string>> {
+        new List<string> {"陌生的世界", "新手村", "初次的冒險"}
+    };
     public static List<int> keyMax = new List<int> { 1, 3, };
     public static List<int> doorKey = new List<int> { 0, 2, };
     public static List<string> adteller = new List<string> { "世界の声", "", "","嚮導", };
+    public static List<List<string>> chat = new List<List<string>> {
+        new List<string>{},
+        new List<string>{},
+        new List<string>{},
+        new List<string>{
+        "ルーキーの村這裡的天氣可說是千變萬化,而且還是永晝呢!",
+        "你問我是誰? \n我是不可思議的小魔女--瑪莉~",
+        "據說這個世界的傳送門都異常兇猛!?",
+        "勇者啊,繼續前進吧!"}
+    };
     public static List<List<string>> advice = new List<List<string>> {
         new List<string> {
         "勇者啊,你是腦袋浸水還是沒腦袋? \n你沒看到這門上的鑰匙孔數嗎?你鑰匙不夠啊!!!",
@@ -14,7 +30,7 @@ public class LevelVarity
         new List<string> {""},new List<string> {""},
         new List<string> {
         "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)",
-        ""
+        "一說到冒險,就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。"
         }
     };
     public static List<List<int>> littlech = new List<List<int>> {

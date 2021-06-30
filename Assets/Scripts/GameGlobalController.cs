@@ -11,18 +11,22 @@ public class GameGlobalController : MonoBehaviour
 	public GameObject[] levelPrefab;
 	// Backgrounds
 	public Sprite[] gameBackground, menuBackground;
-
-	public enum GameState { LevelPrepare, lobbyPrepare, fadeOut, fadeIn, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
-	public static GameState gameState = GameState.lobbyPrepare;
+	// Effects
+	public GameObject[] weather, force;
+	public static GameState gameState = GameState.StartGame;
+	public enum GameState { StartGame, Loading, LevelPrepare, lobbyPrepare, fadeOut, fadeIn, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static int currentLevel = 0;
-	public static bool battle = false;
+	public static bool battle = false, isMake = false;
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
-	public SpriteRenderer background;
+	public static GameObject keyCountObject;
+	SpriteRenderer background;
 
 	void Start()
 	{
+		
+		keyCountObject = GameObject.Find("Key Count");
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
 	}
@@ -38,7 +42,7 @@ public class GameGlobalController : MonoBehaviour
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
-		pauseButton.SetActive(!isPaused);
+		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame);
 		board.SetActive(isPaused);
 		help.SetActive(gameState == GameState.Instruction);
 		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
@@ -48,6 +52,10 @@ public class GameGlobalController : MonoBehaviour
 
 		switch (gameState)
 		{
+			case GameState.StartGame:
+				break;
+			case GameState.Loading:
+				break;
 			case GameState.Lighting:
 				delta += Time.deltaTime;
 				if (delta >= 1)
@@ -69,6 +77,13 @@ public class GameGlobalController : MonoBehaviour
 				if (delta >= 1)
 				{
 					delta = 0;
+					if(!battle && currentLevel > 0)
+					{
+						if(currentLevel == 1) Instantiate(weather[1]);
+						else Instantiate(weather[Random.Range(1,4)]);
+					}
+					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
+					if(currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
 					background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
 					gameState = battle ? GameState.LevelPrepare : GameState.lobbyPrepare;
 				}
@@ -81,19 +96,31 @@ public class GameGlobalController : MonoBehaviour
 					Instantiate(floorPrefab);
 				}
 				gameState = GameState.fadeIn;
+				DarkAnimatorController.start = true;
+				gameState = GameState.Loading;
 				break;
 			case GameState.LevelPrepare:
 				Slime.keyCount = 0;
+				DarkAnimatorController.start = true;
+				gameState = GameState.Loading;
+				break;
+			case GameState.fadeIn:
+				if (!isMake)
+				{
+					if(battle)	MakeMap(0);
+					else  MakeMap(1);
+					isMake = true;
+				}
 				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
 				Instantiate(levelPrefab[currentLevel]);
 				gameState = GameState.fadeIn;
 				break;
-			case GameState.fadeIn:
 				LifeHandler.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
+					isMake = false;
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
@@ -133,11 +160,33 @@ public class GameGlobalController : MonoBehaviour
 	public static void GoodEnd()
 	{
 		battle = false; // Ends the battle
+		keyCountObject.GetComponent<CountLabel>().updateCount(0);
 		gameState = GameState.End;
 	}
 	public static void BadEnd()
 	{
+		keyCountObject.GetComponent<CountLabel>().updateCount(0);
 		gameState = GameState.End;
+	}
+
+	void MakeMap(int which)
+	{
+		if(which == 0)
+		{
+			if (currentLevel < LevelVarity.spawnpoint.Count)
+			{
+				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+				Instantiate(levelPrefab[currentLevel]);
+			}
+		}
+		else
+		{
+			if (currentLevel != 0)
+			{
+				Slime.transform.position = new Vector2(1f, 5f);
+				Instantiate(floorPrefab);
+			}
+		}
 	}
 	public static bool isPlaying => gameState == GameState.Playing;
 	public static bool isPaused => gameState == GameState.Pause;
