@@ -167,20 +167,14 @@ public class Slime : MonoBehaviour//Entity
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		switch (col.tag)
-		{
-			case "EventTrigger":
-				Animation.handler.trigger(col.GetComponent<TriggerHandler>().triggerId);
-				Destroy(col.gameObject);
-				break;
-		}
-	}
-	private void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
+			case "EventTrigger":
+				Animation.handler.trigger(collision.GetComponent<TriggerHandler>().triggerId);
+				Destroy(collision.gameObject);
+				break;
 			case "Potion":
 				MainCameraHandler.allSound = 9;
 				Destroy(collision.gameObject);
