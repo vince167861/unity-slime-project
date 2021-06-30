@@ -15,7 +15,7 @@ public class WeatherHandler : MonoBehaviour
     {
         switch(GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.Darking:
+            case GameGlobalController.GameState.fadeOut:
                 Destroy(gameObject);
                 break;
         }

@@ -25,7 +25,6 @@ public class GameGlobalController : MonoBehaviour
 
 	void Start()
 	{
-		
 		keyCountObject = GameObject.Find("Key Count");
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
@@ -77,14 +76,14 @@ public class GameGlobalController : MonoBehaviour
 				if (delta >= 1)
 				{
 					delta = 0;
-					if(!battle && currentLevel > 0)
+					if (currentLevel == 1)
+						Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
+					if (!isMake)
 					{
-						if(currentLevel == 1) Instantiate(weather[1]);
-						else Instantiate(weather[Random.Range(1,4)]);
+						MakeMap(battle ? 0 : 1);
+						isMake = true;
 					}
-					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
-					if(currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
+					DarkAnimatorController.start = true;
 					gameState = battle ? GameState.LevelPrepare : GameState.lobbyPrepare;
 				}
 				break;
@@ -93,28 +92,21 @@ public class GameGlobalController : MonoBehaviour
 				if (currentLevel != 0)
 				{
 					Slime.transform.position = new Vector2(1f, 5f);
+					Instantiate(currentLevel == 1 ? weather[1] : weather[Random.Range(1, 4)]);
 					Instantiate(floorPrefab);
 				}
-				gameState = GameState.fadeIn;
-				DarkAnimatorController.start = true;
+				background.sprite = menuBackground[currentLevel];
 				gameState = GameState.Loading;
 				break;
 			case GameState.LevelPrepare:
+				if (LevelVarity.LevelWeather[0][currentLevel] != -1)
+					Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 				Slime.keyCount = 0;
-				DarkAnimatorController.start = true;
+				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+				background.sprite = gameBackground[currentLevel];
 				gameState = GameState.Loading;
 				break;
 			case GameState.fadeIn:
-				if (!isMake)
-				{
-					if(battle)	MakeMap(0);
-					else  MakeMap(1);
-					isMake = true;
-				}
-				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
-				Instantiate(levelPrefab[currentLevel]);
-				gameState = GameState.fadeIn;
-				break;
 				LifeHandler.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)
@@ -169,15 +161,12 @@ public class GameGlobalController : MonoBehaviour
 		gameState = GameState.End;
 	}
 
-	void MakeMap(int which)
+	private void MakeMap(int which)
 	{
-		if(which == 0)
+		if (which == 0)
 		{
-			if (currentLevel < LevelVarity.spawnpoint.Count)
-			{
-				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
-				Instantiate(levelPrefab[currentLevel]);
-			}
+			Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+			Instantiate(levelPrefab[currentLevel]);
 		}
 		else
 		{

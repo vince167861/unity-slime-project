@@ -20,7 +20,7 @@ public class DarkAnimatorController : MonoBehaviour
 		switch (GameGlobalController.gameState)
 		{
 			case GameGlobalController.GameState.StartGame:
-				if(start)
+				if (start)
 				{
 					loading.SetActive(false);
 					animator.Play("startgame");
@@ -28,12 +28,12 @@ public class DarkAnimatorController : MonoBehaviour
 				}
 				break;
 			case GameGlobalController.GameState.Loading:
-				if(GameGlobalController.currentLevel == 0)  loadIn();
-				else if(start)
+				if (GameGlobalController.currentLevel == 0) loadIn();
+				else if (start)
 				{
 					Slime.normal();
 					loading.SetActive(true);
-					if(GameGlobalController.battle)
+					if (GameGlobalController.battle)
 					{
 						Slime.animator.Play("load1");
 						animator.Play("loadgame");
@@ -75,13 +75,13 @@ public class DarkAnimatorController : MonoBehaviour
 
 	void start3()
 	{
-		GameGlobalController.gameState = GameGlobalController.GameState.MenuPrepare;
+		GameGlobalController.gameState = GameGlobalController.GameState.lobbyPrepare;
 		GameObject.Find("StartScene").SetActive(false);
 	}
 
 	void loadIn()
 	{
 		loading.SetActive(false);
-		GameGlobalController.gameState = GameGlobalController.GameState.Brightening;
+		GameGlobalController.gameState = GameGlobalController.GameState.fadeIn;
 	}
 }
