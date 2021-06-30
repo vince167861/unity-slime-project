@@ -31,6 +31,7 @@ public class DarkAnimatorController : MonoBehaviour
 				if (GameGlobalController.currentLevel == 0) loadIn();
 				else if (start)
 				{
+					start = false;
 					Slime.normal();
 					loading.SetActive(true);
 					if (GameGlobalController.battle)
@@ -44,7 +45,6 @@ public class DarkAnimatorController : MonoBehaviour
 						animator.Play("loadlobby");
 					}
 					Slime.transform.position = new Vector3(46, 14, 0);
-					start = false;
 				}
 				break;
 			case GameGlobalController.GameState.fadeOut:
