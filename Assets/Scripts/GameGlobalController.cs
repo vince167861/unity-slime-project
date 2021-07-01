@@ -18,7 +18,7 @@ public class GameGlobalController : MonoBehaviour
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false;
-	public static int storystate = 0; // 0:unstory 1:startstory 2:loading
+	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
 	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
 	float delta = 0;
 
@@ -69,7 +69,7 @@ public class GameGlobalController : MonoBehaviour
 						gameState = GameState.Loading;
 						break;
 					case 2:
-						Instantiate(weather[1]);
+						Instantiate(weather[6]);
 						storyeffect = 0;
 						break;
 					case 3:

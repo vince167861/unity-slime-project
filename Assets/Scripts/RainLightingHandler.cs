@@ -19,11 +19,12 @@ public class RainLightingHandler : MonoBehaviour
         {
             case GameGlobalController.GameState.Lobby:
             case GameGlobalController.GameState.Playing:
+            case GameGlobalController.GameState.StartStory:
                 num = Random.Range(1,101);
                 if(num == 50)
                 {
                     num = 0;
-                    Instantiate(Lightning).GetComponent<Transform>().position = new Vector3(Random.Range(10,111),40,0);
+                    Instantiate(Lightning).GetComponent<Transform>().position = new Vector3(Random.Range(10,111),35,0);
                     Lightning.transform.Rotate(0,0,Random.Range(-20, 21));
                 }
             break;
