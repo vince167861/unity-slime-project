@@ -14,10 +14,12 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, StartStory, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
-	public static bool battle = false, isMake = false, isPlot = false;
+	public static bool battle = false, isMake = false, cleareffect = false;
+	public static int storystate = 0; // 0:unstory 1:startstory 2:loading
+	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
@@ -55,6 +57,26 @@ public class GameGlobalController : MonoBehaviour
 		switch (gameState)
 		{
 			case GameState.StartGame:
+				break;
+			case GameState.StartStory:
+				switch(storyeffect)
+				{
+					case 0:
+						break;
+					case 1:
+						Instantiate(weather[0]);
+						storyeffect = 0;
+						gameState = GameState.Loading;
+						break;
+					case 2:
+						Instantiate(weather[1]);
+						storyeffect = 0;
+						break;
+					case 3:
+						Instantiate(weather[5]);
+						storyeffect = 0;
+						break;
+				}
 				break;
 			case GameState.Loading:
 				break;
@@ -113,11 +135,10 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
-					if(!isPlot) 
+					if(storystate == 0) 
 					{
 						Instantiate(weather[5]);
-						isPlot = true;
-						//gameState = 
+						storystate = 1;
 					}
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}

@@ -7,8 +7,18 @@ public class ButtonHandler : MonoBehaviour
     public GameObject slimePrefab;
     public void GameInit()
     {
-        MainCameraHandler.allSound = 3;
-        GameGlobalController.StartNewGame();
+        if(GameGlobalController.storystate == 1)
+        {
+            MainCameraHandler.allSound = 3;
+            GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
+            DarkAnimatorController.animator.Play("startstory");
+		    GameGlobalController.cleareffect = true;
+        }
+        else
+        {
+            MainCameraHandler.allSound = 3;
+            GameGlobalController.StartNewGame();
+        }
     }
     /*public void NextLevel()
     {

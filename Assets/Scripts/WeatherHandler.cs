@@ -13,6 +13,11 @@ public class WeatherHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameGlobalController.cleareffect)
+        {
+            GameGlobalController.cleareffect = false;
+            Destroy(gameObject);
+        }
         switch(GameGlobalController.gameState)
         {
             case GameGlobalController.GameState.Darking:

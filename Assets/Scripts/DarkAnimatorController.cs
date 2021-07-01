@@ -2,15 +2,17 @@
 
 public class DarkAnimatorController : MonoBehaviour
 {
-	public GameObject slimePrefab;
+	public GameObject slimePrefab, dragonPrefab;
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
 	public static bool start = true;
-	GameObject loading;
+	GameObject loading, background;
+	public Sprite[] Image;
 
 	void Start()
 	{
 		loading = GameObject.Find("Loading...");
+		background = GameObject.Find("Background2");
 		animator = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
@@ -22,14 +24,29 @@ public class DarkAnimatorController : MonoBehaviour
 			case GameGlobalController.GameState.StartGame:
 				if(start)
 				{
+					background.SetActive(false);
 					loading.SetActive(false);
 					animator.Play("startgame");
 					start = false;
 				}
 				break;
 			case GameGlobalController.GameState.Loading:
-				if(GameGlobalController.currentLevel == 0)  loadIn();
-				else if(start)
+				if(GameGlobalController.storystate == 1)
+				{
+					Slime.normal();
+					loading.SetActive(true);
+					Slime.animator.Play("load1");
+					Slime.transform.position = new Vector3(46, 14, 0);
+					GameGlobalController.storystate = 2;
+				}
+				else if(GameGlobalController.storystate == 3)
+				{
+					loading.SetActive(false);
+					GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
+					animator.speed = 1;
+				}
+				else if(GameGlobalController.currentLevel == 0 && GameGlobalController.storystate != 2)  loadIn();
+				else if(start && GameGlobalController.storystate != 2)
 				{
 					Slime.normal();
 					loading.SetActive(true);
@@ -83,5 +100,19 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		loading.SetActive(false);
 		GameGlobalController.gameState = GameGlobalController.GameState.Brightening;
+	}
+
+	void story1()
+	{
+		animator.speed = 0;
+		GameGlobalController.storyeffect = 1;
+		background.SetActive(true);
+		background.GetComponent<SpriteRenderer>().sprite = Image[0];
+	}
+
+	void story2()
+	{
+		animator.speed = 0;
+		Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3();
 	}
 }
