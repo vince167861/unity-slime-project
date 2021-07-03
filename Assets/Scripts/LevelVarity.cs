@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class LevelVarity
 {
+    public static string me = null;
+    public static List<string> stteller = new List<string> {
+        "我", "芙妮絲(好友)", "我", "我", "我", "我"
+    };
+    public static List<string> start = new List<string> {
+        "什麼......", "怎麼了嗎?", "快趴下,芙妮絲!!!!!!", "芙妮絲......我絕對會保護你的......", "嗯...... \n難道我已經死了嗎......", "什麼...這是!!! \n我變成史萊姆了!?"
+    };
     public static List<List<int>> LevelWeather = new List<List<int>> {
         new List<int> {-1, 0, -1}
     };
@@ -38,8 +45,8 @@ public class LevelVarity
         new List<int> {0,0,1,0,1,0,0,0,0}
     };
     public static List<List<string>> teller = new List<List<string>> {
-        new List<string> {"世界の声","世界の声","世界の声","世界の声","我","魔龍王","我","魔龍王"},
-        new List<string> {"世界の声","世界の声","我","世界の声","我","世界の声","世界の声","世界の声","世界の声"}
+        new List<string> {"世界の声","世界の声","世界の声","世界の声",me,"魔龍王",me,"魔龍王"},
+        new List<string> {"世界の声","世界の声",me,"世界の声",me,"世界の声","世界の声","世界の声","世界の声"}
     };
     public static List<List<string>> story = new List<List<string>> {
         new List<string> {
@@ -66,4 +73,5 @@ public class LevelVarity
     public static List<Vector2> spawnpoint = new List<Vector2> {
         new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
     };
+
 }

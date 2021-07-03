@@ -5,6 +5,18 @@ using UnityEngine;
 public class ButtonHandler : MonoBehaviour
 {
     public GameObject slimePrefab;
+
+    public void StorySkip()
+    {
+        DarkAnimatorController.skip();
+        Destroy(GameObject.Find("DragonPrefab(clone)"));
+		GameGlobalController.cleareffect = true;
+        DarkAnimatorController.animator.SetBool("skip", true);
+        GameGlobalController.storystate = 0;
+        GameGlobalController.battle = true;
+        GameGlobalController.gameState = GameGlobalController.GameState.Start;
+    }
+
     public void GameInit()
     {
         if(GameGlobalController.storystate == 1)

@@ -16,6 +16,8 @@ public class TDragonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameGlobalController.storystate == 0)
+            Destroy(gameObject);
         if(GameGlobalController.storystate == 3)
         {
             animator.Play("storydragon");
@@ -25,12 +27,14 @@ public class TDragonController : MonoBehaviour
 
     void fireshot()
     {
+        MainCameraHandler.allSound = 1;
         dragonhead.GetComponent<ParticleSystem>().Play();
         animator.Play("firing");
     }
 
     void firestop()
     {
+        MainCameraHandler.allSound = 1;
         dragonhead.GetComponent<ParticleSystem>().Stop();
     }
     void storyend1()

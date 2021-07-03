@@ -15,7 +15,6 @@ public class WeatherHandler : MonoBehaviour
     {
         if(GameGlobalController.cleareffect)
         {
-            GameGlobalController.cleareffect = false;
             Destroy(gameObject);
         }
         switch(GameGlobalController.gameState)

@@ -14,15 +14,16 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, StartStory, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, StartStory, Input, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
-	public static bool battle = false, isMake = false, cleareffect = false;
+	public static bool battle = false, isMake = false, cleareffect = false, isStory = false;
 	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
 	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
+	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
 	float delta = 0;
 
-	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack;
+	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield;
 	public static GameObject keyCountObject;
 	SpriteRenderer background;
 
@@ -39,14 +40,16 @@ public class GameGlobalController : MonoBehaviour
 	{
 		/// Show or hide items
 		// Canvases
+		inputfield.SetActive(storystate == 9 || gameState == GameState.Input);
+		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
 		passCanvas.SetActive(hasEnded && !battle);
 		deadCanvas.SetActive(hasEnded && battle);
 		slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
-		dialogBox.SetActive(isAnimation || gameState == GameState.Advice);
-		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame);
+		dialogBox.SetActive(isAnimation || gameState == GameState.Advice || (gameState == GameState.StartStory && storychat != 0));
+		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame && gameState != GameState.StartStory && gameState != GameState.Loading);
 		board.SetActive(isPaused);
 		help.SetActive(gameState == GameState.Instruction);
 		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
@@ -56,6 +59,9 @@ public class GameGlobalController : MonoBehaviour
 
 		switch (gameState)
 		{
+			case GameState.Input:
+				DarkAnimatorController.skip();
+				break;
 			case GameState.StartGame:
 				break;
 			case GameState.StartStory:
@@ -64,16 +70,24 @@ public class GameGlobalController : MonoBehaviour
 					case 0:
 						break;
 					case 1:
+						cleareffect = false;
 						Instantiate(weather[0]);
 						storyeffect = 0;
 						gameState = GameState.Loading;
 						break;
 					case 2:
+						cleareffect = false;
 						Instantiate(weather[6]);
 						storyeffect = 0;
 						break;
 					case 3:
+						cleareffect = false;
 						Instantiate(weather[5]);
+						storyeffect = 0;
+						break;
+					case 4:
+						cleareffect = false;
+						Instantiate(force[1]);
 						storyeffect = 0;
 						break;
 				}
@@ -107,7 +121,7 @@ public class GameGlobalController : MonoBehaviour
 						else  Instantiate(weather[Random.Range(1,4)]);
 					}
 					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
-					if(currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
+					if(battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
 					GameGlobalController.gameState = GameGlobalController.battle ? GameState.Start : GameState.MenuPrepare;
 				}
 				break;
@@ -117,9 +131,14 @@ public class GameGlobalController : MonoBehaviour
 				gameState = GameState.Loading;
 				break;
 			case GameState.Start:
-				Slime.keyCount = 0;
-				DarkAnimatorController.start = true;
-				gameState = GameState.Loading;
+				if(LevelVarity.me == null)
+					gameState = GameState.Input;
+				else
+				{
+					Slime.keyCount = 0;
+					DarkAnimatorController.start = true;
+					gameState = GameState.Loading;
+				}
 				break;
 			case GameState.Brightening:
 				if(!isMake)
@@ -135,10 +154,11 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
-					if(storystate == 0) 
+					if(storystate == 0 && !isStory) 
 					{
 						Instantiate(weather[5]);
 						storystate = 1;
+						isStory = true;
 					}
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}

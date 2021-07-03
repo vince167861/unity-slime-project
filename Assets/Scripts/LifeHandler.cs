@@ -72,7 +72,7 @@ public class LifeHandler : MonoBehaviour
                 if(tgsufferamount > 30)  animator2.speed = tgsufferamount/30;
                 else animator.speed = 1;
                 Icon.sprite = icon[situation];
-                Name.text = "Slime";
+                Name.text = LevelVarity.me;
                 Life.text = (int)targetlife + " / " + entitylife;
                 if(targetlife > 100)
                 {

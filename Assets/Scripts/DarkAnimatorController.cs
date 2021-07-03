@@ -2,11 +2,11 @@
 
 public class DarkAnimatorController : MonoBehaviour
 {
-	public GameObject slimePrefab, dragonPrefab;
+	public GameObject slimePrefab, dragonPrefab, housePrefab;
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
 	public static bool start = true;
-	GameObject loading, background;
+	public static GameObject loading, background;
 	public Sprite[] Image;
 	public Behaviour flareLayer;
 
@@ -43,6 +43,7 @@ public class DarkAnimatorController : MonoBehaviour
 						GameGlobalController.storystate = 2;
 						break;
 					case 3:
+						Slime.transform.position = new Vector3(-5, -5, 0);
 						loading.SetActive(false);
 						GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
 						animator.speed = 1;
@@ -135,9 +136,12 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		flareLayer.enabled = false;
 		GameGlobalController.cleareffect = true;
-		background.GetComponent<SpriteRenderer>().sprite = Image[1];
 	}
 
+	void house()
+	{
+		Instantiate(housePrefab);
+	}
 	void story3()
 	{
 		GameGlobalController.storystate = 6;
@@ -148,11 +152,45 @@ public class DarkAnimatorController : MonoBehaviour
 
 	void story4()
 	{
+		Destroy(GameObject.Find("房子內部(Clone)"));
 		GameGlobalController.storyeffect = 3;
 	}
 
 	void story5()
 	{
+		GameGlobalController.storystate = 8;
 		animator.speed = 0;
+		GameGlobalController.storychat = 4;
+	}
+
+	void story6()
+	{
+		animator.speed = 0;
+		GameGlobalController.storychat = 5;
+	}
+
+	void story7()
+	{
+		animator.speed = 0;
+		Slime.transform.position = new Vector3(30, 48, 0);
+		GameGlobalController.storychat = 6;
+	}
+
+	void bubble()
+	{
+		GameGlobalController.storyeffect = 4;
+	}
+
+	void end()
+	{
+		GameGlobalController.cleareffect = true;
+		GameGlobalController.storystate = 9;
+		background.SetActive(false);
+	}
+
+	public static void skip()
+	{
+		background.SetActive(false);
+		animator.speed = 1;
 	}
 }

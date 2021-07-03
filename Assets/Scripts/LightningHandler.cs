@@ -15,6 +15,11 @@ public class LightningHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameGlobalController.cleareffect)
+        {
+            GameGlobalController.cleareffect = false;
+            Destroy(gameObject);
+        }
         delta -= Time.deltaTime;
         if(delta <= 0)
         {

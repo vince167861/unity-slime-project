@@ -2,31 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedlightHandler : MonoBehaviour
+public class FiregroundHandler : MonoBehaviour
 {
     public static Animator animator;
-    public int chatorder = 0;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        if(GameGlobalController.storystate == 7)  animator.SetBool("strong", true);
+        else  animator.SetBool("strong", false);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    void next()
-    {
-        animator.speed = 0;
-        chatorder++;
-        GameGlobalController.storychat = chatorder;
-    }
-
-    void lightend()
-    {
-        GameGlobalController.storystate = 7;
     }
 }
