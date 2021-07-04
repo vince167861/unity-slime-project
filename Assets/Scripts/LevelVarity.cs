@@ -6,10 +6,10 @@ public class LevelVarity
 {
     public static string me = null;
     public static List<string> stteller = new List<string> {
-        "我", "芙妮絲(好友)", "我", "我", "我", "我"
+        "我", "芙妮絲(妹妹)", "我", "我", "我", "我"
     };
     public static List<string> start = new List<string> {
-        "什麼......", "怎麼了嗎?", "快趴下,芙妮絲!!!!!!", "芙妮絲......我絕對會保護你的......", "嗯...... \n難道我已經死了嗎......", "什麼...這是!!! \n我變成史萊姆了!?"
+        "什麼......", "怎麼了嗎,哥哥?", "快趴下,芙妮絲!!!!!!", "芙妮絲......我絕對會保護你的......", "嗯...... \n難道我已經死了嗎......", "什麼...這是!!! \n我變成史萊姆了!?"
     };
     public static List<List<int>> LevelWeather = new List<List<int>> {
         new List<int> {-1, 0, -1}

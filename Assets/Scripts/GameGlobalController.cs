@@ -237,4 +237,16 @@ public class GameGlobalController : MonoBehaviour
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
 	public static void SetAnimation() { gameState = GameState.Animation; }
+
+	public static void givename()
+	{
+		for(int i = 0;i < LevelVarity.teller.Count;i++)
+		{
+			for(int j = 0;j < LevelVarity.teller[i].Count;j++)
+			{
+				if(LevelVarity.teller[i][j] == null)  LevelVarity.teller[i][j] = LevelVarity.me;
+			}
+		}
+	}
+
 }

@@ -9,7 +9,8 @@ public class ButtonHandler : MonoBehaviour
     public void StorySkip()
     {
         DarkAnimatorController.skip();
-        Destroy(GameObject.Find("DragonPrefab(clone)"));
+        Destroy(GameObject.Find("DragonPrefab(Clone)"));
+        Destroy(GameObject.Find("房子內部(Clone)"));
 		GameGlobalController.cleareffect = true;
         DarkAnimatorController.animator.SetBool("skip", true);
         GameGlobalController.storystate = 0;
