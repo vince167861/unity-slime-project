@@ -25,7 +25,7 @@ public class RainLightingHandler : MonoBehaviour
                 {
                     num = 0;
                     Vector3 positionA = new Vector3(Random.Range(10,111),35,0);
-                    Quaternion rotationA = Quaternion.Euler(0, 0, Random.Range(-20, 21));
+                    Quaternion rotationA = Quaternion.Euler(180, 0, Random.Range(-20, 21));
                     Instantiate(Lightning, positionA, rotationA);
                 }
             break;
