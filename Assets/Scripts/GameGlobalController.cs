@@ -17,13 +17,13 @@ public class GameGlobalController : MonoBehaviour
 	public enum GameState { StartGame, StartStory, Input, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
-	public static bool battle = false, isMake = false, cleareffect = false, isStory = false;
+	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
 	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
 	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
 	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
 	float delta = 0;
 
-	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield;
+	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas;
 	public static GameObject keyCountObject;
 	SpriteRenderer background;
 
@@ -50,6 +50,7 @@ public class GameGlobalController : MonoBehaviour
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		dialogBox.SetActive(isAnimation || gameState == GameState.Advice || (gameState == GameState.StartStory && storychat != 0));
 		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame && gameState != GameState.StartStory && gameState != GameState.Loading);
+		debugcanvas.SetActive(isPaused && isUser);
 		board.SetActive(isPaused);
 		help.SetActive(gameState == GameState.Instruction);
 		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);

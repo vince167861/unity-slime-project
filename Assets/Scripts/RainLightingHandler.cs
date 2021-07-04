@@ -24,8 +24,9 @@ public class RainLightingHandler : MonoBehaviour
                 if(num == 50)
                 {
                     num = 0;
-                    Instantiate(Lightning).GetComponent<Transform>().position = new Vector3(Random.Range(10,111),35,0);
-                    Lightning.transform.Rotate(0,0,Random.Range(-20, 21));
+                    Vector3 positionA = new Vector3(Random.Range(10,111),35,0);
+                    Quaternion rotationA = Quaternion.Euler(0, 0, Random.Range(-20, 21));
+                    Instantiate(Lightning, positionA, rotationA);
                 }
             break;
         }

@@ -24,7 +24,7 @@ public class TypeBoxHandler : MonoBehaviour
     {
         if(!isName)
         {
-            if(GameGlobalController.storystate == 9 || GameGlobalController.storystate == 0)
+            if(GameGlobalController.storystate == 9 || GameGlobalController.storystate == 0 || GameGlobalController.isUser)
             {
                 LevelVarity.me = Input.text;
                 GameGlobalController.storystate = 0;
