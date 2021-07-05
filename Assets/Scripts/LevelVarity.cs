@@ -18,7 +18,7 @@ public class LevelVarity
         new List<string> {"陌生的世界", "新手村", "初次的冒險"}
     };
     public static List<int> keyMax = new List<int> { 1, 3, };
-    public static List<int> doorKey = new List<int> { 0, 2, };
+    public static List<int> doorKey = new List<int> { 0, 2, 3};
     public static List<string> adteller = new List<string> { "世界の声", "", "","嚮導", };
     public static List<List<string>> chat = new List<List<string>> {
         new List<string>{},
