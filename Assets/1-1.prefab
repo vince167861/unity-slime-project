@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4873aa41043c242a62a98251d3e01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragonPrefab: {fileID: 6518462309423245626, guid: b178fccf7da31bc48b6f5060fa1bcf19,
+  dragonPrefab: {fileID: 6102819404029103332, guid: 88be2a78f890e4642a9989f5d7421580,
     type: 3}
 --- !u!114 &3546122535942595102
 MonoBehaviour:

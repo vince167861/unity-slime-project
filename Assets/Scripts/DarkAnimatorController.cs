@@ -39,7 +39,6 @@ public class DarkAnimatorController : MonoBehaviour
 						Slime.normal();
 						loading.SetActive(true);
 						Slime.animator.Play("load1");
-						animator.Play("loadgame");
 						Slime.transform.position = new Vector3(43, 14, 0);
 						GameGlobalController.storystate = 2;
 						break;

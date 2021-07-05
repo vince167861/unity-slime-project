@@ -5195,6 +5195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223733695014242276}
   - component: {fileID: 4358452445705799308}
+  - component: {fileID: 7249902500484500919}
   m_Layer: 0
   m_Name: DragonLeftFoot
   m_TagString: Untagged
@@ -5267,6 +5268,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &7249902500484500919
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722795438708548225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5336315, y: 1.0005561}
+    oldSize: {x: 0.71, y: 1.84}
+    newSize: {x: 0.71, y: 1.84}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.16112164, y: -1.5810232}
+      - {x: 0.16112164, y: -1.5410233}
+      - {x: 0.11112163, y: -1.1410233}
+      - {x: 0.28112164, y: -0.8210232}
+      - {x: 0.33112162, y: -0.78102326}
+      - {x: 0.33112162, y: -0.72102326}
+      - {x: 0.32112163, y: -0.7110232}
+      - {x: 0.18112163, y: -0.7110232}
+      - {x: 0.24112163, y: -0.49102324}
+      - {x: 0.27112162, y: -0.39102325}
+      - {x: 0.30112162, y: -0.30102324}
+      - {x: 0.13112164, y: -0.061023254}
+      - {x: 0.051121633, y: -0.0010232544}
+      - {x: -0.078878365, y: -0.0010232544}
+      - {x: -0.16887836, y: -0.041023254}
+      - {x: -0.30887836, y: -0.18102325}
+      - {x: -0.37887836, y: -0.29102325}
+      - {x: -0.37887836, y: -0.68102324}
+      - {x: -0.32887834, y: -0.79102325}
+      - {x: -0.30887836, y: -0.93102324}
+      - {x: -0.23887835, y: -1.0510232}
+      - {x: -0.13887836, y: -1.2510232}
+      - {x: -0.20887835, y: -1.3810232}
+      - {x: -0.21887836, y: -1.4010233}
+      - {x: -0.16887836, y: -1.4910232}
+      - {x: -0.29887837, y: -1.7010232}
+      - {x: -0.28887835, y: -1.8410232}
+      - {x: -0.19887836, y: -1.8410232}
+      - {x: -0.16887836, y: -1.8110232}
+      - {x: -0.12887836, y: -1.8410232}
+      - {x: 0.021121634, y: -1.8110232}
 --- !u!1 &4746825846620694134
 GameObject:
   m_ObjectHideFlags: 0
@@ -10275,6 +10332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5552490730701157963}
   - component: {fileID: 6683375871057518997}
+  - component: {fileID: 781998737621869942}
   m_Layer: 0
   m_Name: DragonRightFoot
   m_TagString: Untagged
@@ -10347,6 +10405,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &781998737621869942
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684839307799560846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4641998, y: 1.004264}
+    oldSize: {x: 1.03, y: 1.53}
+    newSize: {x: 1.03, y: 1.53}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.041874196, y: -1.3365239}
+      - {x: 0.021874199, y: -1.1765239}
+      - {x: 0.25187418, y: -0.8965239}
+      - {x: 0.3618742, y: -0.7565239}
+      - {x: 0.55187416, y: -0.6465239}
+      - {x: 0.55187416, y: -0.6065239}
+      - {x: 0.4618742, y: -0.5665239}
+      - {x: 0.34187418, y: -0.4965239}
+      - {x: 0.4518742, y: -0.4965239}
+      - {x: 0.47187418, y: -0.43652388}
+      - {x: 0.3018742, y: -0.2765239}
+      - {x: 0.25187418, y: -0.1465239}
+      - {x: 0.1218742, y: -0.046523895}
+      - {x: 0.041874196, y: -0.006523895}
+      - {x: -0.1581258, y: -0.006523895}
+      - {x: -0.21812579, y: -0.106523894}
+      - {x: -0.24812579, y: -0.2065239}
+      - {x: -0.2081258, y: -0.28652388}
+      - {x: -0.21812579, y: -0.5965239}
+      - {x: -0.1981258, y: -0.7565239}
+      - {x: -0.13812579, y: -0.7865239}
+      - {x: -0.0181258, y: -0.7865239}
+      - {x: -0.1081258, y: -0.93652385}
+      - {x: -0.21812579, y: -1.0965239}
+      - {x: -0.2381258, y: -1.1665238}
+      - {x: -0.4081258, y: -1.2965238}
+      - {x: -0.47812578, y: -1.3865238}
+      - {x: -0.47812578, y: -1.4865239}
+      - {x: -0.4681258, y: -1.4965239}
+      - {x: -0.44812578, y: -1.5365238}
+      - {x: -0.1981258, y: -1.5365238}
+      - {x: -0.1281258, y: -1.5065238}
+      - {x: -0.0681258, y: -1.3265239}
+      - {x: -0.0381258, y: -1.3965238}
 --- !u!1 &5738739482895034763
 GameObject:
   m_ObjectHideFlags: 0
