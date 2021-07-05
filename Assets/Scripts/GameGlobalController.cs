@@ -78,11 +78,6 @@ public class GameGlobalController : MonoBehaviour
 					delta = 0;
 					if (currentLevel == 1)
 						Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					if (!isMake)
-					{
-						MakeMap(battle ? 0 : 1);
-						isMake = true;
-					}
 					DarkAnimatorController.start = true;
 					gameState = battle ? GameState.LevelPrepare : GameState.lobbyPrepare;
 				}
@@ -93,7 +88,6 @@ public class GameGlobalController : MonoBehaviour
 				{
 					Slime.transform.position = new Vector2(1f, 5f);
 					Instantiate(currentLevel == 1 ? weather[1] : weather[Random.Range(1, 4)]);
-					Instantiate(floorPrefab);
 				}
 				background.sprite = menuBackground[currentLevel];
 				gameState = GameState.Loading;
@@ -107,6 +101,11 @@ public class GameGlobalController : MonoBehaviour
 				gameState = GameState.Loading;
 				break;
 			case GameState.fadeIn:
+				if (!isMake)
+				{
+					MakeMap(battle ? 0 : 1);
+					isMake = true;
+				}
 				LifeHandler.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)

@@ -4,21 +4,19 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
-	public float x = 0, y = 0;
-	public GameObject background, mapCover;
+	Vector2 bgSize = Vector2.zero;
+	public GameObject background, mapCover, current;
 	public Sprite[] terrains;
 	SpriteRenderer backgroundRenderer;
 	RectTransform rect;
 	Image image;
-	List<RectTransform> childrenList;
 	private bool isUpdated = false;
 
 	void Start()
 	{
 		backgroundRenderer = background.GetComponent<SpriteRenderer>();
-		rect = GetComponent<RectTransform>();
+		rect = current.GetComponent<RectTransform>();
 		image = GetComponent<Image>();
-		childrenList = new List<RectTransform>();
 	}
 
 	void Update()
@@ -33,40 +31,23 @@ public class Map : MonoBehaviour
 				break;
 		}
 		image.enabled = GameGlobalController.isPlaying;
-		rect.anchoredPosition = Slime.transform.position * -1;
-		int xtarget = Mathf.FloorToInt(-rect.anchoredPosition.x / 4), ytarget = Mathf.FloorToInt(-rect.anchoredPosition.y / 4);
-		for (int i = xtarget - 5; i < xtarget + 10; i++)
-		{
-			for (int j = ytarget - 5; j < ytarget + 10; j++)
-			{
-				int currentTarget = i * Mathf.CeilToInt(y / 4) + j;
-				if (currentTarget >= 0 && currentTarget < childrenList.Count && childrenList[currentTarget] != null)
-				{
-					Destroy(childrenList[currentTarget].gameObject);
-					childrenList[currentTarget] = null;
-				}
-			}
-		}
-		
+		rect.anchoredPosition = Slime.transform.position;
 	}
 
 	private void UpdateMap()
 	{
 		isUpdated = true;
-		foreach (RectTransform r in childrenList) if (r != null) Destroy(r.gameObject);
-		childrenList.Clear();
 		image.sprite = terrains[GameGlobalController.currentLevel];
-		rect.sizeDelta = backgroundRenderer.bounds.size;
-		x = backgroundRenderer.bounds.size.x;
-		y = backgroundRenderer.bounds.size.y;
-		for (int i = 0; i < x; i += 4)
-			for (int j = 0; j < y; j += 4)
+		Vector2 terrainSize = new Vector2(image.sprite.bounds.size.x, image.sprite.bounds.size.y);
+		bgSize = backgroundRenderer.bounds.size;
+		GetComponent<RectTransform>().sizeDelta = terrainSize * bgSize.x / terrainSize.x;
+		for (int i = 0; i < bgSize.x; i += 4)
+			for (int j = 0; j < bgSize.y; j += 4)
 			{
 				RectTransform c = Instantiate(mapCover).GetComponent<RectTransform>();
-				c.SetParent(rect);
+				c.SetParent(transform);
 				c.anchoredPosition = new Vector2Int(i, j);
 				c.localScale = new Vector3Int(1, 1, 1);
-				childrenList.Add(c);
 			}
 	}
 }

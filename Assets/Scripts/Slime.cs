@@ -17,7 +17,7 @@ public class Slime : MonoBehaviour//Entity
 
 
 	public GameObject Bomb;
-	float moveSpeed = 160f, jumpStrength = 2e4f, dropStrength = 100f;
+	float moveSpeed = 1600f, jumpStrength = 2e4f, dropStrength = 100f;
 	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
