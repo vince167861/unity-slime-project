@@ -6,6 +6,7 @@ public class TDragonController : MonoBehaviour
 {
     public static Animator animator;
     GameObject dragonhead;
+    public static bool levelstory1 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,11 @@ public class TDragonController : MonoBehaviour
             animator.Play("storydragon");
             GameGlobalController.storystate = 4;
         }
+        if(levelstory1)
+        {
+            animator.Play("level1story");
+            levelstory1 = false;
+        } 
     }
 
     void fireshot()
@@ -37,9 +43,15 @@ public class TDragonController : MonoBehaviour
         MainCameraHandler.allSound = 1;
         dragonhead.GetComponent<ParticleSystem>().Stop();
     }
+
     void storyend1()
     {
         if(GameGlobalController.storystate == 4)  GameGlobalController.storystate = 5;
         Destroy(gameObject);
+    }
+
+    void levelonestory()
+    {
+        animator.SetFloat("storyspeed", 0);
     }
 }

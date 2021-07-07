@@ -14,6 +14,7 @@ public class DialogBoxHandler : MonoBehaviour
 	static Image littlech;
 	public static bool isChat = false;
 	public bool isAnim, isStart = false;
+	public static bool playsurprise = false;
 	public static GameGlobalController.GameState lastgameState;
 	public static Animator animator;
 
@@ -34,10 +35,16 @@ public class DialogBoxHandler : MonoBehaviour
 		{
 			case GameGlobalController.GameState.Animation:
 				point.SetActive(true);
+				if(!isAnim && playsurprise)
+				{
+					animator.Play("cbsurprise");
+					isAnim = true;
+					playsurprise = false;
+				}
 				story.text = LevelVarity.story[GameGlobalController.currentLevel][cbnum];
 				teller.text = LevelVarity.teller[GameGlobalController.currentLevel][cbnum];
 				littlech.sprite = ch[LevelVarity.littlech[GameGlobalController.currentLevel][cbnum]];
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					story.text = teller.text = "";
 					cbnum++;

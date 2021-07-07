@@ -112,6 +112,7 @@ public class GameGlobalController : MonoBehaviour
 				}
 				break;
 			case GameState.Darking:
+				cleareffect = false;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{

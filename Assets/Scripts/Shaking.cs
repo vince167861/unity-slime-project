@@ -32,7 +32,8 @@ public class Shaking : MonoBehaviour
 					if (!dragon)
 					{
 						MainCameraHandler.allSound = 1;
-						Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector2(16, 69);
+						Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3(3.1f, 91, 0);
+						TDragonController.levelstory1 = true;
 						dragon = true;
 					}
 					MainCameraHandler.targetPosition = new Vector3(16, 69, -10);

@@ -2601,18 +2601,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 03cdec8fe2719d2429879845c6b0043b, type: 3}
   - {fileID: 8300000, guid: e74bb4e8d2bb2d043a454de793f43044, type: 3}
   - {fileID: 8300000, guid: d0f480c21bf589d42b4ac6b014c9dfa5, type: 3}
+  - {fileID: 8300000, guid: 6b4d8989bc38c2d4795b257dcbc997fc, type: 3}
   backgroundclip:
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
-  - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
-  - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
+  - {fileID: 8300000, guid: 4640cba052f8bb343a742da650baa9a7, type: 3}
+  - {fileID: 8300000, guid: b7766504018cc4f4899dac3dc3647f42, type: 3}
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
   lobbyclip:
   - {fileID: 8300000, guid: 5a5fd375e5977804a8eb1b20e81cf165, type: 3}
   - {fileID: 8300000, guid: 90d417bcefdc03941a28994a44c6c3ea, type: 3}
+  - {fileID: 8300000, guid: d79ba564d21a56e46b36633f5dfe8584, type: 3}
   - {fileID: 8300000, guid: 90d417bcefdc03941a28994a44c6c3ea, type: 3}
   - {fileID: 8300000, guid: 90d417bcefdc03941a28994a44c6c3ea, type: 3}
-  - {fileID: 8300000, guid: 90d417bcefdc03941a28994a44c6c3ea, type: 3}
+  storyclip:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: d58a218dffe843e42b874d0309fa4867, type: 3}
+  - {fileID: 8300000, guid: d58a218dffe843e42b874d0309fa4867, type: 3}
   audiosource: {fileID: 0}
   cameraSpeedFactor: 8
   clickPrefab: {fileID: 7420119034599500130, guid: 26c980da95037f5419502911604eafd6,

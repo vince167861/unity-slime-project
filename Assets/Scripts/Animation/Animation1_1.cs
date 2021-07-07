@@ -6,7 +6,7 @@ public class Animation1_1 : Animation
 {
 	float hasDelayed = 0;
 	bool isplayed = false;
-	public bool[] doContinuePlaying = { false, false, false, true, true, false, false, false, true };
+	public bool[] doContinuePlaying = { false, false, false, false, false, true, true, false, false, false, false, true };
 	public float timer = 1f;
 
 	void Start() { Animation.handler = this; }
@@ -35,11 +35,13 @@ public class Animation1_1 : Animation
 			GameGlobalController.SetPlaying();
 		}
 		else GameGlobalController.SetAnimation();
-		if (DialogBoxHandler.cbnum == 8)
+		if (DialogBoxHandler.cbnum == 10)  TDragonController.animator.SetFloat("storyspeed", 1);
+		if (DialogBoxHandler.cbnum == 11)
 		{
 			GameGlobalController.gameState = GameGlobalController.GameState.Lighting;
 			MainCameraHandler.allSound = 1;
 		}
+		if (DialogBoxHandler.cbnum == 1 || DialogBoxHandler.cbnum == 8)  DialogBoxHandler.playsurprise = true;
 	}
 	public override void trigger(int id)
 	{

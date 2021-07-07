@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MainCameraHandler : MonoBehaviour
 {
-    public AudioClip[] entityclip, backgroundclip, lobbyclip;
+    public AudioClip[] entityclip, backgroundclip, lobbyclip, storyclip;
     public AudioSource audiosource;
     public static float prevolume = 0.5f;
     public static int allSound = 0;
     public static Vector3 targetPosition;
     public float cameraSpeedFactor = 10;
-    bool music = false;
+    bool music, musicstory = false;
     public static float soundLoud = 0;
+    public static int storymusic = 0;
     public GameObject clickPrefab;
 
     Vector2 scrCtrPos;
@@ -37,6 +38,13 @@ public class MainCameraHandler : MonoBehaviour
         {
             case GameGlobalController.GameState.StartStory:
             case GameGlobalController.GameState.Loading:
+                if(storymusic != 0)  audiosource.clip = storyclip[storymusic];
+                if (!this.musicstory)
+                {
+                    audiosource.loop = true;
+                    audiosource.Play();
+                    this.musicstory = true;
+                }
                 transform.position = new Vector3(29f, 21f, -10f);
                 break;
             case GameGlobalController.GameState.Start:

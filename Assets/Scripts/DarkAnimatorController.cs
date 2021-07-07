@@ -39,6 +39,7 @@ public class DarkAnimatorController : MonoBehaviour
 						Slime.normal();
 						loading.SetActive(true);
 						Slime.animator.Play("load1");
+						animator.Play("loadstory");
 						Slime.transform.position = new Vector3(43, 14, 0);
 						GameGlobalController.storystate = 2;
 						break;
@@ -72,6 +73,7 @@ public class DarkAnimatorController : MonoBehaviour
 				}
 				break;
 			case GameGlobalController.GameState.StartStory:
+                MainCameraHandler.storymusic = 1;
 				switch(GameGlobalController.storystate)
 				{
 					case 5:
@@ -120,7 +122,8 @@ public class DarkAnimatorController : MonoBehaviour
 
 	void story1()
 	{
-		animator.speed = 0;
+		animator.SetFloat("speed", 0);
+		//animator.speed = 0;
 		GameGlobalController.storyeffect = 1;
 		background.SetActive(true);
 		background.GetComponent<SpriteRenderer>().sprite = Image[0];

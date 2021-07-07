@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class LevelVarity
         "我", "芙妮絲(妹妹)", "我", "我", "我", "我"
     };
     public static List<string> start = new List<string> {
-        "什麼......", "怎麼了嗎,哥哥?", "快趴下,芙妮絲!!!!!!", "芙妮絲......我絕對會保護你的......", "嗯...... \n難道我已經死了嗎......", "什麼...這是!!! \n我變成史萊姆了!?"
+        "什麼......  \n(點擊以繼續)", "怎麼了嗎,哥哥?", "快趴下,芙妮絲!!!!!!", "芙妮絲......我絕對會保護你的......", "嗯...... \n難道我已經死了嗎......", "什麼...這是!!! \n我變成史萊姆了!?"
     };
     public static List<List<int>> LevelWeather = new List<List<int>> {
         new List<int> {-1, 0, -1}
@@ -40,24 +40,27 @@ public class LevelVarity
         "一說到冒險,就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。"
         }
     };
-    public static List<List<int>> littlech = new List<List<int>> {
-        new List<int> {0,0,0,0,1,2,1,2},
+    public static List<List<int>> littlech = new List<List<int>> {    //0:世界之聲 1:me 2:魔龍王
+        new List<int> {0,1,0,1,0,0,1,2,1,2,1},
         new List<int> {0,0,1,0,1,0,0,0,0}
     };
     public static List<List<string>> teller = new List<List<string>> {
-        new List<string> {"世界の声","世界の声","世界の声","世界の声",me,"魔龍王",me,"魔龍王"},
+        new List<string> {"世界の声",me,"世界の声",me,"世界の声","世界の声",me,"魔龍王",me,"魔龍王",me},
         new List<string> {"世界の声","世界の声",me,"世界の声",me,"世界の声","世界の声","世界の声","世界の声"}
     };
     public static List<List<string>> story = new List<List<string>> {
         new List<string> {
-        "勇者啊,運用你的智慧、力量以及運氣在這新的世界大鬧一翻吧!  \n(點擊以繼續)",
-        "想要獲得更多角色嗎？想要的話可以全部給你，去找吧！ 我把轉生的方法都放在那裡了,就在最後一道門的後面。",
-        "操作說明 : \n 移動鍵 : W-A-S-D \n 一技 : f （已解鎖）    大招 : q (未解鎖) \n 撿拾道具、開門 : g    (詳情可見暫停->說明)",
-        "史萊姆的特性是\"彈性\",能夠以\"撞擊牆壁的方式進行近一步地跳躍(再按一次 W + (A or D))\"!",
-        "??????",
-        "...這只卑賤的史萊姆就是勇者嗎",
-        "啊不...我只是來冒險的 \n (你又是誰啊!?)",
-        "哼,想挑戰我就來吧。啊...多久沒人來挑戰我了。 \n 我等你,就在最後那道門前......"},
+        "勇者啊,運用你的智慧、力量以及運氣在我的地下城大鬧一翻吧!",
+        "什麼地下城!? 芙妮絲呢??? 還有你是誰? \n把我的妹妹還來!!!",
+        "想找回你的妹妹嗎? 哼,那你就好好掙扎到那最後一道門吧! \n至於我是誰...不是你需要知道的,你也沒資格知道。",
+        "芙妮絲...你到底在哪裡......",
+        "操作說明：\n 移動鍵：W-A-S-D \n 普攻：F （已解鎖）    大招：q (未解鎖) \n 開門：G   使用道具：Q (詳情可見暫停->說明)",
+        "在右邊這種特殊(紫色)的牆壁上,能夠以\"撞擊牆壁的方式進一步地跳躍(按住方向鍵並在按一次 W )\"!",
+        "???  \n這個聲音......",
+        "史萊姆...\"傳說中的勇者\"呢?",
+        "就是你...就是你把芙妮絲擄走的吧!!!",
+        "哼,看來預言似乎出錯了啊。 \n 你就記住我的名字吧, 我就是這個地下城的守護者-- \"魔龍王\" 伊弗歐斯",
+        "等等別走, 這裡到底是哪裡啊!!!"},
         new List<string> {
         "歡迎來到新手村第一層!在這裡你可以看到許多新的敵人、新的機關,也是個能讓你快速成長的好地方喔~",
         "在這裡請記住：「每當心情鬱悶的時候,用手托腮就好,手臂會因為幫上忙而開心的。」",
@@ -72,6 +75,11 @@ public class LevelVarity
     };
     public static List<Vector2> spawnpoint = new List<Vector2> {
         new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
+    };
+    public static List<List<Vector2>> promptpoint = new List<List<Vector2>> {
+        new List<Vector2> {
+            new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
+        }
     };
 
 }

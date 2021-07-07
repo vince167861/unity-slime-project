@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abd418cd48be4142991f410df7fd3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doContinuePlaying: 000000010100000001
+  doContinuePlaying: 00000000000101000000000001
   timer: 1
 --- !u!114 &293850858892211719
 MonoBehaviour:

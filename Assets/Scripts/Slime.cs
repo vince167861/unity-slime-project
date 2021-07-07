@@ -250,6 +250,7 @@ public class Slime : MonoBehaviour//Entity
 		{
 			animator.Play("Disappear");
 			GameGlobalController.storystate = 3;
+			DarkAnimatorController.animator.SetFloat("speed", 1);
 		}
 	}
 }
