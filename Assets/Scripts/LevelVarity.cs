@@ -19,7 +19,7 @@ public class LevelVarity
     };
     public static List<int> keyMax = new List<int> { 1, 3, };
     public static List<int> doorKey = new List<int> { 0, 2, 3};
-    public static List<string> adteller = new List<string> { "世界の声", "", "","嚮導", };
+    public static List<string> adteller = new List<string> { "傳送門", "", "","嚮導", };
     public static List<List<string>> chat = new List<List<string>> {
         new List<string>{},
         new List<string>{},
@@ -78,7 +78,7 @@ public class LevelVarity
     };
     public static List<List<Vector2>> promptpoint = new List<List<Vector2>> {
         new List<Vector2> {
-            new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
+            new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
         }
     };
 
