@@ -13,7 +13,7 @@ public class Map : MonoBehaviour
 	private bool isUpdated = false;
 	public static bool isShown = false;
 
-	public static readonly int MAP_SCALE = 5;
+	public static readonly int MAP_SCALE = 2;
 
 	void Start()
 	{
