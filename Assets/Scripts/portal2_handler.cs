@@ -18,7 +18,7 @@ public class portal2_handler : MonoBehaviour
     {
         switch (GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.fadeOut:
+            case GameGlobalController.GameState.Darking:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Lobby:

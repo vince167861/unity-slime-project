@@ -43,6 +43,6 @@ public class ButtonHandler : MonoBehaviour
         if (!GameGlobalController.battle) GameGlobalController.currentLevel++;
         GameGlobalController.battle = false;
         MainCameraHandler.allSound = 3;
-        GameGlobalController.gameState = GameGlobalController.GameState.fadeOut;
+        GameGlobalController.gameState = GameGlobalController.GameState.Darking;
     }
 }

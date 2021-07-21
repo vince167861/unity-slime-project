@@ -19,7 +19,7 @@ public class Instruction : MonoBehaviour
         spot.SetActive(isNews);
         switch(GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.LevelPrepare:
+            case GameGlobalController.GameState.Start:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Lobby:

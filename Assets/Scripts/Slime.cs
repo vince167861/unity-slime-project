@@ -52,7 +52,7 @@ public class Slime : MonoBehaviour//Entity
 				spriteRender.sortingLayerName = "Black Screen";
 				spriteRender.sortingOrder = 3;
 				break;
-			case GameGlobalController.GameState.fadeIn:
+			case GameGlobalController.GameState.Brightening:
 				flareLayer.enabled = true;
 				spriteRender.sortingLayerName = "Main Objects";
 				spriteRender.sortingOrder = 8;

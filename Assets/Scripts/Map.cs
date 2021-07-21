@@ -26,10 +26,10 @@ public class Map : MonoBehaviour
 	{
 		switch (GameGlobalController.gameState)
 		{
-			case GameGlobalController.GameState.LevelPrepare:
+			case GameGlobalController.GameState.Start:
 				if (GameGlobalController.battle) isUpdated = false;
 				break;
-			case GameGlobalController.GameState.fadeIn:
+			case GameGlobalController.GameState.Brightening:
 				if (!isUpdated) UpdateMap();
 				break;
 		}
