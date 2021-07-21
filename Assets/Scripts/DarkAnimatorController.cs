@@ -24,7 +24,7 @@ public class DarkAnimatorController : MonoBehaviour
 		switch (GameGlobalController.gameState)
 		{
 			case GameGlobalController.GameState.StartGame:
-				if(start)
+				if (start)
 				{
 					background.SetActive(false);
 					loading.SetActive(false);

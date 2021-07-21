@@ -73,7 +73,7 @@ public class MainCameraHandler : MonoBehaviour
         if(GameGlobalController.gameState != GameGlobalController.GameState.StartGame && GameGlobalController.gameState != GameGlobalController.GameState.StartStory)
         {
             // Update camera view position
-            Vector3 mPos = Input.mousePosition;
+            // Vector3 mPos = Input.mousePosition;
             float camera_x = targetPosition.x + mouseDeltaX;
             float camera_y = targetPosition.y + mouseDeltaY;
             // Fix the position to prevent rendering void

@@ -4,7 +4,7 @@ public class GameGlobalController : MonoBehaviour
 {
 	/// Imports
 	// Canvases
-	public GameObject lobbyCanvas, passCanvas, deadCanvas, slimeHealthCanvas;
+	public GameObject lobbyCanvas, passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas;
 	// Prefabs
 	public GameObject slimePrefab, enemySpawnerPrefab, brickPrefab, portalPrefab, floorPrefab, instructPrefab;
 	// Level terrians
@@ -29,11 +29,9 @@ public class GameGlobalController : MonoBehaviour
 
 	void Start()
 	{
-		
 		keyCountObject = GameObject.Find("Key Count");
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
-
 	}
 
 	void Update()
@@ -130,6 +128,7 @@ public class GameGlobalController : MonoBehaviour
 			case GameState.MenuPrepare:
 				guildwoman.startanim = true;
 				DarkAnimatorController.start = true;
+				background.sprite = menuBackground[currentLevel];
 				gameState = GameState.Loading;
 				break;
 			case GameState.Start:
@@ -141,16 +140,15 @@ public class GameGlobalController : MonoBehaviour
 					DarkAnimatorController.start = true;
 					gameState = GameState.Loading;
 				}
+				background.sprite = gameBackground[currentLevel];
 				break;
 			case GameState.Brightening:
-				if(!isMake)
+				if (!isMake)
 				{
-					if(battle)	MakeMap(0);
-					else  MakeMap(1);
+					MakeMap(battle ? 0 : 1);
 					isMake = true;
 				}
 				LifeHandler.start = true;
-				background.sprite = battle ? gameBackground[currentLevel] : menuBackground[currentLevel];
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
@@ -212,7 +210,7 @@ public class GameGlobalController : MonoBehaviour
 
 	void MakeMap(int which)
 	{
-		if(which == 0)
+		if (which == 0)
 		{
 			if (currentLevel < LevelVarity.spawnpoint.Count)
 			{
@@ -235,7 +233,9 @@ public class GameGlobalController : MonoBehaviour
 	public static bool isAnimation => gameState == GameState.Animation;
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
 	public static bool isDarking => gameState == GameState.Darking;
+	public static bool isBrightening => gameState == GameState.Brightening;
 	public static bool hasEnded => gameState == GameState.End;
+	public static bool isStart => gameState == GameState.Start;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
 	public static void SetAnimation() { gameState = GameState.Animation; }
