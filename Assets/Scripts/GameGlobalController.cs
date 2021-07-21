@@ -4,7 +4,7 @@ public class GameGlobalController : MonoBehaviour
 {
 	/// Imports
 	// Canvases
-	public GameObject lobbyCanvas, passCanvas, deadCanvas, slimeHealthCanvas;
+	public GameObject lobbyCanvas, passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas;
 	// Prefabs
 	public GameObject slimePrefab, enemySpawnerPrefab, brickPrefab, portalPrefab, floorPrefab, instructPrefab;
 	// Level terrians
