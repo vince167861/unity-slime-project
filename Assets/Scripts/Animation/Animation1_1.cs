@@ -38,7 +38,7 @@ public class Animation1_1 : Animation
 		if (DialogBoxHandler.cbnum == 10)  TDragonController.animator.SetFloat("storyspeed", 1);
 		if (DialogBoxHandler.cbnum == 11)
 		{
-			GameGlobalController.gameState = GameGlobalController.GameState.Lighting;
+			GameGlobalController.gameState = GameGlobalController.GameState.BrightFadeOut;
 			MainCameraHandler.allSound = 1;
 		}
 		if (DialogBoxHandler.cbnum == 1 || DialogBoxHandler.cbnum == 8)  DialogBoxHandler.playsurprise = true;

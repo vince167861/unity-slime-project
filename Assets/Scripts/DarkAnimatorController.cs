@@ -82,19 +82,19 @@ public class DarkAnimatorController : MonoBehaviour
 						break;
 				}
 				break;
-			case GameGlobalController.GameState.Darking:
+			case GameGlobalController.GameState.DarkFadeOut:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
 				animator.Play("black");
 				break;
-			case GameGlobalController.GameState.Brightening:
+			case GameGlobalController.GameState.DarkFadeIn:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
 				animator.Play("light");
 				break;
-			case GameGlobalController.GameState.Lighting:
+			case GameGlobalController.GameState.BrightFadeOut:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
 				animator.Play("black");
 				break;
-			case GameGlobalController.GameState.Unlighting:
+			case GameGlobalController.GameState.BrightFadeIn:
 				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
 				animator.Play("light");
 				break;
@@ -117,7 +117,7 @@ public class DarkAnimatorController : MonoBehaviour
 	void loadIn()
 	{
 		loading.SetActive(false);
-		GameGlobalController.gameState = GameGlobalController.GameState.Brightening;
+		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeIn;
 	}
 
 	void story1()

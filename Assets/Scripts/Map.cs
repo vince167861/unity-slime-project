@@ -29,7 +29,7 @@ public class Map : MonoBehaviour
 			case GameGlobalController.GameState.LevelPrepare:
 				if (GameGlobalController.battle) isUpdated = false;
 				break;
-			case GameGlobalController.GameState.Brightening:
+			case GameGlobalController.GameState.DarkFadeIn:
 				if (!isUpdated) UpdateMap();
 				break;
 		}

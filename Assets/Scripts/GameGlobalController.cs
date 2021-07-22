@@ -14,7 +14,23 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, StartStory, Input, LevelPrepare, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, StartStory, Input, LevelPrepare, MenuPrepare,
+		/// <summary>
+		/// Fade out to dark color.
+		/// </summary>
+		DarkFadeOut, Loading,
+		/// <summary>
+		/// Fade in from dark color.
+		/// </summary>
+		DarkFadeIn, Playing, Pause, Instruction, End, Lobby, Animation, Shaking,
+		/// <summary>
+		/// Fade out to bright color.
+		/// </summary>
+		BrightFadeOut,
+		/// <summary>
+		/// Fade in from bright color.
+		/// </summary>
+		BrightFadeIn, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
@@ -93,15 +109,15 @@ public class GameGlobalController : MonoBehaviour
 				break;
 			case GameState.Loading:
 				break;
-			case GameState.Lighting:
+			case GameState.BrightFadeOut:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					gameState = GameState.Unlighting;
+					gameState = GameState.BrightFadeIn;
 				}
 				break;
-			case GameState.Unlighting:
+			case GameState.BrightFadeIn:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
@@ -109,7 +125,7 @@ public class GameGlobalController : MonoBehaviour
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
-			case GameState.Darking:
+			case GameState.DarkFadeOut:
 				cleareffect = false;
 				delta += Time.deltaTime;
 				if (delta >= 1)
@@ -142,7 +158,7 @@ public class GameGlobalController : MonoBehaviour
 				}
 				background.sprite = gameBackground[currentLevel];
 				break;
-			case GameState.Brightening:
+			case GameState.DarkFadeIn:
 				if (!isMake)
 				{
 					MakeMap(battle ? 0 : 1);
@@ -187,13 +203,13 @@ public class GameGlobalController : MonoBehaviour
 	public static void StartNewGame()
 	{
 		battle = true; // Starts the battle
-		gameState = GameState.Darking;
+		gameState = GameState.DarkFadeOut;
 	}
 
 	public static void GotoLobby()
 	{
 		battle = false;
-		gameState = GameState.Darking;
+		gameState = GameState.DarkFadeOut;
 	}
 
 	public static void GoodEnd()
@@ -232,8 +248,8 @@ public class GameGlobalController : MonoBehaviour
 	public static bool isLobby => gameState == GameState.Lobby;
 	public static bool isAnimation => gameState == GameState.Animation;
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
-	public static bool isDarking => gameState == GameState.Darking;
-	public static bool isBrightening => gameState == GameState.Brightening;
+	public static bool isDarking => gameState == GameState.DarkFadeOut;
+	public static bool isBrightening => gameState == GameState.DarkFadeIn;
 	public static bool hasEnded => gameState == GameState.End;
 	public static bool isStart => gameState == GameState.LevelPrepare;
 
