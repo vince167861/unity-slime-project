@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class SkeletonWarriorHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	}
 
-    void Attacking()
-    {
-        this.transform.Find("武士刀").gameObject.GetComponent<ParticleSystem>().Play();
-    }
+	// Update is called once per frame
+	void Update()
+	{
 
-    void noAttack()
-    {
-        this.transform.Find("武士刀").gameObject.GetComponent<ParticleSystem>().Stop();
-    }
+	}
+
+	void Attacking()
+	{
+		GetComponentInChildren<ParticleSystem>().Play();
+	}
+
+	void noAttack()
+	{
+		GetComponentInChildren<ParticleSystem>().Stop();
+	}
 }

@@ -8,7 +8,7 @@ public class Mushroom : Entity, Attackable
 	public float jumpSpan = 0, jumpWait = 0;
 	public bool hasTarget = false;
 	private Animator animator;
-	public GameObject effect;
+	public GameObject effect, potion;
 
 	private void Start()
 	{
@@ -54,6 +54,7 @@ public class Mushroom : Entity, Attackable
 	void DieAnimationEnd()
 	{
 		Instantiate(effect).GetComponent<Transform>().position = this.transform.position;
+		if (Random.value <= 0.1) Instantiate(potion);
 		Destroy(gameObject);
 	}
 
