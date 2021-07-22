@@ -29,7 +29,7 @@ public class TypeBoxHandler : MonoBehaviour
                 LevelVarity.me = Input.text;
                 GameGlobalController.storystate = 0;
                 GameGlobalController.battle = true;
-                GameGlobalController.gameState = GameGlobalController.GameState.Start;
+                GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
                 GameGlobalController.givename();
                 isName = true;
             }

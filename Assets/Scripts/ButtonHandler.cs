@@ -15,7 +15,7 @@ public class ButtonHandler : MonoBehaviour
         DarkAnimatorController.animator.SetBool("skip", true);
         GameGlobalController.storystate = 0;
         GameGlobalController.battle = true;
-        GameGlobalController.gameState = GameGlobalController.GameState.Start;
+        GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
     }
 
     public void GameInit()

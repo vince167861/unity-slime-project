@@ -47,7 +47,7 @@ public class MainCameraHandler : MonoBehaviour
                 }
                 transform.position = new Vector3(29f, 21f, -10f);
                 break;
-            case GameGlobalController.GameState.Start:
+            case GameGlobalController.GameState.LevelPrepare:
             case GameGlobalController.GameState.MenuPrepare:
                 targetPosition = new Vector3(33f, 24f, -10f);
                 this.music = false;

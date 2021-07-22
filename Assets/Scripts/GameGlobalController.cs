@@ -14,7 +14,7 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, StartStory, Input, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	public enum GameState { StartGame, StartStory, Input, LevelPrepare, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
@@ -122,7 +122,7 @@ public class GameGlobalController : MonoBehaviour
 					}
 					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 					if(battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					GameGlobalController.gameState = GameGlobalController.battle ? GameState.Start : GameState.MenuPrepare;
+					GameGlobalController.gameState = GameGlobalController.battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 				}
 				break;
 			case GameState.MenuPrepare:
@@ -131,7 +131,7 @@ public class GameGlobalController : MonoBehaviour
 				background.sprite = menuBackground[currentLevel];
 				gameState = GameState.Loading;
 				break;
-			case GameState.Start:
+			case GameState.LevelPrepare:
 				if(LevelVarity.me == null)
 					gameState = GameState.Input;
 				else
@@ -235,7 +235,7 @@ public class GameGlobalController : MonoBehaviour
 	public static bool isDarking => gameState == GameState.Darking;
 	public static bool isBrightening => gameState == GameState.Brightening;
 	public static bool hasEnded => gameState == GameState.End;
-	public static bool isStart => gameState == GameState.Start;
+	public static bool isStart => gameState == GameState.LevelPrepare;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
 	public static void SetAnimation() { gameState = GameState.Animation; }
