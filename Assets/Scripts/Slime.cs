@@ -40,7 +40,7 @@ public class Slime : MonoBehaviour//Entity
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		spriteRender = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
-		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
+		flareLayer = (Behaviour)Camera.main.GetComponent("FlareLayer");
 	}
 
 	void Update()
@@ -91,7 +91,7 @@ public class Slime : MonoBehaviour//Entity
 				{
 					animator.SetBool("right", Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
 					animator.SetBool("left", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow));
-					animator.SetBool("jump", Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W));
+					animator.SetBool("jump", Input.GetKey(KeyCode.W));
 					animator.SetBool("crouch", Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S));
 				}
 				if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && allowMove)
@@ -106,7 +106,7 @@ public class Slime : MonoBehaviour//Entity
 				}
 				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S))
 					rigidbody2d.AddForce(new Vector2(0, -dropStrength));
-				if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isTouchingGround)
+				if (Input.GetKeyDown(KeyCode.W) && isTouchingGround)
 				{
 					MainCameraHandler.allSound = 2;
 					rigidbody2d.AddForce(new Vector2(0, jumpStrength));
