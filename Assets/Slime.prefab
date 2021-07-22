@@ -80,10 +80,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6591067462164875447}
   - component: {fileID: 6591067462164875446}
-  - component: {fileID: 6591067462164875445}
   - component: {fileID: 6591067462164875444}
   - component: {fileID: 1977730639100548441}
   - component: {fileID: 4599898026295789326}
+  - component: {fileID: 78715632057334407}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
@@ -157,27 +157,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6591067462164875445
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6591067462164887369}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 8
-  m_LinearDrag: 1
-  m_AngularDrag: 0
-  m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: b6767fafe0a24d84f9819203a1ba73b7, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &6591067462164875444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,3 +242,24 @@ PolygonCollider2D:
       - {x: 2.68651, y: -0.7771454}
       - {x: 2.5774765, y: 0.078074455}
       - {x: 2.3032117, y: 0.73737144}
+--- !u!50 &78715632057334407
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591067462164887369}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 5
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

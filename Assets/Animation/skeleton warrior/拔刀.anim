@@ -74,7 +74,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -135,7 +135,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -232,7 +232,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -311,7 +311,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -408,7 +408,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -505,7 +505,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -602,7 +602,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -681,7 +681,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -778,7 +778,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -875,7 +875,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -927,7 +927,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -979,7 +979,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1031,7 +1031,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1083,7 +1083,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1180,7 +1180,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1277,7 +1277,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1356,7 +1356,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -1561,7 +1561,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1616,7 +1616,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1680,7 +1680,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1735,7 +1735,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1790,7 +1790,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1854,7 +1854,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1954,7 +1954,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2054,7 +2054,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2154,7 +2154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2227,7 +2227,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2300,7 +2300,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2382,7 +2382,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2482,7 +2482,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2582,7 +2582,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2682,7 +2682,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2782,7 +2782,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2882,7 +2882,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2982,7 +2982,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3082,7 +3082,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3182,7 +3182,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3282,7 +3282,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3346,7 +3346,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3410,7 +3410,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3492,7 +3492,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3592,7 +3592,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3692,7 +3692,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3792,7 +3792,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3892,7 +3892,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3992,7 +3992,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4092,7 +4092,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4147,7 +4147,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4202,7 +4202,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4257,7 +4257,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4312,7 +4312,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4367,7 +4367,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4422,7 +4422,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4477,7 +4477,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4532,7 +4532,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4587,7 +4587,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4642,7 +4642,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4697,7 +4697,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4752,7 +4752,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4816,7 +4816,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4880,7 +4880,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4980,7 +4980,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5044,7 +5044,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5108,7 +5108,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5208,7 +5208,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5272,7 +5272,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5336,7 +5336,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5418,7 +5418,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -5429,7 +5429,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5439,7 +5439,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5449,7 +5449,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u8173_\u4E0A\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5459,7 +5459,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5469,7 +5469,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5479,7 +5479,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u5DE6\u624B_\u4E0A\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5489,7 +5489,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5499,7 +5499,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5509,7 +5509,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8/\u5DE6\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5519,7 +5519,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5529,7 +5529,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5539,7 +5539,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5549,7 +5549,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5559,7 +5559,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5569,7 +5569,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u528D\u9798"
+    path: "Root/\u528D\u9798"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5579,7 +5579,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5589,7 +5589,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5599,7 +5599,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u4E0A\u8EAB_\u5167"
+    path: "Root/\u4E0A\u8EAB_\u5167"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5609,7 +5609,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5619,7 +5619,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5629,7 +5629,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5639,7 +5639,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5649,7 +5649,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5659,7 +5659,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
+    path: "Root/\u5DE6\u624B_\u4E0A\u80A2/\u5DE6\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5669,7 +5669,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5679,7 +5679,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5689,7 +5689,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2/\u6B66\u58EB\u5200"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5699,7 +5699,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5709,7 +5709,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5719,7 +5719,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u62AB\u98A8_\u524D"
+    path: "Root/\u62AB\u98A8_\u524D"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5729,7 +5729,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5739,7 +5739,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5749,7 +5749,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u624B_\u4E0A\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5759,7 +5759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5769,7 +5769,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5779,7 +5779,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
+    path: "Root/\u53F3\u8173_\u4E0A\u90E8/\u53F3\u8173_\u4E2D\u90E8/\u53F3\u8173_\u4E0B\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5789,7 +5789,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5799,7 +5799,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5809,7 +5809,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u8170\u90E8"
+    path: "Root/\u8170\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5819,7 +5819,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5829,7 +5829,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5839,7 +5839,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
+    path: "Root/\u53F3\u624B_\u4E0A\u80A2/\u53F3\u624B_\u4E0B\u80A2"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5849,7 +5849,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5859,7 +5859,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5869,7 +5869,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
+    path: "Root/\u5DE6\u8173_\u4E0A\u90E8/\u5DE6\u8173_\u4E2D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5879,7 +5879,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5889,7 +5889,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5899,7 +5899,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u982D\u90E8"
+    path: "Root/\u982D\u90E8"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5909,7 +5909,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5919,7 +5919,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5929,7 +5929,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u4E0A\u8EAB_\u5916"
+    path: "Root/\u4E0A\u8EAB_\u5916"
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
