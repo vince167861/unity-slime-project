@@ -14,29 +14,39 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, StartStory, Input, LevelPrepare, MenuPrepare,
-		/// <summary>
-		/// Fade out to dark color.
-		/// </summary>
+	/// <summary> Used to describe a game state. </summary>
+	/// <remarks> Add xml comment when add new state. </remarks>
+	public enum GameState { StartGame, StartStory, Input,
+		/// <summary> State before every level starts. </summary>
+		/// <remarks> Was 'Start' before. </remarks>
+		LevelPrepare, 
+		/// <summary> State before enter menu. </summary>
+		MenuPrepare,
+		/// <summary> Fade out to dark color. </summary>
+		/// <remarks> Was 'Darking' before.</remarks>
 		DarkFadeOut, Loading,
-		/// <summary>
-		/// Fade in from dark color.
-		/// </summary>
-		DarkFadeIn, Playing, Pause, Instruction, End, Lobby, Animation, Shaking,
-		/// <summary>
-		/// Fade out to bright color.
-		/// </summary>
+		/// <summary> Fade in from dark color. </summary>
+		/// <remarks> Was 'Brightening' before. </remarks>
+		DarkFadeIn,
+		/// <summary> State when players are playing in every level. </summary>
+		Playing,
+		/// <summary> State when players are in pause menu. </summary>
+		Pause, Instruction, End, Lobby, Animation, Shaking,
+		/// <summary> Fade out to bright color. </summary>
+		/// <remarks> Was 'Lighting' before. </remarks>
 		BrightFadeOut,
-		/// <summary>
-		/// Fade in from bright color.
-		/// </summary>
+		/// <summary> Fade in from bright color. </summary>
+		/// <remarks> Was 'Unlighting' before. </remarks>
 		BrightFadeIn, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
+
+#warning I suggest to use enumertaion type for those three fields.
 	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
 	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
 	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
+
 	float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas;
