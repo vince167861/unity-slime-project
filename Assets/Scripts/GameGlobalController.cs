@@ -38,6 +38,7 @@ public class GameGlobalController : MonoBehaviour
 		/// <summary> Fade in from bright color. </summary>
 		/// <remarks> Was 'Unlighting' before. </remarks>
 		BrightFadeIn, LobbyInfo, Advice };
+	/// <summary> Store and control current game state. </summary>
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
@@ -148,7 +149,7 @@ public class GameGlobalController : MonoBehaviour
 					}
 					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 					if(battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					GameGlobalController.gameState = GameGlobalController.battle ? GameState.LevelPrepare : GameState.MenuPrepare;
+					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 				}
 				break;
 			case GameState.MenuPrepare:
@@ -180,7 +181,7 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
-					if(storystate == 0 && !isStory) 
+					if (storystate == 0 && !isStory) 
 					{
 						Instantiate(weather[5]);
 						storystate = 1;

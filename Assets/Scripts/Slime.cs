@@ -1,11 +1,6 @@
 ﻿#pragma warning disable CS0108
 using UnityEngine;
 
-/**
- * Pickup potion: line 142
- * Consume potion: line 83
- */
-
 public class Slime : MonoBehaviour//Entity
 {
 	public int direction;
@@ -144,6 +139,7 @@ public class Slime : MonoBehaviour//Entity
 	{
 		animator.Play("Disappear");
 	}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		switch (collision.collider.tag)
@@ -206,13 +202,15 @@ public class Slime : MonoBehaviour//Entity
 		GameGlobalController.BadEnd();
 	}
 
-	void start2()
+	/// <summary> For animation 'Start Jump' callback. </summary>
+	void Start2()
 	{
 		animator.Play("Disappear");
 		DarkAnimatorController.animator.speed = 1;
 	}
 
-	void jump()
+	/// <summary> For Game Start animation. </summary>
+	void JumpRight()
 	{
 		MainCameraHandler.allSound = 2;
 		rigidbody2d.AddForce(new Vector2(12000f, 1.5e4f));
@@ -220,7 +218,8 @@ public class Slime : MonoBehaviour//Entity
 		direction = 1;
 	}
 
-	void littlejump()
+	/// <summary> For Game Start animation. </summary>
+	void SmallJumpRight()
 	{
 		rigidbody2d.AddForce(new Vector2(4000f, 0.5e4f));
 		animator.Play("Jump Right");
@@ -234,9 +233,7 @@ public class Slime : MonoBehaviour//Entity
 		direction = 1;
 	}
 
-	void _null(){}
-
-	public static void normal()
+	public static void ResetState()
 	{
 		animator.SetBool("right", false);
 		animator.SetBool("left", false);

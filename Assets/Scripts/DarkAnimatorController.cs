@@ -2,7 +2,7 @@
 
 public class DarkAnimatorController : MonoBehaviour
 {
-	public GameObject slimePrefab, dragonPrefab, housePrefab;
+	public GameObject slimePrefab, dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
 	public static bool start = true;
@@ -19,7 +19,7 @@ public class DarkAnimatorController : MonoBehaviour
 		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
 	}
 
-	void Update()
+	private void Update()
 	{
 		switch (GameGlobalController.gameState)
 		{
@@ -28,15 +28,35 @@ public class DarkAnimatorController : MonoBehaviour
 				{
 					background.SetActive(false);
 					loading.SetActive(false);
-					animator.Play("startgame");
+					animator.Play("Start Game");
 					start = false;
 				}
 				break;
 			case GameGlobalController.GameState.Loading:
-				switch(GameGlobalController.storystate)
+				switch (GameGlobalController.storystate)
 				{
+					case 0:
+						if (GameGlobalController.currentLevel == 0) EndLoading();
+						else if (start)
+						{
+							Slime.ResetState();
+							loading.SetActive(true);
+							if (GameGlobalController.battle)
+							{
+								Slime.animator.Play("load1");
+								animator.Play("loadgame");
+							}
+							else
+							{
+								Slime.animator.Play("load2");
+								animator.Play("loadlobby");
+							}
+							Slime.transform.position = new Vector3(46, 14, 0);
+							start = false;
+						}
+						break;
 					case 1:
-						Slime.normal();
+						Slime.ResetState();
 						loading.SetActive(true);
 						Slime.animator.Play("load1");
 						animator.Play("loadstory");
@@ -50,31 +70,10 @@ public class DarkAnimatorController : MonoBehaviour
 						animator.speed = 1;
 						break;
 				}
-				if(GameGlobalController.storystate == 0)
-				{
-					if(GameGlobalController.currentLevel == 0)  loadIn();
-					else if(start)
-					{
-						Slime.normal();
-						loading.SetActive(true);
-						if(GameGlobalController.battle)
-						{
-							Slime.animator.Play("load1");
-							animator.Play("loadgame");
-						}
-						else  
-						{
-							Slime.animator.Play("load2");
-							animator.Play("loadlobby");
-						}	
-						Slime.transform.position = new Vector3(46, 14, 0);
-						start = false;
-					}
-				}
 				break;
 			case GameGlobalController.GameState.StartStory:
-                MainCameraHandler.storymusic = 1;
-				switch(GameGlobalController.storystate)
+				MainCameraHandler.storymusic = 1;
+				switch (GameGlobalController.storystate)
 				{
 					case 5:
 					case 7:
@@ -83,38 +82,43 @@ public class DarkAnimatorController : MonoBehaviour
 				}
 				break;
 			case GameGlobalController.GameState.DarkFadeOut:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
+				spriteRenderer.color = new Color(0, 0, 0);
 				animator.Play("black");
 				break;
 			case GameGlobalController.GameState.DarkFadeIn:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
-				animator.Play("light");
+				spriteRenderer.color = new Color(0, 0, 0);
+				animator.Play("Dark Fade In");
 				break;
 			case GameGlobalController.GameState.BrightFadeOut:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
+				spriteRenderer.color = new Color(1, 1, 1);
 				animator.Play("black");
 				break;
 			case GameGlobalController.GameState.BrightFadeIn:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
+				spriteRenderer.color = new Color(1, 1, 1);
 				animator.Play("light");
 				break;
 		}
 	}
 
-	void start1()
+	/// <summary> For animation 'Start Game' callback. </summary>
+	void Start1()
 	{
 		animator.speed = 0;
 		Slime.transform.position = new Vector3(-3, 11, 0);
-		Slime.animator.Play("startjump");
+		Slime.animator.Play("Start Jump");
 	}
 
-	void start3()
+	// Start2() -> Slime.Start2()
+
+	/// <summary> For animation 'Start Game' callback. </summary>
+	void Start3()
 	{
+		startScene.SetActive(false);
 		GameGlobalController.gameState = GameGlobalController.GameState.MenuPrepare;
-		GameObject.Find("StartScene").SetActive(false);
 	}
 
-	void loadIn()
+	/// <summary> Close loading screen. </summary>
+	void EndLoading()
 	{
 		loading.SetActive(false);
 		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeIn;

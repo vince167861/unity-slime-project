@@ -52,35 +52,35 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.05
-    functionName: jump
+    functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.5
-    functionName: jump
+    functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 3
-    functionName: jump
+    functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 4.5
-    functionName: jump
+    functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 5.75
-    functionName: start2
+    functionName: Start2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

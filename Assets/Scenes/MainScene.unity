@@ -1006,6 +1006,7 @@ MonoBehaviour:
     type: 3}
   housePrefab: {fileID: 7372207984277310545, guid: 066fd6bd26ca59d429029b52aec880da,
     type: 3}
+  startScene: {fileID: 1351225764}
   Image:
   - {fileID: 21300000, guid: 172851ca19c38754d8c6c68f0a5eb05f, type: 3}
   - {fileID: 21300000, guid: 172851ca19c38754d8c6c68f0a5eb05f, type: 3}
@@ -6682,7 +6683,7 @@ GameObject:
   - component: {fileID: 1351225766}
   - component: {fileID: 1351225767}
   m_Layer: 0
-  m_Name: StartScene
+  m_Name: Start Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

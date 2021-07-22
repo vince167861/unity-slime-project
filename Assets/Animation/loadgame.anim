@@ -337,7 +337,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 3
-    functionName: loadIn
+    functionName: EndLoading
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
