@@ -16,10 +16,12 @@ public class GameGlobalController : MonoBehaviour
 
 	/// <summary> Used to describe a game state. </summary>
 	/// <remarks> Add xml comment when add new state. </remarks>
-	public enum GameState { StartGame, StartStory, Input,
+	public enum GameState
+	{
+		StartGame, StartStory, Input,
 		/// <summary> State before every level starts. </summary>
 		/// <remarks> Was 'Start' before. </remarks>
-		LevelPrepare, 
+		LevelPrepare,
 		/// <summary> State before enter menu. </summary>
 		MenuPrepare,
 		/// <summary> Fade out to dark color. </summary>
@@ -37,18 +39,58 @@ public class GameGlobalController : MonoBehaviour
 		BrightFadeOut,
 		/// <summary> Fade in from bright color. </summary>
 		/// <remarks> Was 'Unlighting' before. </remarks>
-		BrightFadeIn, LobbyInfo, Advice };
+		BrightFadeIn, LobbyInfo, Advice
+	};
 	/// <summary> Store and control current game state. </summary>
 	public static GameState gameState = GameState.StartGame;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
 
 #warning I suggest to use enumertaion type for those three fields.
-	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
-	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
-	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
+#warning Description of each state is ambigious.
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	///	<list type="table">
+	///	<listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>unstory</term></item>
+	/// <item><term>1</term><term>startstory</term></item>
+	/// <item><term>2</term><term>loading</term></item>
+	/// <item><term>3</term><term>storydragon</term></item>
+	/// <item><term>4</term><term>dragonshow</term></item>
+	/// <item><term>5</term><term>house</term></item>
+	/// <item><term>6</term><term>light</term></item>
+	/// <item><term>7</term><term>&lt;Unknown&gt;</term></item>
+	///	</list>
+	/// </remarks>
+	public static int storystate = 0;
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	/// <list type="table">
+	/// <listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>null</term></item>
+	/// <item><term>1</term><term>big_rain</term></item>
+	/// <item><term>2</term><term>light</term></item>
+	/// <item><term>3</term><term>&lt;Unknown&gt;</term></item>
+	/// <item><term>4</term><term>&lt;Unknown&gt;</term></item>
+	/// </list>
+	/// </remarks>
+	public static int storyeffect = 0;
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	///	<list type="table">
+	///	<listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>null</term></item>
+	/// <item><term>1</term><term>???</term></item>
+	/// <item><term>2</term><term>what?</term></item>
+	/// <item><term>3</term><term>escape</term></item>
+	/// <item><term>4</term><term>rescue</term></item>
+	/// <item><term>5</term><term>turn</term></item>
+	/// <item><term>6</term><term>slime</term></item>
+	///	</list>
+	/// </remarks>
+	public static int storychat = 0;
 
-	float delta = 0;
+	private float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas;
 	public static GameObject keyCountObject;
@@ -86,12 +128,12 @@ public class GameGlobalController : MonoBehaviour
 		switch (gameState)
 		{
 			case GameState.Input:
-				DarkAnimatorController.skip();
+				DarkAnimatorController.SkipStory();
 				break;
 			case GameState.StartGame:
 				break;
 			case GameState.StartStory:
-				switch(storyeffect)
+				switch (storyeffect)
 				{
 					case 0:
 						break;
@@ -142,13 +184,13 @@ public class GameGlobalController : MonoBehaviour
 				if (delta >= 1)
 				{
 					delta = 0;
-					if(!battle && currentLevel > 0)
+					if (!battle && currentLevel > 0)
 					{
-						if(currentLevel == 1)  Instantiate(weather[1]);
-						else  Instantiate(weather[Random.Range(1,4)]);
+						if (currentLevel == 1) Instantiate(weather[1]);
+						else Instantiate(weather[Random.Range(1, 4)]);
 					}
-					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
-					if(battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
+					else if (battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
+					if (battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
 					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 				}
 				break;
@@ -159,7 +201,7 @@ public class GameGlobalController : MonoBehaviour
 				gameState = GameState.Loading;
 				break;
 			case GameState.LevelPrepare:
-				if(LevelVarity.me == null)
+				if (LevelVarity.me == null)
 					gameState = GameState.Input;
 				else
 				{
@@ -181,7 +223,7 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
-					if (storystate == 0 && !isStory) 
+					if (storystate == 0 && !isStory)
 					{
 						Instantiate(weather[5]);
 						storystate = 1;
@@ -269,11 +311,11 @@ public class GameGlobalController : MonoBehaviour
 
 	public static void givename()
 	{
-		for(int i = 0;i < LevelVarity.teller.Count;i++)
+		for (int i = 0; i < LevelVarity.teller.Count; i++)
 		{
-			for(int j = 0;j < LevelVarity.teller[i].Count;j++)
+			for (int j = 0; j < LevelVarity.teller[i].Count; j++)
 			{
-				if(LevelVarity.teller[i][j] == null)  LevelVarity.teller[i][j] = LevelVarity.me;
+				if (LevelVarity.teller[i][j] == null) LevelVarity.teller[i][j] = LevelVarity.me;
 			}
 		}
 	}

@@ -124,7 +124,8 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeIn;
 	}
 
-	void story1()
+	/// <summary> For animation 'Start Story' callback. </summary>
+	void Story1()
 	{
 		animator.SetFloat("speed", 0);
 		//animator.speed = 0;
@@ -133,12 +134,14 @@ public class DarkAnimatorController : MonoBehaviour
 		background.GetComponent<SpriteRenderer>().sprite = Image[0];
 	}
 
-	void story2()
+	/// <summary> For animation 'Start Story' callback. </summary>
+	void Story2()
 	{
 		animator.speed = 0;
 		Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3(60, 50 ,0);
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void clear()
 	{
 		flareLayer.enabled = false;
@@ -149,6 +152,8 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		Instantiate(housePrefab);
 	}
+
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story3()
 	{
 		GameGlobalController.storystate = 6;
@@ -157,12 +162,14 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storyeffect = 2;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story4()
 	{
 		Destroy(GameObject.Find("房子內部(Clone)"));
 		GameGlobalController.storyeffect = 3;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story5()
 	{
 		GameGlobalController.storystate = 8;
@@ -170,12 +177,14 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storychat = 4;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story6()
 	{
 		animator.speed = 0;
 		GameGlobalController.storychat = 5;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story7()
 	{
 		animator.speed = 0;
@@ -183,11 +192,13 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storychat = 6;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void bubble()
 	{
 		GameGlobalController.storyeffect = 4;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void end()
 	{
 		GameGlobalController.cleareffect = true;
@@ -195,7 +206,7 @@ public class DarkAnimatorController : MonoBehaviour
 		background.SetActive(false);
 	}
 
-	public static void skip()
+	public static void SkipStory()
 	{
 		background.SetActive(false);
 		animator.speed = 1;
