@@ -40,7 +40,7 @@ public class portal2_handler : MonoBehaviour
                 {
                     Anim2 = false;
                     trigger = false;
-                    GameGlobalController.StartNewGame();
+                    GameGlobalController.StartNewLevel();
                 }
                 break;
 

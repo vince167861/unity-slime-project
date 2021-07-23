@@ -26,7 +26,7 @@ public class ButtonHandler : MonoBehaviour
 			GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
 		}
 		else
-			GameGlobalController.StartNewGame();
+			GameGlobalController.StartNewLevel();
 	}
 	/*public void NextLevel()
 	{

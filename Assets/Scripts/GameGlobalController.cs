@@ -94,7 +94,7 @@ public class GameGlobalController : MonoBehaviour
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas;
 	public static GameObject keyCountObject;
-	SpriteRenderer background;
+	public static SpriteRenderer background;
 
 	void Start()
 	{
@@ -105,6 +105,7 @@ public class GameGlobalController : MonoBehaviour
 
 	void Update()
 	{
+#warning The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
 		inputfield.SetActive(storystate == 9 || gameState == GameState.Input);
@@ -253,27 +254,33 @@ public class GameGlobalController : MonoBehaviour
 		}
 	}
 
-	public static void StartNewGame()
+	/// <summary> Called to start a new level. </summary>
+	/// <remarks> Could also called to trigger level reset. </remarks>
+	public static void StartNewLevel()
 	{
 		battle = true; // Starts the battle
 		gameState = GameState.DarkFadeOut;
 	}
 
+	/// <summary> Called to navigate to lobby. </summary>
 	public static void GotoLobby()
 	{
 		battle = false;
 		gameState = GameState.DarkFadeOut;
 	}
 
-	public static void GoodEnd()
+	/// <summary> Called when a level completed. </summary>
+	public static void OnLevelComplete()
 	{
 		battle = false; // Ends the battle
-		keyCountObject.GetComponent<CountLabel>().updateCount(0);
+		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
 	}
-	public static void BadEnd()
+
+	/// <summary> Called when a level failed. </summary>
+	public static void OnLevelFail()
 	{
-		keyCountObject.GetComponent<CountLabel>().updateCount(0);
+		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
 	}
 
@@ -296,19 +303,54 @@ public class GameGlobalController : MonoBehaviour
 			}
 		}
 	}
+
+	[System.Obsolete("isPlaying is deprecated; use IsState() instead.")]
 	public static bool isPlaying => gameState == GameState.Playing;
+
+	[System.Obsolete("isPaused is deprecated; use IsState() instead.")]
 	public static bool isPaused => gameState == GameState.Pause;
+
+	[System.Obsolete("isLobby is deprecated; use IsState() instead.")]
 	public static bool isLobby => gameState == GameState.Lobby;
+
+	[System.Obsolete("isAnimation is deprecated; use IsState() instead.")]
 	public static bool isAnimation => gameState == GameState.Animation;
+
+	[System.Obsolete("isMenuPrepare is deprecated; use IsState() instead.")]
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
+
+	[System.Obsolete("isDarking is deprecated; use IsState() instead.")]
 	public static bool isDarking => gameState == GameState.DarkFadeOut;
+
+	[System.Obsolete("isBrightening is deprecated; use IsState() instead.")]
 	public static bool isBrightening => gameState == GameState.DarkFadeIn;
+
+	[System.Obsolete("hasEnded is deprecated; use IsState() instead.")]
 	public static bool hasEnded => gameState == GameState.End;
+
+	[System.Obsolete("isStart is deprecated; use IsState() instead.")]
 	public static bool isStart => gameState == GameState.LevelPrepare;
 
+	[System.Obsolete("SetPlaying() is deprecated; use SetState() instead.")]
 	public static void SetPlaying() { gameState = GameState.Playing; }
+
+	[System.Obsolete("SetAnimation() is deprecated; use SetState() instead.")]
 	public static void SetAnimation() { gameState = GameState.Animation; }
 
+	/// <summary> Set the current game state. </summary>
+	/// <param name="state">The state to set in string.</param>
+	public static void SetState(string state)
+	{
+		gameState = (GameState)System.Enum.Parse(typeof(GameState), state);
+	}
+
+	/// <summary> Check if current game state matches specified one in string. </summary>
+	/// <param name="state">State specified.</param>
+	/// <returns>If game state matches</returns>
+	public static bool IsState(string state)
+	{
+		return gameState.ToString() == state;
+	}
 	public static void givename()
 	{
 		for (int i = 0; i < LevelVarity.teller.Count; i++)

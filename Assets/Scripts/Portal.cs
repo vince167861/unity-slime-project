@@ -44,7 +44,7 @@ public class Portal : MonoBehaviour
                 {
                     Anim = false;
                     trigger = false;
-                    GameGlobalController.GoodEnd();
+                    GameGlobalController.OnLevelComplete();
                 }
                 break;
         }

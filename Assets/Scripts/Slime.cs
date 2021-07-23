@@ -124,7 +124,7 @@ public class Slime : MonoBehaviour//Entity
 					{
 						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
 						LifeHandler.Heal(30);
-						potionCountObject.GetComponent<CountLabel>().updateCount(--potionCount);
+						potionCountObject.GetComponent<CountLabel>().UpdateCount(--potionCount);
 					}
 				}
 				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -174,12 +174,12 @@ public class Slime : MonoBehaviour//Entity
 			case "Potion":
 				MainCameraHandler.allSound = 9;
 				Destroy(collision.gameObject);
-				potionCountObject.GetComponent<CountLabel>().updateCount(++potionCount);
+				potionCountObject.GetComponent<CountLabel>().UpdateCount(++potionCount);
 				break;
 			case "Key":
 				MainCameraHandler.allSound = 5;
 				Destroy(collision.gameObject);
-				keyCountObject.GetComponent<CountLabel>().updateCount(++keyCount);
+				keyCountObject.GetComponent<CountLabel>().UpdateCount(++keyCount);
 				break;
 		}
 	}
@@ -199,7 +199,7 @@ public class Slime : MonoBehaviour//Entity
 	static void DeathHandler()//static void DeathHandler(Entity entity)
 	{
 		transform.position = new Vector3(-5, -5, -10);
-		GameGlobalController.BadEnd();
+		GameGlobalController.OnLevelFail();
 	}
 
 	/// <summary> For animation 'Start Jump' callback. </summary>

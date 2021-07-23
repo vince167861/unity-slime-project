@@ -5,6 +5,7 @@ public class DarkAnimatorController : MonoBehaviour
 	public GameObject slimePrefab, dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
+#warning Please specify where and when the field 'start' would be used.
 	public static bool start = true;
 	public static GameObject loading, background;
 	public Sprite[] Image;
@@ -83,19 +84,19 @@ public class DarkAnimatorController : MonoBehaviour
 				break;
 			case GameGlobalController.GameState.DarkFadeOut:
 				spriteRenderer.color = new Color(0, 0, 0);
-				animator.Play("black");
+				animator.Play("Fade Out");
 				break;
 			case GameGlobalController.GameState.DarkFadeIn:
 				spriteRenderer.color = new Color(0, 0, 0);
-				animator.Play("Dark Fade In");
+				animator.Play("Fade In");
 				break;
 			case GameGlobalController.GameState.BrightFadeOut:
 				spriteRenderer.color = new Color(1, 1, 1);
-				animator.Play("black");
+				animator.Play("Fade Out");
 				break;
 			case GameGlobalController.GameState.BrightFadeIn:
 				spriteRenderer.color = new Color(1, 1, 1);
-				animator.Play("light");
+				animator.Play("Fade In");
 				break;
 		}
 	}
@@ -114,14 +115,14 @@ public class DarkAnimatorController : MonoBehaviour
 	void Start3()
 	{
 		startScene.SetActive(false);
-		GameGlobalController.gameState = GameGlobalController.GameState.MenuPrepare;
+		GameGlobalController.SetState("MenuPrepare");
 	}
 
 	/// <summary> Close loading screen. </summary>
 	void EndLoading()
 	{
 		loading.SetActive(false);
-		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeIn;
+		GameGlobalController.SetState("DarkFadeIn");
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>

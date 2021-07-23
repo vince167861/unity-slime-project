@@ -4,12 +4,20 @@ using UnityEngine.UI;
 public class MapCenter : MonoBehaviour
 {
 	private Image image;
+	private RectTransform rect;
+
 	private void Start()
 	{
 		image = GetComponent<Image>();
+		rect = GetComponent<RectTransform>();
 	}
 	void Update()
   {
-    image.color = new Color(1, 1, 1, Map.isShown ? 1 : 0);
-  }
+		rect.anchoredPosition = Slime.transform.position * Map.MAP_SCALE;
+	}
+
+	protected void UpdateColor()
+	{
+		image.color = new Color(1, 1, 1, MapBorder.isShown ? 1 : 0);
+	}
 }
