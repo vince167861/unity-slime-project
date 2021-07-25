@@ -26,17 +26,19 @@ public class LevelVarity
         new List<string>{},
         new List<string>{
         "ルーキーの村這裡的天氣可說是千變萬化,而且還是永晝呢!",
-        "你問我是誰? \n我是不可思議的小魔女--瑪莉~",
+        "聽說最後一道門的後面藏著魔物都想得到的祕寶呢!",
         "據說這個世界的傳送門都異常兇猛!?",
-        "勇者啊,繼續前進吧!"}
+        "勇者啊,繼續前進吧!",
+        "你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)"}
     };
     public static List<List<string>> advice = new List<List<string>> {
         new List<string> {
         "勇者啊,你是腦袋浸水還是沒腦袋? \n你沒看到這門上的鑰匙孔數嗎?你鑰匙不夠啊!!!",
         "勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"},
-        new List<string> {""},new List<string> {""},
+        new List<string> {"這裡是哪裡...?"},
+        new List<string> {""},
         new List<string> {
-        "歡迎來到蘑菇村!!! \n你知道松茸跟蘑菇的差別嗎?他們從生物分類的\"科\"就有所不同呢! \n(松茸：マツタケ)",
+        "歡迎來到蘑菇村!!! \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",
         "一說到冒險,就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。"
         }
     };
@@ -76,7 +78,23 @@ public class LevelVarity
     public static List<Vector2> spawnpoint = new List<Vector2> {
         new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
     };
-    public static List<List<Vector2>> promptpoint = new List<List<Vector2>> {
+    public static List<bool> playHint = new List<bool> {
+        true, false, true
+    };
+    public static List<bool> lobbyHint = new List<bool> {
+        false, true, false, true
+    };
+    public static List<List<Vector3>> circlepoint = new List<List<Vector3>> {
+        new List<Vector3> {
+            new Vector3(420,285,0)
+        }
+    };
+    public static List<List<Vector2>> playoval = new List<List<Vector2>> {
+        new List<Vector2> {
+            new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
+        }
+    };
+    public static List<List<Vector2>> lobbyoval = new List<List<Vector2>> {
         new List<Vector2> {
             new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
         }

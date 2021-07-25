@@ -7,6 +7,7 @@ public class guildwoman : MonoBehaviour
 	bool trigger1 = false;
 	public static bool trigger2 = false;
 	public static bool startanim = false;
+	public static bool otheradvice = false;
 	float timer = 0.3f;
 	float delta = 0;
 	// Start is called before the first frame update
@@ -21,6 +22,7 @@ public class guildwoman : MonoBehaviour
 		switch (GameGlobalController.gameState)
 		{
 			case GameGlobalController.GameState.MenuPrepare:
+				otheradvice = true;
 				break;
 			case GameGlobalController.GameState.Start:
 				Destroy(gameObject);
@@ -32,7 +34,13 @@ public class guildwoman : MonoBehaviour
 				{
 					this.delta = 0;
 					startanim = false;
-					trigger2 = true;
+					if(GameGlobalController.currentLevel == 1 && otheradvice)
+					{
+						DialogBoxHandler.isChat = false;
+						DialogBoxHandler.advice(1, GameGlobalController.currentLevel - 1);
+						otheradvice = false;
+					}
+					else  trigger2 = true;
 				}
 				if (trigger2)
 				{

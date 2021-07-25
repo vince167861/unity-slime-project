@@ -185,6 +185,13 @@ public class Slime : MonoBehaviour//Entity
 				Destroy(collision.gameObject);
 				keyCountObject.GetComponent<CountLabel>().updateCount(++keyCount);
 				break;
+			case "Hint":
+				GameGlobalController.Hint++;
+				if(GameGlobalController.gameState == GameGlobalController.GameState.Playing && GameGlobalController.Hint < LevelVarity.playoval[GameGlobalController.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
+				if(GameGlobalController.gameState == GameGlobalController.GameState.Lobby && GameGlobalController.Hint < LevelVarity.lobbyoval[GameGlobalController.currentLevel-1].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
+				break;
 		}
 	}
 

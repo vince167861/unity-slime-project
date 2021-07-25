@@ -16,6 +16,7 @@ public class GameGlobalController : MonoBehaviour
 
 	public enum GameState { StartGame, StartStory, Input, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
 	public static GameState gameState = GameState.StartGame;
+	public static int Hint = 0;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
 	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
@@ -23,7 +24,7 @@ public class GameGlobalController : MonoBehaviour
 	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
 	float delta = 0;
 
-	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas;
+	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
 	public static GameObject keyCountObject;
 	SpriteRenderer background;
 
@@ -38,6 +39,7 @@ public class GameGlobalController : MonoBehaviour
 	{
 		/// Show or hide items
 		// Canvases
+		if(Input.GetMouseButtonDown(0))  circleHint.SetActive(false);
 		inputfield.SetActive(storystate == 9 || gameState == GameState.Input);
 		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
@@ -129,6 +131,8 @@ public class GameGlobalController : MonoBehaviour
 				guildwoman.startanim = true;
 				DarkAnimatorController.start = true;
 				background.sprite = menuBackground[currentLevel];
+				Hint = 0;
+				if(LevelVarity.lobbyHint[currentLevel])  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.lobbyoval[currentLevel-1][0];
 				gameState = GameState.Loading;
 				break;
 			case GameState.Start:
@@ -141,6 +145,8 @@ public class GameGlobalController : MonoBehaviour
 					gameState = GameState.Loading;
 				}
 				background.sprite = gameBackground[currentLevel];
+				Hint = 0;
+				if(LevelVarity.playHint[currentLevel] && LevelVarity.me != null)  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.playoval[currentLevel][0];
 				break;
 			case GameState.Brightening:
 				if (!isMake)
