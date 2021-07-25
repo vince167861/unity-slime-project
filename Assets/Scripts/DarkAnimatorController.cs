@@ -2,9 +2,10 @@
 
 public class DarkAnimatorController : MonoBehaviour
 {
-	public GameObject slimePrefab, dragonPrefab, housePrefab;
+	public GameObject slimePrefab, dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
 	SpriteRenderer spriteRenderer;
+#warning Please specify where and when the field 'start' would be used.
 	public static bool start = true;
 	public static GameObject loading, background;
 	public Sprite[] Image;
@@ -19,7 +20,7 @@ public class DarkAnimatorController : MonoBehaviour
 		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
 	}
 
-	void Update()
+	private void Update()
 	{
 		switch (GameGlobalController.gameState)
 		{
@@ -28,15 +29,35 @@ public class DarkAnimatorController : MonoBehaviour
 				{
 					background.SetActive(false);
 					loading.SetActive(false);
-					animator.Play("startgame");
+					animator.Play("Start Game");
 					start = false;
 				}
 				break;
 			case GameGlobalController.GameState.Loading:
-				switch(GameGlobalController.storystate)
+				switch (GameGlobalController.storystate)
 				{
+					case 0:
+						if (GameGlobalController.currentLevel == 0) EndLoading();
+						else if (start)
+						{
+							Slime.ResetState();
+							loading.SetActive(true);
+							if (GameGlobalController.battle)
+							{
+								Slime.animator.Play("load1");
+								animator.Play("loadgame");
+							}
+							else
+							{
+								Slime.animator.Play("load2");
+								animator.Play("loadlobby");
+							}
+							Slime.transform.position = new Vector3(46, 14, 0);
+							start = false;
+						}
+						break;
 					case 1:
-						Slime.normal();
+						Slime.ResetState();
 						loading.SetActive(true);
 						Slime.animator.Play("load1");
 						animator.Play("loadstory");
@@ -50,31 +71,10 @@ public class DarkAnimatorController : MonoBehaviour
 						animator.speed = 1;
 						break;
 				}
-				if(GameGlobalController.storystate == 0)
-				{
-					if(GameGlobalController.currentLevel == 0)  loadIn();
-					else if(start)
-					{
-						Slime.normal();
-						loading.SetActive(true);
-						if(GameGlobalController.battle)
-						{
-							Slime.animator.Play("load1");
-							animator.Play("loadgame");
-						}
-						else  
-						{
-							Slime.animator.Play("load2");
-							animator.Play("loadlobby");
-						}	
-						Slime.transform.position = new Vector3(46, 14, 0);
-						start = false;
-					}
-				}
 				break;
 			case GameGlobalController.GameState.StartStory:
-                MainCameraHandler.storymusic = 1;
-				switch(GameGlobalController.storystate)
+				MainCameraHandler.storymusic = 1;
+				switch (GameGlobalController.storystate)
 				{
 					case 5:
 					case 7:
@@ -82,45 +82,51 @@ public class DarkAnimatorController : MonoBehaviour
 						break;
 				}
 				break;
-			case GameGlobalController.GameState.Darking:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
-				animator.Play("black");
+			case GameGlobalController.GameState.DarkFadeOut:
+				spriteRenderer.color = new Color(0, 0, 0);
+				animator.Play("Fade Out");
 				break;
-			case GameGlobalController.GameState.Brightening:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 0);
-				animator.Play("light");
+			case GameGlobalController.GameState.DarkFadeIn:
+				spriteRenderer.color = new Color(0, 0, 0);
+				animator.Play("Fade In");
 				break;
-			case GameGlobalController.GameState.Lighting:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
-				animator.Play("black");
+			case GameGlobalController.GameState.BrightFadeOut:
+				spriteRenderer.color = new Color(1, 1, 1);
+				animator.Play("Fade Out");
 				break;
-			case GameGlobalController.GameState.Unlighting:
-				spriteRenderer.color = Color.HSVToRGB(0, 0, 100);
-				animator.Play("light");
+			case GameGlobalController.GameState.BrightFadeIn:
+				spriteRenderer.color = new Color(1, 1, 1);
+				animator.Play("Fade In");
 				break;
 		}
 	}
 
-	void start1()
+	/// <summary> For animation 'Start Game' callback. </summary>
+	void Start1()
 	{
 		animator.speed = 0;
 		Slime.transform.position = new Vector3(-3, 11, 0);
-		Slime.animator.Play("startjump");
+		Slime.animator.Play("Start Jump");
 	}
 
-	void start3()
+	// Start2() -> Slime.Start2()
+
+	/// <summary> For animation 'Start Game' callback. </summary>
+	void Start3()
 	{
-		GameGlobalController.gameState = GameGlobalController.GameState.MenuPrepare;
-		GameObject.Find("StartScene").SetActive(false);
+		startScene.SetActive(false);
+		GameGlobalController.SetState("MenuPrepare");
 	}
 
-	void loadIn()
+	/// <summary> Close loading screen. </summary>
+	void EndLoading()
 	{
 		loading.SetActive(false);
-		GameGlobalController.gameState = GameGlobalController.GameState.Brightening;
+		GameGlobalController.SetState("DarkFadeIn");
 	}
 
-	void story1()
+	/// <summary> For animation 'Start Story' callback. </summary>
+	void Story1()
 	{
 		animator.SetFloat("speed", 0);
 		//animator.speed = 0;
@@ -129,12 +135,14 @@ public class DarkAnimatorController : MonoBehaviour
 		background.GetComponent<SpriteRenderer>().sprite = Image[0];
 	}
 
-	void story2()
+	/// <summary> For animation 'Start Story' callback. </summary>
+	void Story2()
 	{
 		animator.speed = 0;
 		Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3(60, 50 ,0);
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void clear()
 	{
 		flareLayer.enabled = false;
@@ -145,6 +153,8 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		Instantiate(housePrefab);
 	}
+
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story3()
 	{
 		GameGlobalController.storystate = 6;
@@ -153,12 +163,14 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storyeffect = 2;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story4()
 	{
 		Destroy(GameObject.Find("房子內部(Clone)"));
 		GameGlobalController.storyeffect = 3;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story5()
 	{
 		GameGlobalController.storystate = 8;
@@ -166,12 +178,14 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storychat = 4;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story6()
 	{
 		animator.speed = 0;
 		GameGlobalController.storychat = 5;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void story7()
 	{
 		animator.speed = 0;
@@ -179,11 +193,13 @@ public class DarkAnimatorController : MonoBehaviour
 		GameGlobalController.storychat = 6;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void bubble()
 	{
 		GameGlobalController.storyeffect = 4;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void end()
 	{
 		GameGlobalController.cleareffect = true;
@@ -191,7 +207,7 @@ public class DarkAnimatorController : MonoBehaviour
 		background.SetActive(false);
 	}
 
-	public static void skip()
+	public static void SkipStory()
 	{
 		background.SetActive(false);
 		animator.speed = 1;

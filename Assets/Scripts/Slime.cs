@@ -1,11 +1,6 @@
 ﻿#pragma warning disable CS0108
 using UnityEngine;
 
-/**
- * Pickup potion: line 142
- * Consume potion: line 83
- */
-
 public class Slime : MonoBehaviour//Entity
 {
 	public int direction;
@@ -40,7 +35,7 @@ public class Slime : MonoBehaviour//Entity
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		spriteRender = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
-		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
+		flareLayer = (Behaviour)Camera.main.GetComponent("FlareLayer");
 	}
 
 	void Update()
@@ -52,7 +47,7 @@ public class Slime : MonoBehaviour//Entity
 				spriteRender.sortingLayerName = "Black Screen";
 				spriteRender.sortingOrder = 3;
 				break;
-			case GameGlobalController.GameState.Brightening:
+			case GameGlobalController.GameState.DarkFadeIn:
 				flareLayer.enabled = true;
 				spriteRender.sortingLayerName = "Main Objects";
 				spriteRender.sortingOrder = 8;
@@ -91,7 +86,7 @@ public class Slime : MonoBehaviour//Entity
 				{
 					animator.SetBool("right", Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
 					animator.SetBool("left", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow));
-					animator.SetBool("jump", Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W));
+					animator.SetBool("jump", Input.GetKey(KeyCode.W));
 					animator.SetBool("crouch", Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S));
 				}
 				if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && allowMove)
@@ -106,7 +101,7 @@ public class Slime : MonoBehaviour//Entity
 				}
 				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S))
 					rigidbody2d.AddForce(new Vector2(0, -dropStrength));
-				if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isTouchingGround)
+				if (Input.GetKeyDown(KeyCode.W) && isTouchingGround)
 				{
 					MainCameraHandler.allSound = 2;
 					rigidbody2d.AddForce(new Vector2(0, jumpStrength));
@@ -129,7 +124,7 @@ public class Slime : MonoBehaviour//Entity
 					{
 						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
 						LifeHandler.Heal(30);
-						potionCountObject.GetComponent<CountLabel>().updateCount(--potionCount);
+						potionCountObject.GetComponent<CountLabel>().UpdateCount(--potionCount);
 					}
 				}
 				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -144,6 +139,7 @@ public class Slime : MonoBehaviour//Entity
 	{
 		animator.Play("Disappear");
 	}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		switch (collision.collider.tag)
@@ -178,12 +174,12 @@ public class Slime : MonoBehaviour//Entity
 			case "Potion":
 				MainCameraHandler.allSound = 9;
 				Destroy(collision.gameObject);
-				potionCountObject.GetComponent<CountLabel>().updateCount(++potionCount);
+				potionCountObject.GetComponent<CountLabel>().UpdateCount(++potionCount);
 				break;
 			case "Key":
 				MainCameraHandler.allSound = 5;
 				Destroy(collision.gameObject);
-				keyCountObject.GetComponent<CountLabel>().updateCount(++keyCount);
+				keyCountObject.GetComponent<CountLabel>().UpdateCount(++keyCount);
 				break;
 			case "Hint":
 				GameGlobalController.Hint++;
@@ -210,16 +206,18 @@ public class Slime : MonoBehaviour//Entity
 	static void DeathHandler()//static void DeathHandler(Entity entity)
 	{
 		transform.position = new Vector3(-5, -5, -10);
-		GameGlobalController.BadEnd();
+		GameGlobalController.OnLevelFail();
 	}
 
-	void start2()
+	/// <summary> For animation 'Start Jump' callback. </summary>
+	void Start2()
 	{
 		animator.Play("Disappear");
 		DarkAnimatorController.animator.speed = 1;
 	}
 
-	void jump()
+	/// <summary> For Game Start animation. </summary>
+	void JumpRight()
 	{
 		MainCameraHandler.allSound = 2;
 		rigidbody2d.AddForce(new Vector2(12000f, 1.5e4f));
@@ -227,7 +225,8 @@ public class Slime : MonoBehaviour//Entity
 		direction = 1;
 	}
 
-	void littlejump()
+	/// <summary> For Game Start animation. </summary>
+	void SmallJumpRight()
 	{
 		rigidbody2d.AddForce(new Vector2(4000f, 0.5e4f));
 		animator.Play("Jump Right");
@@ -241,9 +240,7 @@ public class Slime : MonoBehaviour//Entity
 		direction = 1;
 	}
 
-	void _null(){}
-
-	public static void normal()
+	public static void ResetState()
 	{
 		animator.SetBool("right", false);
 		animator.SetBool("left", false);

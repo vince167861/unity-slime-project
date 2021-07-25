@@ -31,7 +31,7 @@ public class LevelTextController : MonoBehaviour
                     animPlay = false;
                 }
                 break;
-            case GameGlobalController.GameState.Darking:
+            case GameGlobalController.GameState.DarkFadeOut:
                 animPlay = true;
                 break;
         }

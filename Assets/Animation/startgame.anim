@@ -364,7 +364,7 @@ AnimationClip:
     - time: 5.1666665
       value: {fileID: 21300000, guid: 997e8375f2920fb48ae600ed0d3cce5d, type: 3}
     attribute: m_Sprite
-    path: StartScene
+    path: Start Scene
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -772,14 +772,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 4
-    functionName: start1
+    functionName: Start1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 5.133333
-    functionName: start3
+    functionName: Start3
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

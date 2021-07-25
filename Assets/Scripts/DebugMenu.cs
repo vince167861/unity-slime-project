@@ -7,7 +7,7 @@ public class DebugMenu : MonoBehaviour
     public void GotoL(int lvl)
     {
         GameGlobalController.currentLevel = lvl;
-        GameGlobalController.StartNewGame();
+        GameGlobalController.StartNewLevel();
     }
 
     public void GotoLobby()

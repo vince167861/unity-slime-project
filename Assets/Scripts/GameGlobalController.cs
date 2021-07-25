@@ -14,19 +14,88 @@ public class GameGlobalController : MonoBehaviour
 	// Effects
 	public GameObject[] weather, force;
 
-	public enum GameState { StartGame, StartStory, Input, Start, MenuPrepare, Darking, Loading, Brightening, Playing, Pause, Instruction, End, Lobby, Animation, Shaking, Lighting, Unlighting, LobbyInfo, Advice };
+	/// <summary> Used to describe a game state. </summary>
+	/// <remarks> Add xml comment when add new state. </remarks>
+	public enum GameState
+	{
+		StartGame, StartStory, Input,
+		/// <summary> State before every level starts. </summary>
+		/// <remarks> Was 'Start' before. </remarks>
+		LevelPrepare,
+		/// <summary> State before enter menu. </summary>
+		MenuPrepare,
+		/// <summary> Fade out to dark color. </summary>
+		/// <remarks> Was 'Darking' before.</remarks>
+		DarkFadeOut, Loading,
+		/// <summary> Fade in from dark color. </summary>
+		/// <remarks> Was 'Brightening' before. </remarks>
+		DarkFadeIn,
+		/// <summary> State when players are playing in every level. </summary>
+		Playing,
+		/// <summary> State when players are in pause menu. </summary>
+		Pause, Instruction, End, Lobby, Animation, Shaking,
+		/// <summary> Fade out to bright color. </summary>
+		/// <remarks> Was 'Lighting' before. </remarks>
+		BrightFadeOut,
+		/// <summary> Fade in from bright color. </summary>
+		/// <remarks> Was 'Unlighting' before. </remarks>
+		BrightFadeIn, LobbyInfo, Advice
+	};
+	/// <summary> Store and control current game state. </summary>
 	public static GameState gameState = GameState.StartGame;
 	public static int Hint = 0;
 	public static int currentLevel = 0;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
-	public static int storystate = 0; // 0:unstory 1:startstory 2:loading 3:storydragon 4:dragonshow 5:house 6:light 7:
-	public static int storyeffect = 0; // 0:null 1:big_rain 2:light
-	public static int storychat = 0; // 0:null 1:??? 2:what? 3:escape 4:rescue 5:turn 6:slime
-	float delta = 0;
+
+#warning I suggest to use enumertaion type for those three fields.
+#warning Description of each state is ambigious.
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	///	<list type="table">
+	///	<listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>unstory</term></item>
+	/// <item><term>1</term><term>startstory</term></item>
+	/// <item><term>2</term><term>loading</term></item>
+	/// <item><term>3</term><term>storydragon</term></item>
+	/// <item><term>4</term><term>dragonshow</term></item>
+	/// <item><term>5</term><term>house</term></item>
+	/// <item><term>6</term><term>light</term></item>
+	/// <item><term>7</term><term>&lt;Unknown&gt;</term></item>
+	///	</list>
+	/// </remarks>
+	public static int storystate = 0;
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	/// <list type="table">
+	/// <listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>null</term></item>
+	/// <item><term>1</term><term>big_rain</term></item>
+	/// <item><term>2</term><term>light</term></item>
+	/// <item><term>3</term><term>&lt;Unknown&gt;</term></item>
+	/// <item><term>4</term><term>&lt;Unknown&gt;</term></item>
+	/// </list>
+	/// </remarks>
+	public static int storyeffect = 0;
+	/// <summary> Unknown. </summary>
+	/// <remarks>
+	///	<list type="table">
+	///	<listheader><term>Value</term><term>Description</term></listheader>
+	/// <item><term>0</term><term>null</term></item>
+	/// <item><term>1</term><term>???</term></item>
+	/// <item><term>2</term><term>what?</term></item>
+	/// <item><term>3</term><term>escape</term></item>
+	/// <item><term>4</term><term>rescue</term></item>
+	/// <item><term>5</term><term>turn</term></item>
+	/// <item><term>6</term><term>slime</term></item>
+	///	</list>
+	/// </remarks>
+	public static int storychat = 0;
+
+	private float delta = 0;
 
 	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
 	public static GameObject keyCountObject;
-	SpriteRenderer background;
+	public static SpriteRenderer background;
 
 	void Start()
 	{
@@ -37,6 +106,7 @@ public class GameGlobalController : MonoBehaviour
 
 	void Update()
 	{
+#warning The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
 		if(Input.GetMouseButtonDown(0))  circleHint.SetActive(false);
@@ -61,12 +131,12 @@ public class GameGlobalController : MonoBehaviour
 		switch (gameState)
 		{
 			case GameState.Input:
-				DarkAnimatorController.skip();
+				DarkAnimatorController.SkipStory();
 				break;
 			case GameState.StartGame:
 				break;
 			case GameState.StartStory:
-				switch(storyeffect)
+				switch (storyeffect)
 				{
 					case 0:
 						break;
@@ -95,15 +165,15 @@ public class GameGlobalController : MonoBehaviour
 				break;
 			case GameState.Loading:
 				break;
-			case GameState.Lighting:
+			case GameState.BrightFadeOut:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					gameState = GameState.Unlighting;
+					gameState = GameState.BrightFadeIn;
 				}
 				break;
-			case GameState.Unlighting:
+			case GameState.BrightFadeIn:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
@@ -111,20 +181,20 @@ public class GameGlobalController : MonoBehaviour
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
-			case GameState.Darking:
+			case GameState.DarkFadeOut:
 				cleareffect = false;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					if(!battle && currentLevel > 0)
+					if (!battle && currentLevel > 0)
 					{
-						if(currentLevel == 1)  Instantiate(weather[1]);
-						else  Instantiate(weather[Random.Range(1,4)]);
+						if (currentLevel == 1) Instantiate(weather[1]);
+						else Instantiate(weather[Random.Range(1, 4)]);
 					}
-					else if(battle && LevelVarity.LevelWeather[0][currentLevel] != -1)  Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
-					if(battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					GameGlobalController.gameState = GameGlobalController.battle ? GameState.Start : GameState.MenuPrepare;
+					else if (battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
+					if (battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
+					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 				}
 				break;
 			case GameState.MenuPrepare:
@@ -135,8 +205,8 @@ public class GameGlobalController : MonoBehaviour
 				if(LevelVarity.lobbyHint[currentLevel])  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.lobbyoval[currentLevel-1][0];
 				gameState = GameState.Loading;
 				break;
-			case GameState.Start:
-				if(LevelVarity.me == null)
+			case GameState.LevelPrepare:
+				if (LevelVarity.me == null)
 					gameState = GameState.Input;
 				else
 				{
@@ -148,7 +218,7 @@ public class GameGlobalController : MonoBehaviour
 				Hint = 0;
 				if(LevelVarity.playHint[currentLevel] && LevelVarity.me != null)  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.playoval[currentLevel][0];
 				break;
-			case GameState.Brightening:
+			case GameState.DarkFadeIn:
 				if (!isMake)
 				{
 					MakeMap(battle ? 0 : 1);
@@ -160,7 +230,7 @@ public class GameGlobalController : MonoBehaviour
 				{
 					delta = 0;
 					isMake = false;
-					if(storystate == 0 && !isStory) 
+					if (storystate == 0 && !isStory)
 					{
 						Instantiate(weather[5]);
 						storystate = 1;
@@ -190,27 +260,33 @@ public class GameGlobalController : MonoBehaviour
 		}
 	}
 
-	public static void StartNewGame()
+	/// <summary> Called to start a new level. </summary>
+	/// <remarks> Could also called to trigger level reset. </remarks>
+	public static void StartNewLevel()
 	{
 		battle = true; // Starts the battle
-		gameState = GameState.Darking;
+		gameState = GameState.DarkFadeOut;
 	}
 
+	/// <summary> Called to navigate to lobby. </summary>
 	public static void GotoLobby()
 	{
 		battle = false;
-		gameState = GameState.Darking;
+		gameState = GameState.DarkFadeOut;
 	}
 
-	public static void GoodEnd()
+	/// <summary> Called when a level completed. </summary>
+	public static void OnLevelComplete()
 	{
 		battle = false; // Ends the battle
-		keyCountObject.GetComponent<CountLabel>().updateCount(0);
+		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
 	}
-	public static void BadEnd()
+
+	/// <summary> Called when a level failed. </summary>
+	public static void OnLevelFail()
 	{
-		keyCountObject.GetComponent<CountLabel>().updateCount(0);
+		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
 	}
 
@@ -233,26 +309,61 @@ public class GameGlobalController : MonoBehaviour
 			}
 		}
 	}
-	public static bool isPlaying => gameState == GameState.Playing;
-	public static bool isPaused => gameState == GameState.Pause;
-	public static bool isLobby => gameState == GameState.Lobby;
-	public static bool isAnimation => gameState == GameState.Animation;
-	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
-	public static bool isDarking => gameState == GameState.Darking;
-	public static bool isBrightening => gameState == GameState.Brightening;
-	public static bool hasEnded => gameState == GameState.End;
-	public static bool isStart => gameState == GameState.Start;
 
+	[System.Obsolete("isPlaying is deprecated; use IsState() instead.")]
+	public static bool isPlaying => gameState == GameState.Playing;
+
+	[System.Obsolete("isPaused is deprecated; use IsState() instead.")]
+	public static bool isPaused => gameState == GameState.Pause;
+
+	[System.Obsolete("isLobby is deprecated; use IsState() instead.")]
+	public static bool isLobby => gameState == GameState.Lobby;
+
+	[System.Obsolete("isAnimation is deprecated; use IsState() instead.")]
+	public static bool isAnimation => gameState == GameState.Animation;
+
+	[System.Obsolete("isMenuPrepare is deprecated; use IsState() instead.")]
+	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
+
+	[System.Obsolete("isDarking is deprecated; use IsState() instead.")]
+	public static bool isDarking => gameState == GameState.DarkFadeOut;
+
+	[System.Obsolete("isBrightening is deprecated; use IsState() instead.")]
+	public static bool isBrightening => gameState == GameState.DarkFadeIn;
+
+	[System.Obsolete("hasEnded is deprecated; use IsState() instead.")]
+	public static bool hasEnded => gameState == GameState.End;
+
+	[System.Obsolete("isStart is deprecated; use IsState() instead.")]
+	public static bool isStart => gameState == GameState.LevelPrepare;
+
+	[System.Obsolete("SetPlaying() is deprecated; use SetState() instead.")]
 	public static void SetPlaying() { gameState = GameState.Playing; }
+
+	[System.Obsolete("SetAnimation() is deprecated; use SetState() instead.")]
 	public static void SetAnimation() { gameState = GameState.Animation; }
 
+	/// <summary> Set the current game state. </summary>
+	/// <param name="state">The state to set in string.</param>
+	public static void SetState(string state)
+	{
+		gameState = (GameState)System.Enum.Parse(typeof(GameState), state);
+	}
+
+	/// <summary> Check if current game state matches specified one in string. </summary>
+	/// <param name="state">State specified.</param>
+	/// <returns>If game state matches</returns>
+	public static bool IsState(string state)
+	{
+		return gameState.ToString() == state;
+	}
 	public static void givename()
 	{
-		for(int i = 0;i < LevelVarity.teller.Count;i++)
+		for (int i = 0; i < LevelVarity.teller.Count; i++)
 		{
-			for(int j = 0;j < LevelVarity.teller[i].Count;j++)
+			for (int j = 0; j < LevelVarity.teller[i].Count; j++)
 			{
-				if(LevelVarity.teller[i][j] == null)  LevelVarity.teller[i][j] = LevelVarity.me;
+				if (LevelVarity.teller[i][j] == null) LevelVarity.teller[i][j] = LevelVarity.me;
 			}
 		}
 	}

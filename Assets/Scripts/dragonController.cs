@@ -14,7 +14,7 @@ public class dragonController : MonoBehaviour
     void Update()
     {
         switch(GameGlobalController.gameState){
-            case GameGlobalController.GameState.Unlighting:
+            case GameGlobalController.GameState.BrightFadeIn:
                 Destroy(gameObject);
                 break;
         }

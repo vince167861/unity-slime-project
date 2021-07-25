@@ -15,7 +15,7 @@ public class Floor : MonoBehaviour
     {
         switch(GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.Start:
+            case GameGlobalController.GameState.LevelPrepare:
                 Destroy(gameObject);
                 break;
         }

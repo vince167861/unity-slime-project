@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
     {
         switch (GameGlobalController.gameState)
         {
-            case GameGlobalController.GameState.Darking:
+            case GameGlobalController.GameState.DarkFadeOut:
                 Destroy(gameObject);
                 break;
             case GameGlobalController.GameState.Playing:
@@ -44,7 +44,7 @@ public class Portal : MonoBehaviour
                 {
                     Anim = false;
                     trigger = false;
-                    GameGlobalController.GoodEnd();
+                    GameGlobalController.OnLevelComplete();
                 }
                 break;
         }

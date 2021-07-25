@@ -1,17 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapBorder : MonoBehaviour
 {
 	private Image image;
+	private static MapBorder instance = null;
+	public static bool isShown = false;
+
 	private void Start()
 	{
+		instance = this;
 		image = GetComponent<Image>();
+		UpdateAllMapComponentColor();
 	}
-	void Update()
+	private void Update()
 	{
-		image.color = new Color(0, 0, 0, Map.isShown ? 0.5f : 0);
+		if (Input.GetKeyDown(KeyCode.Space) && GameGlobalController.IsState("Playing"))
+		{
+			isShown = !isShown;
+			BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);
+		}
+		if (isShown && !GameGlobalController.IsState("Playing"))
+		{
+			isShown = false;
+			BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);
+		}
+	}
+
+	protected void UpdateColor()
+	{
+		image.color = new Color(0, 0, 0, isShown ? 0.5f : 0);
+	}
+
+	public static void UpdateAllMapComponentColor()
+	{
+		instance.BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);
 	}
 }
