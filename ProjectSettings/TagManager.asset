@@ -17,6 +17,7 @@ TagManager:
   - bird
   - Enemy
   - Katana
+  - Hint
   layers:
   - Default
   - TransparentFX
