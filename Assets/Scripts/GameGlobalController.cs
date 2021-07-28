@@ -45,7 +45,7 @@ public class GameGlobalController : MonoBehaviour
 	public static GameState gameState = GameState.StartGame;
 	public static int Hint = 0;
 	public static int currentLevel = 0;
-	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false;
+	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false, win = false;
 
 #warning I suggest to use enumertaion type for those three fields.
 #warning Description of each state is ambigious.
@@ -93,7 +93,7 @@ public class GameGlobalController : MonoBehaviour
 
 	private float delta = 0;
 
-	public GameObject board, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
+	public GameObject board, wlboard, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
 	public static GameObject keyCountObject;
 	public static SpriteRenderer background;
 
@@ -113,8 +113,9 @@ public class GameGlobalController : MonoBehaviour
 		inputfield.SetActive(storystate == 9 || gameState == GameState.Input);
 		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
-		passCanvas.SetActive(hasEnded && !battle);
-		deadCanvas.SetActive(hasEnded && battle);
+		wlboard.SetActive(hasEnded);
+		passCanvas.SetActive(hasEnded && win);
+		deadCanvas.SetActive(hasEnded && !win);
 		slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);

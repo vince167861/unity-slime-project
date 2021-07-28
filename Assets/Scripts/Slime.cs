@@ -163,7 +163,7 @@ public class Slime : MonoBehaviour//Entity
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerStay2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
@@ -183,6 +183,8 @@ public class Slime : MonoBehaviour//Entity
 				break;
 			case "Hint":
 				GameGlobalController.Hint++;
+				if(GameGlobalController.gameState == GameGlobalController.GameState.Animation && GameGlobalController.Hint < LevelVarity.playoval[GameGlobalController.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
 				if(GameGlobalController.gameState == GameGlobalController.GameState.Playing && GameGlobalController.Hint < LevelVarity.playoval[GameGlobalController.currentLevel].Count)
 					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
 				if(GameGlobalController.gameState == GameGlobalController.GameState.Lobby && GameGlobalController.Hint < LevelVarity.lobbyoval[GameGlobalController.currentLevel-1].Count)
