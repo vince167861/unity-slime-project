@@ -45,6 +45,7 @@ public class GameGlobalController : MonoBehaviour
 	public static GameState gameState = GameState.StartGame;
 	public static int Hint = 0;
 	public static int currentLevel = 0;
+	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false, win = false;
 
 #warning I suggest to use enumertaion type for those three fields.
@@ -114,8 +115,8 @@ public class GameGlobalController : MonoBehaviour
 		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
 		wlboard.SetActive(hasEnded);
-		passCanvas.SetActive(hasEnded && win);
-		deadCanvas.SetActive(hasEnded && !win);
+		passCanvas.SetActive(WLBoardHandler.stmenu && !battle);
+		deadCanvas.SetActive(WLBoardHandler.stmenu && battle);
 		slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);

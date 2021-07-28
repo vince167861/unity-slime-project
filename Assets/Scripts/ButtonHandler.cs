@@ -18,6 +18,12 @@ public class ButtonHandler : MonoBehaviour
 
 	public void GameInit()
 	{
+		GameGlobalController.chLevel = (float)System.Math.Round(GameGlobalController.totalexp + WLBoardHandler.expamount / WLBoardHandler.needexp);
+		GameGlobalController.totalmoney += GameGlobalController.moneycount;
+		GameGlobalController.totalexp += GameGlobalController.expcount;
+		WLBoardHandler.expamount = 0;
+		WLBoardHandler.moneyamount = 0;
+		WLBoardHandler.stmenu = false;
 		MainCameraHandler.allSound = 3;
 		if (GameGlobalController.storystate == 1)
 		{
