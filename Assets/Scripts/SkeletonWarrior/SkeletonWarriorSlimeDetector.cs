@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonWarriorDetector : MonoBehaviour
+public class SkeletonWarriorSlimeDetector : MonoBehaviour
 {
-	public Animator skeletonAnimator;
+	private Animator skeletonAnimator;
 
 	private void Start()
 	{
@@ -12,9 +12,9 @@ public class SkeletonWarriorDetector : MonoBehaviour
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		switch (collision.tag)
+		switch(collision.tag)
 		{
-			case "bullet":
+			case "Slime":
 				skeletonAnimator.Play("©Þ¤M");
 				break;
 		}
