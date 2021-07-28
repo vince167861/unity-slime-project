@@ -20,7 +20,8 @@ public class WLBoardHandler : MonoBehaviour
         stmenu = false;
         Manimator = Money.GetComponent<Animator>();
         Eanimator = Exp.GetComponent<Animator>();
-        Board.GetComponent<SpriteRenderer>().sprite = WL[GameGlobalController.battle? 1:0];
+        Canimator = ChLevel.GetComponent<Animator>();
+        Board.GetComponent<Image>().sprite = WL[GameGlobalController.battle? 1:0];
         needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(1.5f)));
     }
 
@@ -30,7 +31,7 @@ public class WLBoardHandler : MonoBehaviour
         needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(3/2)));
         getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)moneyamount;
         getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)expamount;
-        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round(GameGlobalController.totalexp + expamount/needexp);
+        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round((GameGlobalController.totalexp + expamount)/needexp);
         ChLevelFill.GetComponent<Image>().fillAmount = (GameGlobalController.totalexp + expamount) % needexp;
         if(stmoney && moneyamount < GameGlobalController.moneycount)  moneyamount += 0.05f;
         else if(stmoney && moneyamount >= GameGlobalController.moneycount)
