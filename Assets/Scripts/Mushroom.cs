@@ -31,7 +31,7 @@ public class Mushroom : Entity, Attackable
 					direction = hasTarget ? (Slime.transform.position.x - transform.position.x) > 0 ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
 					Vector3 current = transform.localScale;
 					transform.localScale = new Vector3(-direction * System.Math.Abs(current.x), current.y, current.z);
-					rigidbody2d.AddForce(new Vector3(direction * 80, 250, 0) * (hasTarget ? 1.5f: 1f)); //direction * 100, 300, 0
+					rigidbody2d.AddForce(new Vector3(direction * 80, 250, 0) * (hasTarget ? 2f: 1f)); //direction * 100, 300, 0
 				}
 				break;
 		}

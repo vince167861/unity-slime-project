@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonWarriorHandler : MonoBehaviour
+public class SkeletonWarrior : MonoBehaviour
 {
+	public bool isAttacking = false;
 	void Attacking()
 	{
 		GetComponentInChildren<ParticleSystem>().Play();
+		isAttacking = true;
 	}
 
 	void noAttack()
 	{
 		GetComponentInChildren<ParticleSystem>().Stop();
+		isAttacking = false;
 	}
 }
