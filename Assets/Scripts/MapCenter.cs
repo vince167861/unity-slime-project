@@ -11,7 +11,7 @@ public class MapCenter : MonoBehaviour
 		image = GetComponent<Image>();
 		rect = GetComponent<RectTransform>();
 	}
-	void Update()
+	private void Update()
   {
 		rect.anchoredPosition = Slime.transform.position * Map.MAP_SCALE;
 	}
