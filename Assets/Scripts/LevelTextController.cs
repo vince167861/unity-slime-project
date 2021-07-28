@@ -7,7 +7,7 @@ public class LevelTextController : MonoBehaviour
 {
     bool animPlay = true;
     Animator animator;
-    Text Level, LevelName;
+    Text Level = null, LevelName = null;
 
     // Start is called before the first frame update
     void Start()

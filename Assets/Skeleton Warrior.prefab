@@ -988,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02411b3efff7ce54091bbce43b7eff4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skeletonAnimator: {fileID: 0}
 --- !u!1 &1134751697765355011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1353,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1468,7 +1469,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1849,7 +1850,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: -1, y: 1, z: 0}
+    m_Position: {x: -4, y: 6, z: 0}
     m_Rotation: {x: 90, y: 0, z: 0}
     m_Scale: {x: -1, y: 1, z: 1}
     placementMode: 0
@@ -2159,7 +2160,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 60
         minScalar: 30
         maxCurve:
           serializedVersion: 2
