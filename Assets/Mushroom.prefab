@@ -107,7 +107,8 @@ MonoBehaviour:
   jumpSpan: 0
   jumpWait: 0
   hasTarget: 0
-  effect: {fileID: 5766629297962172634, guid: 45c34fc8ded7d8243acb2ca54ada080c, type: 3}
+  dieEffect: {fileID: 5766629297962172634, guid: 45c34fc8ded7d8243acb2ca54ada080c,
+    type: 3}
   potion: {fileID: 8358442828036492454, guid: c2af29c2ad0f82243a4a8d12bfa16d86, type: 3}
 --- !u!50 &1348076725699917574
 Rigidbody2D:
@@ -156,7 +157,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348076725699917575}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
