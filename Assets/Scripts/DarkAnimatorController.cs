@@ -4,7 +4,7 @@ public class DarkAnimatorController : MonoBehaviour
 {
 	public GameObject slimePrefab, dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
-	SpriteRenderer spriteRenderer;
+	private SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
 	public static bool start = true;
 	public static GameObject loading, background;

@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class SkeletonWarriorDetector : MonoBehaviour
 {
+	public Animator skeletonAnimator;
+
+	private void Start()
+	{
+		skeletonAnimator = GetComponentInParent<Animator>();
+	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
 			case "bullet":
-				GetComponentInParent<Animator>().Play("©Þ¤M");
+				skeletonAnimator.Play("©Þ¤M");
 				break;
 		}
 	}
