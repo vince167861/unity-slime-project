@@ -9,7 +9,7 @@ public class WLBoardHandler : MonoBehaviour
     public Sprite[] WL;
     public GameObject Board, Money, Exp, ChLevel;
     public Image ChLevelFill;
-    public TextMeshPro getMoney, getExp, levelText;
+    public TextMeshProUGUI getMoney, getExp, levelText;
     Animator Manimator, Eanimator, Canimator;
     static public float expamount, moneyamount, needexp = 0;
     bool stmoney, stexp = false;
@@ -28,9 +28,9 @@ public class WLBoardHandler : MonoBehaviour
     void Update()
     {
         needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(3/2)));
-        getMoney.GetComponent<TextMeshPro>().text = "x" + (int)moneyamount;
-        getExp.GetComponent<TextMeshPro>().text = "x" + (int)expamount;
-        levelText.GetComponent<TextMeshPro>().text = "Lv." + System.Math.Round(GameGlobalController.totalexp + expamount/needexp);
+        getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)moneyamount;
+        getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)expamount;
+        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round(GameGlobalController.totalexp + expamount/needexp);
         ChLevelFill.GetComponent<Image>().fillAmount = (GameGlobalController.totalexp + expamount) % needexp;
         if(stmoney && moneyamount < GameGlobalController.moneycount)  moneyamount += 0.05f;
         else if(stmoney && moneyamount >= GameGlobalController.moneycount)
