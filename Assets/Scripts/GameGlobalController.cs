@@ -357,7 +357,9 @@ public class GameGlobalController : MonoBehaviour
 	/// <returns>If game state matches</returns>
 	public static bool IsState(string state)
 	{
-		return gameState.ToString() == state;
+		GameState result;
+		System.Enum.TryParse(state, out result);
+		return result == gameState;
 	}
 	public static void givename()
 	{

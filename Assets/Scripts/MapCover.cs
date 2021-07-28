@@ -16,7 +16,7 @@ public class MapCover : MonoBehaviour
 	{
 		if (Vector2.Distance(rect.anchoredPosition, Slime.transform.position * Map.MAP_SCALE) < 20 * Map.MAP_SCALE)
 			Destroy(gameObject);
-		if (GameGlobalController.IsState("Darking"))
+		if (GameGlobalController.isDarking)
 			Destroy(gameObject);
 	}
 
