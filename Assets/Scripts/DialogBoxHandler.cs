@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogBoxHandler : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class DialogBoxHandler : MonoBehaviour
 	public static int adviceperson, adwhich = 0;
 	public Sprite[] ch;
 	static GameObject point;
-	static Text story;
+	static TextMeshProUGUI story;
 	static Text teller;
 	static Image littlech;
 	public static bool isChat = false;
@@ -22,7 +21,7 @@ public class DialogBoxHandler : MonoBehaviour
 	void Start()
 	{
 		point = GameObject.Find("Point");
-		story = GameObject.Find("Story").GetComponent<Text>();
+		story = GameObject.Find("Story").GetComponent<TextMeshProUGUI>();
 		teller = GameObject.Find("Teller").GetComponent<Text>();
 		littlech = GameObject.Find("Little Character").GetComponent<Image>();
 		animator = GetComponent<Animator>();
