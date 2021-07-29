@@ -13,9 +13,9 @@ public class HintHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(GameGlobalController.gameState)
+        switch(Game.gameState)
         {
-            case GameGlobalController.GameState.DarkFadeOut:
+            case Game.GameState.DarkFadeOut:
                 Destroy(gameObject);
                 break;
         }

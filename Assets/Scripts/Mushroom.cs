@@ -56,8 +56,8 @@ public class Mushroom : Entity, Attackable
 
 	void DieAnimationEnd()
 	{
-		GameGlobalController.moneycount += 30;
-		GameGlobalController.expcount += 3;
+		Game.moneycount += 30;
+		Game.expcount += 3;
 		Instantiate(dieEffect).GetComponent<Transform>().position = this.transform.position;
 		if (Random.value <= 0.1) Instantiate(potion);
 		Destroy(gameObject);

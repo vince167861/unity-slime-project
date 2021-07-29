@@ -17,7 +17,7 @@ public class TypeBoxHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameGlobalController.currentLevel > 0 && isName)
+        if(Game.currentLevel > 0 && isName)
         {
             Inputfield.Select();
             Inputfield.text = LevelVarity.me;
@@ -29,20 +29,20 @@ public class TypeBoxHandler : MonoBehaviour
     {
         if(!isName)
         {
-            if(GameGlobalController.storystate == 9 || GameGlobalController.storystate == 0 || GameGlobalController.isUser || GameGlobalController.currentLevel > 0)
+            if(Game.storystate == 9 || Game.storystate == 0 || Game.isUser || Game.currentLevel > 0)
             {
                 LevelVarity.me = Input.text;
-                if(GameGlobalController.currentLevel <= 0)
+                if(Game.currentLevel <= 0)
                 {
-                    GameGlobalController.storystate = 0;
-                    GameGlobalController.battle = true;
-                    GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
+                    Game.storystate = 0;
+                    Game.battle = true;
+                    Game.gameState = Game.GameState.LevelPrepare;
                 }
                 else
                 {
-                    GameGlobalController.gameState = GameGlobalController.GameState.Lobby;
+                    Game.gameState = Game.GameState.Lobby;
                 }
-                GameGlobalController.givename();
+                Game.givename();
                 isName = true;
             }
         }

@@ -9,46 +9,46 @@ public class ButtonHandler : MonoBehaviour
 		DarkAnimatorController.SkipStory();
 		Destroy(GameObject.Find("DragonPrefab(Clone)"));
 		Destroy(GameObject.Find("房子內部(Clone)"));
-		GameGlobalController.cleareffect = true;
+		Game.cleareffect = true;
 		DarkAnimatorController.animator.SetBool("skip", true);
-		GameGlobalController.storystate = 0;
-		GameGlobalController.battle = true;
-		GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
+		Game.storystate = 0;
+		Game.battle = true;
+		Game.gameState = Game.GameState.LevelPrepare;
 	}
 
 	public void GameInit()
 	{
 		MainCameraHandler.allSound = 3;
-		if (GameGlobalController.storystate == 1)
+		if (Game.storystate == 1)
 		{
 			DarkAnimatorController.animator.Play("Start Story");
-			GameGlobalController.cleareffect = true;
-			GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
+			Game.cleareffect = true;
+			Game.gameState = Game.GameState.StartStory;
 		}
 		else
 		{
-			GameGlobalController.StartNewLevel();
-			GameGlobalController.playtimes++;
+			Game.StartNewLevel();
+			Game.playtimes++;
 		}
 	}
 	/*public void NextLevel()
 	{
-			GameGlobalController.currentLevel++;
-			GameGlobalController.gameState = GameGlobalController.GameState.Darking;
+			Game.currentLevel++;
+			Game.gameState = Game.GameState.Darking;
 	}*/
 	public void ShowLobby()
 	{
-		GameGlobalController.playtimes = 1;
-		if (!GameGlobalController.battle || GameGlobalController.newLevel > GameGlobalController.currentLevel) GameGlobalController.currentLevel++;
-		GameGlobalController.battle = false;
+		Game.playtimes = 1;
+		if (!Game.battle || Game.newLevel > Game.currentLevel) Game.currentLevel++;
+		Game.battle = false;
 		MainCameraHandler.allSound = 3;
-		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeOut;
+		Game.gameState = Game.GameState.DarkFadeOut;
 	}
 	public void ChangeValue()
 	{
-		GameGlobalController.chLevel = (int)Mathf.Floor(1 + (GameGlobalController.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
-		GameGlobalController.totalmoney += WLBoardHandler.moneyamount;
-		GameGlobalController.totalexp += WLBoardHandler.expamount;
+		Game.chLevel = (int)Mathf.Floor(1 + (Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
+		Game.totalmoney += WLBoardHandler.moneyamount;
+		Game.totalexp += WLBoardHandler.expamount;
 		WLBoardHandler.expamount = 0;
 		WLBoardHandler.moneyamount = 0;
 		WLBoardHandler.stmenu = false;

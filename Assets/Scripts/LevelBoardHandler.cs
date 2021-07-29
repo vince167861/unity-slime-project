@@ -12,14 +12,14 @@ public class LevelBoardHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lneedexp = 10*(Mathf.Pow(GameGlobalController.chLevel,1.5f));
+        Lneedexp = 10*(Mathf.Pow(Game.chLevel,1.5f));
     }
 
     // Update is called once per frame
     void Update()
     {
         UserName.GetComponent<TextMeshProUGUI>().text = LevelVarity.me;
-        UserLevel.GetComponent<TextMeshProUGUI>().text = "Lv." + GameGlobalController.chLevel;
-        UserLevelAmount.GetComponent<Image>().fillAmount = ((GameGlobalController.totalexp) % Lneedexp) / Lneedexp;
+        UserLevel.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
+        UserLevelAmount.GetComponent<Image>().fillAmount = ((Game.totalexp) % Lneedexp) / Lneedexp;
     }
 }
