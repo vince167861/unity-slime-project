@@ -46,6 +46,7 @@ public class LifeHandler : MonoBehaviour
                 if(start)
                 {
                     situation = 0;
+                    entitylife = Mathf.Round(100 + 90*Mathf(Game.chLevel, 0.5f));
                     targetlife = entitylife;
                     lastlife = targetlife;
                     tghealamount = 0;
