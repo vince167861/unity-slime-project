@@ -21,11 +21,11 @@ public class EnergyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.Animation:
-            case GameGlobalController.GameState.Shaking:
-            case GameGlobalController.GameState.Playing:
+            case Game.GameState.Animation:
+            case Game.GameState.Shaking:
+            case Game.GameState.Playing:
                 if(LifeHandler.start)
                 {
                     nextenergy = entityenergy;
@@ -38,7 +38,7 @@ public class EnergyHandler : MonoBehaviour
                     targetenergy = entityenergy;
                 }
                 delta += Time.deltaTime;
-                if(delta >= 3 && GameGlobalController.gameState == GameGlobalController.GameState.Playing && targetenergy < 100)  changeamount(1);
+                if(delta >= 3 && Game.gameState == Game.GameState.Playing && targetenergy < 100)  changeamount(1);
                 if(targetenergy < nextenergy) EHeal(speed);
                 if(targetenergy > nextenergy) ESuffer(speed);
                 /*{

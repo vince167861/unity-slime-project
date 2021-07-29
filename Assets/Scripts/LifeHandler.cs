@@ -38,11 +38,11 @@ public class LifeHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.Animation:
-            case GameGlobalController.GameState.Shaking:
-            case GameGlobalController.GameState.Playing:
+            case Game.GameState.Animation:
+            case Game.GameState.Shaking:
+            case Game.GameState.Playing:
                 if(start)
                 {
                     situation = 0;

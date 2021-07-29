@@ -40,20 +40,20 @@ public class Slime : MonoBehaviour//Entity
 
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Loading:
+			case Game.GameState.Loading:
 				flareLayer.enabled = false;
 				spriteRender.sortingLayerName = "Black Screen";
 				spriteRender.sortingOrder = 3;
 				break;
-			case GameGlobalController.GameState.DarkFadeIn:
+			case Game.GameState.DarkFadeIn:
 				flareLayer.enabled = true;
 				spriteRender.sortingLayerName = "Main Objects";
 				spriteRender.sortingOrder = 8;
 				break;
-			case GameGlobalController.GameState.Playing:
-			case GameGlobalController.GameState.Lobby:
+			case Game.GameState.Playing:
+			case Game.GameState.Lobby:
 				moveSpeed = 160 * suppression;
 				jumpStrength = 2e4f * suppression;
 				dropStrength = 100 * suppression;
@@ -61,7 +61,7 @@ public class Slime : MonoBehaviour//Entity
 				// Control immuable
 				//if (immuableTime <= 0) spriteRender.color = new Color(255, 255, 255, 90);
 				// Control camera postion, except for the time in the welcome screen
-				if (!(GameGlobalController.currentLevel == 0 && GameGlobalController.isLobby))
+				if (!(Game.currentLevel == 0 && Game.isLobby))
 					MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
 				// Set Slime to follow physics engine
 				rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
@@ -106,7 +106,7 @@ public class Slime : MonoBehaviour//Entity
 					MainCameraHandler.allSound = 2;
 					rigidbody2d.AddForce(new Vector2(0, jumpStrength));
 				}
-				if (Input.GetKeyDown(KeyCode.F) && GameGlobalController.gameState == GameGlobalController.GameState.Playing)
+				if (Input.GetKeyDown(KeyCode.F) && Game.gameState == Game.GameState.Playing)
 				{
 					if(EnergyHandler.nextenergy < 25 || EnergyHandler.targetenergy < 25)
 						MainCameraHandler.allSound = 12;
@@ -130,7 +130,7 @@ public class Slime : MonoBehaviour//Entity
 				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 					allowMove = true;
 				break;
-			case GameGlobalController.GameState.Pause:
+			case Game.GameState.Pause:
 				rigidbody2d.bodyType = RigidbodyType2D.Static;
 				break;
 		}
@@ -145,7 +145,7 @@ public class Slime : MonoBehaviour//Entity
 		switch (collision.collider.tag)
 		{
 			case "Mushroom":
-				if (GameGlobalController.gameState == GameGlobalController.GameState.Playing)
+				if (Game.gameState == Game.GameState.Playing)
 				{
 					Instantiate(paralysis).GetComponent<Transform>().position = collision.transform.position;
 					LifeHandler.Suffer(collision.collider.GetComponent<Attackable>().AttackDamage);
@@ -182,13 +182,13 @@ public class Slime : MonoBehaviour//Entity
 				keyCountObject.GetComponent<CountLabel>().UpdateCount(++keyCount);
 				break;
 			case "Hint":
-				GameGlobalController.Hint++;
-				if(GameGlobalController.gameState == GameGlobalController.GameState.Animation && GameGlobalController.Hint < LevelVarity.playoval[GameGlobalController.currentLevel].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
-				if(GameGlobalController.gameState == GameGlobalController.GameState.Playing && GameGlobalController.Hint < LevelVarity.playoval[GameGlobalController.currentLevel].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
-				if(GameGlobalController.gameState == GameGlobalController.GameState.Lobby && GameGlobalController.Hint < LevelVarity.lobbyoval[GameGlobalController.currentLevel-1].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[GameGlobalController.currentLevel][GameGlobalController.Hint];
+				Game.Hint++;
+				if(Game.gameState == Game.GameState.Animation && Game.Hint < LevelVarity.playoval[Game.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[Game.currentLevel][Game.Hint];
+				if(Game.gameState == Game.GameState.Playing && Game.Hint < LevelVarity.playoval[Game.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[Game.currentLevel][Game.Hint];
+				if(Game.gameState == Game.GameState.Lobby && Game.Hint < LevelVarity.lobbyoval[Game.currentLevel-1].Count)
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[Game.currentLevel][Game.Hint];
 				break;
 		}
 	}
@@ -208,7 +208,7 @@ public class Slime : MonoBehaviour//Entity
 	static void DeathHandler()//static void DeathHandler(Entity entity)
 	{
 		transform.position = new Vector3(-5, -5, -10);
-		GameGlobalController.OnLevelFail();
+		Game.OnLevelFail();
 	}
 
 	/// <summary> For animation 'Start Jump' callback. </summary>
@@ -252,10 +252,10 @@ public class Slime : MonoBehaviour//Entity
 
 	void storyloadend()
 	{
-		if(GameGlobalController.storystate == 2)
+		if(Game.storystate == 2)
 		{
 			animator.Play("Disappear");
-			GameGlobalController.storystate = 3;
+			Game.storystate = 3;
 			DarkAnimatorController.animator.SetFloat("speed", 1);
 		}
 	}

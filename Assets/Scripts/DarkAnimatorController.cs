@@ -22,9 +22,9 @@ public class DarkAnimatorController : MonoBehaviour
 
 	private void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.StartGame:
+			case Game.GameState.StartGame:
 				if (start)
 				{
 					background.SetActive(false);
@@ -33,16 +33,16 @@ public class DarkAnimatorController : MonoBehaviour
 					start = false;
 				}
 				break;
-			case GameGlobalController.GameState.Loading:
-				switch (GameGlobalController.storystate)
+			case Game.GameState.Loading:
+				switch (Game.storystate)
 				{
 					case 0:
-						if (GameGlobalController.currentLevel == 0) EndLoading();
+						if (Game.currentLevel == 0) EndLoading();
 						else if (start)
 						{
 							Slime.ResetState();
 							loading.SetActive(true);
-							if (GameGlobalController.battle)
+							if (Game.battle)
 							{
 								Slime.animator.Play("load1");
 								animator.Play("loadgame");
@@ -62,19 +62,19 @@ public class DarkAnimatorController : MonoBehaviour
 						Slime.animator.Play("load1");
 						animator.Play("loadstory");
 						Slime.transform.position = new Vector3(43, 14, 0);
-						GameGlobalController.storystate = 2;
+						Game.storystate = 2;
 						break;
 					case 3:
 						Slime.transform.position = new Vector3(-5, -5, 0);
 						loading.SetActive(false);
-						GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
+						Game.gameState = Game.GameState.StartStory;
 						animator.speed = 1;
 						break;
 				}
 				break;
-			case GameGlobalController.GameState.StartStory:
+			case Game.GameState.StartStory:
 				MainCameraHandler.storymusic = 1;
-				switch (GameGlobalController.storystate)
+				switch (Game.storystate)
 				{
 					case 5:
 					case 7:
@@ -82,19 +82,19 @@ public class DarkAnimatorController : MonoBehaviour
 						break;
 				}
 				break;
-			case GameGlobalController.GameState.DarkFadeOut:
+			case Game.GameState.DarkFadeOut:
 				spriteRenderer.color = new Color(0, 0, 0);
 				animator.Play("Fade Out");
 				break;
-			case GameGlobalController.GameState.DarkFadeIn:
+			case Game.GameState.DarkFadeIn:
 				spriteRenderer.color = new Color(0, 0, 0);
 				animator.Play("Fade In");
 				break;
-			case GameGlobalController.GameState.BrightFadeOut:
+			case Game.GameState.BrightFadeOut:
 				spriteRenderer.color = new Color(1, 1, 1);
 				animator.Play("Fade Out");
 				break;
-			case GameGlobalController.GameState.BrightFadeIn:
+			case Game.GameState.BrightFadeIn:
 				spriteRenderer.color = new Color(1, 1, 1);
 				animator.Play("Fade In");
 				break;
@@ -115,14 +115,14 @@ public class DarkAnimatorController : MonoBehaviour
 	void Start3()
 	{
 		startScene.SetActive(false);
-		GameGlobalController.SetState("MenuPrepare");
+		Game.SetState("MenuPrepare");
 	}
 
 	/// <summary> Close loading screen. </summary>
 	void EndLoading()
 	{
 		loading.SetActive(false);
-		GameGlobalController.SetState("DarkFadeIn");
+		Game.SetState("DarkFadeIn");
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
@@ -130,7 +130,7 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		animator.SetFloat("speed", 0);
 		//animator.speed = 0;
-		GameGlobalController.storyeffect = 1;
+		Game.storyeffect = 1;
 		background.SetActive(true);
 		background.GetComponent<SpriteRenderer>().sprite = Image[0];
 	}
@@ -146,7 +146,7 @@ public class DarkAnimatorController : MonoBehaviour
 	void clear()
 	{
 		flareLayer.enabled = false;
-		GameGlobalController.cleareffect = true;
+		Game.cleareffect = true;
 	}
 
 	void house()
@@ -157,32 +157,32 @@ public class DarkAnimatorController : MonoBehaviour
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story3()
 	{
-		GameGlobalController.storystate = 6;
+		Game.storystate = 6;
 		animator.speed = 0;
 		flareLayer.enabled = true;
-		GameGlobalController.storyeffect = 2;
+		Game.storyeffect = 2;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story4()
 	{
 		Destroy(GameObject.Find("房子內部(Clone)"));
-		GameGlobalController.storyeffect = 3;
+		Game.storyeffect = 3;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story5()
 	{
-		GameGlobalController.storystate = 8;
+		Game.storystate = 8;
 		animator.speed = 0;
-		GameGlobalController.storychat = 4;
+		Game.storychat = 4;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story6()
 	{
 		animator.speed = 0;
-		GameGlobalController.storychat = 5;
+		Game.storychat = 5;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
@@ -190,20 +190,20 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		animator.speed = 0;
 		Slime.transform.position = new Vector3(30, 48, 0);
-		GameGlobalController.storychat = 6;
+		Game.storychat = 6;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void bubble()
 	{
-		GameGlobalController.storyeffect = 4;
+		Game.storyeffect = 4;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void end()
 	{
-		GameGlobalController.cleareffect = true;
-		GameGlobalController.storystate = 9;
+		Game.cleareffect = true;
+		Game.storystate = 9;
 		background.SetActive(false);
 	}
 

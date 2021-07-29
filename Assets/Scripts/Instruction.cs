@@ -17,17 +17,17 @@ public class Instruction : MonoBehaviour
     void Update()
     {
         spot.SetActive(isNews);
-        switch(GameGlobalController.gameState)
+        switch(Game.gameState)
         {
-            case GameGlobalController.GameState.LevelPrepare:
+            case Game.GameState.LevelPrepare:
                 Destroy(gameObject);
                 break;
-            case GameGlobalController.GameState.Lobby:
+            case Game.GameState.Lobby:
                 if(Input.GetKey(KeyCode.G) && trigger)
                 {
                     isNews = false;
                     MainCameraHandler.allSound = 11;
-                    GameGlobalController.gameState = GameGlobalController.GameState.LobbyInfo;
+                    Game.gameState = Game.GameState.LobbyInfo;
                 }
                 break;
         }
@@ -56,6 +56,6 @@ public class Instruction : MonoBehaviour
     public void turnback()
     {
         MainCameraHandler.allSound = 3;
-        GameGlobalController.gameState = GameGlobalController.GameState.Lobby;
+        Game.gameState = Game.GameState.Lobby;
     }
 }

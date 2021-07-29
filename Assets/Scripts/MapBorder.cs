@@ -15,12 +15,12 @@ public class MapBorder : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && GameGlobalController.isPlaying)
+		if (Input.GetKeyDown(KeyCode.Space) && Game.isPlaying)
 		{
 			isShown = !isShown;
 			BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);
 		}
-		if (isShown && !GameGlobalController.isPlaying)
+		if (isShown && !Game.isPlaying)
 		{
 			isShown = false;
 			BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);

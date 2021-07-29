@@ -23,12 +23,12 @@ public class Map : MonoBehaviour
 
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.LevelPrepare:
-				if (GameGlobalController.battle) isUpdated = false;
+			case Game.GameState.LevelPrepare:
+				if (Game.battle) isUpdated = false;
 				break;
-			case GameGlobalController.GameState.DarkFadeIn:
+			case Game.GameState.DarkFadeIn:
 				if (!isUpdated) UpdateMap();
 				break;
 		}
@@ -37,10 +37,10 @@ public class Map : MonoBehaviour
 	private void UpdateMap()
 	{
 		isUpdated = true;
-		image.sprite = terrains[GameGlobalController.currentLevel];
+		image.sprite = terrains[Game.currentLevel];
 		terrainSize = new Vector2(image.sprite.bounds.size.x, image.sprite.bounds.size.y);
 		terrainSize *= bgSize.x / terrainSize.x;
-		bgSize = GameGlobalController.background.bounds.size * MAP_SCALE;
+		bgSize = Game.background.bounds.size * MAP_SCALE;
 		GetComponent<RectTransform>().sizeDelta = terrainSize * bgSize.x / terrainSize.x;
 		for (int i = 0; i < bgSize.x; i += 4 * MAP_SCALE)
 			for (int j = 0; j < bgSize.y; j += 4 * MAP_SCALE)

@@ -19,12 +19,12 @@ public class Bullet : MonoBehaviour, Attackable
 	// Update is called once per frame
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Lobby:
+			case Game.GameState.Lobby:
 				Destroy(gameObject);
 				break;
-			case GameGlobalController.GameState.Playing:
+			case Game.GameState.Playing:
 				transform.Translate(moveSpeed, 0, 0);
 				break;
 		}

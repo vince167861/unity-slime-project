@@ -13,9 +13,9 @@ public class BrickHanlder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.End:
+            case Game.GameState.End:
                 Destroy(gameObject);
                 break;
         }

@@ -17,12 +17,12 @@ public class TDragonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameGlobalController.storystate == 0 && LevelVarity.me == null)
+        if(Game.storystate == 0 && LevelVarity.me == null)
             Destroy(gameObject);
-        if(GameGlobalController.storystate == 3)
+        if(Game.storystate == 3)
         {
             animator.Play("storydragon");
-            GameGlobalController.storystate = 4;
+            Game.storystate = 4;
         }
         if(levelstory1)
         {
@@ -46,7 +46,7 @@ public class TDragonController : MonoBehaviour
 
     void storyend1()
     {
-        if(GameGlobalController.storystate == 4)  GameGlobalController.storystate = 5;
+        if(Game.storystate == 4)  Game.storystate = 5;
         Destroy(gameObject);
     }
 

@@ -6,31 +6,31 @@ using UnityEngine.UI;
 public class stopbottomh : MonoBehaviour
 {
     public Sprite[] stop = new Sprite[2];
-    GameGlobalController.GameState nowState,prenowState;
+    Game.GameState nowState,prenowState;
     // Start is called before the first frame update
     public void GameStop()
     {
         MainCameraHandler.allSound = 3;
-        if(GameGlobalController.gameState == GameGlobalController.GameState.Instruction)
+        if(Game.gameState == Game.GameState.Instruction)
         {
-            GameGlobalController.gameState = GameGlobalController.GameState.Pause;
+            Game.gameState = Game.GameState.Pause;
         }
         else
         {
-            nowState = GameGlobalController.gameState;
-            GameGlobalController.gameState = GameGlobalController.GameState.Pause;
+            nowState = Game.gameState;
+            Game.gameState = Game.GameState.Pause;
         }
     }
     public void GameStart()
     {
         MainCameraHandler.allSound = 3;
-        GameGlobalController.gameState = nowState;
+        Game.gameState = nowState;
     }
     void Start()
     {
     }
     void Update(){
-        if(GameGlobalController.gameState == GameGlobalController.GameState.Instruction){
+        if(Game.gameState == Game.GameState.Instruction){
             gameObject.GetComponent<Image>().sprite = stop[1];
         }
         else gameObject.GetComponent<Image>().sprite = stop[0];

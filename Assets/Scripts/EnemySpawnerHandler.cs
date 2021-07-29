@@ -20,9 +20,9 @@ public class EnemySpawnerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.Playing:
+            case Game.GameState.Playing:
                 if (isActive)
                 {
                     timeFromLastSpawn += Time.deltaTime;
@@ -37,7 +37,7 @@ public class EnemySpawnerHandler : MonoBehaviour
                     }
                 }
                 break;
-            case GameGlobalController.GameState.End:
+            case Game.GameState.End:
                 Destroy(gameObject);
                 break;
         }

@@ -15,11 +15,11 @@ public class RainLightingHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(GameGlobalController.gameState)
+        switch(Game.gameState)
         {
-            case GameGlobalController.GameState.Lobby:
-            case GameGlobalController.GameState.Playing:
-            case GameGlobalController.GameState.StartStory:
+            case Game.GameState.Lobby:
+            case Game.GameState.Playing:
+            case Game.GameState.StartStory:
                 num = Random.Range(1,101);
                 if(num == 50)
                 {
