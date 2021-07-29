@@ -20,18 +20,18 @@ public class LevelTextController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Level.text = "1-" + (GameGlobalController.currentLevel + 1);
-        LevelName.text = LevelVarity.LevelName[0][GameGlobalController.currentLevel];
-        switch (GameGlobalController.gameState)
+        Level.text = "1-" + (Game.currentLevel + 1);
+        LevelName.text = LevelVarity.LevelName[0][Game.currentLevel];
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.Playing:
+            case Game.GameState.Playing:
                 if(animPlay)
                 {
                     animator.Play("levelText");
                     animPlay = false;
                 }
                 break;
-            case GameGlobalController.GameState.DarkFadeOut:
+            case Game.GameState.DarkFadeOut:
                 animPlay = true;
                 break;
         }

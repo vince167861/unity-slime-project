@@ -15,7 +15,7 @@ public class DialogBoxHandler : MonoBehaviour
 	public bool isAnim, isStart = false;
 	public static bool playsurprise = false, playHint = false;
 	public GameObject circle, oval;
-	public static GameGlobalController.GameState lastgameState;
+	public static Game.GameState lastgameState;
 	public static Animator animator;
 
 	void Start()
@@ -31,9 +31,9 @@ public class DialogBoxHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Animation:
+			case Game.GameState.Animation:
 				point.SetActive(true);
 				if(!isAnim && playsurprise)
 				{
@@ -44,12 +44,12 @@ public class DialogBoxHandler : MonoBehaviour
 				if(playHint)
 				{
 					circle.SetActive(true);
-					circle.GetComponent<RectTransform>().localPosition = LevelVarity.circlepoint[GameGlobalController.currentLevel][0];
+					circle.GetComponent<RectTransform>().localPosition = LevelVarity.circlepoint[Game.currentLevel][0];
 					playHint = false;
 				}
-				story.text = LevelVarity.story[GameGlobalController.currentLevel][cbnum];
-				teller.text = LevelVarity.teller[GameGlobalController.currentLevel][cbnum];
-				littlech.sprite = ch[LevelVarity.littlech[GameGlobalController.currentLevel][cbnum]];
+				story.text = LevelVarity.story[Game.currentLevel][cbnum];
+				teller.text = LevelVarity.teller[Game.currentLevel][cbnum];
+				littlech.sprite = ch[LevelVarity.littlech[Game.currentLevel][cbnum]];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					littlech.sprite = ch[0];
@@ -58,7 +58,7 @@ public class DialogBoxHandler : MonoBehaviour
 					Animation.handler.handle();
 				}
 				break;
-			case GameGlobalController.GameState.Advice:
+			case Game.GameState.Advice:
 				point.SetActive(true);
 				if(isChat)  story.text = LevelVarity.chat[adviceperson][adwhich];
 				else  story.text = LevelVarity.advice[adviceperson][adwhich];
@@ -69,32 +69,32 @@ public class DialogBoxHandler : MonoBehaviour
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
 					guildwoman.trigger2 = false;
-					GameGlobalController.gameState = lastgameState;
+					Game.gameState = lastgameState;
 				}
 				break;
-			case GameGlobalController.GameState.StartStory:
+			case Game.GameState.StartStory:
 				if(FunisController.story == true)
 				{
 					isAnim = false;
 					FunisController.story = false;
 				}
 				point.SetActive(false);
-				if(!isAnim && !isStart && (GameGlobalController.storychat == 2 ||GameGlobalController.storychat == 3 || GameGlobalController.storychat == 6))
+				if(!isAnim && !isStart && (Game.storychat == 2 ||Game.storychat == 3 || Game.storychat == 6))
 				{
-					if(GameGlobalController.storychat == 2)  FunisController.animator.Play("funis_ststory");
+					if(Game.storychat == 2)  FunisController.animator.Play("funis_ststory");
 					else  animator.Play("cbsurprise");
 					isAnim = true;
 					isStart = true;
 				}
-				story.text = LevelVarity.start[GameGlobalController.storychat - 1];
-				teller.text = LevelVarity.stteller[GameGlobalController.storychat - 1];
+				story.text = LevelVarity.start[Game.storychat - 1];
+				teller.text = LevelVarity.stteller[Game.storychat - 1];
 				littlech.sprite = ch[0];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					story.text = teller.text = "";
-					if(GameGlobalController.storychat >= 4)  DarkAnimatorController.animator.speed = 1;
+					if(Game.storychat >= 4)  DarkAnimatorController.animator.speed = 1;
 					else  RedlightHandler.animator.speed = 1;
-					GameGlobalController.storychat = 0;
+					Game.storychat = 0;
 					isStart = false;
 				}
 				break;
@@ -104,8 +104,8 @@ public class DialogBoxHandler : MonoBehaviour
 	{
 		adviceperson = person;
 		adwhich = which;
-		lastgameState = GameGlobalController.gameState;
-		GameGlobalController.gameState = GameGlobalController.GameState.Advice;
+		lastgameState = Game.gameState;
+		Game.gameState = Game.GameState.Advice;
 	}
 
 	void animend()

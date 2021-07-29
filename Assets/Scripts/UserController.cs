@@ -21,6 +21,6 @@ public class UserController : MonoBehaviour
     public void UserCheck()
     {
         if(Input.text == "BrianGodd" || Input.text == "Vince")
-            GameGlobalController.isUser = true;
+            Game.isUser = true;
     }
 }

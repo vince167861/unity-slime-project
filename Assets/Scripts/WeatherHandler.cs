@@ -6,13 +6,13 @@ public class WeatherHandler : MonoBehaviour
 {
 	void Update()
 	{
-		if (GameGlobalController.cleareffect)
+		if (Game.cleareffect)
 		{
 			Destroy(gameObject);
 		}
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.DarkFadeOut:
+			case Game.GameState.DarkFadeOut:
 				Destroy(gameObject);
 				break;
 		}

@@ -13,9 +13,9 @@ public class Animation1_1 : Animation
 
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Playing:
+			case Game.GameState.Playing:
 				if (!isplayed)
 					if (hasDelayed >= timer)
 					{
@@ -32,13 +32,13 @@ public class Animation1_1 : Animation
 		if (doContinuePlaying[DialogBoxHandler.cbnum])
 		{
 			doContinuePlaying[DialogBoxHandler.cbnum] = false;
-			GameGlobalController.SetPlaying();
+			Game.SetPlaying();
 		}
-		else GameGlobalController.SetAnimation();
+		else Game.SetAnimation();
 		if (DialogBoxHandler.cbnum == 10)  TDragonController.animator.SetFloat("storyspeed", 1);
 		if (DialogBoxHandler.cbnum == 11)
 		{
-			GameGlobalController.gameState = GameGlobalController.GameState.BrightFadeOut;
+			Game.gameState = Game.GameState.BrightFadeOut;
 			MainCameraHandler.allSound = 1;
 		}
 		if (DialogBoxHandler.cbnum == 1 || DialogBoxHandler.cbnum == 8)  DialogBoxHandler.playsurprise = true;
@@ -48,9 +48,9 @@ public class Animation1_1 : Animation
 	{
 		switch (id)
 		{
-			case 0: GameGlobalController.SetAnimation(); break;
+			case 0: Game.SetAnimation(); break;
 			case 1:
-				GameGlobalController.gameState = GameGlobalController.GameState.Shaking;
+				Game.gameState = Game.GameState.Shaking;
 				break;
 		}
 	}

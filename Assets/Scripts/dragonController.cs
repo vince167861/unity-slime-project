@@ -13,8 +13,8 @@ public class dragonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(GameGlobalController.gameState){
-            case GameGlobalController.GameState.BrightFadeIn:
+        switch(Game.gameState){
+            case Game.GameState.BrightFadeIn:
                 Destroy(gameObject);
                 break;
         }

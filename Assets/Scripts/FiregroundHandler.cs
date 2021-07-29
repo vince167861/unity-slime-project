@@ -9,7 +9,7 @@ public class FiregroundHandler : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        if(GameGlobalController.storystate == 7)  animator.SetBool("strong", true);
+        if(Game.storystate == 7)  animator.SetBool("strong", true);
         else  animator.SetBool("strong", false);
     }
 

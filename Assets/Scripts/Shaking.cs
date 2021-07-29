@@ -18,13 +18,13 @@ public class Shaking : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Shaking:
+			case Game.GameState.Shaking:
 				this.delta += Time.deltaTime;
 				if (this.delta >= timer[12])
 				{
-					GameGlobalController.gameState = GameGlobalController.GameState.Animation;
+					Game.gameState = Game.GameState.Animation;
 					this.delta = 0;
 				}
 				if (this.delta >= timer[10] && this.delta <= timer[11])

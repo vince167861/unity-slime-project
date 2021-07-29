@@ -6,7 +6,7 @@ public class LevelHandler : MonoBehaviour
 {
 	void Update()
 	{
-		if (GameGlobalController.isMenuPrepare || GameGlobalController.isDarking)
+		if (Game.isMenuPrepare || Game.isDarking)
 		{
 			DialogBoxHandler.cbnum = 0;
 			Destroy(gameObject);

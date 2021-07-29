@@ -13,9 +13,9 @@ public class Floor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(GameGlobalController.gameState)
+        switch(Game.gameState)
         {
-            case GameGlobalController.GameState.LevelPrepare:
+            case Game.GameState.LevelPrepare:
                 Destroy(gameObject);
                 break;
         }

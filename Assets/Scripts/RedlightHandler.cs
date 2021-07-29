@@ -22,11 +22,11 @@ public class RedlightHandler : MonoBehaviour
     {
         animator.speed = 0;
         chatorder++;
-        GameGlobalController.storychat = chatorder;
+        Game.storychat = chatorder;
     }
 
     void lightend()
     {
-        GameGlobalController.storystate = 7;
+        Game.storystate = 7;
     }
 }

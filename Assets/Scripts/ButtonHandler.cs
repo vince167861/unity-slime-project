@@ -9,30 +9,30 @@ public class ButtonHandler : MonoBehaviour
 		DarkAnimatorController.SkipStory();
 		Destroy(GameObject.Find("DragonPrefab(Clone)"));
 		Destroy(GameObject.Find("房子內部(Clone)"));
-		GameGlobalController.cleareffect = true;
+		Game.cleareffect = true;
 		DarkAnimatorController.animator.SetBool("skip", true);
-		GameGlobalController.storystate = 0;
-		GameGlobalController.battle = true;
-		GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
+		Game.storystate = 0;
+		Game.battle = true;
+		Game.gameState = Game.GameState.LevelPrepare;
 	}
 
 	public void GameInit()
 	{
-		GameGlobalController.chLevel = (float)System.Math.Round(GameGlobalController.totalexp + WLBoardHandler.expamount / WLBoardHandler.needexp);
-		GameGlobalController.totalmoney += GameGlobalController.moneycount;
-		GameGlobalController.totalexp += GameGlobalController.expcount;
+		Game.chLevel = (float)System.Math.Round(Game.totalexp + WLBoardHandler.expamount / WLBoardHandler.needexp);
+		Game.totalmoney += Game.moneycount;
+		Game.totalexp += Game.expcount;
 		WLBoardHandler.expamount = 0;
 		WLBoardHandler.moneyamount = 0;
 		WLBoardHandler.stmenu = false;
 		MainCameraHandler.allSound = 3;
-		if (GameGlobalController.storystate == 1)
+		if (Game.storystate == 1)
 		{
 			DarkAnimatorController.animator.Play("Start Story");
-			GameGlobalController.cleareffect = true;
-			GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
+			Game.cleareffect = true;
+			Game.gameState = Game.GameState.StartStory;
 		}
 		else
-			GameGlobalController.StartNewLevel();
+			Game.StartNewLevel();
 	}
 	/*public void NextLevel()
 	{
@@ -41,9 +41,9 @@ public class ButtonHandler : MonoBehaviour
 	}*/
 	public void ShowLobby()
 	{
-		if (!GameGlobalController.battle) GameGlobalController.currentLevel++;
-		GameGlobalController.battle = false;
+		if (!Game.battle) Game.currentLevel++;
+		Game.battle = false;
 		MainCameraHandler.allSound = 3;
-		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeOut;
+		Game.gameState = Game.GameState.DarkFadeOut;
 	}
 }

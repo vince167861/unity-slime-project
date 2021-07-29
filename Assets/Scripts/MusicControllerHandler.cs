@@ -34,6 +34,6 @@ public class MusicControllerHandler : MonoBehaviour
     public void Instruction()
     {
         MainCameraHandler.allSound = 3;
-        GameGlobalController.gameState = GameGlobalController.GameState.Instruction;
+        Game.gameState = Game.GameState.Instruction;
     }
 }

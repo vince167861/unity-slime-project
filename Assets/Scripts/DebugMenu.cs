@@ -6,12 +6,12 @@ public class DebugMenu : MonoBehaviour
 {
     public void GotoL(int lvl)
     {
-        GameGlobalController.currentLevel = lvl;
-        GameGlobalController.StartNewLevel();
+        Game.currentLevel = lvl;
+        Game.StartNewLevel();
     }
 
     public void GotoLobby()
     {
-        GameGlobalController.GotoLobby();
+        Game.GotoLobby();
     }
 }

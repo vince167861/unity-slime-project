@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameGlobalController : MonoBehaviour
+public class Game : MonoBehaviour
 {
 	/// Imports
 	// Canvases
@@ -312,37 +312,18 @@ public class GameGlobalController : MonoBehaviour
 		}
 	}
 
-	[System.Obsolete("isPlaying is deprecated; use IsState() instead.")]
 	public static bool isPlaying => gameState == GameState.Playing;
-
-	[System.Obsolete("isPaused is deprecated; use IsState() instead.")]
 	public static bool isPaused => gameState == GameState.Pause;
-
-	[System.Obsolete("isLobby is deprecated; use IsState() instead.")]
 	public static bool isLobby => gameState == GameState.Lobby;
-
-	[System.Obsolete("isAnimation is deprecated; use IsState() instead.")]
 	public static bool isAnimation => gameState == GameState.Animation;
-
-	[System.Obsolete("isMenuPrepare is deprecated; use IsState() instead.")]
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
-
-	[System.Obsolete("isDarking is deprecated; use IsState() instead.")]
 	public static bool isDarking => gameState == GameState.DarkFadeOut;
-
-	[System.Obsolete("isBrightening is deprecated; use IsState() instead.")]
 	public static bool isBrightening => gameState == GameState.DarkFadeIn;
-
-	[System.Obsolete("hasEnded is deprecated; use IsState() instead.")]
 	public static bool hasEnded => gameState == GameState.End;
-
-	[System.Obsolete("isStart is deprecated; use IsState() instead.")]
 	public static bool isStart => gameState == GameState.LevelPrepare;
 
-	[System.Obsolete("SetPlaying() is deprecated; use SetState() instead.")]
 	public static void SetPlaying() { gameState = GameState.Playing; }
 
-	[System.Obsolete("SetAnimation() is deprecated; use SetState() instead.")]
 	public static void SetAnimation() { gameState = GameState.Animation; }
 
 	/// <summary> Set the current game state. </summary>
@@ -352,15 +333,6 @@ public class GameGlobalController : MonoBehaviour
 		gameState = (GameState)System.Enum.Parse(typeof(GameState), state);
 	}
 
-	/// <summary> Check if current game state matches specified one in string. </summary>
-	/// <param name="state">State specified.</param>
-	/// <returns>If game state matches</returns>
-	public static bool IsState(string state)
-	{
-		GameState result;
-		System.Enum.TryParse(state, out result);
-		return result == gameState;
-	}
 	public static void givename()
 	{
 		for (int i = 0; i < LevelVarity.teller.Count; i++)

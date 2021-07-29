@@ -21,33 +21,33 @@ public class WLBoardHandler : MonoBehaviour
         Manimator = Money.GetComponent<Animator>();
         Eanimator = Exp.GetComponent<Animator>();
         Canimator = ChLevel.GetComponent<Animator>();
-        Board.GetComponent<Image>().sprite = WL[GameGlobalController.battle? 1:0];
-        needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(1.5f)));
+        Board.GetComponent<Image>().sprite = WL[Game.battle? 1:0];
+        needexp = 10*(float)(System.Math.Pow(Game.chLevel,(1.5f)));
     }
 
     // Update is called once per frame
     void Update()
     {
-        needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(3/2)));
+        needexp = 10*(float)(System.Math.Pow(Game.chLevel,(3/2)));
         getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)moneyamount;
         getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)expamount;
-        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round((GameGlobalController.totalexp + expamount)/needexp);
-        ChLevelFill.GetComponent<Image>().fillAmount = (GameGlobalController.totalexp + expamount) % needexp;
-        if(stmoney && moneyamount < GameGlobalController.moneycount)  moneyamount += 0.05f;
-        else if(stmoney && moneyamount >= GameGlobalController.moneycount)
+        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round((Game.totalexp + expamount)/needexp);
+        ChLevelFill.GetComponent<Image>().fillAmount = (Game.totalexp + expamount) % needexp;
+        if(stmoney && moneyamount < Game.moneycount)  moneyamount += 0.05f;
+        else if(stmoney && moneyamount >= Game.moneycount)
         {
             stmoney = false;
             stexp = true;
             Eanimator.Play("bigger");
-            GameGlobalController.moneycount = 0;
+            Game.moneycount = 0;
         }
-        if(stexp && expamount < GameGlobalController.expcount)  expamount += 0.05f;
-        else if(stexp && expamount >= GameGlobalController.expcount)
+        if(stexp && expamount < Game.expcount)  expamount += 0.05f;
+        else if(stexp && expamount >= Game.expcount)
         {
             stexp = false;
             stmenu = true;
             Canimator.Play("bigger");
-            GameGlobalController.expcount = 0;
+            Game.expcount = 0;
         }
     }
 

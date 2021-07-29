@@ -24,13 +24,13 @@ public class TypeBoxHandler : MonoBehaviour
     {
         if(!isName)
         {
-            if(GameGlobalController.storystate == 9 || GameGlobalController.storystate == 0 || GameGlobalController.isUser)
+            if(Game.storystate == 9 || Game.storystate == 0 || Game.isUser)
             {
                 LevelVarity.me = Input.text;
-                GameGlobalController.storystate = 0;
-                GameGlobalController.battle = true;
-                GameGlobalController.gameState = GameGlobalController.GameState.LevelPrepare;
-                GameGlobalController.givename();
+                Game.storystate = 0;
+                Game.battle = true;
+                Game.gameState = Game.GameState.LevelPrepare;
+                Game.givename();
                 isName = true;
             }
         }

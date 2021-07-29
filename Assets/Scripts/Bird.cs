@@ -26,12 +26,12 @@ public class Bird : Entity, Attackable
 		Debug.Log(health);*/
 		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
 		/*LifeBar.GetComponent<Transform>().localScale = new Vector2(1, 1);*/
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Lobby:
+			case Game.GameState.Lobby:
 				Destroy(gameObject);
 				break;
-			case GameGlobalController.GameState.Playing:
+			case Game.GameState.Playing:
 				
 				float newY;
 				do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
@@ -46,7 +46,7 @@ public class Bird : Entity, Attackable
 		switch (collision.tag)
 		{
 			case "Slime":
-				if (GameGlobalController.gameState == GameGlobalController.GameState.Playing)
+				if (Game.gameState == Game.GameState.Playing)
 					LifeHandler.Suffer(AttackDamage);
 				//collision.GetComponent<Entity>().Suffer(AttackDamage);
 				break;

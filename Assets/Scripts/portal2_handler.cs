@@ -16,12 +16,12 @@ public class portal2_handler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.DarkFadeOut:
+            case Game.GameState.DarkFadeOut:
                 Destroy(gameObject);
                 break;
-            case GameGlobalController.GameState.Lobby:
+            case Game.GameState.Lobby:
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
                     if(!Instruction.isNews)
@@ -40,7 +40,7 @@ public class portal2_handler : MonoBehaviour
                 {
                     Anim2 = false;
                     trigger = false;
-                    GameGlobalController.StartNewLevel();
+                    Game.StartNewLevel();
                 }
                 break;
 

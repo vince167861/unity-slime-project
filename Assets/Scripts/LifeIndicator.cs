@@ -19,11 +19,11 @@ public class LifeIndicator : MonoBehaviour
 
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.Animation:
-			case GameGlobalController.GameState.Shaking:
-			case GameGlobalController.GameState.Playing:
+			case Game.GameState.Animation:
+			case Game.GameState.Shaking:
+			case Game.GameState.Playing:
 				if (fillings.localScale.x <= 0.02) parent.Die();
 				transform.localScale = new Vector3(-1 * parent.direction, 1, 1);
 				Name.GetComponent<TextMeshPro>().text = parent.spriteName;

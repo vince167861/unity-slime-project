@@ -19,25 +19,25 @@ public class guildwoman : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.MenuPrepare:
+			case Game.GameState.MenuPrepare:
 				otheradvice = true;
 				break;
-			case GameGlobalController.GameState.LevelPrepare:
+			case Game.GameState.LevelPrepare:
 				Destroy(gameObject);
 				break;
-			case GameGlobalController.GameState.Lobby:
+			case Game.GameState.Lobby:
 				if (startanim)
 					this.delta += Time.deltaTime;
 				if (startanim && this.delta >= timer)
 				{
 					this.delta = 0;
 					startanim = false;
-					if(GameGlobalController.currentLevel == 1 && otheradvice)
+					if(Game.currentLevel == 1 && otheradvice)
 					{
 						DialogBoxHandler.isChat = false;
-						DialogBoxHandler.advice(1, GameGlobalController.currentLevel - 1);
+						DialogBoxHandler.advice(1, Game.currentLevel - 1);
 						otheradvice = false;
 					}
 					else  trigger2 = true;
@@ -45,7 +45,7 @@ public class guildwoman : MonoBehaviour
 				if (trigger2)
 				{
 					DialogBoxHandler.isChat = false;
-					DialogBoxHandler.advice(3, GameGlobalController.currentLevel - 1);
+					DialogBoxHandler.advice(3, Game.currentLevel - 1);
 				}
 				if (Input.GetKey(KeyCode.G) && trigger1)
 				{

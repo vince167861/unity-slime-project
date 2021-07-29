@@ -35,10 +35,10 @@ public class MainCameraHandler : MonoBehaviour
 		mousePosition = Input.mousePosition;
 		audiosource.volume = prevolume;
 		// Place camera in right position
-		switch (GameGlobalController.gameState)
+		switch (Game.gameState)
 		{
-			case GameGlobalController.GameState.StartStory:
-			case GameGlobalController.GameState.Loading:
+			case Game.GameState.StartStory:
+			case Game.GameState.Loading:
 				if (storymusic != 0) audiosource.clip = storyclip[storymusic];
 				if (!this.musicstory)
 				{
@@ -48,15 +48,15 @@ public class MainCameraHandler : MonoBehaviour
 				}
 				transform.position = new Vector3(29f, 21f, -10f);
 				break;
-			case GameGlobalController.GameState.LevelPrepare:
-			case GameGlobalController.GameState.MenuPrepare:
+			case Game.GameState.LevelPrepare:
+			case Game.GameState.MenuPrepare:
 				targetPosition = new Vector3(33f, 24f, -10f);
 				this.music = false;
 				audiosource.Stop();
 				break;
-			case GameGlobalController.GameState.Playing:
-			case GameGlobalController.GameState.Lobby:
-				audiosource.clip = GameGlobalController.isPlaying ? backgroundclip[GameGlobalController.currentLevel] : lobbyclip[GameGlobalController.currentLevel];
+			case Game.GameState.Playing:
+			case Game.GameState.Lobby:
+				audiosource.clip = Game.isPlaying ? backgroundclip[Game.currentLevel] : lobbyclip[Game.currentLevel];
 				if (!this.music)
 				{
 					audiosource.loop = true;
@@ -71,7 +71,7 @@ public class MainCameraHandler : MonoBehaviour
 			allSound = 0;
 		}
 
-		if (GameGlobalController.gameState != GameGlobalController.GameState.StartGame && GameGlobalController.gameState != GameGlobalController.GameState.StartStory)
+		if (Game.gameState != Game.GameState.StartGame && Game.gameState != Game.GameState.StartStory)
 		{
 			// Update camera view position
 			// float camera_x = targetPosition.x + mouseDeltaX, camera_y = targetPosition.y + mouseDeltaY;

@@ -20,16 +20,16 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (GameGlobalController.gameState)
+        switch (Game.gameState)
         {
-            case GameGlobalController.GameState.DarkFadeOut:
+            case Game.GameState.DarkFadeOut:
                 Destroy(gameObject);
                 break;
-            case GameGlobalController.GameState.Playing:
-                need.text = " x " + LevelVarity.doorKey[GameGlobalController.currentLevel];
+            case Game.GameState.Playing:
+                need.text = " x " + LevelVarity.doorKey[Game.currentLevel];
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
-                    if(Slime.keyCount >= LevelVarity.doorKey[GameGlobalController.currentLevel])
+                    if(Slime.keyCount >= LevelVarity.doorKey[Game.currentLevel])
                     {
                         MainCameraHandler.allSound = 7;
                         animator.Play("opendoor");
@@ -44,7 +44,7 @@ public class Portal : MonoBehaviour
                 {
                     Anim = false;
                     trigger = false;
-                    GameGlobalController.OnLevelComplete();
+                    Game.OnLevelComplete();
                 }
                 break;
         }
