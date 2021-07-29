@@ -67,6 +67,8 @@ public class Bird : Entity, Attackable
 
 	void DieAnimationEnd()
 	{
+		GameGlobalController.moneycount += 20;
+		GameGlobalController.expcount += 2.5f;
 		Destroy(gameObject);
 		GetComponentInParent<EnemySpawnerHandler>().isActive = true;
 	}

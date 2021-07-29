@@ -7,7 +7,8 @@ using TMPro;
 public class WLBoardHandler : MonoBehaviour
 {
     public Sprite[] WL;
-    public GameObject Board, Money, Exp, ChLevel;
+    public Sprite[] LP;
+    public GameObject Board, Money, Exp, ChLevel, LosePicture;
     public Image ChLevelFill;
     public TextMeshProUGUI getMoney, getExp, levelText;
     Animator Manimator, Eanimator, Canimator;
@@ -21,39 +22,62 @@ public class WLBoardHandler : MonoBehaviour
         Manimator = Money.GetComponent<Animator>();
         Eanimator = Exp.GetComponent<Animator>();
         Canimator = ChLevel.GetComponent<Animator>();
-        Board.GetComponent<Image>().sprite = WL[GameGlobalController.battle? 1:0];
-        needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(1.5f)));
+        needexp = 10*(Mathf.Pow(GameGlobalController.chLevel,1.5f));
     }
 
     // Update is called once per frame
     void Update()
     {
-        needexp = 10*(float)(System.Math.Pow(GameGlobalController.chLevel,(3/2)));
-        getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)moneyamount;
-        getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)expamount;
-        levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + System.Math.Round((GameGlobalController.totalexp + expamount)/needexp);
-        ChLevelFill.GetComponent<Image>().fillAmount = (GameGlobalController.totalexp + expamount) % needexp;
-        if(stmoney && moneyamount < GameGlobalController.moneycount)  moneyamount += 0.05f;
-        else if(stmoney && moneyamount >= GameGlobalController.moneycount)
+        switch(GameGlobalController.gameState)
         {
-            stmoney = false;
-            stexp = true;
-            Eanimator.Play("bigger");
-            GameGlobalController.moneycount = 0;
-        }
-        if(stexp && expamount < GameGlobalController.expcount)  expamount += 0.05f;
-        else if(stexp && expamount >= GameGlobalController.expcount)
-        {
-            stexp = false;
-            stmenu = true;
-            Canimator.Play("bigger");
-            GameGlobalController.expcount = 0;
+            case GameGlobalController.GameState.End:
+                Board.GetComponent<Image>().sprite = WL[GameGlobalController.battle? 1:0];
+                Money.SetActive(!GameGlobalController.battle);
+                Exp.SetActive(!GameGlobalController.battle);
+                LosePicture.SetActive(GameGlobalController.battle);
+                if(!GameGlobalController.battle)
+                {
+                    needexp = 10*(float)(Mathf.Pow(GameGlobalController.chLevel,1.5f));
+                    getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)Mathf.Round(moneyamount);
+                    getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)Mathf.Round(expamount);
+                    levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + (int)Mathf.Floor(GameGlobalController.chLevel + (GameGlobalController.totalexp + expamount)/needexp);
+                    ChLevelFill.GetComponent<Image>().fillAmount = ((GameGlobalController.totalexp + expamount) % needexp) / needexp;
+                    if(stmoney && moneyamount < Mathf.Round(GameGlobalController.moneycount/GameGlobalController.playtimes))  moneyamount += 0.5f;
+                    else if(stmoney && moneyamount >= Mathf.Round(GameGlobalController.moneycount/GameGlobalController.playtimes))
+                    {
+                        stmoney = false;
+                        stexp = true;
+                        Eanimator.Play("bigger");
+                        GameGlobalController.moneycount = 0;
+                    }
+                    if(stexp && expamount < Mathf.Round(GameGlobalController.expcount/GameGlobalController.playtimes))  expamount += 0.25f;
+                    else if(stexp && expamount >= Mathf.Round(GameGlobalController.expcount/GameGlobalController.playtimes))
+                    {
+                        stexp = false;
+                        stmenu = true;
+                        Canimator.Play("bigger_ch");
+                        GameGlobalController.expcount = 0;
+                    }
+                }
+                else
+                {
+                    LosePicture.GetComponent<Image>().sprite = LP[GameGlobalController.lastattack];
+                    levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + GameGlobalController.chLevel;
+                    ChLevelFill.GetComponent<Image>().fillAmount = ((GameGlobalController.totalexp + expamount) % needexp) / needexp;
+                    GameGlobalController.moneycount = 0;
+                    GameGlobalController.expcount = 0;
+                }
+                break;
         }
     }
 
     void boardin()
     {
-        Manimator.Play("bigger");
-        stmoney = true;
+        if(!GameGlobalController.battle)
+        {
+            Manimator.Play("bigger");
+            stmoney = true;
+        }
+        else  stmenu = true;
     }
 }

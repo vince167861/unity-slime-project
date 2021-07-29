@@ -18,12 +18,6 @@ public class ButtonHandler : MonoBehaviour
 
 	public void GameInit()
 	{
-		GameGlobalController.chLevel = (float)System.Math.Round(GameGlobalController.totalexp + WLBoardHandler.expamount / WLBoardHandler.needexp);
-		GameGlobalController.totalmoney += GameGlobalController.moneycount;
-		GameGlobalController.totalexp += GameGlobalController.expcount;
-		WLBoardHandler.expamount = 0;
-		WLBoardHandler.moneyamount = 0;
-		WLBoardHandler.stmenu = false;
 		MainCameraHandler.allSound = 3;
 		if (GameGlobalController.storystate == 1)
 		{
@@ -32,7 +26,10 @@ public class ButtonHandler : MonoBehaviour
 			GameGlobalController.gameState = GameGlobalController.GameState.StartStory;
 		}
 		else
+		{
 			GameGlobalController.StartNewLevel();
+			GameGlobalController.playtimes++;
+		}
 	}
 	/*public void NextLevel()
 	{
@@ -41,9 +38,19 @@ public class ButtonHandler : MonoBehaviour
 	}*/
 	public void ShowLobby()
 	{
-		if (!GameGlobalController.battle) GameGlobalController.currentLevel++;
+		GameGlobalController.playtimes = 1;
+		if (!GameGlobalController.battle || GameGlobalController.newLevel > GameGlobalController.currentLevel) GameGlobalController.currentLevel++;
 		GameGlobalController.battle = false;
 		MainCameraHandler.allSound = 3;
 		GameGlobalController.gameState = GameGlobalController.GameState.DarkFadeOut;
+	}
+	public void ChangeValue()
+	{
+		GameGlobalController.chLevel = (int)Mathf.Floor(1 + (GameGlobalController.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
+		GameGlobalController.totalmoney += WLBoardHandler.moneyamount;
+		GameGlobalController.totalexp += WLBoardHandler.expamount;
+		WLBoardHandler.expamount = 0;
+		WLBoardHandler.moneyamount = 0;
+		WLBoardHandler.stmenu = false;
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelVarity
 {
-    public static string me = null;
+    public static string lastname, me = null;
     public static List<string> stteller = new List<string> {
         "我", "芙妮絲(妹妹)", "我", "我", "我", "我"
     };
