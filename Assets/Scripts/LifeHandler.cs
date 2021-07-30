@@ -46,6 +46,7 @@ public class LifeHandler : MonoBehaviour
                 if(start)
                 {
                     situation = 0;
+                    entitylife = Mathf.Round(1002 - 0.092f*Mathf.Pow(Game.chLevel - 100, 2));
                     targetlife = entitylife;
                     lastlife = targetlife;
                     tghealamount = 0;
@@ -74,7 +75,7 @@ public class LifeHandler : MonoBehaviour
                 Icon.sprite = icon[situation];
                 Name.text = LevelVarity.me;
                 Life.text = (int)targetlife + " / " + entitylife;
-                if(targetlife > 100)
+                if(targetlife > entitylife)
                 {
                     lastlife = entitylife;
                     isHeal = false;

@@ -18,12 +18,6 @@ public class ButtonHandler : MonoBehaviour
 
 	public void GameInit()
 	{
-		Game.chLevel = (float)System.Math.Round(Game.totalexp + WLBoardHandler.expamount / WLBoardHandler.needexp);
-		Game.totalmoney += Game.moneycount;
-		Game.totalexp += Game.expcount;
-		WLBoardHandler.expamount = 0;
-		WLBoardHandler.moneyamount = 0;
-		WLBoardHandler.stmenu = false;
 		MainCameraHandler.allSound = 3;
 		if (Game.storystate == 1)
 		{
@@ -32,18 +26,36 @@ public class ButtonHandler : MonoBehaviour
 			Game.gameState = Game.GameState.StartStory;
 		}
 		else
+		{
 			Game.StartNewLevel();
+			Game.playtimes++;
+		}
 	}
 	/*public void NextLevel()
 	{
-			GameGlobalController.currentLevel++;
-			GameGlobalController.gameState = GameGlobalController.GameState.Darking;
+			Game.currentLevel++;
+			Game.gameState = Game.GameState.Darking;
 	}*/
 	public void ShowLobby()
 	{
-		if (!Game.battle) Game.currentLevel++;
+		Game.playtimes = 1;
+		if (!Game.battle || Game.newLevel > Game.currentLevel) Game.currentLevel++;
 		Game.battle = false;
 		MainCameraHandler.allSound = 3;
 		Game.gameState = Game.GameState.DarkFadeOut;
+	}
+	public void ChangeValue()
+	{
+		/*Game.chLevel = (int)Mathf.Floor(Game.chLevel + (Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
+		if((Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp >= 1)
+		{
+			WLBoardHandler.needexp += 10*(float)(Mathf.Pow(Game.chLevel,1.5f));
+			WLBoardHandler.lastnexp += 10*(float)(Mathf.Pow(Game.chLevel - 1, 1.5f));
+		}*/
+		Game.totalmoney += WLBoardHandler.moneyamount;
+		Game.totalexp += WLBoardHandler.expamount;
+		WLBoardHandler.expamount = 0;
+		WLBoardHandler.moneyamount = 0;
+		WLBoardHandler.stmenu = false;
 	}
 }

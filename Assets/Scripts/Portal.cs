@@ -44,6 +44,7 @@ public class Portal : MonoBehaviour
                 {
                     Anim = false;
                     trigger = false;
+                    if(Slime.keyCount > LevelVarity.doorKey[Game.currentLevel])  Game.moneycount += 100*(Slime.keyCount - LevelVarity.doorKey[Game.currentLevel]);
                     Game.OnLevelComplete();
                 }
                 break;

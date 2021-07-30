@@ -189,7 +189,7 @@ public class Slime : MonoBehaviour//Entity
 				if(Game.gameState == Game.GameState.Playing && Game.Hint < LevelVarity.playoval[Game.currentLevel].Count)
 					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[Game.currentLevel][Game.Hint];
 				if(Game.gameState == Game.GameState.Lobby && Game.Hint < LevelVarity.lobbyoval[Game.currentLevel-1].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[Game.currentLevel][Game.Hint];
+					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[Game.currentLevel-1][Game.Hint];
 				break;
 		}
 	}

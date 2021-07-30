@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4423645225522507234}
   - component: {fileID: 6147911153576511360}
   - component: {fileID: 4506782906808593129}
+  - component: {fileID: 7520043426749044311}
   m_Layer: 0
   m_Name: InstructionCircle
   m_TagString: Untagged
@@ -4873,5 +4874,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ef3f874a1d754443b9bb36edf1cd593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7520043426749044311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843927366516549265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11726b5a6e02f254a820006bcb048194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

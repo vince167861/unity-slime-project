@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class Game : MonoBehaviour
 	/// <summary> Store and control current game state. </summary>
 	public static GameState gameState = GameState.StartGame;
 	public static int Hint = 0;
-	public static int currentLevel = 0;
+	public static int newLevel, currentLevel, lastattack = 0;
+	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
 	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false, win = false;
 
@@ -96,7 +98,8 @@ public class Game : MonoBehaviour
 
 	private float delta = 0;
 
-	public GameObject board, wlboard, brand, dialogBox, help, pauseButton, potionicon, keyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
+	public GameObject board, wlboard, levelboard, brand, dialogBox, help, pauseButton, potionicon, keyicon, moneyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
+	public Text moneyicontext;
 	public static GameObject keyCountObject;
 	public static SpriteRenderer background;
 
@@ -117,6 +120,7 @@ public class Game : MonoBehaviour
 		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
 		wlboard.SetActive(hasEnded);
+		levelboard.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		passCanvas.SetActive(WLBoardHandler.stmenu && !battle);
 		deadCanvas.SetActive(WLBoardHandler.stmenu && battle);
 		slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
@@ -129,6 +133,7 @@ public class Game : MonoBehaviour
 		help.SetActive(gameState == GameState.Instruction);
 		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		keyicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+		moneyicon.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
 		turnBack.SetActive(gameState == GameState.LobbyInfo);
 
@@ -197,6 +202,7 @@ public class Game : MonoBehaviour
 				}
 				break;
 			case GameState.MenuPrepare:
+				guildwoman.otheradvice = true;
 				guildwoman.startanim = true;
 				ScreenCover.start = true;
 				background.sprite = menuBackground[currentLevel];
@@ -261,6 +267,7 @@ public class Game : MonoBehaviour
 	/// <summary> Called when a level completed. </summary>
 	public static void OnLevelComplete()
 	{
+		newLevel = currentLevel + 1;
 		battle = false; // Ends the battle
 		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
@@ -269,6 +276,7 @@ public class Game : MonoBehaviour
 	/// <summary> Called when a level failed. </summary>
 	public static void OnLevelFail()
 	{
+		battle = true;
 		keyCountObject.GetComponent<CountLabel>().UpdateCount(0);
 		gameState = GameState.End;
 	}
@@ -320,9 +328,14 @@ public class Game : MonoBehaviour
 		{
 			for (int j = 0; j < LevelVarity.teller[i].Count; j++)
 			{
-				if (LevelVarity.teller[i][j] == null) LevelVarity.teller[i][j] = LevelVarity.me;
+				if (LevelVarity.teller[i][j] == LevelVarity.lastname) LevelVarity.teller[i][j] = LevelVarity.me;
 			}
 		}
+		LevelVarity.lastname = LevelVarity.me;
+	}
+	public void Inputstate()
+	{
+		gameState = GameState.Input;
 	}
 
 }

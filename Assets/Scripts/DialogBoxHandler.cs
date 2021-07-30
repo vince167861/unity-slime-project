@@ -68,7 +68,11 @@ public class DialogBoxHandler : MonoBehaviour
 				{
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
-					guildwoman.trigger2 = false;
+					if(guildwoman.otheradvice)
+					{
+						guildwoman.otheradvice = false;
+					}
+					else  guildwoman.trigger2 = false;
 					Game.gameState = lastgameState;
 				}
 				break;
