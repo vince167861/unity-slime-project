@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 
-public class DarkAnimatorController : MonoBehaviour
+public class ScreenCover : MonoBehaviour
 {
-	public GameObject slimePrefab, dragonPrefab, housePrefab, startScene;
+	public GameObject dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
 	private SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
 	public static bool start = true;
-	public static GameObject loading, background;
+	private static GameObject loadingScreen, background2;
+	public GameObject loadingScreenReference, background2Reference;
 	public Sprite[] Image;
 	public Behaviour flareLayer;
 
 	void Start()
 	{
-		loading = GameObject.Find("Loading...");
-		background = GameObject.Find("Background2");
+		loadingScreen = loadingScreenReference;
+		background2 = background2Reference;
 		animator = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
@@ -27,8 +28,6 @@ public class DarkAnimatorController : MonoBehaviour
 			case Game.GameState.StartGame:
 				if (start)
 				{
-					background.SetActive(false);
-					loading.SetActive(false);
 					animator.Play("Start Game");
 					start = false;
 				}
@@ -41,24 +40,16 @@ public class DarkAnimatorController : MonoBehaviour
 						else if (start)
 						{
 							Slime.ResetState();
-							loading.SetActive(true);
-							if (Game.battle)
-							{
-								Slime.animator.Play("load1");
-								animator.Play("loadgame");
-							}
-							else
-							{
-								Slime.animator.Play("load2");
-								animator.Play("loadlobby");
-							}
+							loadingScreen.SetActive(true);
+							Slime.animator.Play(Game.battle ? "load1" : "load2");
+							animator.Play(Game.battle ? "loadgame" : "loadlobby");
 							Slime.transform.position = new Vector3(46, 14, 0);
 							start = false;
 						}
 						break;
 					case 1:
 						Slime.ResetState();
-						loading.SetActive(true);
+						loadingScreen.SetActive(true);
 						Slime.animator.Play("load1");
 						animator.Play("loadstory");
 						Slime.transform.position = new Vector3(43, 14, 0);
@@ -66,7 +57,7 @@ public class DarkAnimatorController : MonoBehaviour
 						break;
 					case 3:
 						Slime.transform.position = new Vector3(-5, -5, 0);
-						loading.SetActive(false);
+						loadingScreen.SetActive(false);
 						Game.gameState = Game.GameState.StartStory;
 						animator.speed = 1;
 						break;
@@ -105,7 +96,7 @@ public class DarkAnimatorController : MonoBehaviour
 	void Start1()
 	{
 		animator.speed = 0;
-		Slime.transform.position = new Vector3(-3, 11, 0);
+		// Slime.transform.position = new Vector3(-3, 11, 0);
 		Slime.animator.Play("Start Jump");
 	}
 
@@ -121,7 +112,7 @@ public class DarkAnimatorController : MonoBehaviour
 	/// <summary> Close loading screen. </summary>
 	void EndLoading()
 	{
-		loading.SetActive(false);
+		loadingScreen.SetActive(false);
 		Game.SetState("DarkFadeIn");
 	}
 
@@ -131,8 +122,8 @@ public class DarkAnimatorController : MonoBehaviour
 		animator.SetFloat("speed", 0);
 		//animator.speed = 0;
 		Game.storyeffect = 1;
-		background.SetActive(true);
-		background.GetComponent<SpriteRenderer>().sprite = Image[0];
+		background2.SetActive(true);
+		background2.GetComponent<SpriteRenderer>().sprite = Image[0];
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
@@ -204,12 +195,12 @@ public class DarkAnimatorController : MonoBehaviour
 	{
 		Game.cleareffect = true;
 		Game.storystate = 9;
-		background.SetActive(false);
+		background2.SetActive(false);
 	}
 
 	public static void SkipStory()
 	{
-		background.SetActive(false);
+		background2.SetActive(false);
 		animator.speed = 1;
 	}
 }

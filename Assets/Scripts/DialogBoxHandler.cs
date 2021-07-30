@@ -92,7 +92,7 @@ public class DialogBoxHandler : MonoBehaviour
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					story.text = teller.text = "";
-					if(Game.storychat >= 4)  DarkAnimatorController.animator.speed = 1;
+					if(Game.storychat >= 4)  ScreenCover.animator.speed = 1;
 					else  RedlightHandler.animator.speed = 1;
 					Game.storychat = 0;
 					isStart = false;

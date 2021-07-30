@@ -6,11 +6,11 @@ public class ButtonHandler : MonoBehaviour
 {
 	public void SkipStory()
 	{
-		DarkAnimatorController.SkipStory();
+		ScreenCover.SkipStory();
 		Destroy(GameObject.Find("DragonPrefab(Clone)"));
 		Destroy(GameObject.Find("房子內部(Clone)"));
 		Game.cleareffect = true;
-		DarkAnimatorController.animator.SetBool("skip", true);
+		ScreenCover.animator.SetBool("skip", true);
 		Game.storystate = 0;
 		Game.battle = true;
 		Game.gameState = Game.GameState.LevelPrepare;
@@ -27,7 +27,7 @@ public class ButtonHandler : MonoBehaviour
 		MainCameraHandler.allSound = 3;
 		if (Game.storystate == 1)
 		{
-			DarkAnimatorController.animator.Play("Start Story");
+			ScreenCover.animator.Play("Start Story");
 			Game.cleareffect = true;
 			Game.gameState = Game.GameState.StartStory;
 		}

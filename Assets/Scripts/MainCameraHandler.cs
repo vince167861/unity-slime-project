@@ -40,28 +40,28 @@ public class MainCameraHandler : MonoBehaviour
 			case Game.GameState.StartStory:
 			case Game.GameState.Loading:
 				if (storymusic != 0) audiosource.clip = storyclip[storymusic];
-				if (!this.musicstory)
+				if (!musicstory)
 				{
 					audiosource.loop = true;
 					audiosource.Play();
-					this.musicstory = true;
+					musicstory = true;
 				}
 				transform.position = new Vector3(29f, 21f, -10f);
 				break;
 			case Game.GameState.LevelPrepare:
 			case Game.GameState.MenuPrepare:
 				targetPosition = new Vector3(33f, 24f, -10f);
-				this.music = false;
+				music = false;
 				audiosource.Stop();
 				break;
 			case Game.GameState.Playing:
 			case Game.GameState.Lobby:
 				audiosource.clip = Game.isPlaying ? backgroundclip[Game.currentLevel] : lobbyclip[Game.currentLevel];
-				if (!this.music)
+				if (!music)
 				{
 					audiosource.loop = true;
 					audiosource.Play();
-					this.music = true;
+					music = true;
 				}
 				break;
 		}
