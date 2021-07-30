@@ -95,12 +95,12 @@ public class LevelVarity
         },
         new List<Vector2> {},
         new List<Vector2> {
-            new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
+            new Vector2(237, 72), new Vector2(466,139)
         }
     };
     public static List<List<Vector2>> lobbyoval = new List<List<Vector2>> {
         new List<Vector2> {
-            new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
+            new Vector2(24, 2), new Vector2(53.2f, 2), new Vector2(112.2f, 5)
         }
     };
 

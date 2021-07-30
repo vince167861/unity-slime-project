@@ -46,7 +46,12 @@ public class ButtonHandler : MonoBehaviour
 	}
 	public void ChangeValue()
 	{
-		Game.chLevel = (int)Mathf.Floor(1 + (Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
+		/*Game.chLevel = (int)Mathf.Floor(Game.chLevel + (Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp);
+		if((Game.totalexp + WLBoardHandler.expamount)/WLBoardHandler.needexp >= 1)
+		{
+			WLBoardHandler.needexp += 10*(float)(Mathf.Pow(Game.chLevel,1.5f));
+			WLBoardHandler.lastnexp += 10*(float)(Mathf.Pow(Game.chLevel - 1, 1.5f));
+		}*/
 		Game.totalmoney += WLBoardHandler.moneyamount;
 		Game.totalexp += WLBoardHandler.expamount;
 		WLBoardHandler.expamount = 0;

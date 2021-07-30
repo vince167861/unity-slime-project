@@ -75,7 +75,7 @@ public class LifeHandler : MonoBehaviour
                 Icon.sprite = icon[situation];
                 Name.text = LevelVarity.me;
                 Life.text = (int)targetlife + " / " + entitylife;
-                if(targetlife > 100)
+                if(targetlife > entitylife)
                 {
                     lastlife = entitylife;
                     isHeal = false;

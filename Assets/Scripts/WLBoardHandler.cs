@@ -12,7 +12,7 @@ public class WLBoardHandler : MonoBehaviour
     public Image ChLevelFill;
     public TextMeshProUGUI getMoney, getExp, levelText;
     Animator Manimator, Eanimator, Canimator;
-    static public float expamount, moneyamount, needexp = 0;
+    static public float expamount, moneyamount, needexp, lastnexp, nowneedexp = 0;
     bool stmoney, stexp = false;
     static public bool stmenu = false;
     // Start is called before the first frame update
@@ -37,11 +37,17 @@ public class WLBoardHandler : MonoBehaviour
                 LosePicture.SetActive(Game.battle);
                 if(!Game.battle)
                 {
-                    needexp = 10*(float)(Mathf.Pow(Game.chLevel,1.5f));
+                    if((Game.totalexp + expamount)/needexp >= 1)
+                    {
+                        Game.chLevel = (int)Mathf.Floor(Game.chLevel + (Game.totalexp + expamount)/needexp);
+                        needexp += 10*(Mathf.Pow(Game.chLevel,1.5f));
+                    }
+                    nowneedexp = 10*(float)(Mathf.Pow(Game.chLevel,1.5f));
+                    if(Game.chLevel > 1)  lastnexp = 10*(float)(Mathf.Pow(Game.chLevel - 1,1.5f));
                     getMoney.GetComponent<TextMeshProUGUI>().text = "x" + (int)Mathf.Round(moneyamount);
                     getExp.GetComponent<TextMeshProUGUI>().text = "x" + (int)Mathf.Round(expamount);
-                    levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + (int)Mathf.Floor(Game.chLevel + (Game.totalexp + expamount)/needexp);
-                    ChLevelFill.GetComponent<Image>().fillAmount = ((Game.totalexp + expamount) % needexp) / needexp;
+                    levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
+                    ChLevelFill.GetComponent<Image>().fillAmount = (Game.totalexp + expamount - lastnexp) / nowneedexp;
                     if(stmoney && moneyamount < Mathf.Round(Game.moneycount/Game.playtimes))  moneyamount += 0.5f;
                     else if(stmoney && moneyamount >= Mathf.Round(Game.moneycount/Game.playtimes))
                     {
