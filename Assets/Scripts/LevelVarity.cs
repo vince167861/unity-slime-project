@@ -35,11 +35,12 @@ public class LevelVarity
         new List<string> {
         "勇者啊,你是腦袋浸水還是沒腦袋? \n你沒看到這門上的鑰匙孔數嗎?你鑰匙不夠啊!!!",
         "勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"},
-        new List<string> {"這裡是哪裡...?"},
-        new List<string> {""},
+        new List<string> {"這裡是哪裡...?", "好累啊, 結果關於芙妮絲的情報這次根本毫無進展啊...", "結果迷宮裡也什麼都沒有嘛!!!, 你還配得上嚮導???"},
+        new List<string> {},
         new List<string> {
-        "歡迎來到蘑菇村!!! \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",
-        "一說到冒險,就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。"
+        "歡迎來到蘑菇村!!!在這裡冒險的過程中,希望你能有所發現。 \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",
+        "勇者別灰心啊! 一說到冒險,你就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。",
+        "...... \n是喔。"
         }
     };
     public static List<List<int>> littlech = new List<List<int>> {    //0:世界之聲 1:me 2:魔龍王
@@ -79,10 +80,10 @@ public class LevelVarity
         new Vector2(5, 12), new Vector2(5, 60), new Vector2(54, 76)
     };
     public static List<bool> playHint = new List<bool> {
-        true, false, true
+        true, true, true
     };
     public static List<bool> lobbyHint = new List<bool> {
-        false, true, false, true
+        false, true, true, true
     };
     public static List<List<Vector3>> circlepoint = new List<List<Vector3>> {
         new List<Vector3> {
@@ -93,7 +94,9 @@ public class LevelVarity
         new List<Vector2> {
             new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
         },
-        new List<Vector2> {},
+        new List<Vector2> {
+            new Vector2(304.3f, 79)
+        },
         new List<Vector2> {
             new Vector2(237, 72), new Vector2(466,139)
         }
@@ -101,6 +104,12 @@ public class LevelVarity
     public static List<List<Vector2>> lobbyoval = new List<List<Vector2>> {
         new List<Vector2> {
             new Vector2(24, 2), new Vector2(53.2f, 2), new Vector2(112.2f, 5)
+        },
+        new List<Vector2> {
+            new Vector2(112.2f, 5)
+        },
+        new List<Vector2> {
+            new Vector2(112.2f, 5)
         }
     };
 

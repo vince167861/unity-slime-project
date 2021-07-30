@@ -22,7 +22,6 @@ public class guildwoman : MonoBehaviour
 		switch (Game.gameState)
 		{
 			case Game.GameState.MenuPrepare:
-				otheradvice = true;
 				break;
 			case Game.GameState.LevelPrepare:
 				Destroy(gameObject);
@@ -34,15 +33,14 @@ public class guildwoman : MonoBehaviour
 				{
 					this.delta = 0;
 					startanim = false;
-					if(Game.currentLevel == 1 && otheradvice)
+					if(otheradvice)
 					{
 						DialogBoxHandler.isChat = false;
 						DialogBoxHandler.advice(1, Game.currentLevel - 1);
-						otheradvice = false;
 					}
-					else  trigger2 = true;
+					trigger2 = true;
 				}
-				if (trigger2)
+				if (trigger2 && !otheradvice)
 				{
 					DialogBoxHandler.isChat = false;
 					DialogBoxHandler.advice(3, Game.currentLevel - 1);

@@ -205,6 +205,7 @@ public class Game : MonoBehaviour
 				}
 				break;
 			case GameState.MenuPrepare:
+				guildwoman.otheradvice = true;
 				guildwoman.startanim = true;
 				DarkAnimatorController.start = true;
 				background.sprite = menuBackground[currentLevel];
