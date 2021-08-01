@@ -18,6 +18,7 @@ TagManager:
   - Enemy
   - Katana
   - Hint
+  - Equipment
   layers:
   - Default
   - TransparentFX
