@@ -10386,7 +10386,7 @@ MonoBehaviour:
   gameBackground:
   - {fileID: 21300000, guid: bddf1afb4673e0b47b91bf3d39a13a5b, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
-  - {fileID: 21300000, guid: 31842d671f4cb064a94b3668762a9d46, type: 3}
+  - {fileID: 21300000, guid: 0d9b2f3895f8d9146a57fac92b484f09, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   menuBackground:
