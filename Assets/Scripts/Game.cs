@@ -27,7 +27,9 @@ public class Game : MonoBehaviour
 		MenuPrepare,
 		/// <summary> Fade out to dark color. </summary>
 		/// <remarks> Was 'Darking' before.</remarks>
-		DarkFadeOut, Loading,
+		DarkFadeOut,
+		/// <summary> Loading is between DarkFadeIn and DarkFadeOut. </summary>
+		Loading,
 		/// <summary> Fade in from dark color. </summary>
 		/// <remarks> Was 'Brightening' before. </remarks>
 		DarkFadeIn,
@@ -138,15 +140,11 @@ public class Game : MonoBehaviour
 		switch (gameState)
 		{
 			case GameState.Input:
-				DarkAnimatorController.SkipStory();
-				break;
-			case GameState.StartGame:
+				ScreenCover.SkipStory();
 				break;
 			case GameState.StartStory:
 				switch (storyeffect)
 				{
-					case 0:
-						break;
 					case 1:
 						cleareffect = false;
 						Instantiate(weather[0]);
@@ -169,8 +167,6 @@ public class Game : MonoBehaviour
 						storyeffect = 0;
 						break;
 				}
-				break;
-			case GameState.Loading:
 				break;
 			case GameState.BrightFadeOut:
 				delta += Time.deltaTime;
@@ -200,18 +196,20 @@ public class Game : MonoBehaviour
 						else Instantiate(weather[Random.Range(1, 4)]);
 					}
 					else if (battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
-					if (battle && currentLevel == 1) Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
+					if (battle && currentLevel == 1)
+						Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
+					SetState(battle ? "LevelPrepare" : "MenuPrepare");
 				}
 				break;
 			case GameState.MenuPrepare:
 				guildwoman.otheradvice = true;
 				guildwoman.startanim = true;
-				DarkAnimatorController.start = true;
+				ScreenCover.start = true;
 				background.sprite = menuBackground[currentLevel];
 				Hint = 0;
-				if(LevelVarity.lobbyHint[currentLevel])  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.lobbyoval[currentLevel-1][0];
-				gameState = GameState.Loading;
+				if (LevelVarity.lobbyHint[currentLevel])
+					Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.lobbyoval[currentLevel-1][0];
+				SetState("Loading");
 				break;
 			case GameState.LevelPrepare:
 				if (LevelVarity.me == null)
@@ -219,12 +217,13 @@ public class Game : MonoBehaviour
 				else
 				{
 					Slime.keyCount = 0;
-					DarkAnimatorController.start = true;
-					gameState = GameState.Loading;
+					ScreenCover.start = true;
+					SetState("Loading");
 				}
 				background.sprite = gameBackground[currentLevel];
 				Hint = 0;
-				if(LevelVarity.playHint[currentLevel] && LevelVarity.me != null)  Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.playoval[currentLevel][0];
+				if (LevelVarity.playHint[currentLevel] && LevelVarity.me != null) 
+					Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.playoval[currentLevel][0];
 				break;
 			case GameState.DarkFadeIn:
 				if (!isMake)
@@ -244,27 +243,8 @@ public class Game : MonoBehaviour
 						storystate = 1;
 						isStory = true;
 					}
-					gameState = battle ? GameState.Playing : GameState.Lobby;
+					SetState(battle ? "Playing" : "Lobby");
 				}
-				break;
-			case GameState.Playing:
-				break;
-			case GameState.Pause:
-				break;
-			case GameState.End:
-				break;
-			case GameState.Lobby:
-				moneyicontext.text = " x " + totalmoney;
-				break;
-			case GameState.Animation:
-				break;
-			case GameState.Shaking:
-				break;
-			case GameState.Instruction:
-				break;
-			case GameState.LobbyInfo:
-				break;
-			case GameState.Advice:
 				break;
 		}
 	}
@@ -274,7 +254,7 @@ public class Game : MonoBehaviour
 	public static void StartNewLevel()
 	{
 		battle = true; // Starts the battle
-		gameState = GameState.DarkFadeOut;
+		SetState("DarkFadeOut");
 	}
 
 	/// <summary> Called to navigate to lobby. </summary>

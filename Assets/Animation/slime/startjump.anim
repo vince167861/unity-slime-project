@@ -58,7 +58,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.5
+  - time: 1
+    functionName: JumpRight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
     functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -72,7 +79,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 4.5
+  - time: 4
+    functionName: JumpRight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5
     functionName: JumpRight
     data: 
     objectReferenceParameter: {fileID: 0}

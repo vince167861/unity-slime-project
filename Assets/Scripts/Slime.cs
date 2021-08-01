@@ -35,7 +35,8 @@ public class Slime : MonoBehaviour//Entity
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		spriteRender = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
-		flareLayer = (Behaviour)Camera.main.GetComponent("FlareLayer");
+		flareLayer = Camera.main.GetComponent<FlareLayer>();
+		transform.position = new Vector3(-23, -7, 0);
 	}
 
 	void Update()
@@ -215,14 +216,14 @@ public class Slime : MonoBehaviour//Entity
 	void Start2()
 	{
 		animator.Play("Disappear");
-		DarkAnimatorController.animator.speed = 1;
+		ScreenCover.animator.speed = 1;
 	}
 
 	/// <summary> For Game Start animation. </summary>
 	void JumpRight()
 	{
 		MainCameraHandler.allSound = 2;
-		rigidbody2d.AddForce(new Vector2(12000f, 1.5e4f));
+		rigidbody2d.AddForce(new Vector2(1e4f, 1e4f));
 		animator.Play("Jump Right");
 		direction = 1;
 	}
@@ -256,7 +257,7 @@ public class Slime : MonoBehaviour//Entity
 		{
 			animator.Play("Disappear");
 			Game.storystate = 3;
-			DarkAnimatorController.animator.SetFloat("speed", 1);
+			ScreenCover.animator.SetFloat("speed", 1);
 		}
 	}
 }

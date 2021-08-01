@@ -979,12 +979,12 @@ GameObject:
   - component: {fileID: 118156547}
   - component: {fileID: 118156548}
   m_Layer: 0
-  m_Name: Loading...
+  m_Name: Loading Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &118156546
 Transform:
   m_ObjectHideFlags: 0
@@ -993,7 +993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118156545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.31, y: 4.54, z: 0}
+  m_LocalPosition: {x: 18, y: -7.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 546573381}
@@ -1108,12 +1108,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a007d5e48a3b9314d8d4a5550ecdbd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimePrefab: {fileID: 0}
   dragonPrefab: {fileID: 6102819404029103332, guid: 88be2a78f890e4642a9989f5d7421580,
     type: 3}
   housePrefab: {fileID: 7372207984277310545, guid: 066fd6bd26ca59d429029b52aec880da,
     type: 3}
   startScene: {fileID: 1351225764}
+  loadingScreenReference: {fileID: 118156545}
+  background2Reference: {fileID: 2056558437}
   Image:
   - {fileID: 21300000, guid: 172851ca19c38754d8c6c68f0a5eb05f, type: 3}
   - {fileID: 21300000, guid: 172851ca19c38754d8c6c68f0a5eb05f, type: 3}
@@ -1178,7 +1179,7 @@ Transform:
   m_GameObject: {fileID: 148671823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1351225765}
   - {fileID: 118156546}
@@ -7139,7 +7140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -62.809998}
+  m_AnchoredPosition: {x: -80, y: -62.809937}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &399919441
@@ -7913,8 +7914,8 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
-  m_Depth: -1
+  orthographic size: 10
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7937,7 +7938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: 24, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8084,7 +8085,7 @@ GameObject:
   - component: {fileID: 546573381}
   - component: {fileID: 546573382}
   m_Layer: 0
-  m_Name: Back
+  m_Name: Loading Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8098,8 +8099,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546573380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.655, y: -2.27, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 118156546}
   m_RootOrder: 0
@@ -8201,7 +8202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15, y: -16.19513}
+  m_AnchoredPosition: {x: 15, y: -16.19519}
   m_SizeDelta: {x: 447, y: 46}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &558742144
@@ -10344,7 +10345,7 @@ Transform:
   m_GameObject: {fileID: 1031243581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -10366,7 +10367,7 @@ MonoBehaviour:
   deadCanvas: {fileID: 1229984238}
   slimeHealthCanvas: {fileID: 558742142}
   mapCanvas: {fileID: 0}
-  slimePrefab: {fileID: 6591067462164887369, guid: 49e6f459fa8709f41b03fbcad43bac37,
+  slimePrefab: {fileID: 8143217241209096902, guid: 8246192e7a8626844a420540751dc339,
     type: 3}
   enemySpawnerPrefab: {fileID: 7401531624215970949, guid: 2b6fad2a4f11a8941a4e10ee044d4e79,
     type: 3}
@@ -10389,7 +10390,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   - {fileID: 21300000, guid: 879c1098a53cf0c48b720abeb36ec512, type: 3}
   menuBackground:
-  - {fileID: 21300000, guid: a1c72d97f9719d944b2a25a98c4f8974, type: 3}
+  - {fileID: 21300000, guid: 96652c9383be5a64fae745d8d7d9b5a6, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
   - {fileID: 21300000, guid: 292cdc441d78f724ca756039f375bf32, type: 3}
@@ -12171,8 +12172,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351225764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.5, y: 12, z: 0}
-  m_LocalScale: {x: 1.78, y: 1.67, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 148671826}
   m_RootOrder: 0
@@ -12217,7 +12218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 997e8375f2920fb48ae600ed0d3cce5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54b2ec5086a2b55478f0f0222a753425, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12245,7 +12246,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 12}
+    oldSize: {x: 40, y: 20}
     newSize: {x: 16, y: 12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12253,13 +12254,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.9058247, y: -3.3385773}
-      - {x: 1.4511373, y: -3.6245747}
-      - {x: -3.052442, y: -3.8432553}
-      - {x: -11.943871, y: -4.3196898}
-      - {x: -8, y: -6}
-      - {x: 8, y: -6}
-      - {x: 8.0803795, y: -1.7964272}
+    - - {x: 20.009727, y: -6.06566}
+      - {x: 15.1929035, y: -6.0393844}
+      - {x: 13.53672, y: -7.093583}
+      - {x: 4.809716, y: -7.146045}
+      - {x: 2.8405647, y: -8.179874}
+      - {x: -7.688205, y: -8.211566}
+      - {x: -9.519815, y: -9.022526}
+      - {x: -17.933262, y: -9.052275}
+      - {x: -19.62208, y: -9.5909815}
+      - {x: -24.419056, y: -9.650484}
+      - {x: -24.32555, y: -9.962358}
+      - {x: 20.03701, y: -9.938114}
 --- !u!1 &1371632663
 GameObject:
   m_ObjectHideFlags: 0
@@ -15295,7 +15301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2056558438
 Transform:
   m_ObjectHideFlags: 0
