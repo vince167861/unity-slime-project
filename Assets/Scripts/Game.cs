@@ -231,7 +231,7 @@ public class Game : MonoBehaviour
 					MakeMap(battle ? 0 : 1);
 					isMake = true;
 				}
-				LifeHandler.start = true;
+				MainCharacterHealth.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
@@ -287,7 +287,7 @@ public class Game : MonoBehaviour
 		{
 			if (currentLevel < LevelVarity.spawnpoint.Count)
 			{
-				Slime.transform.position = LevelVarity.spawnpoint[currentLevel];
+				Slime.instance.transform.position = LevelVarity.spawnpoint[currentLevel];
 				Instantiate(levelPrefab[currentLevel]);
 			}
 		}
@@ -295,7 +295,7 @@ public class Game : MonoBehaviour
 		{
 			if (currentLevel != 0)
 			{
-				Slime.transform.position = new Vector2(1f, 5f);
+				Slime.instance.transform.position = new Vector2(1f, 5f);
 				Instantiate(floorPrefab);
 			}
 		}

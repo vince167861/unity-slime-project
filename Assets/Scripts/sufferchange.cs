@@ -1,26 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class sufferchange : MonoBehaviour
+public class SufferChange : MonoBehaviour
 {
-    public float sufferamount2 = 0;
-    public static float sufferamount = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public float sufferAmount2 = 0;
+	public static float sufferAmount = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(LifeHandler.isSuffer)
-            sufferamount = sufferamount2;
-        else
-        {
-            sufferamount = 0;
-            sufferamount2 = 0;
-        }
-    }
+	private void Update()
+	{
+		if (MainCharacterHealth.isSuffer)
+			sufferAmount = sufferAmount2;
+		else
+		{
+			sufferAmount = 0;
+			sufferAmount2 = 0;
+		}
+	}
 }

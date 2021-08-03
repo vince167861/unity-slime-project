@@ -6650,6 +6650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b77a861865b064b8aab3ad8821be69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  isDied: 0
+  invulnerable: 0
   isAttacking: 0
 --- !u!1 &8316086208272674695
 GameObject:

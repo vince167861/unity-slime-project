@@ -13,7 +13,7 @@ public class MapCenter : MonoBehaviour
 	}
 	private void Update()
   {
-		rect.anchoredPosition = Slime.transform.position * Map.MAP_SCALE;
+		rect.anchoredPosition = Slime.instance.transform.position * Map.MAP_SCALE;
 	}
 
 	protected void UpdateColor()

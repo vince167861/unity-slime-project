@@ -5130,7 +5130,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7238c4fac449445a64d4cbc6642fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityDirection: 1
+  isDied: 0
+  invulnerable: 0
   direction: 1
+  animator: {fileID: 3533328485803976918}
+  rigidbody2d: {fileID: 8143217241209107770}
+  spriteRender: {fileID: 8143217241209107769}
+  transform: {fileID: 8143217241209107768}
   Bomb: {fileID: 5246916899251585217, guid: ff921ac50801c734b82d6912b979a036, type: 3}
   keyCountObject: {fileID: 0}
   potionCountObject: {fileID: 0}

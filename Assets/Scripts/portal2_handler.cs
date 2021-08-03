@@ -28,7 +28,7 @@ public class portal2_handler : MonoBehaviour
                     {
                         animator.Play("gotoportal");
                         MainCameraHandler.allSound = 8;
-                        Slime.disappear();
+                        Slime.instance.disappear();
                     }
                     else
                     {

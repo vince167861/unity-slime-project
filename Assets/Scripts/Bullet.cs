@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour, Attackable
+public class Bullet : MonoBehaviour, IAttackable
 {
 	public float moveSpeed = 0.3f; //bullet movement speed
 
@@ -37,7 +37,11 @@ public class Bullet : MonoBehaviour, Attackable
 			case "bird":
 			case "Mushroom":
 				collision.GetComponent<Entity>().Suffer(AttackDamage);
-				Instantiate(particle).GetComponent<Transform>().position = this.transform.position;
+				Instantiate(particle).GetComponent<Transform>().position = transform.position;
+				Destroy(gameObject);
+				break;
+			case "Walls":
+			case "Ground":
 				Destroy(gameObject);
 				break;
 		}

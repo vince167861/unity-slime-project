@@ -31,7 +31,7 @@ public class EnemySpawnerHandler : MonoBehaviour
                         GameObject enemy = Instantiate(enemyPrefab);
                         enemy.transform.SetParent(transform);
                         enemy.transform.position = transform.position;
-                        enemy.GetComponent<Entity>().direction = defDirection;
+                        enemy.GetComponent<Entity>().entityDirection = defDirection;
                         timeFromLastSpawn = 0;
                         isActive = false;
                     }

@@ -4,9 +4,9 @@ public class ScreenCover : MonoBehaviour
 {
 	public GameObject dragonPrefab, housePrefab, startScene;
 	public static Animator animator;
-	private SpriteRenderer spriteRenderer;
+	public SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
-	public static bool start = true;
+	public static bool start = false;
 	private static GameObject loadingScreen, background2;
 	public GameObject loadingScreenReference, background2Reference;
 	public Sprite[] Image;
@@ -17,7 +17,6 @@ public class ScreenCover : MonoBehaviour
 		loadingScreen = loadingScreenReference;
 		background2 = background2Reference;
 		animator = GetComponent<Animator>();
-		spriteRenderer = GetComponent<SpriteRenderer>();
 		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
 	}
 
@@ -26,11 +25,7 @@ public class ScreenCover : MonoBehaviour
 		switch (Game.gameState)
 		{
 			case Game.GameState.StartGame:
-				if (start)
-				{
-					animator.Play("Start Game");
-					start = false;
-				}
+				animator.Play("Start Game");
 				break;
 			case Game.GameState.Loading:
 				switch (Game.storystate)
@@ -41,24 +36,19 @@ public class ScreenCover : MonoBehaviour
 						{
 							Slime.ResetState();
 							loadingScreen.SetActive(true);
-							Slime.animator.Play(Game.battle ? "load1" : "load2");
 							animator.Play(Game.battle ? "loadgame" : "loadlobby");
-							Slime.transform.position = new Vector3(46, 14, 0);
 							start = false;
 						}
 						break;
 					case 1:
 						Slime.ResetState();
 						loadingScreen.SetActive(true);
-						Slime.animator.Play("load1");
 						animator.Play("loadstory");
-						Slime.transform.position = new Vector3(43, 14, 0);
 						Game.storystate = 2;
 						break;
 					case 3:
-						Slime.transform.position = new Vector3(-5, -5, 0);
 						loadingScreen.SetActive(false);
-						Game.gameState = Game.GameState.StartStory;
+						Game.SetState("StartStory");
 						animator.speed = 1;
 						break;
 				}
@@ -97,7 +87,7 @@ public class ScreenCover : MonoBehaviour
 	{
 		animator.speed = 0;
 		// Slime.transform.position = new Vector3(-3, 11, 0);
-		Slime.animator.Play("Start Jump");
+		Slime.instance.animator.Play("Start Jump");
 	}
 
 	// Start2() -> Slime.Start2()
@@ -180,7 +170,7 @@ public class ScreenCover : MonoBehaviour
 	void story7()
 	{
 		animator.speed = 0;
-		Slime.transform.position = new Vector3(30, 48, 0);
+		Slime.instance.transform.position = new Vector3(30, 48, 0);
 		Game.storychat = 6;
 	}
 

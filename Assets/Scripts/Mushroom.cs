@@ -1,7 +1,7 @@
 ﻿#pragma warning disable CS0108 // 無法辨認的 #pragma 指示詞
 using UnityEngine;
 
-public class Mushroom : Entity, Attackable
+public class Mushroom : Entity, IAttackable
 {
 	public Mushroom() : base("PiPi", 200, -1, null, OnDie) { }
 	public int AttackDamage => 40;
@@ -28,10 +28,10 @@ public class Mushroom : Entity, Attackable
 				{
 					jumpSpan = -1;
 					animator.Play("Jump");
-					direction = hasTarget ? (Slime.transform.position.x - transform.position.x) > 0 ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
+					entityDirection = hasTarget ? (Slime.instance.transform.position.x - transform.position.x) > 0 ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
 					Vector3 current = transform.localScale;
-					transform.localScale = new Vector3(-direction * System.Math.Abs(current.x), current.y, current.z);
-					rigidbody2d.AddForce(new Vector3(direction * 80, 250, 0) * (hasTarget ? 2f: 1f)); //direction * 100, 300, 0
+					transform.localScale = new Vector3(-entityDirection * System.Math.Abs(current.x), current.y, current.z);
+					rigidbody2d.AddForce(new Vector3(entityDirection * 80, 250, 0) * (hasTarget ? 2f: 1f)); //direction * 100, 300, 0
 				}
 				break;
 		}
@@ -51,7 +51,7 @@ public class Mushroom : Entity, Attackable
 	static void OnDie(Entity entity)
 	{
 		entity.GetComponent<Animator>().Play("die");
-		entity.direction = 0;
+		entity.entityDirection = 0;
 	}
 
 	void DieAnimationEnd()

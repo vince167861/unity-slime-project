@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-	public int direction;
+	public int entityDirection;
 	public readonly int defaultHealth;
 	private readonly Action<Entity> healCallback, sufferCallback, deathCallback;
 	private float __health;
@@ -23,7 +23,7 @@ public abstract class Entity : MonoBehaviour
 	{
 		__name = n;
 		__health = defaultHealth = h;
-		direction = d;
+		entityDirection = d;
 		sufferCallback = scb ?? __default_callback;
 		deathCallback = dcb ?? __default_death_callback;
 		healCallback = hcb ?? __default_callback;

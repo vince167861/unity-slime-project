@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bird : Entity, Attackable
+public class Bird : Entity, IAttackable
 {
 	public Bird() : base("Bird", 150, 1, OnSuffer, OnDie) { }
 	public int AttackDamage => 15;
@@ -24,7 +24,7 @@ public class Bird : Entity, Attackable
 	{
 		/*health = lifebarprefab.targethealth;
 		Debug.Log(health);*/
-		transform.localScale = new Vector2(-direction * 0.5f, 0.5f);
+		transform.localScale = new Vector2(-entityDirection * 0.5f, 0.5f);
 		/*LifeBar.GetComponent<Transform>().localScale = new Vector2(1, 1);*/
 		switch (Game.gameState)
 		{
@@ -36,7 +36,7 @@ public class Bird : Entity, Attackable
 				float newY;
 				do newY = Random.Range(-0.03f, 0.03f); while (Mathf.Abs(newY + offset) >= 0.6);
 				offset += newY;
-				transform.Translate(new Vector2(moveSpeed * direction, newY));
+				transform.Translate(new Vector2(moveSpeed * entityDirection, newY));
 				break;
 		}
 	}
@@ -47,8 +47,10 @@ public class Bird : Entity, Attackable
 		{
 			case "Slime":
 				if (Game.gameState == Game.GameState.Playing)
-					LifeHandler.Suffer(AttackDamage);
-				//collision.GetComponent<Entity>().Suffer(AttackDamage);
+					collision.GetComponent<Entity>().Suffer(AttackDamage);
+				break;
+			case "Walls":
+				if (isWall) entityDirection *= -1;
 				break;
 		}
 	}
@@ -62,7 +64,7 @@ public class Bird : Entity, Attackable
 	static void OnDie(Entity entity)
 	{
 		entity.GetComponent<Animator>().Play("die");
-		entity.direction = 0;
+		entity.entityDirection = 0;
 	}
 
 	void DieAnimationEnd()

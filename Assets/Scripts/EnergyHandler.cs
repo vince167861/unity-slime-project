@@ -26,7 +26,7 @@ public class EnergyHandler : MonoBehaviour
             case Game.GameState.Animation:
             case Game.GameState.Shaking:
             case Game.GameState.Playing:
-                if(LifeHandler.start)
+                if(MainCharacterHealth.start)
                 {
                     nextenergy = entityenergy;
                     targetenergy = entityenergy;

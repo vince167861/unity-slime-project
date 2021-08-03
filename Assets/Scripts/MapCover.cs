@@ -14,7 +14,7 @@ public class MapCover : MonoBehaviour
 
 	private void Update()
 	{
-		if (Vector2.Distance(rect.anchoredPosition, Slime.transform.position * Map.MAP_SCALE) < 20 * Map.MAP_SCALE)
+		if (Vector2.Distance(rect.anchoredPosition, Slime.instance.transform.position * Map.MAP_SCALE) < 20 * Map.MAP_SCALE)
 			Destroy(gameObject);
 		if (Game.isDarking)
 			Destroy(gameObject);
