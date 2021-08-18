@@ -42,20 +42,20 @@ public class Slime : Entity
 				flareLayer.enabled = false;
 				spriteRender.sortingLayerName = "Black Screen";
 				spriteRender.sortingOrder = 3;
-				switch (Game.storystate)
+				switch (Game.storyState)
 				{
-					case 0:
+					case Game.StoryState.NoStory:
 						if (Game.currentLevel != 0)
 						{
 							transform.position = new Vector3(8, -5, 0);
 							animator.Play(Game.battle ? "load1" : "load2");
 						}
 						break;
-					case 1:
+					case Game.StoryState.StartStory:
 						transform.position = new Vector3(8, -5, 0);
 						animator.Play("load1");
 						break;
-					case 3:
+					case Game.StoryState.StoryDragon:
 						transform.position = new Vector3(-5, -5, 0);
 						break;
 				}
@@ -258,10 +258,10 @@ public class Slime : Entity
 
 	void storyloadend()
 	{
-		if(Game.storystate == 2)
+		if (Game.storyState == Game.StoryState.Loading)
 		{
 			animator.Play("Disappear");
-			Game.storystate = 3;
+			Game.storyState = Game.StoryState.StoryDragon;
 			ScreenCover.animator.SetFloat("speed", 1);
 		}
 	}

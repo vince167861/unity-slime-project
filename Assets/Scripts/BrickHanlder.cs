@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class BrickHanlder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        switch (Game.gameState)
-        {
-            case Game.GameState.End:
-                Destroy(gameObject);
-                break;
-        }
-    }
+	void Update()
+	{
+		switch (Game.gameState)
+		{
+			case Game.GameState.End:
+				Destroy(gameObject);
+				break;
+		}
+	}
 }

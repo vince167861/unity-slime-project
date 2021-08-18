@@ -28,7 +28,6 @@ public class MainCameraHandler : MonoBehaviour
 		backgroundSpriteRenderer = GameObject.Find("Background").GetComponent<SpriteRenderer>();
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		// Update mouse position

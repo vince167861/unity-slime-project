@@ -7,7 +7,8 @@ public class ScreenCover : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
 	public static bool start = false;
-	private static GameObject loadingScreen, background2;
+	static GameObject loadingScreen, background2;
+	public static bool hadAnimationStarted = false;
 	public GameObject loadingScreenReference, background2Reference;
 	public Sprite[] Image;
 	public Behaviour flareLayer;
@@ -17,7 +18,7 @@ public class ScreenCover : MonoBehaviour
 		loadingScreen = loadingScreenReference;
 		background2 = background2Reference;
 		animator = GetComponent<Animator>();
-		flareLayer = (Behaviour)Camera.main.GetComponent ("FlareLayer");
+		flareLayer = Camera.main.GetComponent<FlareLayer>();
 	}
 
 	private void Update()
@@ -28,10 +29,11 @@ public class ScreenCover : MonoBehaviour
 				animator.Play("Start Game");
 				break;
 			case Game.GameState.Loading:
-				switch (Game.storystate)
+				// Navigate to different gameState from here.
+				switch (Game.storyState)
 				{
-					case 0:
-						if (Game.currentLevel == 0) EndLoading();
+					case Game.StoryState.NoStory:
+						if (Game.currentLevel == 0) Game.gameState = Game.GameState.DarkFadeIn;
 						else if (start)
 						{
 							Slime.ResetState();
@@ -40,13 +42,13 @@ public class ScreenCover : MonoBehaviour
 							start = false;
 						}
 						break;
-					case 1:
+					case Game.StoryState.StartStory:
 						Slime.ResetState();
 						loadingScreen.SetActive(true);
 						animator.Play("loadstory");
-						Game.storystate = 2;
+						Game.storyState = Game.StoryState.Loading;
 						break;
-					case 3:
+					case Game.StoryState.StoryDragon:
 						loadingScreen.SetActive(false);
 						Game.SetState("StartStory");
 						animator.speed = 1;
@@ -55,29 +57,45 @@ public class ScreenCover : MonoBehaviour
 				break;
 			case Game.GameState.StartStory:
 				MainCameraHandler.storymusic = 1;
-				switch (Game.storystate)
+				switch (Game.storyState)
 				{
-					case 5:
-					case 7:
+					case Game.StoryState.House:
+					case Game.StoryState.State7:
 						animator.speed = 1;
 						break;
 				}
 				break;
 			case Game.GameState.DarkFadeOut:
-				spriteRenderer.color = new Color(0, 0, 0);
-				animator.Play("Fade Out");
+				if (!hadAnimationStarted)
+				{
+					spriteRenderer.color = new Color(0, 0, 0);
+					animator.Play("Fade Out");
+                    hadAnimationStarted = true;
+				}
 				break;
 			case Game.GameState.DarkFadeIn:
-				spriteRenderer.color = new Color(0, 0, 0);
-				animator.Play("Fade In");
+				if (!hadAnimationStarted)
+				{
+					spriteRenderer.color = new Color(0, 0, 0);
+					animator.Play("Fade In");
+                    hadAnimationStarted = true;
+				}
 				break;
 			case Game.GameState.BrightFadeOut:
-				spriteRenderer.color = new Color(1, 1, 1);
-				animator.Play("Fade Out");
+				if (!hadAnimationStarted)
+				{
+					spriteRenderer.color = new Color(1, 1, 1);
+					animator.Play("Fade Out");
+                    hadAnimationStarted = true;
+				}
 				break;
 			case Game.GameState.BrightFadeIn:
-				spriteRenderer.color = new Color(1, 1, 1);
-				animator.Play("Fade In");
+				if (!hadAnimationStarted)
+				{
+					spriteRenderer.color = new Color(1, 1, 1);
+					animator.Play("Fade In");
+                    hadAnimationStarted = true;
+				}
 				break;
 		}
 	}
@@ -96,22 +114,22 @@ public class ScreenCover : MonoBehaviour
 	void Start3()
 	{
 		startScene.SetActive(false);
-		Game.SetState("MenuPrepare");
+		Game.gameState = Game.GameState.MenuPrepare;
 	}
 
 	/// <summary> Close loading screen. </summary>
+	/// <remark> Also change gameState to DarkFadeIn. </remark>
 	void EndLoading()
 	{
 		loadingScreen.SetActive(false);
-		Game.SetState("DarkFadeIn");
+		Game.gameState = Game.GameState.DarkFadeIn;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void Story1()
 	{
-		animator.SetFloat("speed", 0);
-		//animator.speed = 0;
-		Game.storyeffect = 1;
+		animator.SetFloat("speed", 0); //animator.speed = 0;
+		Game.storyEffect = Game.StoryEffect.ThunderStorm;
 		background2.SetActive(true);
 		background2.GetComponent<SpriteRenderer>().sprite = Image[0];
 	}
@@ -120,16 +138,17 @@ public class ScreenCover : MonoBehaviour
 	void Story2()
 	{
 		animator.speed = 0;
-		Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3(60, 50 ,0);
+		Instantiate(dragonPrefab);
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void clear()
 	{
 		flareLayer.enabled = false;
-		Game.cleareffect = true;
+		Game.storyEffect = Game.StoryEffect.Clear;
 	}
 
+	/// <summary> For animation 'Start Story' callback. </summary>
 	void house()
 	{
 		Instantiate(housePrefab);
@@ -138,23 +157,23 @@ public class ScreenCover : MonoBehaviour
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story3()
 	{
-		Game.storystate = 6;
+		Game.storyState = Game.StoryState.Light;
 		animator.speed = 0;
 		flareLayer.enabled = true;
-		Game.storyeffect = 2;
+		Game.storyEffect = Game.StoryEffect.Light;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story4()
 	{
 		Destroy(GameObject.Find("房子內部(Clone)"));
-		Game.storyeffect = 3;
+		Game.storyEffect = Game.StoryEffect.GroundOfFire;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void story5()
 	{
-		Game.storystate = 8;
+		Game.storyState = Game.StoryState.State8;
 		animator.speed = 0;
 		Game.storychat = 4;
 	}
@@ -177,14 +196,14 @@ public class ScreenCover : MonoBehaviour
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void bubble()
 	{
-		Game.storyeffect = 4;
+		Game.storyEffect = Game.StoryEffect.Effect4;
 	}
 
 	/// <summary> For animation 'Start Story' callback. </summary>
 	void end()
 	{
-		Game.cleareffect = true;
-		Game.storystate = 9;
+		Game.storyEffect = Game.StoryEffect.Clear;
+		Game.storyState = Game.StoryState.State9;
 		background2.SetActive(false);
 	}
 

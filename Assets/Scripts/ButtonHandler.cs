@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonHandler : MonoBehaviour
@@ -9,9 +7,9 @@ public class ButtonHandler : MonoBehaviour
 		ScreenCover.SkipStory();
 		Destroy(GameObject.Find("DragonPrefab(Clone)"));
 		Destroy(GameObject.Find("房子內部(Clone)"));
-		Game.cleareffect = true;
+		Game.storyEffect = Game.StoryEffect.Clear;
 		ScreenCover.animator.SetBool("skip", true);
-		Game.storystate = 0;
+		Game.storyState = Game.StoryState.NoStory;
 		Game.battle = true;
 		Game.gameState = Game.GameState.LevelPrepare;
 	}
@@ -19,10 +17,10 @@ public class ButtonHandler : MonoBehaviour
 	public void GameInit()
 	{
 		MainCameraHandler.allSound = 3;
-		if (Game.storystate == 1)
+		if (Game.storyState == Game.StoryState.StartStory)
 		{
 			ScreenCover.animator.Play("Start Story");
-			Game.cleareffect = true;
+			Game.storyEffect = Game.StoryEffect.Clear;
 			Game.gameState = Game.GameState.StartStory;
 		}
 		else
@@ -33,8 +31,8 @@ public class ButtonHandler : MonoBehaviour
 	}
 	/*public void NextLevel()
 	{
-			Game.currentLevel++;
-			Game.gameState = Game.GameState.Darking;
+		Game.currentLevel++;
+		Game.gameState = Game.GameState.Darking;
 	}*/
 	public void ShowLobby()
 	{

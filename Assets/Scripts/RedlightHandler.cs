@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RedlightHandler : MonoBehaviour
@@ -27,6 +25,6 @@ public class RedlightHandler : MonoBehaviour
 
     void lightend()
     {
-        Game.storystate = 7;
+        Game.storyState = Game.StoryState.State7;
     }
 }

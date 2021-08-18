@@ -50,37 +50,12 @@ public class Game : MonoBehaviour
 	public static int newLevel, currentLevel, lastattack = 0;
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
-	public static bool battle = false, isMake = false, cleareffect = false, isStory = false, isUser = false, win = false;
-
-#warning I suggest to use enumertaion type for those three fields.
-#warning Description of each state is ambigious.
-	/// <summary> Unknown. </summary>
-	/// <remarks>
-	///	<list type="table">
-	///	<listheader><term>Value</term><term>Description</term></listheader>
-	/// <item><term>0</term><term>unstory</term></item>
-	/// <item><term>1</term><term>startstory</term></item>
-	/// <item><term>2</term><term>loading</term></item>
-	/// <item><term>3</term><term>storydragon</term></item>
-	/// <item><term>4</term><term>dragonshow</term></item>
-	/// <item><term>5</term><term>house</term></item>
-	/// <item><term>6</term><term>light</term></item>
-	/// <item><term>7</term><term>&lt;Unknown&gt;</term></item>
-	///	</list>
-	/// </remarks>
-	public static int storystate = 0;
-	/// <summary> Unknown. </summary>
-	/// <remarks>
-	/// <list type="table">
-	/// <listheader><term>Value</term><term>Description</term></listheader>
-	/// <item><term>0</term><term>null</term></item>
-	/// <item><term>1</term><term>big_rain</term></item>
-	/// <item><term>2</term><term>light</term></item>
-	/// <item><term>3</term><term>&lt;Unknown&gt;</term></item>
-	/// <item><term>4</term><term>&lt;Unknown&gt;</term></item>
-	/// </list>
-	/// </remarks>
-	public static int storyeffect = 0;
+	public static bool battle = false, isUser = false, win = false;
+	static bool hadMapMade = false, hadStoryStarted = false, hasEffectInstantiated = false;
+	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
+	public static StoryState storyState = StoryState.NoStory;
+	public enum StoryEffect { Clear, ThunderStorm, Light, GroundOfFire, Effect4 };
+	public static StoryEffect storyEffect = StoryEffect.Clear;
 	/// <summary> Unknown. </summary>
 	/// <remarks>
 	///	<list type="table">
@@ -115,9 +90,9 @@ public class Game : MonoBehaviour
 #warning The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
-		if(Input.GetMouseButtonDown(0))  circleHint.SetActive(false);
-		inputfield.SetActive(storystate == 9 || gameState == GameState.Input);
-		skip.SetActive(gameState == GameState.StartStory && storystate >= 3);
+		if (Input.GetMouseButtonDown(0)) circleHint.SetActive(false);
+		inputfield.SetActive(storyState == StoryState.State9 || gameState == GameState.Input);
+		skip.SetActive(gameState == GameState.StartStory && (int)storyState >= 3);
 		lobbyCanvas.SetActive(isLobby && currentLevel == 0 && !battle);
 		wlboard.SetActive(hasEnded);
 		levelboard.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
@@ -143,36 +118,35 @@ public class Game : MonoBehaviour
 				ScreenCover.SkipStory();
 				break;
 			case GameState.StartStory:
-				switch (storyeffect)
+				if (storyEffect != StoryEffect.Clear && !hasEffectInstantiated)
 				{
-					case 1:
-						cleareffect = false;
-						Instantiate(weather[0]);
-						storyeffect = 0;
-						gameState = GameState.Loading;
-						break;
-					case 2:
-						cleareffect = false;
-						Instantiate(weather[6]);
-						storyeffect = 0;
-						break;
-					case 3:
-						cleareffect = false;
-						Instantiate(weather[5]);
-						storyeffect = 0;
-						break;
-					case 4:
-						cleareffect = false;
-						Instantiate(force[1]);
-						storyeffect = 0;
-						break;
+					hasEffectInstantiated = true;
+					switch (storyEffect)
+					{
+						case StoryEffect.ThunderStorm:
+							Instantiate(weather[0]);
+							gameState = GameState.Loading;
+							break;
+						case StoryEffect.Light:
+							Instantiate(weather[6]);
+							break;
+						case StoryEffect.GroundOfFire:
+							Instantiate(weather[5]);
+							break;
+						case StoryEffect.Effect4:
+							Instantiate(force[1]);
+							break;
+					}
 				}
+				if (storyEffect == StoryEffect.Clear && hasEffectInstantiated)
+					hasEffectInstantiated = false;
 				break;
 			case GameState.BrightFadeOut:
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
+					ScreenCover.hadAnimationStarted = false;
 					gameState = GameState.BrightFadeIn;
 				}
 				break;
@@ -181,15 +155,17 @@ public class Game : MonoBehaviour
 				if (delta >= 1)
 				{
 					delta = 0;
+					ScreenCover.hadAnimationStarted = false;
 					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
 			case GameState.DarkFadeOut:
-				cleareffect = false;
+				storyEffect = StoryEffect.Clear;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
+					ScreenCover.hadAnimationStarted = false;
 					if (!battle && currentLevel > 0)
 					{
 						if (currentLevel == 1) Instantiate(weather[1]);
@@ -197,8 +173,8 @@ public class Game : MonoBehaviour
 					}
 					else if (battle && LevelVarity.LevelWeather[0][currentLevel] != -1) Instantiate(force[LevelVarity.LevelWeather[0][currentLevel]]);
 					if (battle && currentLevel == 1)
-						Instantiate(weather[4]).GetComponent<Transform>().position = new Vector3(-30, 56, 0);
-					SetState(battle ? "LevelPrepare" : "MenuPrepare");
+						Instantiate(weather[4], new Vector3(-30, 56, 0), Quaternion.identity);
+					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 				}
 				break;
 			case GameState.MenuPrepare:
@@ -208,8 +184,8 @@ public class Game : MonoBehaviour
 				background.sprite = menuBackground[currentLevel];
 				Hint = 0;
 				if (LevelVarity.lobbyHint[currentLevel])
-					Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.lobbyoval[currentLevel-1][0];
-				SetState("Loading");
+					Instantiate(ovalHint, LevelVarity.lobbyoval[currentLevel - 1][0], Quaternion.identity);
+				gameState = GameState.Loading;
 				break;
 			case GameState.LevelPrepare:
 				if (LevelVarity.me == null)
@@ -218,32 +194,32 @@ public class Game : MonoBehaviour
 				{
 					Slime.keyCount = 0;
 					ScreenCover.start = true;
-					SetState("Loading");
+					gameState = GameState.Loading;
 				}
 				background.sprite = gameBackground[currentLevel];
 				Hint = 0;
-				if (LevelVarity.playHint[currentLevel] && LevelVarity.me != null) 
-					Instantiate(ovalHint).GetComponent<Transform>().position = LevelVarity.playoval[currentLevel][0];
+				if (LevelVarity.playHint[currentLevel] && LevelVarity.me != null)
+					Instantiate(ovalHint, LevelVarity.playoval[currentLevel][0], Quaternion.identity);
 				break;
 			case GameState.DarkFadeIn:
-				if (!isMake)
+				if (!hadMapMade)
 				{
-					MakeMap(battle ? 0 : 1);
-					isMake = true;
+					MakeMap(battle);
+					hadMapMade = true;
 				}
 				MainCharacterHealth.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					isMake = false;
-					if (storystate == 0 && !isStory)
+					ScreenCover.hadAnimationStarted = hadMapMade = false;
+					if (storyState == StoryState.NoStory && !hadStoryStarted)
 					{
 						Instantiate(weather[5]);
-						storystate = 1;
-						isStory = true;
+						storyState = StoryState.StartStory;
+						hadStoryStarted = true;
 					}
-					SetState(battle ? "Playing" : "Lobby");
+					gameState = battle ? GameState.Playing : GameState.Lobby;
 				}
 				break;
 		}
@@ -254,7 +230,7 @@ public class Game : MonoBehaviour
 	public static void StartNewLevel()
 	{
 		battle = true; // Starts the battle
-		SetState("DarkFadeOut");
+		gameState = GameState.DarkFadeOut;
 	}
 
 	/// <summary> Called to navigate to lobby. </summary>
@@ -281,9 +257,9 @@ public class Game : MonoBehaviour
 		gameState = GameState.End;
 	}
 
-	void MakeMap(int which)
+	void MakeMap(bool isInBattle)
 	{
-		if (which == 0)
+		if (isInBattle)
 		{
 			if (currentLevel < LevelVarity.spawnpoint.Count)
 			{

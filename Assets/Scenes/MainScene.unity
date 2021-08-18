@@ -959,7 +959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118156545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18, y: -7.5, z: 0}
+  m_LocalPosition: {x: 18, y: -6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 546573381}
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 148671824}
   - component: {fileID: 148671827}
   m_Layer: 0
-  m_Name: Screen Mask
+  m_Name: Screen Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6545,11 +6545,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 225419997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 1031243587}, m_TargetAssemblyTypeName: 'GameGlobalController,
-            Assembly-CSharp', m_MethodName: Inputstate, m_Mode: 1, m_Arguments: {
-            m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '',
-            m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 1031243587}
+        m_TargetAssemblyTypeName: GameGlobalController, Assembly-CSharp
+        m_MethodName: Inputstate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &225419997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11808,7 +11816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1277188186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12027,7 +12035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d48dda7b83f27c44b0894c52b865fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount2: 0
 --- !u!95 &1284205672
 Animator:
   serializedVersion: 3
@@ -12155,15 +12162,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 20.009727, y: -6.06566}
-      - {x: 15.1929035, y: -6.0393844}
-      - {x: 13.53672, y: -7.093583}
-      - {x: 4.809716, y: -7.146045}
-      - {x: 2.8405647, y: -8.179874}
-      - {x: -7.688205, y: -8.211566}
-      - {x: -9.519815, y: -9.022526}
+    - - {x: 19.979986, y: -7.286771}
+      - {x: 14.858907, y: -7.347536}
+      - {x: 13.592387, y: -8.206904}
+      - {x: -5.2110662, y: -8.183733}
+      - {x: -9.436316, y: -9.050358}
       - {x: -17.933262, y: -9.052275}
-      - {x: -19.62208, y: -9.5909815}
+      - {x: -19.62208, y: -9.646647}
       - {x: -24.419056, y: -9.650484}
       - {x: -24.32555, y: -9.962358}
       - {x: 20.03701, y: -9.938114}
@@ -14046,7 +14051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d91b7d3518eb546b756d0008b341de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sufferAmount2: 0
 --- !u!1 &1860002183
 GameObject:
   m_ObjectHideFlags: 0
@@ -15209,7 +15213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056558437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.5, y: 10.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8, y: 1.7, z: 1}
   m_Children: []
   m_Father: {fileID: 148671826}
