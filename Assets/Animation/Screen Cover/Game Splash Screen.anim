@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: startgame
+  m_Name: Game Splash Screen
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -84,7 +84,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -166,7 +166,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -248,7 +248,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -330,8 +330,17 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 5.516667
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -351,6 +360,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: 57884225a19ddbb4faf60e25882b7101, type: 3}
     - time: 3.0166667
       value: {fileID: 21300000, guid: 54b2ec5086a2b55478f0f0222a753425, type: 3}
+    - time: 5
+      value: {fileID: 21300000, guid: 96652c9383be5a64fae745d8d7d9b5a6, type: 3}
     attribute: m_Sprite
     path: Start Scene
     classID: 212
@@ -400,12 +411,13 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 57884225a19ddbb4faf60e25882b7101, type: 3}
     - {fileID: 21300000, guid: 54b2ec5086a2b55478f0f0222a753425, type: 3}
+    - {fileID: 21300000, guid: 96652c9383be5a64fae745d8d7d9b5a6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 5.1666665
+    m_StopTime: 5.516667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -488,7 +500,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -570,7 +582,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -652,7 +664,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -734,8 +746,17 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1666665
+        time: 5
         value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 5.516667
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -760,7 +781,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 5.133333
+  - time: 5.5
     functionName: Start3
     data: 
     objectReferenceParameter: {fileID: 0}

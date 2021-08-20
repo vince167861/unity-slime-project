@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class particlehandler : MonoBehaviour
+public class Particle : MonoBehaviour
 {
     float delta = 0;
     public float time = 0.5f;

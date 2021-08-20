@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: startstory
+  m_Name: BackStory
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -1759,93 +1759,93 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.8333333
-    functionName: Story1
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
-    functionName: Story2
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 1
     messageOptions: 0
   - time: 2.8333333
-    functionName: clear
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 3
-    functionName: house
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 3
     messageOptions: 0
   - time: 3.6333334
-    functionName: story3
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 4
     messageOptions: 0
   - time: 4.016667
-    functionName: clear
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 4.5
-    functionName: story4
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 5
     messageOptions: 0
   - time: 6.6
-    functionName: story5
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 6
     messageOptions: 0
   - time: 7
-    functionName: clear
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 8
-    functionName: bubble
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
   - time: 8.5
-    functionName: story6
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 8
     messageOptions: 0
   - time: 9.5
-    functionName: story7
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 9
     messageOptions: 0
   - time: 10
-    functionName: end
+    functionName: StoryPhase
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 10
     messageOptions: 0

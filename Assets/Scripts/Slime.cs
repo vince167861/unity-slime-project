@@ -25,8 +25,8 @@ public class Slime : Entity
 	public static readonly Vector3 moveBase = new Vector3(1600, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
 
 	public Slime() : base("", 6, 1, ImmuneOn, DeathHandler) {
-      instance = this;
-  }
+		instance = this;
+	}
 
 	private void Start()
 	{
@@ -76,7 +76,7 @@ public class Slime : Entity
 				// Response to keyboard input
 				if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
 				{
-					MainCameraHandler.allSound = 2;
+					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((150 * moveBase + jumpBase) * suppression);
 					animator.Play("Jump Right");
 					direction = 1;
@@ -84,7 +84,7 @@ public class Slime : Entity
 				}
 				if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
 				{
-					MainCameraHandler.allSound = 2;
+					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((-150 * moveBase + jumpBase) * suppression);
 					animator.Play("Jump Left");
 					direction = -1;
@@ -111,16 +111,16 @@ public class Slime : Entity
 					rigidbody2d.AddForce(dropBase * suppression);
 				if (Input.GetKeyDown(KeyCode.W) && isTouchingGround)
 				{
-					MainCameraHandler.allSound = 2;
+					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce(jumpBase * suppression);
 				}
 				if (Input.GetKeyDown(KeyCode.F) && Game.gameState == Game.GameState.Playing)
 				{
 					if(EnergyHandler.nextenergy < 25 || EnergyHandler.targetenergy < 25)
-						MainCameraHandler.allSound = 12;
+                        MainCameraHandler.PlayEntityClip(12);
 					else
 					{	
-						MainCameraHandler.allSound = 4;
+                        MainCameraHandler.PlayEntityClip(4);
 						Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
 						Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;
 						EnergyHandler.changeamount(-25);
@@ -180,23 +180,23 @@ public class Slime : Entity
 				Destroy(collision.gameObject);
 				break;
 			case "Potion":
-				MainCameraHandler.allSound = 9;
+				MainCameraHandler.PlayEntityClip(9);
 				Destroy(collision.gameObject);
 				potionCountObject.GetComponent<CountLabel>().UpdateCount(++potionCount);
 				break;
 			case "Key":
-				MainCameraHandler.allSound = 5;
+				MainCameraHandler.PlayEntityClip(5);
 				Destroy(collision.gameObject);
 				keyCountObject.GetComponent<CountLabel>().UpdateCount(++keyCount);
 				break;
 			case "Hint":
 				Game.Hint++;
-				if(Game.gameState == Game.GameState.Animation && Game.Hint < LevelVarity.playoval[Game.currentLevel].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[Game.currentLevel][Game.Hint];
-				if(Game.gameState == Game.GameState.Playing && Game.Hint < LevelVarity.playoval[Game.currentLevel].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.playoval[Game.currentLevel][Game.Hint];
-				if(Game.gameState == Game.GameState.Lobby && Game.Hint < LevelVarity.lobbyoval[Game.currentLevel-1].Count)
-					collision.gameObject.GetComponent<Transform>().position = LevelVarity.lobbyoval[Game.currentLevel-1][Game.Hint];
+				if(Game.gameState == Game.GameState.Animation && Game.Hint < DataStorage.playoval[Game.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = DataStorage.playoval[Game.currentLevel][Game.Hint];
+				if(Game.gameState == Game.GameState.Playing && Game.Hint < DataStorage.playoval[Game.currentLevel].Count)
+					collision.gameObject.GetComponent<Transform>().position = DataStorage.playoval[Game.currentLevel][Game.Hint];
+				if(Game.gameState == Game.GameState.Lobby && Game.Hint < DataStorage.lobbyoval[Game.currentLevel-1].Count)
+					collision.gameObject.GetComponent<Transform>().position = DataStorage.lobbyoval[Game.currentLevel-1][Game.Hint];
 				break;
 		}
 	}
@@ -227,7 +227,7 @@ public class Slime : Entity
 	/// <summary> For Game Start animation. </summary>
 	void JumpRight()
 	{
-		MainCameraHandler.allSound = 2;
+		MainCameraHandler.PlayEntityClip(2);
 		rigidbody2d.AddForce(new Vector2(1e4f, 1e4f));
 		animator.Play("Jump Right");
 		direction = 1;

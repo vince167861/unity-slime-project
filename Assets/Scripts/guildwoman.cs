@@ -48,7 +48,7 @@ public class guildwoman : MonoBehaviour
 				if (Input.GetKey(KeyCode.G) && trigger1)
 				{
 					DialogBoxHandler.isChat = true;
-					DialogBoxHandler.advice(3, Random.Range(0, LevelVarity.chat[3].Count));
+					DialogBoxHandler.advice(3, Random.Range(0, DataStorage.chat[3].Count));
 				}
 				break;
 		}

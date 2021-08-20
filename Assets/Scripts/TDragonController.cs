@@ -14,7 +14,7 @@ public class TDragonController : MonoBehaviour
 
     void Update()
     {
-        if (Game.storyState == Game.StoryState.NoStory && LevelVarity.me == null)
+        if (Game.storyState == Game.StoryState.NoStory && DataStorage.me == null)
             Destroy(gameObject);
         if (Game.storyState == Game.StoryState.StoryDragon)
         {
@@ -30,14 +30,14 @@ public class TDragonController : MonoBehaviour
 
     void fireshot()
     {
-        MainCameraHandler.allSound = 1;
+        MainCameraHandler.PlayEntityClip(1);
         dragonhead.GetComponent<ParticleSystem>().Play();
         animator.Play("firing");
     }
 
     void firestop()
     {
-        MainCameraHandler.allSound = 1;
+        MainCameraHandler.PlayEntityClip(1);
         dragonhead.GetComponent<ParticleSystem>().Stop();
     }
 

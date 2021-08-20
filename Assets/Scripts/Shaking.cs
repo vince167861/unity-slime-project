@@ -31,7 +31,7 @@ public class Shaking : MonoBehaviour
 				{
 					if (!dragon)
 					{
-						MainCameraHandler.allSound = 1;
+                        MainCameraHandler.PlayEntityClip(1);
 						Instantiate(dragonPrefab).GetComponent<Transform>().position = new Vector3(3.1f, 91, 0);
 						TDragonController.levelstory1 = true;
 						dragon = true;

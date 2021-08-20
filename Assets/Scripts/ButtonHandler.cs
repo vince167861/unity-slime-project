@@ -16,12 +16,12 @@ public class ButtonHandler : MonoBehaviour
 
 	public void GameInit()
 	{
-		MainCameraHandler.allSound = 3;
+		MainCameraHandler.PlayEntityClip(3);
 		if (Game.storyState == Game.StoryState.StartStory)
 		{
 			ScreenCover.animator.Play("Start Story");
 			Game.storyEffect = Game.StoryEffect.Clear;
-			Game.gameState = Game.GameState.StartStory;
+			Game.gameState = Game.GameState.Story;
 		}
 		else
 		{
@@ -39,7 +39,7 @@ public class ButtonHandler : MonoBehaviour
 		Game.playtimes = 1;
 		if (!Game.battle || Game.newLevel > Game.currentLevel) Game.currentLevel++;
 		Game.battle = false;
-		MainCameraHandler.allSound = 3;
+		MainCameraHandler.PlayEntityClip(3);
 		Game.gameState = Game.GameState.DarkFadeOut;
 	}
 	public void ChangeValue()

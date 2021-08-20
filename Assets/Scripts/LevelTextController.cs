@@ -21,7 +21,7 @@ public class LevelTextController : MonoBehaviour
     void Update()
     {
         Level.text = "1-" + (Game.currentLevel + 1);
-        LevelName.text = LevelVarity.LevelName[0][Game.currentLevel];
+        LevelName.text = DataStorage.LevelName[0][Game.currentLevel];
         switch (Game.gameState)
         {
             case Game.GameState.Playing:

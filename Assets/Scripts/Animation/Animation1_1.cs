@@ -39,7 +39,7 @@ public class Animation1_1 : Animation
 		if (DialogBoxHandler.cbnum == 11)
 		{
 			Game.gameState = Game.GameState.BrightFadeOut;
-			MainCameraHandler.allSound = 1;
+			MainCameraHandler.PlayEntityClip(1);
 		}
 		if (DialogBoxHandler.cbnum == 1 || DialogBoxHandler.cbnum == 8)  DialogBoxHandler.playsurprise = true;
 		if (DialogBoxHandler.cbnum == 4)  DialogBoxHandler.playHint = true;

@@ -26,17 +26,17 @@ public class Portal : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case Game.GameState.Playing:
-                need.text = " x " + LevelVarity.doorKey[Game.currentLevel];
+                need.text = " x " + DataStorage.doorKey[Game.currentLevel];
                 if (Input.GetKey(KeyCode.G) && trigger)
                 {
-                    if(Slime.keyCount >= LevelVarity.doorKey[Game.currentLevel])
+                    if(Slime.keyCount >= DataStorage.doorKey[Game.currentLevel])
                     {
-                        MainCameraHandler.allSound = 7;
+                        MainCameraHandler.PlayEntityClip(7);
                         animator.Play("opendoor");
                     }
                     else
                     {
-                        MainCameraHandler.allSound = 12;
+                        MainCameraHandler.PlayEntityClip(12);
                         DialogBoxHandler.advice(0,0);
                     }
                 }
@@ -44,7 +44,7 @@ public class Portal : MonoBehaviour
                 {
                     Anim = false;
                     trigger = false;
-                    if(Slime.keyCount > LevelVarity.doorKey[Game.currentLevel])  Game.moneycount += 100*(Slime.keyCount - LevelVarity.doorKey[Game.currentLevel]);
+                    if(Slime.keyCount > DataStorage.doorKey[Game.currentLevel])  Game.moneycount += 100*(Slime.keyCount - DataStorage.doorKey[Game.currentLevel]);
                     Game.OnLevelComplete();
                 }
                 break;

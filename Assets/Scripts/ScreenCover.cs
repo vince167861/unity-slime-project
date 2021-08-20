@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 public class ScreenCover : MonoBehaviour
 {
-	public GameObject dragonPrefab, housePrefab, startScene;
+	public GameObject dragonPrefab, housePrefab, startScene, startGameButton;
 	public static Animator animator;
 	public SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
@@ -10,8 +12,7 @@ public class ScreenCover : MonoBehaviour
 	static GameObject loadingScreen, background2;
 	public static bool hadAnimationStarted = false;
 	public GameObject loadingScreenReference, background2Reference;
-	public Sprite[] Image;
-	public Behaviour flareLayer;
+	public static Behaviour flareLayer;
 
 	void Start()
 	{
@@ -50,12 +51,12 @@ public class ScreenCover : MonoBehaviour
 						break;
 					case Game.StoryState.StoryDragon:
 						loadingScreen.SetActive(false);
-						Game.SetState("StartStory");
 						animator.speed = 1;
+						Game.gameState = Game.GameState.Story;
 						break;
 				}
 				break;
-			case Game.GameState.StartStory:
+			case Game.GameState.Story:
 				MainCameraHandler.storymusic = 1;
 				switch (Game.storyState)
 				{
@@ -104,8 +105,7 @@ public class ScreenCover : MonoBehaviour
 	void Start1()
 	{
 		animator.speed = 0;
-		// Slime.transform.position = new Vector3(-3, 11, 0);
-		Slime.instance.animator.Play("Start Jump");
+		Slime.instance.animator.Play("Splash Screen Jump");
 	}
 
 	// Start2() -> Slime.Start2()
@@ -113,8 +113,23 @@ public class ScreenCover : MonoBehaviour
 	/// <summary> For animation 'Start Game' callback. </summary>
 	void Start3()
 	{
+		startGameButton.SetActive(true);
+		MainCameraHandler.PlayLoopClip(); //Game.gameState = Game.GameState.MenuPrepare;
+		// TODO: Fix groundoffire destroy problem.
+		Game.storyEffect = Game.StoryEffect.GroundOfFire; // Without this line the fire will be destroyed.
+		Instantiate(Game.staticEffect[5]);
+	}
+
+	public void EnterBackStory()
+	{
 		startScene.SetActive(false);
-		Game.gameState = Game.GameState.MenuPrepare;
+		startGameButton.SetActive(false);
+		MainCameraHandler.PlayEntityClip(3);
+		animator.Play("Start Story");
+		MainCameraHandler.hasMusicPlaying = false;
+		Game.storyState = Game.StoryState.StartStory;
+		Game.storyEffect = Game.StoryEffect.Clear;
+		Game.gameState = Game.GameState.Story;
 	}
 
 	/// <summary> Close loading screen. </summary>
@@ -125,91 +140,66 @@ public class ScreenCover : MonoBehaviour
 		Game.gameState = Game.GameState.DarkFadeIn;
 	}
 
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void Story1()
-	{
-		animator.SetFloat("speed", 0); //animator.speed = 0;
-		Game.storyEffect = Game.StoryEffect.ThunderStorm;
-		background2.SetActive(true);
-		background2.GetComponent<SpriteRenderer>().sprite = Image[0];
-	}
+	static GameObject houseReference;
 
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void Story2()
-	{
-		animator.speed = 0;
-		Instantiate(dragonPrefab);
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void clear()
-	{
-		flareLayer.enabled = false;
-		Game.storyEffect = Game.StoryEffect.Clear;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void house()
-	{
-		Instantiate(housePrefab);
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void story3()
-	{
-		Game.storyState = Game.StoryState.Light;
-		animator.speed = 0;
-		flareLayer.enabled = true;
-		Game.storyEffect = Game.StoryEffect.Light;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void story4()
-	{
-		Destroy(GameObject.Find("房子內部(Clone)"));
-		Game.storyEffect = Game.StoryEffect.GroundOfFire;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void story5()
-	{
-		Game.storyState = Game.StoryState.State8;
-		animator.speed = 0;
-		Game.storychat = 4;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void story6()
-	{
-		animator.speed = 0;
-		Game.storychat = 5;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void story7()
-	{
-		animator.speed = 0;
-		Slime.instance.transform.position = new Vector3(30, 48, 0);
-		Game.storychat = 6;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void bubble()
-	{
-		Game.storyEffect = Game.StoryEffect.Effect4;
-	}
-
-	/// <summary> For animation 'Start Story' callback. </summary>
-	void end()
-	{
-		Game.storyEffect = Game.StoryEffect.Clear;
-		Game.storyState = Game.StoryState.State9;
-		background2.SetActive(false);
-	}
+	/// <summary> For animation 'BackStory' callback. </summary>
+	readonly List<Action> Story = new List<Action>{
+		() => {
+			animator.SetFloat("speed", 0);
+			Game.storyEffect = Game.StoryEffect.ThunderStorm;
+			background2.SetActive(true);
+			background2.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Textures/Screen Mask.png");
+		},
+		() => {
+			animator.speed = 0;
+			Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/DragonPrefab.prefab"));
+		},
+		() => {
+			flareLayer.enabled = false;
+			Game.storyEffect = Game.StoryEffect.Clear;
+		},
+		() => {
+			houseReference = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/房子內部.prefab"));
+		},
+		() => {
+			Game.storyState = Game.StoryState.Light;
+			animator.speed = 0;
+			flareLayer.enabled = true;
+			Game.storyEffect = Game.StoryEffect.Light;
+		},
+		() => {
+			Destroy(houseReference);
+			Game.storyEffect = Game.StoryEffect.GroundOfFire;
+		},
+		() => {
+			Game.storyState = Game.StoryState.State8;
+			animator.speed = 0;
+			Game.storychat = 4;
+		},
+		() => {
+			Game.storyEffect = Game.StoryEffect.Effect4;
+		},
+		() => {
+			animator.speed = 0;
+			Game.storychat = 5;
+		},
+		() => {
+			animator.speed = 0;
+			Slime.instance.transform.position = new Vector3(30, 48, 0);
+			Game.storychat = 6;
+		},
+		() => {
+			Game.storyEffect = Game.StoryEffect.Clear;
+			Game.storyState = Game.StoryState.State9;
+			background2.SetActive(false);
+		}
+	};
+	void StoryPhase(int phase) => Story[phase]();
 
 	public static void SkipStory()
 	{
 		background2.SetActive(false);
 		animator.speed = 1;
+		animator.Play("idle");
 	}
 }

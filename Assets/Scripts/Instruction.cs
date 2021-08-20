@@ -26,7 +26,7 @@ public class Instruction : MonoBehaviour
                 if(Input.GetKey(KeyCode.G) && trigger)
                 {
                     isNews = false;
-                    MainCameraHandler.allSound = 11;
+                    MainCameraHandler.PlayEntityClip(11);
                     Game.gameState = Game.GameState.LobbyInfo;
                 }
                 break;
@@ -55,7 +55,7 @@ public class Instruction : MonoBehaviour
 
     public void turnback()
     {
-        MainCameraHandler.allSound = 3;
+        MainCameraHandler.PlayEntityClip(3);
         Game.gameState = Game.GameState.Lobby;
     }
 }

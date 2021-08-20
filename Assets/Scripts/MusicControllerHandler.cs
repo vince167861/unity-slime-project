@@ -33,7 +33,7 @@ public class MusicControllerHandler : MonoBehaviour
     }
     public void Instruction()
     {
-        MainCameraHandler.allSound = 3;
+        MainCameraHandler.PlayEntityClip(3);
         Game.gameState = Game.GameState.Instruction;
     }
 }

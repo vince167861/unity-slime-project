@@ -35,21 +35,21 @@ public class DialogBoxHandler : MonoBehaviour
 		{
 			case Game.GameState.Animation:
 				point.SetActive(true);
-				if(!isAnim && playsurprise)
+				if (!isAnim && playsurprise)
 				{
 					animator.Play("cbsurprise");
 					isAnim = true;
 					playsurprise = false;
 				}
-				if(playHint)
+				if (playHint)
 				{
 					circle.SetActive(true);
-					circle.GetComponent<RectTransform>().localPosition = LevelVarity.circlepoint[Game.currentLevel][0];
+					circle.GetComponent<RectTransform>().localPosition = DataStorage.circlepoint[Game.currentLevel][0];
 					playHint = false;
 				}
-				story.text = LevelVarity.story[Game.currentLevel][cbnum];
-				teller.text = LevelVarity.teller[Game.currentLevel][cbnum];
-				littlech.sprite = ch[LevelVarity.littlech[Game.currentLevel][cbnum]];
+				story.text = DataStorage.story[Game.currentLevel][cbnum];
+				teller.text = DataStorage.teller[Game.currentLevel][cbnum];
+				littlech.sprite = ch[DataStorage.littlech[Game.currentLevel][cbnum]];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					littlech.sprite = ch[0];
@@ -60,44 +60,44 @@ public class DialogBoxHandler : MonoBehaviour
 				break;
 			case Game.GameState.Advice:
 				point.SetActive(true);
-				if(isChat)  story.text = LevelVarity.chat[adviceperson][adwhich];
-				else  story.text = LevelVarity.advice[adviceperson][adwhich];
-				teller.text = LevelVarity.adteller[adviceperson];
+				if (isChat) story.text = DataStorage.chat[adviceperson][adwhich];
+				else story.text = DataStorage.advice[adviceperson][adwhich];
+				teller.text = DataStorage.adteller[adviceperson];
 				littlech.sprite = ch[adviceperson];
 				if (Input.GetMouseButtonDown(0))
 				{
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
-					if(guildwoman.otheradvice)
+					if (guildwoman.otheradvice)
 					{
 						guildwoman.otheradvice = false;
 					}
-					else  guildwoman.trigger2 = false;
+					else guildwoman.trigger2 = false;
 					Game.gameState = lastgameState;
 				}
 				break;
-			case Game.GameState.StartStory:
-				if(FunisController.story == true)
+			case Game.GameState.Story:
+				if (FunisController.story == true)
 				{
 					isAnim = false;
 					FunisController.story = false;
 				}
 				point.SetActive(false);
-				if(!isAnim && !isStart && (Game.storychat == 2 ||Game.storychat == 3 || Game.storychat == 6))
+				if (!isAnim && !isStart && (Game.storychat == 2 || Game.storychat == 3 || Game.storychat == 6))
 				{
-					if(Game.storychat == 2)  FunisController.animator.Play("funis_ststory");
-					else  animator.Play("cbsurprise");
+					if (Game.storychat == 2) FunisController.animator.Play("funis_ststory");
+					else animator.Play("cbsurprise");
 					isAnim = true;
 					isStart = true;
 				}
-				story.text = LevelVarity.start[Game.storychat - 1];
-				teller.text = LevelVarity.stteller[Game.storychat - 1];
+				story.text = DataStorage.start[Game.storychat - 1];
+				teller.text = DataStorage.stteller[Game.storychat - 1];
 				littlech.sprite = ch[0];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					story.text = teller.text = "";
-					if(Game.storychat >= 4)  ScreenCover.animator.speed = 1;
-					else  RedlightHandler.animator.speed = 1;
+					if (Game.storychat >= 4) ScreenCover.animator.speed = 1;
+					else RedlightHandler.animator.speed = 1;
 					Game.storychat = 0;
 					isStart = false;
 				}

@@ -20,7 +20,7 @@ public class LevelBoardHandler : MonoBehaviour
     {
         Nneedexp = 10*(float)(Mathf.Pow(Game.chLevel, 1.5f));
         if(Game.chLevel > 1)  Lneedexp = 10*(float)(Mathf.Pow(Game.chLevel - 1, 1.5f));
-        UserName.GetComponent<TextMeshProUGUI>().text = LevelVarity.me;
+        UserName.GetComponent<TextMeshProUGUI>().text = DataStorage.me;
         UserLevel.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
         UserLevelAmount.GetComponent<Image>().fillAmount = (Game.totalexp - Lneedexp) / Nneedexp;
     }

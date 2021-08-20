@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelVarity
+public class DataStorage
 {
     public static string lastname, me = null;
     public static List<string> stteller = new List<string> {

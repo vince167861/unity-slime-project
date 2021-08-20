@@ -18,7 +18,7 @@ public class TypeBoxHandler : MonoBehaviour
         if(Game.currentLevel > 0 && isName)
         {
             Inputfield.Select();
-            Inputfield.text = LevelVarity.me;
+            Inputfield.text = DataStorage.me;
             isName = false;
         }
     }
@@ -29,7 +29,7 @@ public class TypeBoxHandler : MonoBehaviour
         {
             if (Game.storyState == Game.StoryState.State9 || Game.storyState == Game.StoryState.NoStory || Game.isUser || Game.currentLevel > 0)
             {
-                LevelVarity.me = Input.text;
+                DataStorage.me = Input.text;
                 if (Game.currentLevel <= 0)
                 {
                     Game.storyState = Game.StoryState.NoStory;

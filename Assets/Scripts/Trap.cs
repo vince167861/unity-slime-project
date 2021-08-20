@@ -10,7 +10,7 @@ public class Trap : MonoBehaviour , IAttackable
         switch(collider.tag)
         {
             case "Slime":
-                MainCameraHandler.allSound = 10;
+                MainCameraHandler.PlayEntityClip(10);
                 collider.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
         }

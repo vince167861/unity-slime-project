@@ -49,7 +49,7 @@ public class MainCharacterHealth : MonoBehaviour
 				if (tgsufferamount > 30) suffer.speed = tgsufferamount / 30;
 				else heal.speed = 1;
 				statusIcon.sprite = icon[situation];
-				nameText.text = LevelVarity.me;
+				nameText.text = DataStorage.me;
 				healthText.text = (int)targetHealth + " / " + entityHealth;
 				if (targetHealth > entityHealth)
 				{
