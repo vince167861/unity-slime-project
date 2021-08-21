@@ -5,21 +5,20 @@ public abstract class Entity : MonoBehaviour
 {
 	public int entityDirection;
 	public readonly int defaultHealth;
-	private readonly Action<Entity> healCallback, sufferCallback, deathCallback;
+	readonly Action<Entity, float> healCallback, sufferCallback;
+	readonly Action<Entity>  deathCallback;
 	private float __health;
 	private string __name;
-	static float __amount = 0;
 	public bool isDied = false;
 	public bool invulnerable = false;
 	public float health => __health;
 	public float healthPercentage => __health / defaultHealth;
 	public string spriteName => __name;
-	public static float amount => __amount;
 
 	static void __default_death_callback(Entity entity) { Destroy(entity.gameObject); }
-	static void __default_callback(Entity entity) { }
+	static void __default_callback(Entity entity, float delta) { }
 
-	public Entity(string n, int h, int d = 1, Action<Entity> scb = null, Action<Entity> dcb = null, Action<Entity> hcb = null)
+	public Entity(string n, int h, int d = 1, Action<Entity, float> scb = null, Action<Entity> dcb = null, Action<Entity, float> hcb = null)
 	{
 		__name = n;
 		__health = defaultHealth = h;
@@ -33,8 +32,7 @@ public abstract class Entity : MonoBehaviour
 		if (!invulnerable)
 		{
 			__health -= Math.Abs(damage);
-			__amount -= Math.Abs(damage);
-			sufferCallback(this);
+			sufferCallback(this, damage);
 			//if (__health <= 0) deathCallback(this);
 		}
 	}
@@ -44,8 +42,7 @@ public abstract class Entity : MonoBehaviour
 
 		if (__health >= defaultHealth && !ignoreMax) return;
 		__health += Math.Abs(amount);
-		__amount -= Math.Abs(amount);
-		healCallback(this);
+		healCallback(this, amount);
 		if (__health >= defaultHealth && !ignoreMax) __health = defaultHealth;
 	}
 

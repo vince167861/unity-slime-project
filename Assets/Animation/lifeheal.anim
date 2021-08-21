@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.5
+        time: 1
         value: 100
         inSlope: 0
         outSlope: 0
@@ -41,7 +41,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: healamount2
+    attribute: healAmount2
     path: 
     classID: 114
     script: {fileID: 11500000, guid: 6d48dda7b83f27c44b0894c52b865fd3, type: 3}
@@ -55,7 +55,7 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 1709689097
+      attribute: 2858086549
       script: {fileID: 11500000, guid: 6d48dda7b83f27c44b0894c52b865fd3, type: 3}
       typeID: 114
       customType: 0
@@ -66,7 +66,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,7 +95,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.5
+        time: 1
         value: 100
         inSlope: 0
         outSlope: 0
@@ -106,7 +106,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: healamount2
+    attribute: healAmount2
     path: 
     classID: 114
     script: {fileID: 11500000, guid: 6d48dda7b83f27c44b0894c52b865fd3, type: 3}

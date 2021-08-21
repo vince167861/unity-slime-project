@@ -40,7 +40,7 @@ public class ButtonHandler : MonoBehaviour
 		if (!Game.battle || Game.newLevel > Game.currentLevel) Game.currentLevel++;
 		Game.battle = false;
 		MainCameraHandler.PlayEntityClip(3);
-		Game.gameState = Game.GameState.DarkFadeOut;
+		Game.PreDarkFadeOut();
 	}
 	public void ChangeValue()
 	{

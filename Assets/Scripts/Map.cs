@@ -10,43 +10,34 @@ public class Map : MonoBehaviour
 	public Sprite[] terrains;
 	public static bool isShown = false;
 
-	private Image image;
-	/// <summary> Indicates if map has been updated before. </summary>
-	/// <remarks> Default to true to prevent map update at game start. </remarks>
-	private bool isUpdated = true;
+	static Image image;
+	static RectTransform rectTransform;
+	static Transform staticTransform;
+	static Sprite[] staticTerrain;
+	static GameObject staticMapCover;
 
 
 	void Start()
 	{
 		image = GetComponent<Image>();
+		rectTransform = GetComponent<RectTransform>();
+		staticTerrain = terrains;
+		staticTransform = transform;
+		staticMapCover = mapCover;
 	}
 
-	void Update()
+	public static void UpdateMap()
 	{
-		switch (Game.gameState)
-		{
-			case Game.GameState.LevelPrepare:
-				if (Game.battle) isUpdated = false;
-				break;
-			case Game.GameState.DarkFadeIn:
-				if (!isUpdated) UpdateMap();
-				break;
-		}
-	}
-
-	private void UpdateMap()
-	{
-		isUpdated = true;
-		image.sprite = terrains[Game.currentLevel];
+		image.sprite = staticTerrain[Game.currentLevel];
+		bgSize = Game.background.bounds.size * MAP_SCALE;
 		terrainSize = new Vector2(image.sprite.bounds.size.x, image.sprite.bounds.size.y);
 		terrainSize *= bgSize.x / terrainSize.x;
-		bgSize = Game.background.bounds.size * MAP_SCALE;
-		GetComponent<RectTransform>().sizeDelta = terrainSize * bgSize.x / terrainSize.x;
+		rectTransform.sizeDelta = terrainSize * bgSize.x / terrainSize.x;
 		for (int i = 0; i < bgSize.x; i += 4 * MAP_SCALE)
 			for (int j = 0; j < bgSize.y; j += 4 * MAP_SCALE)
 			{
-				RectTransform c = Instantiate(mapCover).GetComponent<RectTransform>();
-				c.SetParent(transform);
+				RectTransform c = Instantiate(staticMapCover).GetComponent<RectTransform>();
+				c.SetParent(staticTransform);
 				c.anchoredPosition = new Vector2Int(i, j);
 				c.localScale = new Vector3Int(MAP_SCALE, MAP_SCALE, 1);
 			}

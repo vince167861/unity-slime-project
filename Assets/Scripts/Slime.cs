@@ -7,7 +7,7 @@ public class Slime : Entity
 	public static Slime instance;
 	public Animator animator;
 	public Rigidbody2D rigidbody2d;
-	public SpriteRenderer spriteRender;
+	public SpriteRenderer spriteRenderer;
 	public Transform transform;
 
 
@@ -20,11 +20,11 @@ public class Slime : Entity
 
 	public GameObject keyCountObject, potionCountObject, paralysis, heal;
 
-	public Behaviour flareLayer;
+	static Behaviour flareLayer;
 
 	public static readonly Vector3 moveBase = new Vector3(1600, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
 
-	public Slime() : base("", 6, 1, ImmuneOn, DeathHandler) {
+	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback) {
 		instance = this;
 	}
 
@@ -38,32 +38,10 @@ public class Slime : Entity
 	{
 		switch (Game.gameState)
 		{
-			case Game.GameState.Loading:
-				flareLayer.enabled = false;
-				spriteRender.sortingLayerName = "Black Screen";
-				spriteRender.sortingOrder = 3;
-				switch (Game.storyState)
-				{
-					case Game.StoryState.NoStory:
-						if (Game.currentLevel != 0)
-						{
-							transform.position = new Vector3(8, -5, 0);
-							animator.Play(Game.battle ? "load1" : "load2");
-						}
-						break;
-					case Game.StoryState.StartStory:
-						transform.position = new Vector3(8, -5, 0);
-						animator.Play("load1");
-						break;
-					case Game.StoryState.StoryDragon:
-						transform.position = new Vector3(-5, -5, 0);
-						break;
-				}
-				break;
 			case Game.GameState.DarkFadeIn:
 				flareLayer.enabled = true;
-				spriteRender.sortingLayerName = "Main Objects";
-				spriteRender.sortingOrder = 8;
+				spriteRenderer.sortingLayerName = "Main Objects";
+				spriteRenderer.sortingOrder = 8;
 				break;
 			case Game.GameState.Playing:
 			case Game.GameState.Lobby:
@@ -111,6 +89,7 @@ public class Slime : Entity
 					rigidbody2d.AddForce(dropBase * suppression);
 				if (Input.GetKeyDown(KeyCode.W) && isTouchingGround)
 				{
+					animator.Play("Jump");
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce(jumpBase * suppression);
 				}
@@ -143,6 +122,32 @@ public class Slime : Entity
 				break;
 		}
 	}
+
+	public static void PreLoading()
+	{
+		
+		flareLayer.enabled = false;
+		instance.spriteRenderer.sortingLayerName = "Black Screen";
+		instance.spriteRenderer.sortingOrder = 3;
+		switch (Game.storyState)
+		{
+			case Game.StoryState.NoStory:
+				if (Game.currentLevel != 0)
+				{
+					instance.transform.position = new Vector3(8, -5, 0);
+					instance.animator.Play(Game.battle ? "load1" : "load2");
+				}
+				break;
+			case Game.StoryState.StartStory:
+				instance.transform.position = new Vector3(8, -2, 0);
+				instance.animator.Play("load1");
+				break;
+			case Game.StoryState.StoryDragon:
+				instance.transform.position = new Vector3(-5, -5, 0);
+				break;
+		}
+	}
+
 	public void disappear()
 	{
 		animator.Play("Disappear");
@@ -201,14 +206,16 @@ public class Slime : Entity
 		}
 	}
 
-	public void Healanim()
+	public static void HealCallback(Entity entity, float amount)
 	{
-		animator.Play("Heal");
+		instance.animator.Play("Heal");
+		MainCharacterHealth.Heal(amount);
 	}
 
-	public static void ImmuneOn(Entity entity)
+	public static void SufferCallback(Entity entity, float damage)
 	{
 		instance.animator.Play("Suffer");
+		MainCharacterHealth.Suffer(damage);
 	}
 
 	static void DeathHandler(Entity entity)

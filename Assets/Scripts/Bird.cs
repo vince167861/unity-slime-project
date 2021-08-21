@@ -55,7 +55,7 @@ public class Bird : Entity, IAttackable
 		}
 	}
 
-	static void OnSuffer(Entity entity)
+	static void OnSuffer(Entity entity, float amount)
 	{
 		entity.GetComponent<Animator>().Play("suffer");
 		//lifebarprefab.changeamount(amount);

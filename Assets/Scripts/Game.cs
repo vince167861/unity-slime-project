@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
 	public static bool battle = false, isUser = false, win = false;
-	static bool hadMapMade = false, hasEffectInstantiated = false;
+	static bool hasEffectInstantiated = false;
 	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
 	public static StoryState storyState = StoryState.NoStory;
 	public enum StoryEffect { Clear, ThunderStorm, Light, GroundOfFire, Effect4 };
@@ -75,9 +75,9 @@ public class Game : MonoBehaviour
 
 	public GameObject board, wlboard, levelboard, brand, dialogBox, help, pauseButton, potionicon, keyicon, moneyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
 	public Text moneyicontext;
-	public static GameObject keyCountObject;
 	public static SpriteRenderer background;
-	public static GameObject[] staticEffect;
+	public static GameObject keyCountObject, staticFloorPrefab;
+	public static GameObject[] staticEffect, staticLevelPrefab;
 
 	void Start()
 	{
@@ -85,6 +85,8 @@ public class Game : MonoBehaviour
 		background = GetComponent<SpriteRenderer>();
 		Instantiate(slimePrefab);
 		staticEffect = weather;
+		staticLevelPrefab = levelPrefab;
+		staticFloorPrefab = floorPrefab;
 	}
 
 	void Update()
@@ -113,7 +115,6 @@ public class Game : MonoBehaviour
 		lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
 		turnBack.SetActive(gameState == GameState.LobbyInfo);
 
-		Debug.Log(gameState);
 		switch (gameState)
 		{
 			case GameState.Input:
@@ -127,7 +128,7 @@ public class Game : MonoBehaviour
 					{
 						case StoryEffect.ThunderStorm:
 							Instantiate(weather[0]);
-							gameState = GameState.Loading;
+							PreLoading();
 							break;
 						case StoryEffect.Light:
 							Instantiate(weather[6]);
@@ -162,21 +163,11 @@ public class Game : MonoBehaviour
 				}
 				break;
 			case GameState.DarkFadeOut:
-				storyEffect = StoryEffect.Clear;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					ScreenCover.hadAnimationStarted = false;
-					if (!battle && currentLevel > 0)
-					{
-						if (currentLevel == 1) Instantiate(weather[1]);
-						else Instantiate(weather[Random.Range(1, 4)]);
-					}
-					else if (battle && DataStorage.LevelWeather[0][currentLevel] != -1) Instantiate(force[DataStorage.LevelWeather[0][currentLevel]]);
-					if (battle && currentLevel == 1)
-						Instantiate(weather[4], new Vector3(-30, 56, 0), Quaternion.identity);
-					gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
+					PostDarkFadeOut();
 				}
 				break;
 			case GameState.MenuPrepare:
@@ -187,7 +178,7 @@ public class Game : MonoBehaviour
 				Hint = 0;
 				if (DataStorage.lobbyHint[currentLevel])
 					Instantiate(ovalHint, DataStorage.lobbyoval[currentLevel - 1][0], Quaternion.identity);
-				gameState = GameState.Loading;
+				PreLoading();
 				break;
 			case GameState.LevelPrepare:
 				if (DataStorage.me == null)
@@ -196,7 +187,7 @@ public class Game : MonoBehaviour
 				{
 					Slime.keyCount = 0;
 					ScreenCover.start = true;
-					gameState = GameState.Loading;
+					PreLoading();
 				}
 				background.sprite = gameBackground[currentLevel];
 				Hint = 0;
@@ -204,21 +195,56 @@ public class Game : MonoBehaviour
 					Instantiate(ovalHint, DataStorage.playoval[currentLevel][0], Quaternion.identity);
 				break;
 			case GameState.DarkFadeIn:
-				if (!hadMapMade)
-				{
-					MakeMap(battle);
-					hadMapMade = true;
-				}
-				MainCharacterHealth.start = true;
 				delta += Time.deltaTime;
 				if (delta >= 1)
 				{
 					delta = 0;
-					ScreenCover.hadAnimationStarted = hadMapMade = false;
-					gameState = battle ? GameState.Playing : GameState.Lobby;
+					PostDarkFadeIn();
 				}
 				break;
 		}
+	}
+
+	// DarkFadeOut
+	public static void PreDarkFadeOut()
+	{
+		gameState = GameState.DarkFadeOut;
+		ScreenCover.PreDarkFadeOut();
+		storyEffect = StoryEffect.Clear;
+	}
+	void PostDarkFadeOut()
+	{
+		if (!battle && currentLevel > 0)
+		{
+			if (currentLevel == 1) Instantiate(weather[1]);
+			else Instantiate(weather[Random.Range(1, 4)]);
+		}
+		else if (battle && DataStorage.LevelWeather[0][currentLevel] != -1)
+			Instantiate(force[DataStorage.LevelWeather[0][currentLevel]]);
+		if (battle && currentLevel == 1)
+			Instantiate(weather[4], new Vector3(-30, 56, 0), Quaternion.identity);
+		gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
+	}
+
+	// DarkFadeIn
+	public static void PreDarkFadeIn()
+	{
+		gameState = GameState.DarkFadeIn;
+		ScreenCover.PreDarkFadeIn();
+		MakeMap(battle);
+		Map.UpdateMap();
+		MainCharacterHealth.start = true;
+	}
+	void PostDarkFadeIn()
+	{
+		gameState = battle ? GameState.Playing : GameState.Lobby;
+	}
+
+	// Loading
+	public static void PreLoading()
+	{
+		gameState = GameState.Loading;
+		Slime.PreLoading();
 	}
 
 	/// <summary> Called to start a new level. </summary>
@@ -226,14 +252,14 @@ public class Game : MonoBehaviour
 	public static void StartNewLevel()
 	{
 		battle = true; // Starts the battle
-		gameState = GameState.DarkFadeOut;
+		PreDarkFadeOut();
 	}
 
 	/// <summary> Called to navigate to lobby. </summary>
 	public static void GotoLobby()
 	{
 		battle = false;
-		gameState = GameState.DarkFadeOut;
+		PreDarkFadeOut();
 	}
 
 	/// <summary> Called when a level completed. </summary>
@@ -253,14 +279,14 @@ public class Game : MonoBehaviour
 		gameState = GameState.End;
 	}
 
-	void MakeMap(bool isInBattle)
+	static void MakeMap(bool isInBattle)
 	{
 		if (isInBattle)
 		{
 			if (currentLevel < DataStorage.spawnpoint.Count)
 			{
 				Slime.instance.transform.position = DataStorage.spawnpoint[currentLevel];
-				Instantiate(levelPrefab[currentLevel]);
+				Instantiate(staticLevelPrefab[currentLevel]);
 			}
 		}
 		else
@@ -268,7 +294,7 @@ public class Game : MonoBehaviour
 			if (currentLevel != 0)
 			{
 				Slime.instance.transform.position = new Vector2(1f, 5f);
-				Instantiate(floorPrefab);
+				Instantiate(staticFloorPrefab);
 			}
 		}
 	}
@@ -286,15 +312,7 @@ public class Game : MonoBehaviour
 	public static bool isStory => gameState == GameState.Story;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
-
 	public static void SetAnimation() { gameState = GameState.Animation; }
-
-	/// <summary> Set the current game state. </summary>
-	/// <param name="state">The state to set in string.</param>
-	public static void SetState(string state)
-	{
-		gameState = (GameState)System.Enum.Parse(typeof(GameState), state);
-	}
 
 	public static void givename()
 	{

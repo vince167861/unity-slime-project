@@ -6,7 +6,7 @@ public class ScreenCover : MonoBehaviour
 {
 	public GameObject dragonPrefab, housePrefab, startScene, startGameButton;
 	public static Animator animator;
-	public SpriteRenderer spriteRenderer;
+	public static SpriteRenderer spriteRenderer;
 #warning Please specify where and when the field 'start' would be used.
 	public static bool start = false;
 	static GameObject loadingScreen, background2;
@@ -20,6 +20,7 @@ public class ScreenCover : MonoBehaviour
 		background2 = background2Reference;
 		animator = GetComponent<Animator>();
 		flareLayer = Camera.main.GetComponent<FlareLayer>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	private void Update()
@@ -34,7 +35,7 @@ public class ScreenCover : MonoBehaviour
 				switch (Game.storyState)
 				{
 					case Game.StoryState.NoStory:
-						if (Game.currentLevel == 0) Game.gameState = Game.GameState.DarkFadeIn;
+						if (Game.currentLevel == 0) Game.PreDarkFadeIn();
 						else if (start)
 						{
 							Slime.ResetState();
@@ -67,20 +68,8 @@ public class ScreenCover : MonoBehaviour
 				}
 				break;
 			case Game.GameState.DarkFadeOut:
-				if (!hadAnimationStarted)
-				{
-					spriteRenderer.color = new Color(0, 0, 0);
-					animator.Play("Fade Out");
-                    hadAnimationStarted = true;
-				}
 				break;
 			case Game.GameState.DarkFadeIn:
-				if (!hadAnimationStarted)
-				{
-					spriteRenderer.color = new Color(0, 0, 0);
-					animator.Play("Fade In");
-                    hadAnimationStarted = true;
-				}
 				break;
 			case Game.GameState.BrightFadeOut:
 				if (!hadAnimationStarted)
@@ -185,7 +174,7 @@ public class ScreenCover : MonoBehaviour
 		},
 		() => {
 			animator.speed = 0;
-			Slime.instance.transform.position = new Vector3(30, 48, 0);
+			Slime.instance.transform.position = new Vector3(0, 20, 0);
 			Game.storychat = 6;
 		},
 		() => {
@@ -201,5 +190,17 @@ public class ScreenCover : MonoBehaviour
 		background2.SetActive(false);
 		animator.speed = 1;
 		animator.Play("idle");
+	}
+
+	public static void PreDarkFadeIn()
+	{
+		spriteRenderer.color = new Color(0, 0, 0);
+		animator.Play("Fade In");
+	}
+
+	public static void PreDarkFadeOut()
+	{
+		spriteRenderer.color = new Color(0, 0, 0);
+		animator.Play("Fade Out");
 	}
 }
