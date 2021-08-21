@@ -1,12 +1,7 @@
 ﻿using UnityEngine;
 
-public class dragonController : MonoBehaviour
+public class Dragon : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         switch (Game.gameState)

@@ -7,8 +7,6 @@ public class ScreenCover : MonoBehaviour
 	public GameObject dragonPrefab, housePrefab, startScene, startGameButton;
 	public static Animator animator;
 	public static SpriteRenderer spriteRenderer;
-#warning Please specify where and when the field 'start' would be used.
-	public static bool start = false;
 	static GameObject loadingScreen, background2;
 	public static bool hadAnimationStarted = false;
 	public GameObject loadingScreenReference, background2Reference;
@@ -30,33 +28,6 @@ public class ScreenCover : MonoBehaviour
 			case Game.GameState.StartGame:
 				animator.Play("Start Game");
 				break;
-			case Game.GameState.Loading:
-				// Navigate to different gameState from here.
-				switch (Game.storyState)
-				{
-					case Game.StoryState.NoStory:
-						if (Game.currentLevel == 0) Game.PreDarkFadeIn();
-						else if (start)
-						{
-							Slime.ResetState();
-							loadingScreen.SetActive(true);
-							animator.Play(Game.battle ? "loadgame" : "loadlobby");
-							start = false;
-						}
-						break;
-					case Game.StoryState.StartStory:
-						Slime.ResetState();
-						loadingScreen.SetActive(true);
-						animator.Play("loadstory");
-						Game.storyState = Game.StoryState.Loading;
-						break;
-					case Game.StoryState.StoryDragon:
-						loadingScreen.SetActive(false);
-						animator.speed = 1;
-						Game.gameState = Game.GameState.Story;
-						break;
-				}
-				break;
 			case Game.GameState.Story:
 				MainCameraHandler.storymusic = 1;
 				switch (Game.storyState)
@@ -65,26 +36,6 @@ public class ScreenCover : MonoBehaviour
 					case Game.StoryState.State7:
 						animator.speed = 1;
 						break;
-				}
-				break;
-			case Game.GameState.DarkFadeOut:
-				break;
-			case Game.GameState.DarkFadeIn:
-				break;
-			case Game.GameState.BrightFadeOut:
-				if (!hadAnimationStarted)
-				{
-					spriteRenderer.color = new Color(1, 1, 1);
-					animator.Play("Fade Out");
-                    hadAnimationStarted = true;
-				}
-				break;
-			case Game.GameState.BrightFadeIn:
-				if (!hadAnimationStarted)
-				{
-					spriteRenderer.color = new Color(1, 1, 1);
-					animator.Play("Fade In");
-                    hadAnimationStarted = true;
 				}
 				break;
 		}
@@ -103,7 +54,7 @@ public class ScreenCover : MonoBehaviour
 	void Start3()
 	{
 		startGameButton.SetActive(true);
-		MainCameraHandler.PlayLoopClip(); //Game.gameState = Game.GameState.MenuPrepare;
+		MainCameraHandler.PlayLoopClip(); // Game.gameState = Game.GameState.MenuPrepare;
 		// TODO: Fix groundoffire destroy problem.
 		Game.storyEffect = Game.StoryEffect.GroundOfFire; // Without this line the fire will be destroyed.
 		Instantiate(Game.staticEffect[5]);
@@ -202,5 +153,45 @@ public class ScreenCover : MonoBehaviour
 	{
 		spriteRenderer.color = new Color(0, 0, 0);
 		animator.Play("Fade Out");
+	}
+
+	public static void PreLoading()
+	{
+    // Navigate to different gameState from here.
+    switch (Game.storyState)
+    {
+      case Game.StoryState.NoStory:
+        if (Game.currentLevel == 0) Game.PreDarkFadeIn();
+        else
+        {
+          Slime.ResetState();
+          loadingScreen.SetActive(true);
+          animator.Play(Game.battle ? "loadgame" : "loadlobby");
+        }
+        break;
+      case Game.StoryState.StartStory:
+        Slime.ResetState();
+        loadingScreen.SetActive(true);
+        animator.Play("loadstory");
+        Game.storyState = Game.StoryState.Loading;
+        break;
+      case Game.StoryState.StoryDragon:
+        loadingScreen.SetActive(false);
+        animator.speed = 1;
+        Game.gameState = Game.GameState.Story;
+        break;
+    }
+	}
+
+	public static void PreBrightFadeOut()
+	{
+    spriteRenderer.color = new Color(1, 1, 1);
+    animator.Play("Fade Out");
+	}
+
+	public static void PreBrightFadeIn()
+	{
+    spriteRenderer.color = new Color(1, 1, 1);
+    animator.Play("Fade In");
 	}
 }

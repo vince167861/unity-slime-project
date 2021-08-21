@@ -22,7 +22,7 @@ public class Slime : Entity
 
 	static Behaviour flareLayer;
 
-	public static readonly Vector3 moveBase = new Vector3(1600, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
+	static readonly Vector3 moveBase = new Vector3(500, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
 
 	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback) {
 		instance = this;
@@ -55,7 +55,7 @@ public class Slime : Entity
 				if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
 				{
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((150 * moveBase + jumpBase) * suppression);
+					rigidbody2d.AddForce((50 * moveBase + 2 * jumpBase) * suppression);
 					animator.Play("Jump Right");
 					direction = 1;
 					allowMove = bouncable = false;
@@ -63,7 +63,7 @@ public class Slime : Entity
 				if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
 				{
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((-150 * moveBase + jumpBase) * suppression);
+					rigidbody2d.AddForce((-50 * moveBase + 2 * jumpBase) * suppression);
 					animator.Play("Jump Left");
 					direction = -1;
 					allowMove = bouncable = false;
@@ -96,10 +96,10 @@ public class Slime : Entity
 				if (Input.GetKeyDown(KeyCode.F) && Game.gameState == Game.GameState.Playing)
 				{
 					if(EnergyHandler.nextenergy < 25 || EnergyHandler.targetenergy < 25)
-                        MainCameraHandler.PlayEntityClip(12);
+						MainCameraHandler.PlayEntityClip(12);
 					else
-					{	
-                        MainCameraHandler.PlayEntityClip(4);
+					{
+						MainCameraHandler.PlayEntityClip(4);
 						Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
 						Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;
 						EnergyHandler.changeamount(-25);
@@ -125,7 +125,7 @@ public class Slime : Entity
 
 	public static void PreLoading()
 	{
-		
+
 		flareLayer.enabled = false;
 		instance.spriteRenderer.sortingLayerName = "Black Screen";
 		instance.spriteRenderer.sortingOrder = 3;

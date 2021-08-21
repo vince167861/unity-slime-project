@@ -3,52 +3,51 @@ using UnityEngine.UI;
 
 public class TypeBoxHandler : MonoBehaviour
 {
-    public static bool isName = false;
-    public InputField Inputfield;
-    Text Input;
+  public static bool isName = false;
+  public InputField Inputfield;
+  Text Input;
 
-    void Start()
+  void Start()
+  {
+    Input = GameObject.Find("Input").GetComponent<Text>();
+  }
+
+  void Update()
+  {
+    if (Game.currentLevel > 0 && isName)
     {
-        Input = GameObject.Find("Input").GetComponent<Text>();
+      Inputfield.Select();
+      Inputfield.text = DataStorage.me;
+      isName = false;
     }
+  }
 
-    // Update is called once per frame
-    void Update()
+  public void Yes()
+  {
+    if (!isName)
     {
-        if(Game.currentLevel > 0 && isName)
+      if (Game.storyState == Game.StoryState.State9 || Game.storyState == Game.StoryState.NoStory || Game.isUser || Game.currentLevel > 0)
+      {
+        DataStorage.me = Input.text;
+        if (Game.currentLevel <= 0)
         {
-            Inputfield.Select();
-            Inputfield.text = DataStorage.me;
-            isName = false;
+          Game.storyState = Game.StoryState.NoStory;
+          Game.battle = true;
+          Game.gameState = Game.GameState.LevelPrepare;
         }
-    }
-
-    public void Yes()
-    {
-        if (!isName)
+        else
         {
-            if (Game.storyState == Game.StoryState.State9 || Game.storyState == Game.StoryState.NoStory || Game.isUser || Game.currentLevel > 0)
-            {
-                DataStorage.me = Input.text;
-                if (Game.currentLevel <= 0)
-                {
-                    Game.storyState = Game.StoryState.NoStory;
-                    Game.battle = true;
-                    Game.gameState = Game.GameState.LevelPrepare;
-                }
-                else
-                {
-                    Game.gameState = Game.GameState.Lobby;
-                }
-                Game.givename();
-                isName = true;
-            }
+          Game.gameState = Game.GameState.Lobby;
         }
+        Game.givename();
+        isName = true;
+      }
     }
+  }
 
-    public void No()
-    {
-        Inputfield.Select();
-        Inputfield.text = "";
-    }
+  public void No()
+  {
+    Inputfield.Select();
+    Inputfield.text = "";
+  }
 }

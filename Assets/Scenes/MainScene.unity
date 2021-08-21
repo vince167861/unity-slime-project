@@ -7118,12 +7118,12 @@ GameObject:
   - component: {fileID: 352685868}
   - component: {fileID: 352685867}
   m_Layer: 5
-  m_Name: Type Box
+  m_Name: Name Query Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &352685866
 RectTransform:
   m_ObjectHideFlags: 0

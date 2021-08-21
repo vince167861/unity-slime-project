@@ -91,7 +91,7 @@ public class Game : MonoBehaviour
 
 	void Update()
 	{
-#warning The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
+		// TODO: The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
 		if (Input.GetMouseButtonDown(0)) circleHint.SetActive(false);
@@ -144,36 +144,9 @@ public class Game : MonoBehaviour
 				if (storyEffect == StoryEffect.Clear && hasEffectInstantiated)
 					hasEffectInstantiated = false;
 				break;
-			case GameState.BrightFadeOut:
-				delta += Time.deltaTime;
-				if (delta >= 1)
-				{
-					delta = 0;
-					ScreenCover.hadAnimationStarted = false;
-					gameState = GameState.BrightFadeIn;
-				}
-				break;
-			case GameState.BrightFadeIn:
-				delta += Time.deltaTime;
-				if (delta >= 1)
-				{
-					delta = 0;
-					ScreenCover.hadAnimationStarted = false;
-					gameState = battle ? GameState.Playing : GameState.Lobby;
-				}
-				break;
-			case GameState.DarkFadeOut:
-				delta += Time.deltaTime;
-				if (delta >= 1)
-				{
-					delta = 0;
-					PostDarkFadeOut();
-				}
-				break;
 			case GameState.MenuPrepare:
 				guildwoman.otheradvice = true;
 				guildwoman.startanim = true;
-				ScreenCover.start = true;
 				background.sprite = menuBackground[currentLevel];
 				Hint = 0;
 				if (DataStorage.lobbyHint[currentLevel])
@@ -186,22 +159,21 @@ public class Game : MonoBehaviour
 				else
 				{
 					Slime.keyCount = 0;
-					ScreenCover.start = true;
+          background.sprite = gameBackground[currentLevel];
+          Hint = 0;
+          if (DataStorage.playHint[currentLevel])
+            Instantiate(ovalHint, DataStorage.playoval[currentLevel][0], Quaternion.identity);
 					PreLoading();
 				}
-				background.sprite = gameBackground[currentLevel];
-				Hint = 0;
-				if (DataStorage.playHint[currentLevel] && DataStorage.me != null)
-					Instantiate(ovalHint, DataStorage.playoval[currentLevel][0], Quaternion.identity);
 				break;
+      case GameState.BrightFadeOut:
+        delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostBrightFadeOut(); } break;
+      case GameState.BrightFadeIn:
+        delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostBrightFadeIn(); } break;
+      case GameState.DarkFadeOut:
+        delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostDarkFadeOut(); } break;
 			case GameState.DarkFadeIn:
-				delta += Time.deltaTime;
-				if (delta >= 1)
-				{
-					delta = 0;
-					PostDarkFadeIn();
-				}
-				break;
+				delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostDarkFadeIn(); } break;
 		}
 	}
 
@@ -245,6 +217,29 @@ public class Game : MonoBehaviour
 	{
 		gameState = GameState.Loading;
 		Slime.PreLoading();
+		ScreenCover.PreLoading();
+	}
+
+	// BrightFadeOut
+	public static void PreBrightFadeOut()
+	{
+    gameState = GameState.BrightFadeOut;
+    ScreenCover.PreBrightFadeOut();
+  }
+	void PostBrightFadeOut()
+	{
+    PreBrightFadeIn();
+  }
+
+	// BrightFadeIn
+	public static void PreBrightFadeIn()
+	{
+    gameState = GameState.BrightFadeIn;
+    ScreenCover.PreBrightFadeIn();
+  }
+	void PostBrightFadeIn()
+  {
+    gameState = battle ? GameState.Playing : GameState.Lobby;
 	}
 
 	/// <summary> Called to start a new level. </summary>

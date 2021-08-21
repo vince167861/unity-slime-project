@@ -13,7 +13,8 @@ public class SkeletonWarriorBulletDetector : MonoBehaviour
 		switch (collision.tag)
 		{
 			case "bullet":
-				skeletonAnimator.Play("�ޤM");
+				// TODO: Adjust the timer from detected the bullet to destroy it.
+				skeletonAnimator.Play("拔刀");
 				break;
 		}
 	}

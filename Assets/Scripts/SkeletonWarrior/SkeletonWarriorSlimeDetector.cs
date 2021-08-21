@@ -15,7 +15,8 @@ public class SkeletonWarriorSlimeDetector : MonoBehaviour
 		switch(collision.tag)
 		{
 			case "Slime":
-				skeletonAnimator.Play("�ޤM");
+        // TODO: Adjust the timer from detected slime to attack it.
+        skeletonAnimator.Play("拔刀");
 				break;
 		}
 	}

@@ -1,8 +1,10 @@
-#pragma warning disable CS0108 // 成員隱藏所繼承的成員; 遺漏 new 關鍵字
+#pragma warning disable CS0108
 using UnityEngine;
 
 public class ChamberControl : MonoBehaviour
 {
+	// TODO: Add animation to buttons.
+	// TODO: Add drowning player when get stuck.
 	public float dx, dy;
 	public bool fx, fy;
 	private Chamber parent;

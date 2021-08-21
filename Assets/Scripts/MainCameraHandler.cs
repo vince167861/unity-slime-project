@@ -9,7 +9,7 @@ public class MainCameraHandler : MonoBehaviour
 	public static AudioSource staticAudioSource;
 	public static Vector3 targetPosition;
 	public float cameraSpeedFactor = 10;
-#warning Please add xml comment for those three fields.
+	// TODO: Please add xml comment for those three fields.
 	public static float soundLoud = 0;
 	public static int storymusic = 0;
 	public static bool hasMusicPlaying = false;

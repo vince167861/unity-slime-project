@@ -67,7 +67,7 @@ public class WLBoardHandler : MonoBehaviour
 				}
 				else
 				{
-					// BUG: Index was outside of array.
+					// FIXME: Index was outside of array.
 					LosePicture.GetComponent<Image>().sprite = LP[Game.lastattack];
 					levelText.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
 					ChLevelFill.GetComponent<Image>().fillAmount = ((Game.totalexp + expamount) % needexp) / needexp;

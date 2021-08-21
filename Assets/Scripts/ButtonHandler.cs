@@ -8,7 +8,6 @@ public class ButtonHandler : MonoBehaviour
 		Destroy(GameObject.Find("DragonPrefab(Clone)"));
 		Destroy(GameObject.Find("房子內部(Clone)"));
 		Game.storyEffect = Game.StoryEffect.Clear;
-		ScreenCover.animator.SetBool("skip", true);
 		Game.storyState = Game.StoryState.NoStory;
 		Game.battle = true;
 		Game.gameState = Game.GameState.LevelPrepare;

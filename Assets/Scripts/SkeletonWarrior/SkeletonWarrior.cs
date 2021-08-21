@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class SkeletonWarrior : Entity
 {
-	public SkeletonWarrior() : base("¼B¤j­ô", 500) { }
+	// TODO: Add Heal and Suffer extends from Entity.
+	// TODO: Add movement to Skeleton
+	public SkeletonWarrior() : base("åŠ‰å¤§å“¥", 500) { }
 
 	public bool isAttacking = false;
 
