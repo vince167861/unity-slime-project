@@ -158,6 +158,7 @@ public class ScreenCover : MonoBehaviour
 	public static void PreLoading()
 	{
     // Navigate to different gameState from here.
+		// FIXME: This function used to run at every tick.
     switch (Game.storyState)
     {
       case Game.StoryState.NoStory:
