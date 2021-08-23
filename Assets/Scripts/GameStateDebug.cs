@@ -11,6 +11,6 @@ public class GameStateDebug : MonoBehaviour
 
     void Update()
     {
-        text.text = "State: " + Game.gameState.ToString() + ", crlvl: " + Game.currentLevel;
+        text.text = "State: " + Game.gameState.ToString() + ", crlvl: " + Game.currentLevel + ", Story: " + Game.storyState.ToString();
     }
 }

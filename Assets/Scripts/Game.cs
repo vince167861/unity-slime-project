@@ -36,7 +36,7 @@ public class Game : MonoBehaviour
 		/// <summary> State when players are playing in every level. </summary>
 		Playing,
 		/// <summary> State when players are in pause menu. </summary>
-		Pause, Instruction, End, Lobby, Animation, Shaking,
+		Pause, Instruction, End, Lobby, Dialog, Shaking,
 		/// <summary> Fade out to bright color. </summary>
 		/// <remarks> Was 'Lighting' before. </remarks>
 		BrightFadeOut,
@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
 	public static int newLevel, currentLevel, lastattack = 0;
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
-	public static bool battle = false, isUser = false, win = false;
+	public static bool battle = false, debugMode = true, win = false;
 	static bool hasEffectInstantiated = false;
 	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
 	public static StoryState storyState = StoryState.NoStory;
@@ -101,16 +101,16 @@ public class Game : MonoBehaviour
 		levelboard.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		passCanvas.SetActive(WLBoardHandler.stmenu && !battle);
 		deadCanvas.SetActive(WLBoardHandler.stmenu && battle);
-		slimeHealthCanvas.SetActive(isPlaying || isAnimation || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+		slimeHealthCanvas.SetActive(isPlaying || IsDialog || gameState == GameState.Shaking || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		// GameObjects
 		brand.SetActive(gameState == GameState.Lobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
-		dialogBox.SetActive(isAnimation || gameState == GameState.Advice || (gameState == GameState.Story && storychat != 0));
+		dialogBox.SetActive(IsDialog || gameState == GameState.Advice || (gameState == GameState.Story && storychat != 0));
 		pauseButton.SetActive(!isPaused && gameState != GameState.StartGame && gameState != GameState.Story && gameState != GameState.Loading);
-		debugcanvas.SetActive(isPaused && isUser);
+		debugcanvas.SetActive(isPaused && debugMode);
 		board.SetActive(isPaused);
 		help.SetActive(gameState == GameState.Instruction);
-		potionicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
-		keyicon.SetActive(isPlaying || isAnimation || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+		potionicon.SetActive(isPlaying || IsDialog || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
+		keyicon.SetActive(isPlaying || IsDialog || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		moneyicon.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
 		turnBack.SetActive(gameState == GameState.LobbyInfo);
@@ -145,8 +145,8 @@ public class Game : MonoBehaviour
 					hasEffectInstantiated = false;
 				break;
 			case GameState.MenuPrepare:
-				guildwoman.otheradvice = true;
-				guildwoman.startanim = true;
+				GuildWoman.otheradvice = true;
+				GuildWoman.startanim = true;
 				background.sprite = menuBackground[currentLevel];
 				Hint = 0;
 				if (DataStorage.lobbyHint[currentLevel])
@@ -297,7 +297,7 @@ public class Game : MonoBehaviour
 	public static bool isPlaying => gameState == GameState.Playing;
 	public static bool isPaused => gameState == GameState.Pause;
 	public static bool isLobby => gameState == GameState.Lobby;
-	public static bool isAnimation => gameState == GameState.Animation;
+	public static bool IsDialog => gameState == GameState.Dialog;
 	public static bool isMenuPrepare => gameState == GameState.MenuPrepare;
 	public static bool isDarking => gameState == GameState.DarkFadeOut;
 	public static bool isBrightening => gameState == GameState.DarkFadeIn;
@@ -307,17 +307,11 @@ public class Game : MonoBehaviour
 	public static bool isStory => gameState == GameState.Story;
 
 	public static void SetPlaying() { gameState = GameState.Playing; }
-	public static void SetAnimation() { gameState = GameState.Animation; }
+	public static void SetDialog() { gameState = GameState.Dialog; }
 
-	public static void givename()
+	public static void Rename()
 	{
-		for (int i = 0; i < DataStorage.teller.Count; i++)
-		{
-			for (int j = 0; j < DataStorage.teller[i].Count; j++)
-			{
-				if (DataStorage.teller[i][j] == DataStorage.lastname) DataStorage.teller[i][j] = DataStorage.me;
-			}
-		}
+		DataStorage.speakerName = DataStorage.speakerName.ConvertAll(name => name == DataStorage.lastname ? DataStorage.me : name);
 		DataStorage.lastname = DataStorage.me;
 	}
 	public void Inputstate()

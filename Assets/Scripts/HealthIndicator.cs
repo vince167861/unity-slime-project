@@ -18,7 +18,7 @@ public class HealthIndicator : MonoBehaviour
 	{
 		switch (Game.gameState)
 		{
-			case Game.GameState.Animation:
+			case Game.GameState.Dialog:
 			case Game.GameState.Shaking:
 			case Game.GameState.Playing:
 				if (filling.localScale.x <= 0.02) parent.Die();

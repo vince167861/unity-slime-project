@@ -24,7 +24,7 @@ public class Shaking : MonoBehaviour
 				this.delta += Time.deltaTime;
 				if (this.delta >= timer[12])
 				{
-					Game.gameState = Game.GameState.Animation;
+					Game.gameState = Game.GameState.Dialog;
 					this.delta = 0;
 				}
 				if (this.delta >= timer[10] && this.delta <= timer[11])

@@ -210,7 +210,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.9833333
-    functionName: storyloadend
+    functionName: StoryLoadEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

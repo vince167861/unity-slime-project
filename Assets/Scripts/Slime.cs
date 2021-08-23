@@ -24,7 +24,7 @@ public class Slime : Entity
 
 	static readonly Vector3 moveBase = new Vector3(500, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
 
-	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback) {
+	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback, EffectCallback) {
 		instance = this;
 	}
 
@@ -32,6 +32,8 @@ public class Slime : Entity
 	{
 		flareLayer = Camera.main.GetComponent<FlareLayer>();
 		transform.position = new Vector3(-23, -7, 0);
+		keyCountObject = GameObject.Find("Key Count");
+		potionCountObject = GameObject.Find("Potion Count");
 	}
 
 	void Update()
@@ -125,7 +127,6 @@ public class Slime : Entity
 
 	public static void PreLoading()
 	{
-
 		flareLayer.enabled = false;
 		instance.spriteRenderer.sortingLayerName = "Black Screen";
 		instance.spriteRenderer.sortingOrder = 3;
@@ -153,19 +154,10 @@ public class Slime : Entity
 		animator.Play("Disappear");
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
 		switch (collision.collider.tag)
 		{
-			case "Mushroom":
-				if (Game.gameState == Game.GameState.Playing)
-				{
-					Instantiate(paralysis).GetComponent<Transform>().position = collision.transform.position;
-					Suffer(collision.collider.GetComponent<IAttackable>().AttackDamage);
-					GameObject.Find("CharacterLife").GetComponent<Animator>().Play("paralysis");
-					Destroy(collision.gameObject);
-				}
-				break;
 			case "Ground":
 				bouncable = false;
 				break;
@@ -196,7 +188,7 @@ public class Slime : Entity
 				break;
 			case "Hint":
 				Game.Hint++;
-				if(Game.gameState == Game.GameState.Animation && Game.Hint < DataStorage.playoval[Game.currentLevel].Count)
+				if(Game.gameState == Game.GameState.Dialog && Game.Hint < DataStorage.playoval[Game.currentLevel].Count)
 					collision.gameObject.GetComponent<Transform>().position = DataStorage.playoval[Game.currentLevel][Game.Hint];
 				if(Game.gameState == Game.GameState.Playing && Game.Hint < DataStorage.playoval[Game.currentLevel].Count)
 					collision.gameObject.GetComponent<Transform>().position = DataStorage.playoval[Game.currentLevel][Game.Hint];
@@ -263,13 +255,23 @@ public class Slime : Entity
 		instance.animator.SetBool("crouch", false);
 	}
 
-	void storyloadend()
+	void StoryLoadEnd()
 	{
 		if (Game.storyState == Game.StoryState.Loading)
 		{
 			animator.Play("Disappear");
 			Game.storyState = Game.StoryState.StoryDragon;
-			ScreenCover.animator.SetFloat("speed", 1);
+			ScreenCover.PreLoading();
+		}
+	}
+
+	static void EffectCallback(Entity entity, EntityEffect effect)
+	{
+		switch (effect.effectType)
+		{
+			case EntityEffect.EntityEffectType.Paralyze:
+				GameObject.Find("Character Status").GetComponent<Animator>().Play("paralysis");
+				break;
 		}
 	}
 }

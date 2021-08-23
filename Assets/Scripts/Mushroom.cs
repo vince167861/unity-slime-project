@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS0108 // 無法辨認的 #pragma 指示詞
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mushroom : Entity, IAttackable
 {
@@ -7,7 +6,7 @@ public class Mushroom : Entity, IAttackable
 	public int AttackDamage => 40;
 	public float jumpSpan = 0, jumpWait = 0;
 	public bool hasTarget = false;
-	public GameObject dieEffect, potion;
+	public GameObject dieEffect, potion, paralysisEffect;
 
 	private Animator animator;
 	private Rigidbody2D rigidbody2d;
@@ -28,11 +27,11 @@ public class Mushroom : Entity, IAttackable
 				{
 					jumpSpan = -1;
 					animator.Play("Jump");
-					entityDirection = hasTarget ? (Slime.instance.transform.position.x - transform.position.x) > 0 ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
+					entityDirection = hasTarget ? Slime.instance.transform.position.x > transform.position.x ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
 					Vector3 current = transform.localScale;
 					transform.localScale = new Vector3(-entityDirection * System.Math.Abs(current.x), current.y, current.z);
 					// TODO: Adjust the force when mushroom moves.
-					rigidbody2d.AddForce(new Vector3(entityDirection * 80, 250, 0) * (hasTarget ? 2f: 1f)); //direction * 100, 300, 0
+					rigidbody2d.AddForce(new Vector3(entityDirection * 80, 250, 0) * (hasTarget ? 2f: 1f));
 				}
 				break;
 		}
@@ -45,6 +44,15 @@ public class Mushroom : Entity, IAttackable
 			case "Ground":
 				jumpSpan = 0;
 				jumpWait = Random.Range(0.5f, 1.5f);
+				break;
+			case "Slime":
+				if (Game.isPlaying)
+				{
+					Instantiate(paralysisEffect, transform);
+					collision.collider.GetComponent<Entity>().Suffer(AttackDamage);
+					collision.collider.GetComponent<Entity>().ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));
+					Destroy(gameObject);
+				}
 				break;
 		}
 	}
@@ -63,5 +71,4 @@ public class Mushroom : Entity, IAttackable
 		if (Random.value <= 0.1) Instantiate(potion);
 		Destroy(gameObject);
 	}
-
 }

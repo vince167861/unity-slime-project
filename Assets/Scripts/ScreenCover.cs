@@ -77,7 +77,7 @@ public class ScreenCover : MonoBehaviour
 	void EndLoading()
 	{
 		loadingScreen.SetActive(false);
-		Game.gameState = Game.GameState.DarkFadeIn;
+		Game.PreDarkFadeIn();
 	}
 
 	static GameObject houseReference;
@@ -158,7 +158,7 @@ public class ScreenCover : MonoBehaviour
 	public static void PreLoading()
 	{
     // Navigate to different gameState from here.
-		// FIXME: This function used to run at every tick.
+		// TODO: This function used to run at every tick.
     switch (Game.storyState)
     {
       case Game.StoryState.NoStory:
@@ -178,6 +178,7 @@ public class ScreenCover : MonoBehaviour
         break;
       case Game.StoryState.StoryDragon:
         loadingScreen.SetActive(false);
+				animator.SetFloat("speed", 1);
         animator.speed = 1;
         Game.gameState = Game.GameState.Story;
         break;

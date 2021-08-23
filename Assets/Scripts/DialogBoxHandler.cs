@@ -4,16 +4,14 @@ using TMPro;
 
 public class DialogBoxHandler : MonoBehaviour
 {
-	public static int cbnum = 0;
-	public static int adviceperson, adwhich = 0;
+	public static int dialogID = 0, adviceperson, adwhich = 0;
 	public Sprite[] ch;
 	static GameObject point;
 	static TextMeshProUGUI story;
 	static Text teller;
 	static Image littlech;
-	public static bool isChat = false;
+	public static bool isChat = false, playsurprise = false, playHint = false;
 	public bool isAnim, isStart = false;
-	public static bool playsurprise = false, playHint = false;
 	public GameObject circle, oval;
 	public static Game.GameState lastgameState;
 	public static Animator animator;
@@ -25,15 +23,13 @@ public class DialogBoxHandler : MonoBehaviour
 		teller = GameObject.Find("Teller").GetComponent<Text>();
 		littlech = GameObject.Find("Little Character").GetComponent<Image>();
 		animator = GetComponent<Animator>();
-
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		switch (Game.gameState)
 		{
-			case Game.GameState.Animation:
+			case Game.GameState.Dialog:
 				point.SetActive(true);
 				if (!isAnim && playsurprise)
 				{
@@ -47,14 +43,14 @@ public class DialogBoxHandler : MonoBehaviour
 					circle.GetComponent<RectTransform>().localPosition = DataStorage.circlepoint[Game.currentLevel][0];
 					playHint = false;
 				}
-				story.text = DataStorage.story[Game.currentLevel][cbnum];
-				teller.text = DataStorage.teller[Game.currentLevel][cbnum];
-				littlech.sprite = ch[DataStorage.littlech[Game.currentLevel][cbnum]];
+				story.text = DataStorage.lines[Game.currentLevel][dialogID];
+				teller.text = DataStorage.speakerName[DataStorage.speaker[Game.currentLevel][dialogID]];
+				littlech.sprite = ch[DataStorage.speaker[Game.currentLevel][dialogID]];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
-					cbnum++;
+					dialogID++;
 					Animation.handler.handle();
 				}
 				break;
@@ -68,11 +64,11 @@ public class DialogBoxHandler : MonoBehaviour
 				{
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
-					if (guildwoman.otheradvice)
+					if (GuildWoman.otheradvice)
 					{
-						guildwoman.otheradvice = false;
+						GuildWoman.otheradvice = false;
 					}
-					else guildwoman.trigger2 = false;
+					else GuildWoman.trigger2 = false;
 					Game.gameState = lastgameState;
 				}
 				break;

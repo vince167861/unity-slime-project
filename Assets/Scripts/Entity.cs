@@ -7,6 +7,7 @@ public abstract class Entity : MonoBehaviour
 	public readonly int defaultHealth;
 	readonly Action<Entity, float> healCallback, sufferCallback;
 	readonly Action<Entity>  deathCallback;
+	readonly Action<Entity, EntityEffect> effectCallback;
 	private float __health;
 	private string __name;
 	public bool isDied = false;
@@ -17,8 +18,9 @@ public abstract class Entity : MonoBehaviour
 
 	static void __default_death_callback(Entity entity) { Destroy(entity.gameObject); }
 	static void __default_callback(Entity entity, float delta) { }
+	static void __default_effect_calllback(Entity entity, EntityEffect effect) { }
 
-	public Entity(string n, int h, int d = 1, Action<Entity, float> scb = null, Action<Entity> dcb = null, Action<Entity, float> hcb = null)
+	public Entity(string n, int h, int d = 1, Action<Entity, float> scb = null, Action<Entity> dcb = null, Action<Entity, float> hcb = null, Action<Entity, EntityEffect> ecb = null)
 	{
 		__name = n;
 		__health = defaultHealth = h;
@@ -26,6 +28,7 @@ public abstract class Entity : MonoBehaviour
 		sufferCallback = scb ?? __default_callback;
 		deathCallback = dcb ?? __default_death_callback;
 		healCallback = hcb ?? __default_callback;
+		effectCallback = ecb ?? __default_effect_calllback;
 	}
 	public void Suffer(int damage)
 	{
@@ -54,5 +57,10 @@ public abstract class Entity : MonoBehaviour
 	public void ResetHealth()
 	{
 		__health = defaultHealth;
+	}
+
+	public void ApplyEffect(EntityEffect effect)
+	{
+		effectCallback(this, effect);
 	}
 }

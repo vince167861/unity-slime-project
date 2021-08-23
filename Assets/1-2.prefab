@@ -531,7 +531,6 @@ GameObject:
   - component: {fileID: 9000962122878476435}
   - component: {fileID: 2690023055749244891}
   - component: {fileID: 6366326341777721426}
-  - component: {fileID: -2560519588239666159}
   - component: {fileID: 7433711928394151200}
   m_Layer: 0
   m_Name: 1-2
@@ -662,18 +661,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doContinuePlaying: 00000000000101010101
   timer: 1
---- !u!114 &-2560519588239666159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9000962122878476436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404f0457cce4c7e49808c7a21170a1cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &7433711928394151200
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -713,16 +700,16 @@ PolygonCollider2D:
       - {x: 15.800682, y: 2.262336}
       - {x: 15.800187, y: 1.8664459}
       - {x: 16.241379, y: 1.8700135}
-      - {x: 16.24036, y: 0.40136683}
-      - {x: 6.4336267, y: 0.39896068}
-      - {x: 6.430234, y: 4.5115395}
-      - {x: 5.977205, y: 4.5113263}
-      - {x: 5.975932, y: 4.1462283}
-      - {x: 5.5506253, y: 4.1447988}
-      - {x: 5.5510273, y: 3.7654307}
-      - {x: 5.1195188, y: 3.7683773}
-      - {x: 5.119861, y: 3.4045763}
-      - {x: 0, y: 3.3982766}
+      - {x: 16.244339, y: 0.39539796}
+      - {x: 6.4296474, y: 0.39000735}
+      - {x: 6.42725, y: 4.5065656}
+      - {x: 5.984168, y: 4.5063524}
+      - {x: 5.9838905, y: 4.131306}
+      - {x: 5.5565934, y: 4.130872}
+      - {x: 5.5560017, y: 3.7584672}
+      - {x: 5.130461, y: 3.7584288}
+      - {x: 5.1308045, y: 3.3807008}
+      - {x: 0.025865175, y: 3.3803701}
       - {x: 0, y: 0}
       - {x: 20.53, y: 0}
       - {x: 20.540358, y: 5.2590327}

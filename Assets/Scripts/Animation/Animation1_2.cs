@@ -30,12 +30,12 @@ public class Animation1_2 : Animation
 
 	public override void handle()
 	{
-		if (doContinuePlaying[DialogBoxHandler.cbnum])
+		if (doContinuePlaying[DialogBoxHandler.dialogID])
 		{
-			doContinuePlaying[DialogBoxHandler.cbnum] = false;
+			doContinuePlaying[DialogBoxHandler.dialogID] = false;
 			Game.SetPlaying();
 		}
-		else Game.SetAnimation();
+		else Game.SetDialog();
 	}
 
 	public override void trigger(int id)
@@ -43,17 +43,17 @@ public class Animation1_2 : Animation
 		switch (id)
 		{
 			case 0:
-				if (DialogBoxHandler.cbnum != 9)
-					Game.SetAnimation();
+				if (DialogBoxHandler.dialogID != 9)
+					Game.SetDialog();
 				break;
 			case 1:
 				Game.gameState = Game.GameState.Shaking;
 				break;
 			case 2:
-				if (DialogBoxHandler.cbnum == 7)
+				if (DialogBoxHandler.dialogID == 7)
 				{
-					DialogBoxHandler.cbnum = 8;
-					Game.SetAnimation();
+					DialogBoxHandler.dialogID = 8;
+					Game.SetDialog();
 				}
 				break;
 		}

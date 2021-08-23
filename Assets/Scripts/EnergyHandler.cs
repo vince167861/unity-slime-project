@@ -23,7 +23,7 @@ public class EnergyHandler : MonoBehaviour
     {
         switch (Game.gameState)
         {
-            case Game.GameState.Animation:
+            case Game.GameState.Dialog:
             case Game.GameState.Shaking:
             case Game.GameState.Playing:
                 if(MainCharacterHealth.start)

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class TypeBoxHandler : MonoBehaviour
 {
-  public static bool isName = false;
+  static bool isName = false;
   public InputField Inputfield;
   Text Input;
 
@@ -26,7 +26,7 @@ public class TypeBoxHandler : MonoBehaviour
   {
     if (!isName)
     {
-      if (Game.storyState == Game.StoryState.State9 || Game.storyState == Game.StoryState.NoStory || Game.isUser || Game.currentLevel > 0)
+      if (Game.storyState == Game.StoryState.State9 || Game.storyState == Game.StoryState.NoStory || Game.debugMode || Game.currentLevel > 0)
       {
         DataStorage.me = Input.text;
         if (Game.currentLevel <= 0)
@@ -39,7 +39,7 @@ public class TypeBoxHandler : MonoBehaviour
         {
           Game.gameState = Game.GameState.Lobby;
         }
-        Game.givename();
+        Game.Rename();
         isName = true;
       }
     }
