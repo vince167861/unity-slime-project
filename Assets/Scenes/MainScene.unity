@@ -8112,6 +8112,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e74bb4e8d2bb2d043a454de793f43044, type: 3}
   - {fileID: 8300000, guid: d0f480c21bf589d42b4ac6b014c9dfa5, type: 3}
   - {fileID: 8300000, guid: 6b4d8989bc38c2d4795b257dcbc997fc, type: 3}
+  - {fileID: 8300000, guid: 94808d90160fef84dbd980e0dd2abb07, type: 3}
+  - {fileID: 8300000, guid: 1418b3f2333f53a46a9d5836d5092868, type: 3}
+  - {fileID: 8300000, guid: fb27ffc6f67b2a04d8aa807babf9969a, type: 3}
+  - {fileID: 8300000, guid: 2563d7083a5f21e45b7a14a269b8a5fa, type: 3}
+  - {fileID: 8300000, guid: 43aeb20b369e82d468715363ed15b197, type: 3}
   backgroundclip:
   - {fileID: 8300000, guid: c864d9f04ac744344b9e0598bb933753, type: 3}
   - {fileID: 8300000, guid: 4640cba052f8bb343a742da650baa9a7, type: 3}
