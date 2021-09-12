@@ -4123,7 +4123,7 @@ PrefabInstance:
     - target: {fileID: 6108292031390234540, guid: e7553e5455d4ac3499fed1c04f80d312,
         type: 3}
       propertyPath: m_Brightness
-      value: 0.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6108292031390234540, guid: e7553e5455d4ac3499fed1c04f80d312,
         type: 3}
