@@ -340,21 +340,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 461519328}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
         m_MethodName: ShowLobby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: ChangeValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1107,7 +1095,7 @@ MonoBehaviour:
   housePrefab: {fileID: 7372207984277310545, guid: 066fd6bd26ca59d429029b52aec880da,
     type: 3}
   startScene: {fileID: 1351225764}
-  startGameButton: {fileID: 0}
+  startGameButton: {fileID: 1075055338}
   loadingScreenReference: {fileID: 118156545}
   background2Reference: {fileID: 2056558437}
 --- !u!212 &148671825
@@ -7617,6 +7605,7 @@ GameObject:
   - component: {fileID: 461519327}
   - component: {fileID: 461519326}
   - component: {fileID: 461519325}
+  - component: {fileID: 461519328}
   - component: {fileID: 461519329}
   m_Layer: 5
   m_Name: WRetry
@@ -7689,21 +7678,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 461519328}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
         m_MethodName: GameInit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: ChangeValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7751,6 +7728,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461519323}
   m_CullTransparentMesh: 0
+--- !u!114 &461519328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461519323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47366d9ad9ec6c94e80d5599ef4a87e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &461519329
 Animator:
   serializedVersion: 3
@@ -8362,13 +8351,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   situation: 0
-  icon: []
-  heal: {fileID: 0}
-  suffer: {fileID: 0}
-  bar: {fileID: 0}
-  statusIcon: {fileID: 0}
-  healthText: {fileID: 0}
-  nameText: {fileID: 0}
+  icon:
+  - {fileID: 21300000, guid: aefbc13c821142c4da900b8f8580a78e, type: 3}
+  - {fileID: 21300000, guid: c7deba1bb45d5414ab6f74c887da7065, type: 3}
+  heal: {fileID: 1284205672}
+  suffer: {fileID: 1849128176}
+  bar: {fileID: 1625024328}
+  statusIcon: {fileID: 1706357951}
+  healthText: {fileID: 1444434704}
+  nameText: {fileID: 1469438557}
 --- !u!114 &558742145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9599,7 +9590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &850150102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10816,8 +10807,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.223, y: -33.207}
-  m_SizeDelta: {x: 367.55344, y: 89.18582}
+  m_AnchoredPosition: {x: -11.3, y: -33.207}
+  m_SizeDelta: {x: 308.5, y: 89.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043034503
 MonoBehaviour:
@@ -10842,7 +10833,8 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52d41bedfccc1214993fda5f5100e115, type: 2}
-  m_sharedMaterial: {fileID: 0}
+  m_sharedMaterial: {fileID: 6669709513395235321, guid: 52d41bedfccc1214993fda5f5100e115,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10861,7 +10853,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -10892,7 +10884,7 @@ MonoBehaviour:
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
@@ -10902,10 +10894,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 2.746399}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1043034504
@@ -13517,21 +13509,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 461519328}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
         m_MethodName: GameInit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: ChangeValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14064,21 +14044,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 461519328}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
         m_MethodName: ShowLobby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: ChangeValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14943,8 +14911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 45}
+  m_AnchoredPosition: {x: 0, y: -10.61}
+  m_SizeDelta: {x: 250, y: 66.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019372569
 MonoBehaviour:
@@ -14962,7 +14930,7 @@ MonoBehaviour:
   m_Color: {r: 0.84900004, g: 0.84900004, b: 0.84900004, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14987,7 +14955,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019372567}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!95 &2019372571
 Animator:
   serializedVersion: 3

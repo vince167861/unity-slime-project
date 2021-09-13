@@ -54,7 +54,7 @@ public class Game : MonoBehaviour
 	static bool hasEffectInstantiated = false;
 	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
 	public static StoryState storyState = StoryState.NoStory;
-	public enum StoryEffect { Clear, ThunderStorm, Light, GroundOfFire, Effect4 };
+	public enum StoryEffect { Clear, ThunderStorm, Light, GroundOfFire, Effect4, None};
 	public static StoryEffect storyEffect = StoryEffect.Clear;
 	/// <summary> Unknown. </summary>
 	/// <remarks>
@@ -171,6 +171,7 @@ public class Game : MonoBehaviour
       case GameState.BrightFadeIn:
         delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostBrightFadeIn(); } break;
       case GameState.DarkFadeOut:
+	  	storyEffect = StoryEffect.Effect4;
         delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostDarkFadeOut(); } break;
 			case GameState.DarkFadeIn:
 				delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostDarkFadeIn(); } break;
@@ -182,7 +183,7 @@ public class Game : MonoBehaviour
 	{
 		gameState = GameState.DarkFadeOut;
 		ScreenCover.PreDarkFadeOut();
-		storyEffect = StoryEffect.Clear;
+		//storyEffect = StoryEffect.Clear;
 	}
 	void PostDarkFadeOut()
 	{
