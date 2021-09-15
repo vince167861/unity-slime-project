@@ -11,6 +11,7 @@ public class Trap : MonoBehaviour , IAttackable
         {
             case "Slime":
                 MainCameraHandler.PlayEntityClip(10);
+                Game.lastattack = 2;
                 collider.GetComponent<Entity>().Suffer(AttackDamage);
                 break;
         }

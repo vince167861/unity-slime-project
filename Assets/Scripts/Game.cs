@@ -47,7 +47,7 @@ public class Game : MonoBehaviour
 	/// <summary> Store and control current game state. </summary>
 	public static GameState gameState = GameState.StartGame;
 	public static int Hint = 0;
-	public static int newLevel, currentLevel, lastattack = 0;
+	public static int newLevel, currentLevel, lastattack = 0;  //{0:bird;1:pipi;2:trap;3:sk}
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
 	public static bool battle = false, debugMode = true, win = false;

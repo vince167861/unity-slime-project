@@ -49,6 +49,7 @@ public class Mushroom : Entity, IAttackable
 				if (Game.isPlaying)
 				{
 					Instantiate(paralysisEffect, transform);
+					Game.lastattack = 1;
 					collision.collider.GetComponent<Entity>().Suffer(AttackDamage);
 					collision.collider.GetComponent<Entity>().ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));
 					Destroy(gameObject);
