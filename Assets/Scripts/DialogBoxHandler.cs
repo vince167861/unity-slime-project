@@ -48,6 +48,7 @@ public class DialogBoxHandler : MonoBehaviour
 				littlech.sprite = ch[DataStorage.speaker[Game.currentLevel][dialogID]];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
+					MainCameraHandler.PlayEntityClip(17);
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
 					dialogID++;
@@ -62,6 +63,7 @@ public class DialogBoxHandler : MonoBehaviour
 				littlech.sprite = ch[adviceperson];
 				if (Input.GetMouseButtonDown(0))
 				{
+					MainCameraHandler.PlayEntityClip(17);
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
 					if (GuildWoman.otheradvice)
@@ -91,8 +93,13 @@ public class DialogBoxHandler : MonoBehaviour
 				littlech.sprite = ch[0];
 				if (Input.GetMouseButtonDown(0) && !isAnim)
 				{
+					MainCameraHandler.PlayEntityClip(17);
 					story.text = teller.text = "";
-					if (Game.storychat >= 4) ScreenCover.animator.speed = 1;
+					if (Game.storychat >= 4)
+					{
+						ScreenCover.animator.speed = 1;
+						MainCameraHandler.PlayEntityClip(15);
+					} 
 					else RedlightHandler.animator.speed = 1;
 					Game.storychat = 0;
 					isStart = false;
