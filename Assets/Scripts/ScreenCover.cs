@@ -76,7 +76,8 @@ public class ScreenCover : MonoBehaviour
 	/// <remark> Also change gameState to DarkFadeIn. </remark>
 	void EndLoading()
 	{
-		loadingScreen.SetActive(false);
+    MainCameraHandler.hasMusicPlaying = false;
+    loadingScreen.SetActive(false);
 		Game.PreDarkFadeIn();
 	}
 
