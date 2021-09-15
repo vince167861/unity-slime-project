@@ -91,6 +91,7 @@ public class ScreenCover : MonoBehaviour
 			background2.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Textures/Screen Mask.png");
 		},
 		() => {
+			MainCameraHandler.PlayEntityClip(14);
 			animator.speed = 0;
 			Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/DragonPrefab.prefab"));
 		},
