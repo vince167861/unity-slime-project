@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2537696519196346625}
   - component: {fileID: 4576194452365129762}
   - component: {fileID: 86694929206018872}
-  - component: {fileID: 3552062729620289249}
+  - component: {fileID: 2674631517542946152}
   m_Layer: 0
   m_Name: Table_front
   m_TagString: Untagged
@@ -201,7 +201,7 @@ PolygonCollider2D:
       - {x: 1.61, y: -0.87}
       - {x: 2.11, y: -0.5}
       - {x: 2.11, y: 0.84}
---- !u!114 &3552062729620289249
+--- !u!114 &2674631517542946152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
