@@ -94,7 +94,7 @@ public class MainCameraHandler : MonoBehaviour
 	{
 		if (!(hasMusicPlaying || overwrite))
 		{
-			staticAudioSource.clip = (Game.isLoading || Game.isStory) && (storymusic != 0) ? staticStoryClip[storymusic] : Game.isPlaying ? staticBackgroundClip[Game.currentLevel] : staticLobbyClip[Game.currentLevel];
+			staticAudioSource.clip = ((Game.isLoading && Game.storyState == Game.StoryState.StartStory) || Game.isStory) && (storymusic != 0) ? staticStoryClip[storymusic] : (Game.isPlaying ? staticBackgroundClip[Game.currentLevel] : staticLobbyClip[Game.currentLevel]);
 			staticAudioSource.loop = true;
 			staticAudioSource.Play();
 			hasMusicPlaying = true;
