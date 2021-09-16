@@ -29,6 +29,7 @@ public class Portal : MonoBehaviour
                 need.text = " x " + DataStorage.doorKey[Game.currentLevel];
                 if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
                 {
+                    Slime.go = false;
                     if(Slime.keyCount >= DataStorage.doorKey[Game.currentLevel])
                     {
                         MainCameraHandler.PlayEntityClip(7);

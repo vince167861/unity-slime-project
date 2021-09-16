@@ -35,8 +35,9 @@ public class GuildWoman : MonoBehaviour
 					DialogBoxHandler.isChat = false;
 					DialogBoxHandler.advice(3, Game.currentLevel - 1);
 				}
-				if (Input.GetKey(KeyCode.G) && touchedWoman)
+				if ((Input.GetKey(KeyCode.G) || Slime.talk) && touchedWoman)
 				{
+					Slime.talk = false;
 					DialogBoxHandler.isChat = true;
 					DialogBoxHandler.advice(3, Random.Range(0, DataStorage.chat[3].Count));
 				}

@@ -13,12 +13,12 @@ public class MoveBottonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.transform.position.x > 10)
+        if(GetComponent<RectTransform>().anchoredPosition.x > 10)
         {
             Slime.right = true;
             Slime.left = false;
         }
-        else if(this.transform.position.x < -10)
+        else if(GetComponent<RectTransform>().anchoredPosition.x < -10)
         {
             Slime.left = true;
             Slime.right = false;

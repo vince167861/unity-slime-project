@@ -25,6 +25,7 @@ public class Instruction : MonoBehaviour
             case Game.GameState.Lobby:
                 if((Input.GetKey(KeyCode.G) || Slime.talk) && trigger)
                 {
+                    Slime.talk = false;
                     isNews = false;
                     MainCameraHandler.PlayEntityClip(11);
                     Game.gameState = Game.GameState.LobbyInfo;

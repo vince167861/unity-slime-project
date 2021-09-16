@@ -48,6 +48,7 @@ public class Slime : Entity
 				break;
 			case Game.GameState.Playing:
 			case Game.GameState.Lobby:
+				if(!bouncable && !isTouchingGround)  up = false;
 				if(Input.GetKey(KeyCode.X))
 				{
 					Debug.Log(right);
@@ -69,6 +70,7 @@ public class Slime : Entity
 				// Response to keyboard input
 				if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || up))
 				{
+					up = false;
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((50 * moveBase + 2 * jumpBase) * suppression);
 					animator.Play("Jump Right");
@@ -77,6 +79,7 @@ public class Slime : Entity
 				}
 				if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || right) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || up))
 				{
+					up = false;
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((-50 * moveBase + 2 * jumpBase) * suppression);
 					animator.Play("Jump Left");

@@ -22,8 +22,9 @@ public class portal2_handler : MonoBehaviour
 				Destroy(gameObject);
 				break;
 			case Game.GameState.Lobby:
-				if (Input.GetKey(KeyCode.G) && trigger)
+				if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
 				{
+					Slime.go = false;
 					if (!Instruction.isNews)
 					{
 						animator.Play("gotoportal");
@@ -53,6 +54,7 @@ public class portal2_handler : MonoBehaviour
 		switch (col.tag)
 		{
 			case "Slime":
+				CButtonController.portal = true;
 				trigger = true;
 				break;
 		}
@@ -62,6 +64,7 @@ public class portal2_handler : MonoBehaviour
 		switch (col.tag)
 		{
 			case "Slime":
+				CButtonController.portal = false;
 				trigger = false;
 				break;
 		}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PressDown : MonoBehaviour
 {
+    bool is_press = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,16 +14,18 @@ public class PressDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!is_press)    Slime.down = false;
     }
 
     public void isPress()
     {
+        is_press = true;
         Slime.down = true;
     }
 
     public void Normal()
     {
-        if(!Input.GetKey(KeyCode.S))    Slime.down = false;
+        is_press = false;
+        Slime.down = false;
     }
 }
