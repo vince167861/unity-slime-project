@@ -22,7 +22,7 @@ public class Slime : Entity
 
 	static Behaviour flareLayer;
 
-	static readonly Vector3 moveBase = new Vector3(500, 0, 0), jumpBase = new Vector3(0, 2e4f, 0), dropBase = new Vector3(0, -100, 0);
+	static readonly Vector3 moveBase = new Vector3(300, 0, 0), jumpBase = new Vector3(0, 15000, 0), dropBase = new Vector3(0, -100, 0);
 
 	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback, EffectCallback) {
 		instance = this;

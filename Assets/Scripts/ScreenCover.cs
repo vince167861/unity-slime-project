@@ -111,7 +111,6 @@ public class ScreenCover : MonoBehaviour
 		},
 		() => {
 			Destroy(houseReference);
-			MainCameraHandler.PlayEntityClip(16);
 			Game.storyEffect = Game.StoryEffect.GroundOfFire;
 		},
 		() => {

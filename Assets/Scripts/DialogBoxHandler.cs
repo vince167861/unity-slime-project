@@ -95,7 +95,11 @@ public class DialogBoxHandler : MonoBehaviour
 				{
 					MainCameraHandler.PlayEntityClip(17);
 					story.text = teller.text = "";
-					if(Game.storychat == 3) MainCameraHandler.PlayEntityClip(15);
+					if(Game.storychat == 3)
+					{
+						MainCameraHandler.PlayEntityClip(15);
+						FunisController.disappear_f = true;
+					}
 					if (Game.storychat >= 4)	ScreenCover.animator.speed = 1;
 					else RedlightHandler.animator.speed = 1;
 					Game.storychat = 0;
