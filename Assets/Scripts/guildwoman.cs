@@ -49,6 +49,7 @@ public class GuildWoman : MonoBehaviour
 		switch (col.tag)
 		{
 			case "Slime":
+				CButtonController.talking = true;
 				touchedWoman = true;
 				break;
 		}
@@ -59,6 +60,7 @@ public class GuildWoman : MonoBehaviour
 		switch (col.tag)
 		{
 			case "Slime":
+				CButtonController.talking = false;
 				touchedWoman = false;
 				break;
 		}

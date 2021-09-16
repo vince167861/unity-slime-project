@@ -48,7 +48,7 @@ public class Mushroom : Entity, IAttackable
 			case "Slime":
 				if (Game.isPlaying)
 				{
-					Instantiate(paralysisEffect, transform);
+					Instantiate(paralysisEffect, this.transform);
 					Game.lastattack = 1;
 					collision.collider.GetComponent<Entity>().Suffer(AttackDamage);
 					collision.collider.GetComponent<Entity>().ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));

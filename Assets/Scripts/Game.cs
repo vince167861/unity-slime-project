@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
 {
 	/// Imports
 	// Canvases
-	public GameObject passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas;
+	public GameObject passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas, bottonCanvas;
 	// Prefabs
 	public GameObject slimePrefab, enemySpawnerPrefab, brickPrefab, portalPrefab, floorPrefab, instructPrefab;
 	// Level terrians
@@ -94,6 +94,7 @@ public class Game : MonoBehaviour
 		// TODO: The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
+		bottonCanvas.SetActive(gameState == GameState.Playing || gameState == GameState.Lobby);
 		if (Input.GetMouseButtonDown(0)) circleHint.SetActive(false);
 		inputfield.SetActive(storyState == StoryState.State9 || gameState == GameState.Input);
 		skip.SetActive(gameState == GameState.Story && (int)storyState >= 3);

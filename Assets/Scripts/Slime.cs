@@ -15,6 +15,7 @@ public class Slime : Entity
 	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
+	public static bool attack, right, left, up, down, healing, go, talk, pose = false;
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
@@ -22,7 +23,7 @@ public class Slime : Entity
 
 	static Behaviour flareLayer;
 
-	static readonly Vector3 moveBase = new Vector3(300, 0, 0), jumpBase = new Vector3(0, 15000, 0), dropBase = new Vector3(0, -100, 0);
+	static readonly Vector3 moveBase = new Vector3(400, 0, 0), jumpBase = new Vector3(0, 18000, 0), dropBase = new Vector3(0, -100, 0);
 
 	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback, EffectCallback) {
 		instance = this;
@@ -47,6 +48,18 @@ public class Slime : Entity
 				break;
 			case Game.GameState.Playing:
 			case Game.GameState.Lobby:
+				if(Input.GetKey(KeyCode.X))
+				{
+					Debug.Log(right);
+					Debug.Log(left);
+					Debug.Log(down);
+				}
+				if(pose)
+				{
+					if(direction == 1)  animator.Play("Jump Right");
+					if(direction == -1)	animator.Play("Jump Left");
+					pose = false;
+				}
 				if (health <= 0) DeathHandler(this);
 				// Control camera postion, except for the time in the welcome screen
 				if (!(Game.currentLevel == 0 && Game.isLobby))
@@ -54,7 +67,7 @@ public class Slime : Entity
 				// Set Slime to respect physics engine
 				rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
 				// Response to keyboard input
-				if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
+				if (bouncable && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || up))
 				{
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((50 * moveBase + 2 * jumpBase) * suppression);
@@ -62,7 +75,7 @@ public class Slime : Entity
 					direction = 1;
 					allowMove = bouncable = false;
 				}
-				if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
+				if (bouncable && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || right) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || up))
 				{
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce((-50 * moveBase + 2 * jumpBase) * suppression);
@@ -72,31 +85,35 @@ public class Slime : Entity
 				}
 				if (allowMove)
 				{
-					animator.SetBool("right", Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
-					animator.SetBool("left", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow));
-					animator.SetBool("jump", Input.GetKey(KeyCode.W));
-					animator.SetBool("crouch", Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S));
+					animator.SetBool("right", Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || right);
+					animator.SetBool("left", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left);
+					animator.SetBool("jump", Input.GetKey(KeyCode.W) || up);
+					animator.SetBool("crouch", Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S) || down);
 				}
-				if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && allowMove)
+				if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left) && allowMove)
 				{
 					rigidbody2d.AddForce(-1 * (isTouchingGround ? 1 : 0.5f) * suppression * moveBase);
 					direction = -1;
 				}
-				if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && allowMove)
+				if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || right) && allowMove)
 				{
 					rigidbody2d.AddForce((isTouchingGround ? 1 : 0.5f) * suppression * moveBase);
 					direction = 1;
 				}
-				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S))
-					rigidbody2d.AddForce(dropBase * suppression);
-				if (Input.GetKeyDown(KeyCode.W) && isTouchingGround)
+				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S) || down)
 				{
+					rigidbody2d.AddForce(dropBase * suppression);
+				}
+				if ((Input.GetKeyDown(KeyCode.W) || up) && isTouchingGround)
+				{
+					up = false;
 					animator.Play("Jump");
 					MainCameraHandler.PlayEntityClip(2);
 					rigidbody2d.AddForce(jumpBase * suppression);
 				}
-				if (Input.GetKeyDown(KeyCode.F) && Game.gameState == Game.GameState.Playing)
+				if ((Input.GetKeyDown(KeyCode.F) || attack) && Game.gameState == Game.GameState.Playing)
 				{
+					attack = false;
 					if(EnergyHandler.nextenergy < 25 || EnergyHandler.targetenergy < 25)
 						MainCameraHandler.PlayEntityClip(12);
 					else
@@ -107,8 +124,9 @@ public class Slime : Entity
 						EnergyHandler.changeamount(-25);
 					}
 				}
-				if (Input.GetKeyDown(KeyCode.Q))
+				if (Input.GetKeyDown(KeyCode.Q) || healing)
 				{
+					healing = false;
 					if (potionCount > 0)
 					{
 						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
@@ -116,7 +134,7 @@ public class Slime : Entity
 						potionCountObject.GetComponent<CountLabel>().UpdateCount(--potionCount);
 					}
 				}
-				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left || right)
 					allowMove = true;
 				break;
 			case Game.GameState.Pause:
@@ -162,7 +180,7 @@ public class Slime : Entity
 				bouncable = false;
 				break;
 			case "Walls":
-				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || left || right)
 					bouncable = true;
 				break;
 		}

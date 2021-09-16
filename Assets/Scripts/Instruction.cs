@@ -23,7 +23,7 @@ public class Instruction : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case Game.GameState.Lobby:
-                if(Input.GetKey(KeyCode.G) && trigger)
+                if((Input.GetKey(KeyCode.G) || Slime.talk) && trigger)
                 {
                     isNews = false;
                     MainCameraHandler.PlayEntityClip(11);
@@ -38,6 +38,7 @@ public class Instruction : MonoBehaviour
         switch (col.tag)
         {
             case "Slime":
+				CButtonController.talking = true;
                 trigger = true;
                 break;
         }
@@ -48,6 +49,7 @@ public class Instruction : MonoBehaviour
         switch (col.tag)
         {
             case "Slime":
+				CButtonController.talking = false;
                 trigger = false;
                 break;
         }

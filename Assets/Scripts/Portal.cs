@@ -27,7 +27,7 @@ public class Portal : MonoBehaviour
                 break;
             case Game.GameState.Playing:
                 need.text = " x " + DataStorage.doorKey[Game.currentLevel];
-                if (Input.GetKey(KeyCode.G) && trigger)
+                if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
                 {
                     if(Slime.keyCount >= DataStorage.doorKey[Game.currentLevel])
                     {
@@ -55,6 +55,7 @@ public class Portal : MonoBehaviour
         switch (col.tag)
         {
             case "Slime":
+                CButtonController.portal = true;
                 trigger = true;
                 break;
         }
@@ -64,6 +65,7 @@ public class Portal : MonoBehaviour
         switch (col.tag)
         {
             case "Slime":
+                CButtonController.portal = false;
                 trigger = false;
                 break;
         }
