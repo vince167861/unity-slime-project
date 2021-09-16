@@ -20,7 +20,7 @@ public class CButtonController : MonoBehaviour
     }
     public void Attack()
     {
-        Slime.attack = true;
+        if(Game.gameState == Game.GameState.Playing)    Slime.attack = true;
     }
     public void Up()
     {
@@ -32,7 +32,7 @@ public class CButtonController : MonoBehaviour
     }
     public void Heal()
     {
-        Slime.healing = true;
+        if(Game.gameState == Game.GameState.Playing)    Slime.healing = true;
     }
     public void GetIn()
     {
