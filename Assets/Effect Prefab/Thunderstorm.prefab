@@ -4873,7 +4873,7 @@ GameObject:
   - component: {fileID: 3848340675404678261}
   - component: {fileID: 8750919717829733024}
   - component: {fileID: 8646030807484344620}
-  - component: {fileID: -54841265922138137}
+  - component: {fileID: 4789168618001424346}
   m_Layer: 0
   m_Name: Thunderstorm
   m_TagString: Untagged
@@ -9683,7 +9683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2477e291aec02a54a92908f3bb765281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-54841265922138137
+--- !u!114 &4789168618001424346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
