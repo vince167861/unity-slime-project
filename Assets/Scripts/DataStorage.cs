@@ -91,7 +91,7 @@ public class DataStorage
 		};
 	public static List<List<Vector2>> playoval = new List<List<Vector2>> {
 				new List<Vector2> {
-						new Vector2(87, 6), new Vector2(7, 24), new Vector2(87, 42), new Vector2(8.5f, 60)
+						new Vector2(70, 6), new Vector2(7, 24), new Vector2(75, 39), new Vector2(8, 55)
 				},
 				new List<Vector2> {
 						new Vector2(304.3f, 79)
@@ -102,7 +102,7 @@ public class DataStorage
 		};
 	public static List<List<Vector3>> lobbyoval = new List<List<Vector3>> {
 				new List<Vector3> {
-						new Vector3(24, 2, 0), new Vector3(53.2f, 2, 0), new Vector3(112.2f, 5, 0)
+						new Vector3(24, 2, 0), new Vector3(50, 2, 0), new Vector3(100, 5, 0)
 				},
 				new List<Vector3> {
 						new Vector3(112.2f, 5, 0)

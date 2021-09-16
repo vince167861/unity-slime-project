@@ -29,7 +29,7 @@ public class Animation1_1 : Animation
 	{
 		if (doContinuePlaying[DialogBoxHandler.dialogID])
 			Game.SetPlaying();
-		else switch(DialogBoxHandler.dialogID)
+		else switch (DialogBoxHandler.dialogID)
 			{
 				case 1:
 				case 8:
