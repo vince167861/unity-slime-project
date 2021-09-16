@@ -5,7 +5,7 @@ public class Animation1_1 : Animation
 	float hasDelayed = 0;
 	bool isplayed = false;
 	public readonly bool[] doContinuePlaying = { false, false, false, false, false, true, true, false, false, false, false, true };
-	public float timer = 1f;
+	readonly float timer = 1f;
 
 	void Start() { Animation.handler = this; }
 
@@ -18,7 +18,7 @@ public class Animation1_1 : Animation
 					if (hasDelayed >= timer)
 					{
 						isplayed = true;
-						handle();
+            Game.SetDialog();
 					}
 					else
 						hasDelayed += Time.deltaTime;
@@ -29,7 +29,7 @@ public class Animation1_1 : Animation
 	{
 		if (doContinuePlaying[DialogBoxHandler.dialogID])
 			Game.SetPlaying();
-		else switch(DialogBoxHandler.dialogID)
+		else switch (DialogBoxHandler.dialogID)
 			{
 				case 0: Game.SetDialog(); break;
 				case 1:

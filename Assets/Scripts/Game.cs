@@ -161,8 +161,6 @@ public class Game : MonoBehaviour
 					Slime.keyCount = 0;
           background.sprite = gameBackground[currentLevel];
           Hint = 0;
-          if (DataStorage.playHint[currentLevel])
-            Instantiate(ovalHint, DataStorage.playoval[currentLevel][0], Quaternion.identity);
 					PreLoading();
 				}
 				break;
