@@ -36,7 +36,7 @@ public class Shaking : MonoBehaviour
 						TDragonController.levelstory1 = true;
 						dragon = true;
 					}
-					MainCameraHandler.targetPosition = new Vector3(16, 69, -10);
+					MainCameraHandler.targetPosition = new Vector3(40, 58, -10);
 				}
 				for (int i = 0; i <= 9; i++)
 				{

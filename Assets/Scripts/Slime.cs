@@ -15,7 +15,7 @@ public class Slime : Entity
 	public static float suppression = 1;
 
 	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
-	public static bool attack, right, left, up, down, healing, go, talk, pose = false;
+	public static bool attack, right, left, up, down, healing, go, talk, pose, map = false;
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
 
@@ -280,6 +280,7 @@ public class Slime : Entity
 	{
 		if (Game.storyState == Game.StoryState.Loading)
 		{
+			instance.transform.position = new Vector3(-50, -50, 0);
 			animator.Play("Disappear");
 			Game.storyState = Game.StoryState.StoryDragon;
 			ScreenCover.PreLoading();

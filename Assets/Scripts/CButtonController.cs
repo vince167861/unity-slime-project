@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CButtonController : MonoBehaviour
 {
-    public GameObject AttackB, UpB, DownB, HealB, GoB, TalkB, MoveB;
+    public GameObject AttackB, UpB, DownB, HealB, GoB, TalkB, MoveB, Map;
     public static bool portal, talking = false;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class CButtonController : MonoBehaviour
     {
         GoB.SetActive(portal);
         TalkB.SetActive(talking);
+        Map.SetActive(Game.gameState == Game.GameState.Playing);
     }
     public void Attack()
     {
@@ -53,5 +54,9 @@ public class CButtonController : MonoBehaviour
     public void Pose()
     {
         Slime.pose = true;
+    }
+    public void MapOpen()
+    {
+        if(Game.gameState == Game.GameState.Playing)    Slime.map = true;
     }
 }

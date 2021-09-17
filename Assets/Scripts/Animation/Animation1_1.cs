@@ -18,7 +18,7 @@ public class Animation1_1 : Animation
 					if (hasDelayed >= timer)
 					{
 						isplayed = true;
-            Game.SetDialog();
+            			Game.SetDialog();
 					}
 					else
 						hasDelayed += Time.deltaTime;
@@ -31,7 +31,7 @@ public class Animation1_1 : Animation
 			Game.SetPlaying();
 		else switch (DialogBoxHandler.dialogID)
 			{
-				case 0: Game.SetDialog(); break;
+				//case 0: Game.SetDialog(); break;
 				case 1:
 				case 8:
 					DialogBoxHandler.playsurprise = true;

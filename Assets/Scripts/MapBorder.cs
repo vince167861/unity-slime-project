@@ -15,8 +15,9 @@ public class MapBorder : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && Game.isPlaying)
+		if ((Input.GetKeyDown(KeyCode.Space) || Slime.map) && Game.isPlaying)
 		{
+			Slime.map = false;
 			isShown = !isShown;
 			BroadcastMessage("UpdateColor", SendMessageOptions.DontRequireReceiver);
 		}

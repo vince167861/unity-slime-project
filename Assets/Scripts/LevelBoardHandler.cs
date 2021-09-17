@@ -6,7 +6,7 @@ using TMPro;
 
 public class LevelBoardHandler : MonoBehaviour
 {
-    public Image UserLevelAmount;
+    public GameObject UserLevelAmount;
     public TextMeshProUGUI UserName, UserLevel;
     float Lneedexp = 0, Nneedexp = 0;
     // Start is called before the first frame update
