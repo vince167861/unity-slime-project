@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
 {
 	/// Imports
 	// Canvases
-	public GameObject passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas, bottonCanvas;
+	public GameObject passCanvas, deadCanvas, slimeHealthCanvas, mapCanvas, bottonCanvas, endCanvas;
 	// Prefabs
 	public GameObject slimePrefab, enemySpawnerPrefab, brickPrefab, portalPrefab, floorPrefab, instructPrefab;
 	// Level terrians
@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
 	public static int newLevel, currentLevel, lastattack = 0;  //{0:bird;1:pipi;2:trap;3:sk}
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
-	public static bool battle = false, debugMode = true, win = false;
+	public static bool battle = false, debugMode = true, win = false, startmenu = false;
 	static bool hasEffectInstantiated = false;
 	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
 	public static StoryState storyState = StoryState.NoStory;
@@ -94,6 +94,7 @@ public class Game : MonoBehaviour
 		// TODO: The method to summon and kill the canvases and gameobjects here would cause game to caculate all the expressions in every frame (usually 60 tps), should come up with a better idea.
 		/// Show or hide items
 		// Canvases
+		endCanvas.SetActive(gameState == GameState.Pause || startmenu);
 		bottonCanvas.SetActive(gameState == GameState.Playing || gameState == GameState.Lobby);
 		if (Input.GetMouseButtonDown(0)) circleHint.SetActive(false);
 		inputfield.SetActive(storyState == StoryState.State9 || gameState == GameState.Input);

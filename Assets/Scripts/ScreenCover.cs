@@ -53,6 +53,7 @@ public class ScreenCover : MonoBehaviour
 	/// <summary> For animation 'Start Game' callback. </summary>
 	void Start3()
 	{
+		Game.startmenu = true;
 		startGameButton.SetActive(true);
 		MainCameraHandler.PlayLoopClip(); // Game.gameState = Game.GameState.MenuPrepare;
 		// TODO: Fix groundoffire destroy problem.
@@ -62,6 +63,7 @@ public class ScreenCover : MonoBehaviour
 
 	public void EnterBackStory()
 	{
+		Game.startmenu = false;
 		startScene.SetActive(false);
 		startGameButton.SetActive(false);
 		MainCameraHandler.PlayEntityClip(3);

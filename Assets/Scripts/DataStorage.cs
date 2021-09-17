@@ -86,7 +86,7 @@ public class DataStorage
 		};
 	public static List<List<Vector3>> circlepoint = new List<List<Vector3>> {
 				new List<Vector3> {
-						new Vector3(420,285,0)
+						new Vector3(420,245,0)
 				}
 		};
 	public static List<List<Vector2>> playoval = new List<List<Vector2>> {
