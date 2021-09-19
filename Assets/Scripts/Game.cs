@@ -147,6 +147,7 @@ public class Game : MonoBehaviour
 					hasEffectInstantiated = false;
 				break;
 			case GameState.MenuPrepare:
+				Slime.instance.ResetHealth();
 				GuildWoman.otheradvice = true;
 				GuildWoman.startanim = true;
 				background.sprite = menuBackground[currentLevel];

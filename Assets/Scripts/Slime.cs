@@ -132,7 +132,7 @@ public class Slime : Entity
 					healing = false;
 					if (potionCount > 0)
 					{
-						Instantiate(heal).GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y - 2.5f, transform.position.z);
+						Instantiate(heal, transform.position + new Vector3(0, -2.5f, 0), Quaternion.identity);
 						Heal(30);
 						potionCountObject.GetComponent<CountLabel>().UpdateCount(--potionCount);
 					}
@@ -148,6 +148,7 @@ public class Slime : Entity
 
 	public static void PreLoading()
 	{
+		instance.rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
 		flareLayer.enabled = false;
 		instance.spriteRenderer.sortingLayerName = "Black Screen";
 		instance.spriteRenderer.sortingOrder = 3;
@@ -156,7 +157,7 @@ public class Slime : Entity
 			case Game.StoryState.NoStory:
 				if (Game.currentLevel != 0)
 				{
-					instance.transform.position = new Vector3(8, -5, 0);
+					instance.transform.position = new Vector3(8, -3, 0);
 					instance.animator.Play(Game.battle ? "load1" : "load2");
 				}
 				break;
@@ -235,7 +236,6 @@ public class Slime : Entity
 	{
 		instance.transform.position = new Vector3(-5, -5, -10);
 		Game.OnLevelFail();
-		entity.ResetHealth();
 	}
 
 	/// <summary> For animation 'Start Jump' callback. </summary>
@@ -264,7 +264,7 @@ public class Slime : Entity
 
 	void moveback()
 	{
-		rigidbody2d.AddForce(new Vector2(-10000f, 0));
+		rigidbody2d.AddForce(new Vector2(-7.5e4f, 0));
 		animator.Play("Right");
 		direction = 1;
 	}

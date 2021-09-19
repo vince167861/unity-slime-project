@@ -76,7 +76,7 @@ public class DataStorage
 				}
 		};
 	public static List<Vector2> spawnpoint = new List<Vector2> {
-				new Vector2(5, 12), new Vector2(5, 30), new Vector2(54, 76)
+				new Vector2(5, 12), new Vector2(10, 30), new Vector2(54, 76)
 		};
 	public static List<bool> playHint = new List<bool> {
 				true, true, true
