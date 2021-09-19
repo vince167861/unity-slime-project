@@ -5,7 +5,7 @@ public class MainCharacterHealth : MonoBehaviour
 {
 	public static float entityMaxHealth, targetHealth, lastHealth;
 	public static float tghealamount = 0, tgsufferamount = 0;
-	public static bool isSuffer, isHeal = false, anim1, anim2 = false, start = true;
+	public static bool start = true;
 	public int situation = 0;
 	public Sprite[] icon;
 	public Animator heal, suffer;
@@ -35,7 +35,7 @@ public class MainCharacterHealth : MonoBehaviour
 					tghealamount = tgsufferamount = 0;
 					HealChange.healAmount = 0;
 					SufferChange.sufferAmount = 0;
-					isHeal = isSuffer = anim1 = anim2 = start = false;
+					start = false;
 				}
 				switch (situation)
 				{
@@ -50,7 +50,6 @@ public class MainCharacterHealth : MonoBehaviour
 				if (targetHealth > entityMaxHealth)
 				{
 					lastHealth = entityMaxHealth;
-					isHeal = false;
 					tghealamount = 0;
 				}
 				targetHealth = lastHealth + HealChange.healAmount - SufferChange.sufferAmount;
@@ -60,26 +59,24 @@ public class MainCharacterHealth : MonoBehaviour
 				// if(Input.GetKeyDown(KeyCode.I)) Suffer(30);
 				if (HealChange.healAmount > tghealamount)
 				{
-					heal.enabled = false;
+					staticHeal.enabled = false;
 					HealChange.healAmount = tghealamount;
 					if (SufferChange.sufferAmount >= tgsufferamount)
 					{
+						staticSuffer.enabled = false;
 						lastHealth = targetHealth;
-						isHeal = false;
-						tghealamount = 0;
+						tghealamount = tgsufferamount = 0;
 					}
-
 				}
 				if (SufferChange.sufferAmount > tgsufferamount)
 				{
-					suffer.enabled = false;
+					staticSuffer.enabled = false;
 					SufferChange.sufferAmount = tgsufferamount;
 					if (HealChange.healAmount >= tghealamount)
 					{
+						staticHeal.enabled = false;
 						lastHealth = targetHealth;
-						isSuffer = false;
-						tgsufferamount = 0;
-						tghealamount = 0;
+						tghealamount = tgsufferamount = 0;
 					}
 				}
 				break;
@@ -88,24 +85,17 @@ public class MainCharacterHealth : MonoBehaviour
 	public static void Heal(float amount)
 	{
 		tghealamount += amount;
-		isHeal = true;
-		if (tghealamount != 0)
+		if (!staticHeal.enabled)
 		{
-			if (!staticHeal.enabled || !anim1)
-			{
-				anim1 = true;
-				staticHeal.enabled = true;
-				staticHeal.Play("lifeheal", 0, 0);
-			}
+			staticHeal.enabled = true;
+			staticHeal.Play("lifeheal", 0, 0);
 		}
 	}
 	public static void Suffer(float amount)
 	{
 		tgsufferamount += amount;
-		isSuffer = true;
-		if (!staticSuffer.enabled || !anim2)
+		if (!staticSuffer.enabled)
 		{
-			anim2 = true;
 			staticSuffer.enabled = true;
 			staticSuffer.Play("lifesuffer", 0, 0);
 		}

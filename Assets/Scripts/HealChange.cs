@@ -7,12 +7,6 @@ public class HealChange : MonoBehaviour
 
 	void Update()
 	{
-		if (MainCharacterHealth.isHeal)
-			healAmount = healAmount2;
-		else
-		{
-			healAmount = 0;
-			healAmount2 = 0;
-		}
+		healAmount = healAmount2;
 	}
 }

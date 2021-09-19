@@ -7,11 +7,6 @@ public class SufferChange : MonoBehaviour
 
 	private void Update()
 	{
-		if (MainCharacterHealth.isSuffer)
-			sufferAmount = sufferAmount2;
-		else
-		{
-			sufferAmount = sufferAmount2 = 0;
-		}
+		sufferAmount = sufferAmount2;
 	}
 }

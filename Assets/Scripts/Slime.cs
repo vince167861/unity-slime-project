@@ -235,6 +235,7 @@ public class Slime : Entity
 	{
 		instance.transform.position = new Vector3(-5, -5, -10);
 		Game.OnLevelFail();
+		entity.ResetHealth();
 	}
 
 	/// <summary> For animation 'Start Jump' callback. </summary>
@@ -263,7 +264,7 @@ public class Slime : Entity
 
 	void moveback()
 	{
-		rigidbody2d.AddForce(new Vector2(-6000f, 0));
+		rigidbody2d.AddForce(new Vector2(-10000f, 0));
 		animator.Play("Right");
 		direction = 1;
 	}
