@@ -167,6 +167,9 @@ public class Game : MonoBehaviour
 					PreLoading();
 				}
 				break;
+	  		case GameState.Lobby:
+	  			moneyicontext.text = " X " + totalmoney;
+				break;
       case GameState.BrightFadeOut:
         delta += Time.deltaTime; if (delta >= 1) { delta = 0; PostBrightFadeOut(); } break;
       case GameState.BrightFadeIn:

@@ -264,7 +264,7 @@ public class Slime : Entity
 
 	void moveback()
 	{
-		rigidbody2d.AddForce(new Vector2(-7.5e4f, 0));
+		rigidbody2d.AddForce(new Vector2(-4.5e3f, 0));
 		animator.Play("Right");
 		direction = 1;
 	}
