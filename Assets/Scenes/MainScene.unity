@@ -1091,10 +1091,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3618a0e8fff12ef43a23b0ba5c722a97, type: 3}
   - {fileID: 21300000, guid: cd2199730b651aa479b032a26f8d0173, type: 3}
   - {fileID: 21300000, guid: 38bce88151f4a5b41a8677ed7b137b77, type: 3}
+  - {fileID: 21300000, guid: a6acec154c361594d9e20020e43acefb, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  cnowpage: 0
-  ctotalpage: 1
 --- !u!1 &118156545
 GameObject:
   m_ObjectHideFlags: 0
@@ -8009,8 +8007,6 @@ MonoBehaviour:
   hpicture:
   - {fileID: 21300000, guid: d7fd1aa082aa90c40b5c1059ee8d9acb, type: 3}
   - {fileID: 21300000, guid: 235bcbad0893d2d48a21bbb53f540074, type: 3}
-  nowpage: 0
-  totalpage: 1
 --- !u!1 &461519323
 GameObject:
   m_ObjectHideFlags: 0
@@ -10400,11 +10396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 818715654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 117310120}, m_TargetAssemblyTypeName: 'ChInfoController,
-            Assembly-CSharp', m_MethodName: cleftpage, m_Mode: 1, m_Arguments: {m_ObjectArgument: {
-              fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object, UnityEngine',
-            m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0},
-          m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 117310120}
+        m_TargetAssemblyTypeName: ChInfoController, Assembly-CSharp
+        m_MethodName: cleftpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &818715654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12240,7 +12244,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -13166,11 +13170,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1223101001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 435444297}, m_TargetAssemblyTypeName: 'HelpController,
-            Assembly-CSharp', m_MethodName: rightpage, m_Mode: 1, m_Arguments: {m_ObjectArgument: {
-              fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object, UnityEngine',
-            m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0},
-          m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 435444297}
+        m_TargetAssemblyTypeName: HelpController, Assembly-CSharp
+        m_MethodName: rightpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1223101001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13533,11 +13545,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1244705423}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 117310120}, m_TargetAssemblyTypeName: 'ChInfoController,
-            Assembly-CSharp', m_MethodName: crightpage, m_Mode: 1, m_Arguments: {
-            m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '',
-            m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 117310120}
+        m_TargetAssemblyTypeName: ChInfoController, Assembly-CSharp
+        m_MethodName: crightpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1244705423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15631,11 +15651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1696522426}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 435444297}, m_TargetAssemblyTypeName: 'HelpController,
-            Assembly-CSharp', m_MethodName: leftpage, m_Mode: 1, m_Arguments: {m_ObjectArgument: {
-              fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object, UnityEngine',
-            m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0},
-          m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 435444297}
+        m_TargetAssemblyTypeName: HelpController, Assembly-CSharp
+        m_MethodName: leftpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1696522426
 MonoBehaviour:
   m_ObjectHideFlags: 0

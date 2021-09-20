@@ -7,7 +7,7 @@ public class ChInfoController : MonoBehaviour
 {
     public GameObject ChP, cLB, cRB;
     public Sprite[] chpicture;
-    public int cnowpage = 0, ctotalpage = 1;
+    public static int cnowpage = 0, ctotalpage = 1;
     public static bool is_hanim = false;
     // Start is called before the first frame update
     void Start()

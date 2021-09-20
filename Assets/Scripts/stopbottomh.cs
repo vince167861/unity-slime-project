@@ -13,6 +13,7 @@ public class stopbottomh : MonoBehaviour
         MainCameraHandler.PlayEntityClip(3);
         if(Game.gameState == Game.GameState.Instruction)
         {
+            HelpController.nowpage = 0;
             Game.gameState = Game.GameState.Pause;
         }
         else

@@ -7,7 +7,7 @@ public class HelpController : MonoBehaviour
 {
     public GameObject HelpP, LB, RB;
     public Sprite[] hpicture;
-    public int nowpage = 0, totalpage = 1;
+    public static int nowpage = 0, totalpage = 1;
     //public static bool is_hanim = false;
     // Start is called before the first frame update
     void Start()
