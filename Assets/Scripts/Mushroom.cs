@@ -71,6 +71,16 @@ public class Mushroom : Entity, IAttackable
 					Destroy(gameObject);
 				}
 				break;
+			case "Slime Detector":
+				if (Game.isPlaying)
+				{
+					Instantiate(paralysisEffect, transform.position, Quaternion.identity);
+					Game.lastattack = 1;
+					collision.collider.GetComponentInParent<Entity>().Suffer(AttackDamage);
+					collision.collider.GetComponentInParent<Entity>().ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));
+					Destroy(gameObject);
+				}
+				break;
 		}
 	}
 
