@@ -4,8 +4,7 @@ public class SkeletonWarrior : Entity
 {
 	// TODO: Add Heal and Suffer extends from Entity.
 	// TODO: Add movement to Skeleton
-	public SkeletonWarrior() : base("劉大哥", 500) { }
-
+	public SkeletonWarrior() : base("S.Kさん", 500) { }
 	public bool isAttacking = false;
 
 	void Attacking()
