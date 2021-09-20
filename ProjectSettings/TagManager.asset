@@ -19,6 +19,7 @@ TagManager:
   - Katana
   - Hint
   - Equipment
+  - Funis
   layers:
   - Default
   - TransparentFX

@@ -28,7 +28,10 @@ public class Animation1_1 : Animation
 	public override void handle()
 	{
 		if (doContinuePlaying[DialogBoxHandler.dialogID])
-			Game.SetPlaying();
+		{
+			if(DialogBoxHandler.dialogID == 5)	Game.gameState = Game.GameState.Instruction;
+			else	Game.SetPlaying();
+		}
 		else switch (DialogBoxHandler.dialogID)
 			{
 				case 1:

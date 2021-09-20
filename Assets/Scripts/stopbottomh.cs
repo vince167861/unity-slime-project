@@ -13,6 +13,7 @@ public class stopbottomh : MonoBehaviour
         MainCameraHandler.PlayEntityClip(3);
         if(Game.gameState == Game.GameState.Instruction)
         {
+            HelpController.nowpage = 0;
             Game.gameState = Game.GameState.Pause;
         }
         else
@@ -23,6 +24,7 @@ public class stopbottomh : MonoBehaviour
     }
     public void GameStart()
     {
+        if(nowState == Game.GameState.Dialog)   Game.dstopanim = true;
         MainCameraHandler.PlayEntityClip(3);
         Game.gameState = nowState;
     }
@@ -31,6 +33,7 @@ public class stopbottomh : MonoBehaviour
     }
     void Update(){
         if(Game.gameState == Game.GameState.Instruction){
+            if(Game.currentLevel == 0 && DialogBoxHandler.dialogID == 5)    nowState = Game.GameState.Playing;
             gameObject.GetComponent<Image>().sprite = stop[1];
         }
         else gameObject.GetComponent<Image>().sprite = stop[0];

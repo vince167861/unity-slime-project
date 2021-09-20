@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DataStorage
 {
+	public static List<int> totalpage = new List<int> { 0, 1, 3, 6};
 	public static string lastname, me = null;
 	public static List<string> stteller = new List<string> {
 				"我", "芙妮絲(妹妹)", "我", "我", "我", "我"
@@ -18,7 +19,7 @@ public class DataStorage
 		};
 	public static List<int> keyMax = new List<int> { 1, 3, };
 	public static List<int> doorKey = new List<int> { 0, 2, 3 };
-	public static List<string> adteller = new List<string> { "傳送門", "", "", "嚮導", };
+	public static List<string> adteller = new List<string> { "傳送門", "", "", "嚮導","Funis(?)" };
 	public static List<List<string>> chat = new List<List<string>> {
 				new List<string>{},
 				new List<string>{},
@@ -40,6 +41,9 @@ public class DataStorage
 				"歡迎來到蘑菇村!!!在這裡冒險的過程中,希望你能有所發現。 \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",
 				"勇者別灰心啊! 一說到冒險,你就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。",
 				"...... \n是喔。"
+				},
+				new List<string> {
+				"...傳說中的勇者竟是一魔物!?  \n那位大人看來沒有錯呢..."
 				}
 		};
 	public static List<List<int>> speaker = new List<List<int>> {    //0:世界之聲 1:me 2:魔龍王
@@ -55,7 +59,8 @@ public class DataStorage
 				"什麼地下城!? 芙妮絲呢??? 還有你是誰? \n把我的妹妹還來!!!",
 				"想找回你的妹妹嗎? 哼,那你就好好掙扎到那最後一道門吧! \n至於我是誰...不是你需要知道的,你也沒資格知道。",
 				"芙妮絲...你到底在哪裡......",
-				"操作說明：\n 移動鍵：W-A-S-D \n 普攻：F （已解鎖）    大招：q (未解鎖) \n 開門：G   使用道具：Q (詳情可見暫停->說明)",
+				"詳情操作說明請見右上方暫停鍵內的\"說明\"!",
+				//"操作說明：\n 移動鍵：W-A-S-D \n 普攻：F （已解鎖）    大招：q (未解鎖) \n 開門：G   使用道具：Q (詳情可見暫停->說明)",
 				"在右邊這種特殊(紫色)的牆壁上,能夠以\"撞擊牆壁的方式進一步地跳躍(按住方向鍵並在按一次 W )\"!",
 				"???  \n這個聲音......",
 				"史萊姆...\"傳說中的勇者\"呢?",
@@ -86,7 +91,7 @@ public class DataStorage
 		};
 	public static List<List<Vector3>> circlepoint = new List<List<Vector3>> {
 				new List<Vector3> {
-						new Vector3(420,245,0)
+						new Vector3(420,230,0)
 				}
 		};
 	public static List<List<Vector2>> playoval = new List<List<Vector2>> {
@@ -102,13 +107,13 @@ public class DataStorage
 		};
 	public static List<List<Vector3>> lobbyoval = new List<List<Vector3>> {
 				new List<Vector3> {
-						new Vector3(24, 2, 0), new Vector3(50, 2, 0), new Vector3(100, 5, 0)
+						new Vector3(24, 2, 0), new Vector3(50, 2, 0), new Vector3(101, 5, 0)
 				},
 				new List<Vector3> {
-						new Vector3(112.2f, 5, 0)
+						new Vector3(101, 5f, 0)
 				},
 				new List<Vector3> {
-						new Vector3(112.2f, 5, 0)
+						new Vector3(101, 5f, 0)
 				}
 		};
 

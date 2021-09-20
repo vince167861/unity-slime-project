@@ -137,7 +137,7 @@ public class Slime : Entity
 						potionCountObject.GetComponent<CountLabel>().UpdateCount(--potionCount);
 					}
 				}
-				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left || right)
+				if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || (!left && !right))
 					allowMove = true;
 				break;
 			case Game.GameState.Pause:

@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
 	public static int newLevel, currentLevel, lastattack = 0;  //{0:bird;1:pipi;2:trap;3:sk}
 	public static int playtimes = 1;
 	public static float totalmoney = 0, totalexp = 0, moneycount = 0, expcount = 0, chLevel = 1;
-	public static bool battle = false, debugMode = true, win = false, startmenu = false;
+	public static bool battle = false, debugMode = true, win = false, startmenu = false, dstopanim = false;
 	static bool hasEffectInstantiated = false;
 	public enum StoryState { NoStory, StartStory, Loading, StoryDragon, DragonShow, House, Light, State7, State8, State9 };
 	public static StoryState storyState = StoryState.NoStory;
@@ -115,7 +115,7 @@ public class Game : MonoBehaviour
 		keyicon.SetActive(isPlaying || IsDialog || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		moneyicon.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
-		turnBack.SetActive(gameState == GameState.LobbyInfo);
+		turnBack.SetActive(gameState == GameState.LobbyInfo && ChInfoController.is_hanim);
 
 		switch (gameState)
 		{
@@ -194,6 +194,7 @@ public class Game : MonoBehaviour
 		if (!battle && currentLevel > 0)
 		{
 			if (currentLevel == 1) Instantiate(weather[1]);
+			else if (currentLevel == 3) Instantiate(weather[2]);
 			else Instantiate(weather[Random.Range(1, 4)]);
 		}
 		else if (battle && DataStorage.LevelWeather[0][currentLevel] != -1)

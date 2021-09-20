@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    public GameObject Funis;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Funis.SetActive(Game.currentLevel == 3);
     }
 
     // Update is called once per frame

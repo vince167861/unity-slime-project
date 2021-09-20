@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 117310118}
   - component: {fileID: 117310117}
   - component: {fileID: 117310119}
+  - component: {fileID: 117310120}
   m_Layer: 5
   m_Name: Character Info
   m_TagString: Untagged
@@ -1069,6 +1070,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &117310120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117310115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab2488d4e6d1b14db618fe58f3f70e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChP: {fileID: 874593384}
+  cLB: {fileID: 818715651}
+  cRB: {fileID: 1244705420}
+  chpicture:
+  - {fileID: -2687252525902491478, guid: 91720d1bbdfc3c4409d7c234866a79b2, type: 3}
+  - {fileID: 21300000, guid: dd1e609ee826b864b9289354b7ed7c6b, type: 3}
+  - {fileID: 21300000, guid: 3618a0e8fff12ef43a23b0ba5c722a97, type: 3}
+  - {fileID: 21300000, guid: cd2199730b651aa479b032a26f8d0173, type: 3}
+  - {fileID: 21300000, guid: 38bce88151f4a5b41a8677ed7b137b77, type: 3}
+  - {fileID: 21300000, guid: a6acec154c361594d9e20020e43acefb, type: 3}
+  - {fileID: 0}
 --- !u!1 &118156545
 GameObject:
   m_ObjectHideFlags: 0
@@ -7897,6 +7921,7 @@ GameObject:
   - component: {fileID: 435444294}
   - component: {fileID: 435444296}
   - component: {fileID: 435444295}
+  - component: {fileID: 435444297}
   m_Layer: 5
   m_Name: Help
   m_TagString: Untagged
@@ -7964,6 +7989,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435444293}
   m_CullTransparentMesh: 0
+--- !u!114 &435444297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435444293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d23e2292af26a4dac39792567741bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HelpP: {fileID: 1417394405}
+  LB: {fileID: 1696522423}
+  RB: {fileID: 1223100998}
+  hpicture:
+  - {fileID: 21300000, guid: d7fd1aa082aa90c40b5c1059ee8d9acb, type: 3}
+  - {fileID: 21300000, guid: 235bcbad0893d2d48a21bbb53f540074, type: 3}
 --- !u!1 &461519323
 GameObject:
   m_ObjectHideFlags: 0
@@ -10290,7 +10333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &818715652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10353,7 +10396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 818715654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117310120}
+        m_TargetAssemblyTypeName: ChInfoController, Assembly-CSharp
+        m_MethodName: cleftpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &818715654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12189,7 +12244,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -13052,7 +13107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1223100999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13115,7 +13170,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1223101001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435444297}
+        m_TargetAssemblyTypeName: HelpController, Assembly-CSharp
+        m_MethodName: rightpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1223101001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13415,7 +13482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1244705421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13478,7 +13545,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1244705423}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117310120}
+        m_TargetAssemblyTypeName: ChInfoController, Assembly-CSharp
+        m_MethodName: crightpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1244705423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15509,7 +15588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696522424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15572,7 +15651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1696522426}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435444297}
+        m_TargetAssemblyTypeName: HelpController, Assembly-CSharp
+        m_MethodName: leftpage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1696522426
 MonoBehaviour:
   m_ObjectHideFlags: 0
