@@ -84,8 +84,8 @@ public class Mushroom : Entity, IAttackable
 	{
 		Game.moneycount += 30;
 		Game.expcount += 3;
-		Instantiate(dieEffect).GetComponent<Transform>().position = transform.position;
-		if (Random.value <= 0.1) Instantiate(potion);
+		Instantiate(dieEffect, transform.position, Quaternion.identity);
+		if (Random.value <= 0.5) Instantiate(potion);
 		Destroy(gameObject);
 	}
 }
