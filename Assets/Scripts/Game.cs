@@ -115,7 +115,7 @@ public class Game : MonoBehaviour
 		keyicon.SetActive(isPlaying || IsDialog || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Playing);
 		moneyicon.SetActive(isLobby && currentLevel > 0 || gameState == GameState.Advice && DialogBoxHandler.lastgameState == GameState.Lobby);
 		lobbyinfo.SetActive(gameState == GameState.LobbyInfo);
-		turnBack.SetActive(gameState == GameState.LobbyInfo);
+		turnBack.SetActive(gameState == GameState.LobbyInfo && ChInfoController.is_hanim);
 
 		switch (gameState)
 		{

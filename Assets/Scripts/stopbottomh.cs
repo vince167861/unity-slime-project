@@ -31,6 +31,7 @@ public class stopbottomh : MonoBehaviour
     }
     void Update(){
         if(Game.gameState == Game.GameState.Instruction){
+            if(Game.currentLevel == 0 && DialogBoxHandler.dialogID == 5)    nowState = Game.GameState.Playing;
             gameObject.GetComponent<Image>().sprite = stop[1];
         }
         else gameObject.GetComponent<Image>().sprite = stop[0];
