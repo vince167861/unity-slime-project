@@ -19,7 +19,7 @@ public class DataStorage
 		};
 	public static List<int> keyMax = new List<int> { 1, 3, };
 	public static List<int> doorKey = new List<int> { 0, 2, 3 };
-	public static List<string> adteller = new List<string> { "傳送門", "", "", "嚮導", };
+	public static List<string> adteller = new List<string> { "傳送門", "", "", "嚮導","Funis(?)" };
 	public static List<List<string>> chat = new List<List<string>> {
 				new List<string>{},
 				new List<string>{},
@@ -41,6 +41,9 @@ public class DataStorage
 				"歡迎來到蘑菇村!!!在這裡冒險的過程中,希望你能有所發現。 \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",
 				"勇者別灰心啊! 一說到冒險,你就會想到什麼?...... \n迷宮!!!傳說中這裡的迷宮是活的呢。",
 				"...... \n是喔。"
+				},
+				new List<string> {
+				"...傳說中的勇者竟是一魔物!?  \n那位大人看來沒有錯呢..."
 				}
 		};
 	public static List<List<int>> speaker = new List<List<int>> {    //0:世界之聲 1:me 2:魔龍王
@@ -104,13 +107,13 @@ public class DataStorage
 		};
 	public static List<List<Vector3>> lobbyoval = new List<List<Vector3>> {
 				new List<Vector3> {
-						new Vector3(24, 2, 0), new Vector3(50, 2, 0), new Vector3(100, 5, 0)
+						new Vector3(24, 2, 0), new Vector3(50, 2, 0), new Vector3(101, 5, 0)
 				},
 				new List<Vector3> {
-						new Vector3(112.2f, 5, 0)
+						new Vector3(101, 5f, 0)
 				},
 				new List<Vector3> {
-						new Vector3(112.2f, 5, 0)
+						new Vector3(101, 5f, 0)
 				}
 		};
 

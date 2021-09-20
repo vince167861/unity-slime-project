@@ -10,7 +10,7 @@ public class DialogBoxHandler : MonoBehaviour
 	static TextMeshProUGUI story;
 	static Text teller;
 	static Image littlech;
-	public static bool isChat = false, playsurprise = false, playHint = false;
+	public static bool isChat = false, playsurprise = false, playHint = false, isAnimPause = false;
 	public bool isAnim, isStart = false;
 	public GameObject circle, oval;
 	public static Game.GameState lastgameState;
@@ -46,8 +46,13 @@ public class DialogBoxHandler : MonoBehaviour
 				story.text = DataStorage.lines[Game.currentLevel][dialogID];
 				teller.text = DataStorage.speakerName[DataStorage.speaker[Game.currentLevel][dialogID]];
 				littlech.sprite = ch[DataStorage.speaker[Game.currentLevel][dialogID]];
-				if (Input.GetMouseButtonDown(0) && !isAnim)
+				if (Input.GetMouseButtonDown(0) && (!isAnim || Game.dstopanim))
 				{
+					if(Game.dstopanim)
+					{
+						isAnim = false;
+						Game.dstopanim = false;
+					}
 					MainCameraHandler.PlayEntityClip(17);
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";

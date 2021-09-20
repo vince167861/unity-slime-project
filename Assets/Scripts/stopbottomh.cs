@@ -24,6 +24,7 @@ public class stopbottomh : MonoBehaviour
     }
     public void GameStart()
     {
+        if(nowState == Game.GameState.Dialog)   Game.dstopanim = true;
         MainCameraHandler.PlayEntityClip(3);
         Game.gameState = nowState;
     }
