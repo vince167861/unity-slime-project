@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Trap : MonoBehaviour , IAttackable
 {
@@ -12,7 +10,7 @@ public class Trap : MonoBehaviour , IAttackable
             case "Slime":
                 MainCameraHandler.PlayEntityClip(10);
                 Game.lastattack = 2;
-                collider.GetComponent<Entity>().Suffer(AttackDamage);
+                collider.GetComponentInParent<Entity>().Suffer(AttackDamage);
                 break;
         }
     }

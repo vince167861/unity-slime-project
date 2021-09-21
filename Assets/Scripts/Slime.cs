@@ -55,13 +55,12 @@ public class Slime : Entity
 					Debug.Log(left);
 					Debug.Log(down);
 				}
-				if(pose)
+				if (pose)
 				{
 					if(direction == 1)  animator.Play("Jump Right");
 					if(direction == -1)	animator.Play("Jump Left");
 					pose = false;
 				}
-				if (health <= 0) DeathHandler(this);
 				// Control camera postion, except for the time in the welcome screen
 				if (!(Game.currentLevel == 0 && Game.isLobby))
 					MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);

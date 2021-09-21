@@ -48,13 +48,6 @@ public class Bird : Entity, IAttackable
 			case "Slime":
 				if (Game.gameState == Game.GameState.Playing)
 				{
-					collision.GetComponent<Entity>().Suffer(AttackDamage);
-					Game.lastattack = 0;
-				}
-				break;
-			case "Slime Detector":
-				if (Game.gameState == Game.GameState.Playing)
-				{
 					collision.GetComponentInParent<Entity>().Suffer(AttackDamage);
 					Game.lastattack = 0;
 				}
