@@ -11,6 +11,8 @@ public class ScreenCover : MonoBehaviour
 	public static bool hadAnimationStarted = false;
 	public GameObject loadingScreenReference, background2Reference;
 	public static Behaviour flareLayer;
+	public Sprite screenMask;
+	public static ScreenCover instance;
 
 	void Start()
 	{
@@ -19,6 +21,7 @@ public class ScreenCover : MonoBehaviour
 		animator = GetComponent<Animator>();
 		flareLayer = Camera.main.GetComponent<FlareLayer>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		instance = this;
 	}
 
 	private void Update()
@@ -91,19 +94,19 @@ public class ScreenCover : MonoBehaviour
 			animator.SetFloat("speed", 0);
 			Game.storyEffect = Game.StoryEffect.ThunderStorm;
 			background2.SetActive(true);
-			background2.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Textures/Screen Mask.png");
+			background2.GetComponent<SpriteRenderer>().sprite = instance.screenMask;
 		},
 		() => {
 			MainCameraHandler.PlayEntityClip(14);
 			animator.speed = 0;
-			Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/DragonPrefab.prefab"));
+			Instantiate(instance.dragonPrefab);
 		},
 		() => {
 			flareLayer.enabled = false;
 			Game.storyEffect = Game.StoryEffect.Clear;
 		},
 		() => {
-			houseReference = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/房子內部.prefab"));
+			houseReference = Instantiate(instance.housePrefab);
 		},
 		() => {
 			Game.storyState = Game.StoryState.Light;

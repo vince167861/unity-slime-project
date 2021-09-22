@@ -17,7 +17,7 @@ public class EndGameHandler : MonoBehaviour
     }
 	public void OutGame()
 	{
-		UnityEditor.EditorApplication.isPlaying = false;
+    //UnityEditor.EditorApplication.isPlaying = false;
 		Application.Quit();
 	}
 }
