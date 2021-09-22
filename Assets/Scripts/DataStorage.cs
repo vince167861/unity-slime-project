@@ -19,7 +19,7 @@ public class DataStorage
 		};
 	public static List<int> keyMax = new List<int> { 1, 3, };
 	public static List<int> doorKey = new List<int> { 0, 2, 3 };
-	public static List<string> adteller = new List<string> { "傳送門", "", "", "嚮導","Funis(?)" };
+	public static List<string> adteller = new List<string> { "傳送門", me, "", "嚮導","芙妮絲(?)" };
 	public static List<List<string>> chat = new List<List<string>> {
 				new List<string>{},
 				new List<string>{},
@@ -35,7 +35,7 @@ public class DataStorage
 				new List<string> {
 				"勇者啊,你是腦袋浸水還是沒腦袋? \n你沒看到這門上的鑰匙孔數嗎?你鑰匙不夠啊!!!",
 				"勇者啊,你是眼睛脫窗還是沒眼睛? \n你沒看到佈告欄還有最新訊息嗎?凡事不要超之過急!!!"},
-				new List<string> {"這裡是哪裡...?", "好累啊, 結果關於芙妮絲的情報這次根本毫無進展啊...", "結果迷宮裡也什麼都沒有嘛!!!, 你還配得上嚮導???"},
+				new List<string> {"這裡是哪裡...?", "好累啊, 結果關於芙妮絲的情報這次根本毫無進展啊...", "結果迷宮裡也什麼都沒有嘛!!!, 你還配得上嚮導???", "這是...芙妮絲嗎?是你嗎?"},
 				new List<string> {},
 				new List<string> {
 				"歡迎來到蘑菇村!!!在這裡冒險的過程中,希望你能有所發現。 \n碰觸到櫃台、佈告欄或傳送門等等,並\"按G鍵\"即可使用!",

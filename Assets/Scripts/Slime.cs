@@ -194,6 +194,10 @@ public class Slime : Entity
 	{
 		switch (collision.tag)
 		{
+			case "LobbyEvent":
+				DialogBoxHandler.advice(1,3);
+				Destroy(collision.gameObject);
+				break;
 			case "EventTrigger":
 				Animation.handler.trigger(collision.GetComponent<TriggerHandler>().triggerId);
 				Destroy(collision.gameObject);

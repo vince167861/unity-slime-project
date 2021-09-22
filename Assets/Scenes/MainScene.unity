@@ -1092,7 +1092,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cd2199730b651aa479b032a26f8d0173, type: 3}
   - {fileID: 21300000, guid: 38bce88151f4a5b41a8677ed7b137b77, type: 3}
   - {fileID: 21300000, guid: a6acec154c361594d9e20020e43acefb, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 689efa7fc31fa154fb5ed5afd06f0a45, type: 3}
 --- !u!1 &118156545
 GameObject:
   m_ObjectHideFlags: 0
@@ -13379,6 +13379,7 @@ GameObject:
   - component: {fileID: 1229984241}
   - component: {fileID: 1229984240}
   - component: {fileID: 1229984242}
+  - component: {fileID: 1229984243}
   m_Layer: 5
   m_Name: DeadMenu
   m_TagString: Untagged
@@ -13464,6 +13465,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1229984243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229984238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d164805774fd3a346aaf2cffdaad89cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuB: {fileID: 20763044}
 --- !u!1 &1244705420
 GameObject:
   m_ObjectHideFlags: 0
@@ -17453,6 +17467,7 @@ GameObject:
   - component: {fileID: 2037315745}
   - component: {fileID: 2037315744}
   - component: {fileID: 2037315746}
+  - component: {fileID: 2037315747}
   m_Layer: 5
   m_Name: PassMenu
   m_TagString: Untagged
@@ -17538,6 +17553,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2037315747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037315742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d164805774fd3a346aaf2cffdaad89cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuB: {fileID: 1778446920}
 --- !u!1 &2045442090
 GameObject:
   m_ObjectHideFlags: 0

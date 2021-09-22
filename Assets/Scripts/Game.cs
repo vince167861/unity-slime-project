@@ -318,6 +318,7 @@ public class Game : MonoBehaviour
 	public static void Rename()
 	{
 		DataStorage.speakerName = DataStorage.speakerName.ConvertAll(name => name == DataStorage.lastname ? DataStorage.me : name);
+		DataStorage.adteller[1] = DataStorage.me;
 		DataStorage.lastname = DataStorage.me;
 	}
 	public void Inputstate()

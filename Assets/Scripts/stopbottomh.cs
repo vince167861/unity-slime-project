@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class stopbottomh : MonoBehaviour
 {
+    bool showHelp = true;
     public Sprite[] stop = new Sprite[2];
     Game.GameState nowState,prenowState;
     // Start is called before the first frame update
@@ -14,7 +15,12 @@ public class stopbottomh : MonoBehaviour
         if(Game.gameState == Game.GameState.Instruction)
         {
             HelpController.nowpage = 0;
-            Game.gameState = Game.GameState.Pause;
+            if(Game.currentLevel == 0 && DialogBoxHandler.dialogID == 5 && showHelp)
+            {
+                showHelp = false;
+                Game.gameState = Game.GameState.Playing;
+            }
+            else    Game.gameState = Game.GameState.Pause;
         }
         else
         {
