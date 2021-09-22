@@ -20,7 +20,6 @@ public class FunisController : MonoBehaviour
                 if((Input.GetKey(KeyCode.G) || Slime.talk) && trigger)
                 {
                     Slime.talk = false;
-					DialogBoxHandler.isChat = true;
 					DialogBoxHandler.advice(4, 0);
                 }
                 break;

@@ -25,7 +25,13 @@ public class portal2_handler : MonoBehaviour
 				if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
 				{
 					Slime.go = false;
-					if (!Instruction.isNews)
+					if(Game.currentLevel == 3)
+					{
+						MainCameraHandler.PlayEntityClip(12);
+						Game.gameState = Game.GameState.LobbyInfo;
+						Game.is_end = true;
+					}
+					else if (!Instruction.isNews)
 					{
 						animator.Play("gotoportal");
 						MainCameraHandler.PlayEntityClip(8);

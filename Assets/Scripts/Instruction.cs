@@ -58,6 +58,7 @@ public class Instruction : MonoBehaviour
 
     public void turnback()
     {
+        if(Game.is_end) Game.is_end = false;
         ChInfoController.cnowpage = 0;
         ChInfoController.is_hanim = false;
         MainCameraHandler.PlayEntityClip(3);

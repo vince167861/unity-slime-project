@@ -13,4 +13,10 @@ public class DebugMenu : MonoBehaviour
 	{
 		Game.GotoLobby();
 	}
+
+	public void GotoLobby_add()
+	{
+		Game.currentLevel++;
+		Game.GotoLobby();
+	}
 }

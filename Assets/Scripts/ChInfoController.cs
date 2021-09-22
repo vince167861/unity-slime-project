@@ -18,9 +18,10 @@ public class ChInfoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ctotalpage != DataStorage.totalpage[Game.currentLevel])  ctotalpage = DataStorage.totalpage[Game.currentLevel];
-        cRB.SetActive(cnowpage != ctotalpage && is_hanim);
-        cLB.SetActive(cnowpage != 0);
+        if(Game.is_end)    cnowpage = 7;
+        else if(ctotalpage != DataStorage.totalpage[Game.currentLevel])  ctotalpage = DataStorage.totalpage[Game.currentLevel];
+        cRB.SetActive(cnowpage != ctotalpage && is_hanim && !Game.is_end);
+        cLB.SetActive(cnowpage != 0 && !Game.is_end);
         ChP.GetComponent<Image>().sprite = chpicture[cnowpage];
     }
 
