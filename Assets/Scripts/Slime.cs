@@ -156,7 +156,7 @@ public class Slime : Entity
 			case Game.StoryState.NoStory:
 				if (Game.currentLevel != 0)
 				{
-					instance.transform.position = new Vector3(8, -3, 0);
+					instance.transform.position = new Vector3(5, -3, 0);
 					instance.animator.Play(Game.battle ? "load1" : "load2");
 				}
 				break;

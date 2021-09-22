@@ -10623,8 +10623,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d789feeb7d8730c47a61bf0beb2a1f46, type: 3}
   - {fileID: 21300000, guid: adc153b3c906f01489e1da85e0132d6f, type: 3}
   - {fileID: 21300000, guid: 640042a606a246e42a473c9f4cab4edd, type: 3}
-  - {fileID: 21300000, guid: aefbc13c821142c4da900b8f8580a78e, type: 3}
-  - {fileID: 21300000, guid: aefbc13c821142c4da900b8f8580a78e, type: 3}
+  - {fileID: 21300000, guid: 8d7764185a68f7e4092fd5a376cb5911, type: 3}
   isAnim: 0
   isStart: 0
   circle: {fileID: 225359500}
