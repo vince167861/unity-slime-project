@@ -66,8 +66,9 @@ public class Mushroom : Entity, IAttackable
 				{
 					Instantiate(paralysisEffect, transform.position, Quaternion.identity);
 					Game.lastattack = 1;
-					collision.collider.GetComponent<Entity>().Suffer(AttackDamage);
-					collision.collider.GetComponent<Entity>().ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));
+					Entity target = collision.collider.GetComponentInParent<Entity>();
+					target.Suffer(AttackDamage);
+					target.ApplyEffect(new EntityEffect(EntityEffect.EntityEffectType.Paralyze, 1));
 					Destroy(gameObject);
 				}
 				break;
@@ -85,7 +86,7 @@ public class Mushroom : Entity, IAttackable
 		Game.moneycount += 30;
 		Game.expcount += 3;
 		Instantiate(dieEffect, transform.position, Quaternion.identity);
-		if (Random.value <= 0.5) Instantiate(potion);
+		if (Random.value <= 0.5) Instantiate(potion, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 }

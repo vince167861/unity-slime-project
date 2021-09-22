@@ -55,13 +55,12 @@ public class Slime : Entity
 					Debug.Log(left);
 					Debug.Log(down);
 				}
-				if(pose)
+				if (pose)
 				{
 					if(direction == 1)  animator.Play("Jump Right");
 					if(direction == -1)	animator.Play("Jump Left");
 					pose = false;
 				}
-				if (health <= 0) DeathHandler(this);
 				// Control camera postion, except for the time in the welcome screen
 				if (!(Game.currentLevel == 0 && Game.isLobby))
 					MainCameraHandler.targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
@@ -72,7 +71,7 @@ public class Slime : Entity
 				{
 					up = false;
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((50 * moveBase + 2 * jumpBase) * suppression);
+					rigidbody2d.AddForce((50 * moveBase + 1.5f * jumpBase) * suppression);
 					animator.Play("Jump Right");
 					direction = 1;
 					allowMove = bouncable = false;
@@ -81,7 +80,7 @@ public class Slime : Entity
 				{
 					up = false;
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((-50 * moveBase + 2 * jumpBase) * suppression);
+					rigidbody2d.AddForce((-50 * moveBase + 1.5f * jumpBase) * suppression);
 					animator.Play("Jump Left");
 					direction = -1;
 					allowMove = bouncable = false;

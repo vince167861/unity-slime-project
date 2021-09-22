@@ -10,11 +10,6 @@ public class MainCharacterHealth : MonoBehaviour
 	public Image bar, statusIcon;
 	public Text healthText, nameText;
 
-	void Start()
-	{
-		lastHealth = targetHealth = entityMaxHealth = Slime.instance.defaultHealth;
-	}
-
 	void Update()
 	{
 		switch (Game.gameState)
@@ -26,7 +21,7 @@ public class MainCharacterHealth : MonoBehaviour
 				{
 					situation = 0;
 					entityMaxHealth = Mathf.Round(1002 - 0.092f * Mathf.Pow(Game.chLevel - 100, 2));
-					lastHealth = targetHealth = entityMaxHealth;
+					lastHealth = targetHealth = entityMaxHealth = Slime.instance.defaultHealth;
 					tghealamount = tgsufferamount = healAmount = sufferAmount = 0;
 					start = false;
 				}
@@ -64,6 +59,7 @@ public class MainCharacterHealth : MonoBehaviour
 				targetHealth = lastHealth + healAmount - sufferAmount;
 				bar.fillAmount = targetHealth / entityMaxHealth;
 				bar.color = Color.HSVToRGB(0.2f * (targetHealth / entityMaxHealth), 1, 1);
+				if (targetHealth / entityMaxHealth < 0.01f) Slime.instance.Die();
 				break;
 		}
 	}
