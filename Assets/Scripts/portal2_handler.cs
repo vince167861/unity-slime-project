@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class portal2_handler : MonoBehaviour
 {
+	public GameObject key;
 	Animator animator;
 	bool trigger = false;
 	public bool Anim2 = false;
+	public int key = 0;
 	// Start is called before the first frame update
 	void Start()
 	{
 		animator = GetComponent<Animator>();
+		key.SetActive(key != 0);
 	}
 
 	// Update is called once per frame
@@ -51,8 +54,18 @@ public class portal2_handler : MonoBehaviour
 				}
 				break;
 			case Game.GameState.Playing:
-        if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger) GetComponent<IPortalHandler>().Handle();
-        break;
+        		if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
+				{
+					Slime.go = false;
+                    if(Slime.keyCount >= key)
+                    {
+                        MainCameraHandler.PlayEntityClip(7);
+						animator.Play("gotoportal");
+						GetComponent<IPortalHandler>().Handle();     //  --> 回去原本位置的程式你寫,記得要分另外一個portal
+                    }
+                    else	MainCameraHandler.PlayEntityClip(12);
+				}
+        		break;
     }
 
 	}

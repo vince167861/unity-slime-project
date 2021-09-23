@@ -5139,6 +5139,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8143217241209107769}
   transform: {fileID: 8143217241209107768}
   Bomb: {fileID: 5246916899251585217, guid: ff921ac50801c734b82d6912b979a036, type: 3}
+  Cloak: {fileID: 6252721051507848833}
   keyCountObject: {fileID: 0}
   potionCountObject: {fileID: 0}
   paralysis: {fileID: 6176592211074141307, guid: 895dc67d510c4bd4d8258ee2e5d2a6ef,

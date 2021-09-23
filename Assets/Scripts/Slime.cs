@@ -11,10 +11,10 @@ public class Slime : Entity
 	public Transform transform;
 
 
-	public GameObject Bomb;
+	public GameObject Bomb, Cloak;
 	public static float suppression = 1;
 
-	public static bool isTouchingGround = false, bouncable = false, allowMove = false;
+	public static bool isTouchingGround = false, bouncable = false, allowMove = false, is_equipment = false;
 	public static bool attack, right, left, up, down, healing, go, talk, pose, map = false;
 
 	public static int potionCount = 0, potionMax = 100, keyCount = 0;
@@ -39,6 +39,8 @@ public class Slime : Entity
 
 	void Update()
 	{
+		Cloak.SetActive(is_equipment);
+		if(is_equipment)	suppression = 1.2f;
 		switch (Game.gameState)
 		{
 			case Game.GameState.DarkFadeIn:
@@ -156,7 +158,7 @@ public class Slime : Entity
 			case Game.StoryState.NoStory:
 				if (Game.currentLevel != 0)
 				{
-					instance.transform.position = new Vector3(5, -3, 0);
+					instance.transform.position = new Vector3(8, -3, 0);
 					instance.animator.Play(Game.battle ? "load1" : "load2");
 				}
 				break;
@@ -199,6 +201,11 @@ public class Slime : Entity
 				break;
 			case "EventTrigger":
 				Animation.handler.trigger(collision.GetComponent<TriggerHandler>().triggerId);
+				Destroy(collision.gameObject);
+				break;
+			case "Equipment":
+				MainCameraHandler.PlayEntityClip(5);
+				is_equipment = true;
 				Destroy(collision.gameObject);
 				break;
 			case "Potion":
