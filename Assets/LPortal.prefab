@@ -421,5 +421,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyPrepare: {fileID: 358932362815368019}
+  prepare: {fileID: 7082229948696879817}
   Anim2: 0
   key: 0
