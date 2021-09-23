@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class portal2_handler : MonoBehaviour
 {
-	public GameObject key;
+	public GameObject keyPrepare;
 	Animator animator;
 	bool trigger = false;
 	public bool Anim2 = false;
@@ -13,7 +13,7 @@ public class portal2_handler : MonoBehaviour
 	void Start()
 	{
 		animator = GetComponent<Animator>();
-		key.SetActive(key != 0);
+		keyPrepare.SetActive(key != 0);
 	}
 
 	// Update is called once per frame
