@@ -297,6 +297,9 @@ MonoBehaviour:
   dy: 0
   fx: 0
   fy: 0
+  buttonSprite:
+  - {fileID: 21300000, guid: d38913de1eb79414fab8e561a3aeefef, type: 3}
+  - {fileID: 21300000, guid: bbd1578b2759fad4a8fde05ad3342e41, type: 3}
 --- !u!60 &8894140304170354732
 PolygonCollider2D:
   m_ObjectHideFlags: 0

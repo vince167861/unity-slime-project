@@ -50,9 +50,10 @@ public class portal2_handler : MonoBehaviour
 					Game.StartNewLevel();
 				}
 				break;
-
-
-		}
+			case Game.GameState.Playing:
+        if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger) GetComponent<IPortalHandler>().Handle();
+        break;
+    }
 
 	}
 	void OnTriggerStay2D(Collider2D col)

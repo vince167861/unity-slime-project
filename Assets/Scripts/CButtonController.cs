@@ -6,13 +6,7 @@ public class CButtonController : MonoBehaviour
 {
     public GameObject AttackB, UpB, DownB, HealB, GoB, TalkB, MoveB, Map;
     public static bool portal, talking = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         GoB.SetActive(portal);
