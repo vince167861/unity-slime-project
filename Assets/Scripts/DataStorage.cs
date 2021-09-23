@@ -113,7 +113,7 @@ public class DataStorage
 						new Vector3(101, 5f, 0)
 				},
 				new List<Vector3> {
-						new Vector3(101, 5f, 0)
+						new Vector3(82, 2, 0), new Vector3(101, 5f, 0)
 				}
 		};
 
