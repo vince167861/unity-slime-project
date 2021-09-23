@@ -3239,7 +3239,7 @@ Transform:
   - {fileID: 8635131745475366130}
   - {fileID: 6839571123419353759}
   m_Father: {fileID: 540089172431654914}
-  m_RootOrder: 41
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7007974379388333646
 GameObject:
@@ -3471,8 +3471,8 @@ Transform:
   - {fileID: 636921009454801921}
   - {fileID: 4400667123245511565}
   - {fileID: 4766002295362715703}
-  - {fileID: 4566320170167326122}
   - {fileID: 1775856769074344128}
+  - {fileID: 4566320170167326122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3588,6 +3588,7 @@ MonoBehaviour:
   dy: -100
   fx: 1
   fy: 0
+  buttonSprite: []
 --- !u!60 &4849682420380754867
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3719,9 +3720,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2804608862518894696}
   - component: {fileID: 1876463698716913032}
+  - component: {fileID: 5966468335982400336}
   m_Layer: 0
   m_Name: "\u96B1\u85CF\u8FF7\u5BAE"
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3791,6 +3793,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &5966468335982400336
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288942411714304856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d1b5ecd1467e4504781db464a0249c7a, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 204.8, y: 122}
+    newSize: {x: 10.24, y: 6.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -102.4, y: 61}
+      - {x: -102.4, y: -61}
+      - {x: 102.4, y: -61}
+      - {x: 102.4, y: 61}
+    - - {x: -81.36088, y: -17.966503}
+      - {x: -34.936153, y: -17.944597}
+      - {x: -35.088867, y: -13.142502}
+      - {x: -76.22867, y: -12.71648}
+      - {x: -81.49637, y: -12.6564865}
+      - {x: -81.200005, y: 37.8}
+      - {x: 81.200005, y: 37.8}
+      - {x: 82.45523, y: -13.456966}
+      - {x: 32.878387, y: -13.20999}
+      - {x: 33.261574, y: -18.089743}
+      - {x: 81.97948, y: -17.80321}
+      - {x: 81.831726, y: -38.11125}
+      - {x: -81.200005, y: -37.8}
+    - - {x: -26, y: 6.4}
+      - {x: -26, y: 1.6}
+      - {x: -25.6, y: 1.2}
+      - {x: 24.6, y: 1.2}
+      - {x: 25, y: 1.4}
+      - {x: 25, y: 6.4}
 --- !u!114 &6817515185229476634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6271,7 +6321,7 @@ PrefabInstance:
     - target: {fileID: 7925284655813088558, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 7925284655813088558, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
