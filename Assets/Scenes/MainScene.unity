@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 323, y: -220}
+  m_AnchoredPosition: {x: 323, y: -195}
   m_SizeDelta: {x: 137.5, y: 137.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14800139
@@ -1270,6 +1270,7 @@ MonoBehaviour:
   startGameButton: {fileID: 1075055338}
   loadingScreenReference: {fileID: 118156545}
   background2Reference: {fileID: 2056558437}
+  screenMask: {fileID: 0}
 --- !u!212 &148671825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9308,7 +9309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 419.5, y: -139}
+  m_AnchoredPosition: {x: 419.5, y: -96.492}
   m_SizeDelta: {x: 137.5, y: 137.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629080786
