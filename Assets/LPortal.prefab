@@ -420,4 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c65c644c015a4941ad87eccf61eef9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPrepare: {fileID: 358932362815368019}
   Anim2: 0
+  key: 0

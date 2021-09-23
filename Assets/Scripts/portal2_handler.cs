@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class portal2_handler : MonoBehaviour
 {
 	public GameObject keyPrepare;
+	static TextMeshPro prepare;
 	Animator animator;
 	bool trigger = false;
 	public bool Anim2 = false;
@@ -12,6 +14,7 @@ public class portal2_handler : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		prepare = GameObject.Find("needkey").GetComponent<TextMeshPro>();
 		animator = GetComponent<Animator>();
 		keyPrepare.SetActive(key != 0);
 	}
@@ -54,6 +57,7 @@ public class portal2_handler : MonoBehaviour
 				}
 				break;
 			case Game.GameState.Playing:
+				if(key != 0)	prepare.text = " x " + key;
         		if ((Input.GetKey(KeyCode.G) || Slime.go) && trigger)
 				{
 					Slime.go = false;
