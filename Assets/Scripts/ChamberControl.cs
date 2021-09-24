@@ -8,18 +8,18 @@ public class ChamberControl : MonoBehaviour
 	public float dx, dy;
 	public bool fx, fy;
   public Sprite[] buttonSprite;
-  private Chamber parent;
+  public Chamber parent;
   SpriteRenderer renderer;
 
   private void Start()
 	{
-		parent = GetComponentInParent<Chamber>();
+		if (parent == null) parent = GetComponentInParent<Chamber>();
     renderer = GetComponent<SpriteRenderer>();
   }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Slime"))
+		if (collision.CompareTag("Slime") || collision.CompareTag("bullet"))
 		{
 			parent.dx = dx;
 			parent.dy = dy;
