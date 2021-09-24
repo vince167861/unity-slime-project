@@ -5234,7 +5234,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8288942411714304856}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d1b5ecd1467e4504781db464a0249c7a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -6039,8 +6039,7 @@ PrefabInstance:
       propertyPath: m_Directional
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5472106491551683410, guid: e7553e5455d4ac3499fed1c04f80d312, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7553e5455d4ac3499fed1c04f80d312, type: 3}
 --- !u!4 &4766002295362715703 stripped
 Transform:
