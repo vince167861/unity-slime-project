@@ -6656,6 +6656,7 @@ MonoBehaviour:
   isDied: 0
   invulnerable: 0
   isAttacking: 0
+  healthBar: {fileID: 7214099766210728968}
 --- !u!61 &3653870924800590285
 BoxCollider2D:
   m_ObjectHideFlags: 0
