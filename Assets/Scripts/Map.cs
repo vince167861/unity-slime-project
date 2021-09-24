@@ -33,14 +33,14 @@ public class Map : MonoBehaviour
 		terrainSize = new Vector2(image.sprite.bounds.size.x, image.sprite.bounds.size.y);
 		terrainSize *= bgSize.x / terrainSize.x;
 		rectTransform.sizeDelta = terrainSize * bgSize.x / terrainSize.x;
-		for (int i = 0; i < bgSize.x; i += 4 * MAP_SCALE)
+		/*for (int i = 0; i < bgSize.x; i += 4 * MAP_SCALE)
 			for (int j = 0; j < bgSize.y; j += 4 * MAP_SCALE)
 			{
 				RectTransform c = Instantiate(staticMapCover).GetComponent<RectTransform>();
 				c.SetParent(staticTransform);
 				c.anchoredPosition = new Vector2Int(i, j);
 				c.localScale = new Vector3Int(MAP_SCALE, MAP_SCALE, 1);
-			}
+			}*/
 		MapBorder.UpdateAllMapComponentColor();
 	}
 

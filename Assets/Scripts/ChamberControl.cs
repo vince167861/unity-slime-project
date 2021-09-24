@@ -6,7 +6,7 @@ public class ChamberControl : MonoBehaviour
 	// TODO: Add animation to buttons.
 	// TODO: Add drowning player when get stuck.
 	public float dx, dy;
-	public bool fx, fy;
+	public bool fx, fy, acceptBullet = false;
   public Sprite[] buttonSprite;
   public Chamber parent;
   SpriteRenderer renderer;
@@ -19,7 +19,7 @@ public class ChamberControl : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Slime") || collision.CompareTag("bullet"))
+		if (collision.CompareTag("Slime") || (collision.CompareTag("bullet")) && acceptBullet)
 		{
 			parent.dx = dx;
 			parent.dy = dy;

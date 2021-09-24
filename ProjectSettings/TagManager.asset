@@ -23,6 +23,7 @@ TagManager:
   - LobbyEvent
   - Level3Event
   - Skeleton
+  - chamber
   layers:
   - Default
   - TransparentFX
