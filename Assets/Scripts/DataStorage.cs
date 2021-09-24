@@ -78,6 +78,10 @@ public class DataStorage
 				"謹慎行事是冒險者公會的第一守則!",
 				"只有右邊這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!",
 				"只有下面這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!"
+				},
+				new List<string> {},
+				new List<string> {
+				"右側的地板似乎有點破碎?  \n (蹲下可向下施力!)"
 				}
 		};
 	public static List<Vector2> spawnpoint = new List<Vector2> {

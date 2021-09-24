@@ -21,6 +21,7 @@ TagManager:
   - Equipment
   - Funis
   - LobbyEvent
+  - Level3Event
   layers:
   - Default
   - TransparentFX

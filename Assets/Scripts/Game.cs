@@ -194,7 +194,7 @@ public class Game : MonoBehaviour
 		if (!battle && currentLevel > 0)
 		{
 			if (currentLevel == 1) Instantiate(weather[1]);
-			else if (currentLevel == 3) Instantiate(weather[2]);
+			else if (currentLevel == 3) Instantiate(weather[3]);
 			else Instantiate(weather[Random.Range(1, 4)]);
 		}
 		else if (battle && DataStorage.LevelWeather[0][currentLevel] != -1)
