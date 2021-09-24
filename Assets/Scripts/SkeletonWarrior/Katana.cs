@@ -18,7 +18,8 @@ public class Katana : MonoBehaviour
 					Destroy(collision.gameObject);
 					break;
 				case "Slime":
-					break;
+          collision.gameObject.GetComponentInParent<Entity>().Suffer(20);
+          break;
 			}
 	}
 }

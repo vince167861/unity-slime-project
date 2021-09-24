@@ -15,20 +15,14 @@ public class SkeletonWarriorBulletDetector : MonoBehaviour
 	{
 		switch (collision.tag)
 		{
+			case "Slime":
 			case "bullet":
 				// TODO: Adjust the timer from detected the bullet to destroy it.
 				skeletonAnimator.Play("拔刀");
 				break;
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D collision)
-	{
-		switch (collision.tag)
-		{
-			case "Ground":
+      case "Ground":
         parent.entityDirection *= -1;
         break;
-    }
-	}
+		}
+  }
 }
