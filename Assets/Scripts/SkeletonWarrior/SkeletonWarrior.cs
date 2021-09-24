@@ -4,7 +4,7 @@ public class SkeletonWarrior : Entity
 {
 	// TODO: Add Heal and Suffer extends from Entity.
 
-	public SkeletonWarrior() : base("S.Kさん", 500) { }
+	public SkeletonWarrior() : base("S.Kさん", 300) { }
 	public bool isAttacking = false;
 	public Transform healthBar;
 

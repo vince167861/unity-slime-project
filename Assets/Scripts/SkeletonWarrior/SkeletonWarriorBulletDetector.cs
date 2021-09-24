@@ -22,6 +22,7 @@ public class SkeletonWarriorBulletDetector : MonoBehaviour
 				break;
       case "Ground":
 			case "Chamber":
+			case "Skeleton":
         parent.entityDirection *= -1;
         break;
 		}
