@@ -48,7 +48,8 @@ public class DataStorage
 		};
 	public static List<List<int>> speaker = new List<List<int>> {    //0:世界之聲 1:me 2:魔龍王
 				new List<int> {0,1,0,1,0,0,1,2,1,2,1},
-				new List<int> {0,0,1,0,1,0,0,0,0}
+				new List<int> {0,0,1,0,1,0,0,0,0},
+				new List<int> {0}
 		};
 	public static List<string> speakerName = new List<string> {
 				"世界の声", me, "魔龍王"
@@ -79,7 +80,6 @@ public class DataStorage
 				"只有右邊這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!",
 				"只有下面這種紫色的特殊牆壁才能讓史萊姆二連跳喲,要記住!"
 				},
-				new List<string> {},
 				new List<string> {
 				"右側的地板似乎有點破碎?  \n (蹲下可向下施力!)"
 				}

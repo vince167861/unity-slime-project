@@ -56,8 +56,11 @@ public class DialogBoxHandler : MonoBehaviour
 					MainCameraHandler.PlayEntityClip(17);
 					littlech.sprite = ch[0];
 					story.text = teller.text = "";
-					dialogID++;
-					Animation.handler.handle();
+					if(Game.currentLevel == 2)	Game.SetPlaying();
+					else{
+						dialogID++;
+						Animation.handler.handle();
+					}
 				}
 				break;
 			case Game.GameState.Advice:

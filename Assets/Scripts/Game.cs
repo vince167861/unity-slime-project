@@ -162,8 +162,8 @@ public class Game : MonoBehaviour
 				else
 				{
 					Slime.keyCount = 0;
-          background.sprite = gameBackground[currentLevel];
-          Hint = 0;
+          			background.sprite = gameBackground[currentLevel];
+          			Hint = 0;
 					PreLoading();
 				}
 				break;
