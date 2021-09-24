@@ -200,7 +200,7 @@ public class Game : MonoBehaviour
 		else if (battle && DataStorage.LevelWeather[0][currentLevel] != -1)
 			Instantiate(force[DataStorage.LevelWeather[0][currentLevel]]);
 		if (battle && currentLevel == 1)
-			Instantiate(weather[4], new Vector3(-30, 56, 0), Quaternion.identity);
+			Instantiate(weather[4], new Vector3(-30, 30, 0), Quaternion.identity);
 		gameState = battle ? GameState.LevelPrepare : GameState.MenuPrepare;
 	}
 
