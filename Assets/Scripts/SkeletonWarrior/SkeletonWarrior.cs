@@ -7,6 +7,11 @@ public class SkeletonWarrior : Entity
 	public SkeletonWarrior() : base("S.Kさん", 500) { }
 	public bool isAttacking = false;
 
+	void Update()
+	{
+    transform.Translate(new Vector3(entityDirection * -0.1f, 0, 0));
+  }
+
 	void Attacking()
 	{
 		GetComponentInChildren<ParticleSystem>().Play();
