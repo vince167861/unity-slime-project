@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour, IAttackable
 		{
 			case "bird":
 			case "Mushroom":
+			case "Skeleton":
 				collision.GetComponent<Entity>().Suffer(AttackDamage);
 				Instantiate(particle).GetComponent<Transform>().position = transform.position;
 				Destroy(gameObject);

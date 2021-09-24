@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class SkeletonWarriorBulletDetector : MonoBehaviour
 {
-	private Animator skeletonAnimator;
+	Animator skeletonAnimator;
+  SkeletonWarrior parent;
 
-	private void Start()
+  void Start()
 	{
 		skeletonAnimator = GetComponentInParent<Animator>();
-	}
-	private void OnTriggerEnter2D(Collider2D collision)
+    parent = GetComponentInParent<SkeletonWarrior>();
+  }
+
+	void OnTriggerEnter2D(Collider2D collision)
 	{
 		switch (collision.tag)
 		{
@@ -17,5 +20,15 @@ public class SkeletonWarriorBulletDetector : MonoBehaviour
 				skeletonAnimator.Play("拔刀");
 				break;
 		}
+	}
+
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "Ground":
+        parent.entityDirection *= -1;
+        break;
+    }
 	}
 }
