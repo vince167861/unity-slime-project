@@ -75,6 +75,7 @@ public class Game : MonoBehaviour
 
 	public GameObject board, wlboard, levelboard, brand, dialogBox, help, pauseButton, potionicon, keyicon, moneyicon, lobbyinfo, turnBack, skip, inputfield, debugcanvas, circleHint, ovalHint;
 	public Text moneyicontext;
+	public bool isInDebug;
 	public static SpriteRenderer background;
 	public static GameObject keyCountObject, staticFloorPrefab;
 	public static GameObject[] staticEffect, staticLevelPrefab;
@@ -87,6 +88,7 @@ public class Game : MonoBehaviour
 		staticEffect = weather;
 		staticLevelPrefab = levelPrefab;
 		staticFloorPrefab = floorPrefab;
+		debugMode = isInDebug;
 	}
 
 	void Update()
@@ -211,7 +213,7 @@ public class Game : MonoBehaviour
 		ScreenCover.PreDarkFadeIn();
 		MakeMap(battle);
 		Map.UpdateMap();
-		MainCharacterHealth.start = true;
+		MainCharacterHealth.hasInit = true;
 	}
 	void PostDarkFadeIn()
 	{

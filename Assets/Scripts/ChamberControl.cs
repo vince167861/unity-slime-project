@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class ChamberControl : MonoBehaviour
 {
-	// TODO: Add animation to buttons.
-	// TODO: Add drowning player when get stuck.
 	public float dx, dy;
 	public bool fx, fy, acceptBullet = false;
   public Sprite[] buttonSprite;
-  public Chamber parent;
+  public Chamber[] parents;
   SpriteRenderer renderer;
 
   private void Start()
 	{
-		if (parent == null) parent = GetComponentInParent<Chamber>();
+		if (parents.Length == 0)
+		{
+			parents = new Chamber[1];
+			parents[0] = GetComponentInParent<Chamber>();
+		}
     renderer = GetComponent<SpriteRenderer>();
   }
 
@@ -21,9 +23,12 @@ public class ChamberControl : MonoBehaviour
 	{
 		if (collision.CompareTag("Slime") || (collision.CompareTag("bullet")) && acceptBullet)
 		{
-			parent.dx = dx;
-			parent.dy = dy;
-			parent.rigidbody2d.constraints = (fx ? RigidbodyConstraints2D.FreezePositionX : 0) | (fy ? RigidbodyConstraints2D.FreezePositionY : 0) | RigidbodyConstraints2D.FreezeRotation;
+			foreach (Chamber parent in parents)
+			{
+				parent.dx = dx;
+				parent.dy = dy;
+				parent.rigidbody2d.constraints = (fx ? RigidbodyConstraints2D.FreezePositionX : 0) | (fy ? RigidbodyConstraints2D.FreezePositionY : 0) | RigidbodyConstraints2D.FreezeRotation;
+			}
       renderer.sprite = buttonSprite[1];
     }
 	}
@@ -31,9 +36,11 @@ public class ChamberControl : MonoBehaviour
 	{
 		if (collision.CompareTag("Slime"))
 		{
-			parent.dx = 0;
-			parent.dy = 0;
-			parent.rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
+			foreach (Chamber parent in parents)
+			{
+				parent.dx = parent.dy = 0;
+				parent.rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
+			}
       renderer.sprite = buttonSprite[0];
 		}
 	}

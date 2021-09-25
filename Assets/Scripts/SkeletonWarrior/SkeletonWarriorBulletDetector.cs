@@ -21,8 +21,9 @@ public class SkeletonWarriorBulletDetector : MonoBehaviour
 				skeletonAnimator.Play("拔刀");
 				break;
       case "Ground":
-			case "Chamber":
+			case "chamber":
 			case "Skeleton":
+			case "Grass":
         parent.entityDirection *= -1;
         break;
 		}

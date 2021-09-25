@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MainCharacterHealth : MonoBehaviour
 {
 	public static float entityMaxHealth, targetHealth, lastHealth, tghealamount = 0, tgsufferamount = 0, healAmount = 0, sufferAmount = 0;
-	public static bool start = true;
+	public static bool hasInit = true;
 	public int situation = 0;
 	public Sprite[] icon;
 	public Image bar, statusIcon;
@@ -14,16 +14,19 @@ public class MainCharacterHealth : MonoBehaviour
 	{
 		switch (Game.gameState)
 		{
+			case Game.GameState.LevelPrepare:
+				hasInit = false;
+				break;
 			case Game.GameState.Dialog:
 			case Game.GameState.Shaking:
 			case Game.GameState.Playing:
-				if (start)
+				if (hasInit)
 				{
 					situation = 0;
 					entityMaxHealth = Mathf.Round(1002 - 0.092f * Mathf.Pow(Game.chLevel - 100, 2));
 					lastHealth = targetHealth = entityMaxHealth = Slime.instance.defaultHealth;
 					tghealamount = tgsufferamount = healAmount = sufferAmount = 0;
-					start = false;
+					hasInit = false;
 				}
 				switch (situation)
 				{

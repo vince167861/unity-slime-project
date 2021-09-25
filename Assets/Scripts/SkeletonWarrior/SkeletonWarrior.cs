@@ -11,8 +11,9 @@ public class SkeletonWarrior : Entity
 
 	void Update()
 	{
-    transform.Translate(new Vector3(entityDirection * -0.1f, 0, 0));
-    transform.localScale = healthBar.localScale = new Vector3(entityDirection, 1, 1);
+    transform.Translate(new Vector3(entityDirection * -0.01f, 0, 0));
+		transform.localScale = Vector3.Scale(transform.localScale, new Vector3(entityDirection, 1, 1));
+		healthBar.localScale = Vector3.Scale(healthBar.localScale, new Vector3(entityDirection, 1, 1));
   }
 
 	void Attacking()
