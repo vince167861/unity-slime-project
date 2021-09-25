@@ -42,7 +42,7 @@ public class Slime : Entity
 		Cloak.SetActive(is_equipment);
 		if(is_equipment)
 		{
-			Cloak.transform.localScale = new Vector3(direction, 1, 1);
+			Cloak.transform.localScale = new Vector3(direction*0.8f, 0.4f, 1);
 			suppression = 1.2f;
 		}
 		switch (Game.gameState)
@@ -97,6 +97,8 @@ public class Slime : Entity
 					animator.SetBool("left", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left);
 					animator.SetBool("jump", Input.GetKey(KeyCode.W) || up);
 					animator.SetBool("crouch", Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S) || down);
+					animator.SetBool("rattack", (Input.GetKey(KeyCode.F) || attack) && direction == 1);
+					animator.SetBool("lattack", (Input.GetKey(KeyCode.F) || attack) && direction == -1);
 				}
 				if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || left) && allowMove)
 				{
