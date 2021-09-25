@@ -7,7 +7,8 @@ using TMPro;
 public class LevelBoardHandler : MonoBehaviour
 {
     public GameObject UserLevelAmount;
-    public TextMeshProUGUI UserName, UserLevel;
+    public TextMeshProUGUI UserLevel;
+    public Text UserName;
     float Lneedexp = 0, Nneedexp = 0;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class LevelBoardHandler : MonoBehaviour
     {
         Nneedexp = 10*(float)(Mathf.Pow(Game.chLevel, 1.5f));
         if(Game.chLevel > 1)  Lneedexp = 10*(float)(Mathf.Pow(Game.chLevel - 1, 1.5f));
-        UserName.GetComponent<TextMeshProUGUI>().text = DataStorage.me;
+        UserName.GetComponent<Text>().text = DataStorage.me;
         UserLevel.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
         UserLevelAmount.GetComponent<Image>().fillAmount = (Game.totalexp - Lneedexp) / Nneedexp;
     }

@@ -2,7 +2,7 @@
 
 public class Mushroom : Entity, IAttackable
 {
-	public Mushroom() : base("PiPi", 400, -1, null, OnDie) { }
+	public Mushroom() : base("PiPi", 200, -1, null, OnDie) { }
 	public int AttackDamage => 40;
 	public float jumpSpan = 0, jumpWait = 0;
 	public bool hasTarget = false;

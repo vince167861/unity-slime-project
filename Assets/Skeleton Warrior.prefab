@@ -6657,6 +6657,8 @@ MonoBehaviour:
   invulnerable: 0
   isAttacking: 0
   healthBar: {fileID: 7214099766210728968}
+  dieEffect: {fileID: 5766629297962172634, guid: 45c34fc8ded7d8243acb2ca54ada080c,
+    type: 3}
 --- !u!61 &3653870924800590285
 BoxCollider2D:
   m_ObjectHideFlags: 0

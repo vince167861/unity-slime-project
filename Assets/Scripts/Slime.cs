@@ -23,7 +23,7 @@ public class Slime : Entity
 
 	static Behaviour flareLayer;
 
-	static readonly Vector3 moveBase = new Vector3(420, 0, 0), jumpBase = new Vector3(0, 18000, 0), dropBase = new Vector3(0, -100, 0);
+	static readonly Vector3 moveBase = new Vector3(600, 0, 0), jumpBase = new Vector3(0, 18000, 0), dropBase = new Vector3(0, -100, 0);
 
 	public Slime() : base("", 100, 1, SufferCallback, DeathHandler, HealCallback, EffectCallback) {
 		instance = this;
@@ -40,7 +40,11 @@ public class Slime : Entity
 	void Update()
 	{
 		Cloak.SetActive(is_equipment);
-		if(is_equipment)	suppression = 1.2f;
+		if(is_equipment)
+		{
+			Cloak.transform.localScale = new Vector3(direction, 1, 1);
+			suppression = 1.2f;
+		}
 		switch (Game.gameState)
 		{
 			case Game.GameState.DarkFadeIn:
@@ -122,6 +126,8 @@ public class Slime : Entity
 						MainCameraHandler.PlayEntityClip(12);
 					else
 					{
+						if(direction == 1)  animator.Play("attack_right");
+						else	animator.Play("attack_left");
 						MainCameraHandler.PlayEntityClip(4);
 						Vector3 pos = transform.position + new Vector3(direction * 5, 0, 0);
 						Instantiate(Bomb, pos, transform.rotation).GetComponent<Bullet>().moveSpeed *= direction;

@@ -25,9 +25,9 @@ public class HealthIndicator : MonoBehaviour
 				transform.localScale = new Vector3(-1 * parent.entityDirection, 1, 1);
 				fillingColor.color = Color.HSVToRGB(0.25f + (parent.healthPercentage - 1) * 0.25f, 1, 1);
 				if (filling.localScale.x - parent.healthPercentage > 0.02)
-					filling.localScale -= new Vector3(0.01f, 0, 0);
+					filling.localScale -= new Vector3(0.02f, 0, 0);
 				if (filling.localScale.x - parent.healthPercentage < -0.02)
-					filling.localScale += new Vector3(0.01f, 0, 0);
+					filling.localScale += new Vector3(0.02f, 0, 0);
 				break;
 		}
 	}

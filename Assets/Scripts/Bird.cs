@@ -6,7 +6,7 @@ public class Bird : Entity, IAttackable
 	public int AttackDamage => 15;
 	public bool isWall = false;
 
-	readonly float moveSpeed = 0.03f; //bird movement speed
+	readonly float moveSpeed = 0.05f; //bird movement speed
 	float offset = 0;
 	public GameObject effect;
 
