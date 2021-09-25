@@ -29,11 +29,11 @@ public class SkeletonWarrior : Entity
 
 	static void SOnDie(Entity entity)
 	{
-		entity.GetComponent<Animator>().Play("die");
+		entity.GetComponent<Animator>().Play("sdie");
 		entity.entityDirection = 0;
 	}
 
-	void DieAnimationEnd()
+	void SDieAnimationEnd()
 	{
 		Game.moneycount += 15;
 		Game.expcount += 6;
