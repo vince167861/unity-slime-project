@@ -4682,7 +4682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dx: 0
-  dy: 5000
+  dy: 1000
   fx: 1
   fy: 0
   acceptBullet: 0
