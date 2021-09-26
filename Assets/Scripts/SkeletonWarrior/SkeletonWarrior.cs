@@ -4,14 +4,14 @@ public class SkeletonWarrior : Entity
 {
 	// TODO: Add Heal and Suffer extends from Entity.
 
-	public SkeletonWarrior() : base("S.Kさん", 300, -1, null, SOnDie) { }
+	public SkeletonWarrior() : base("Mr.SK", 300, 1, null, SOnDie) { }
 	public bool isAttacking = false;
 	public Transform healthBar;
 	public GameObject dieEffect;
 
 	void Update()
 	{
-    transform.Translate(new Vector3(entityDirection * -0.01f, 0, 0));
+    transform.Translate(new Vector3(entityDirection * -0.03f, 0, 0));
 		transform.localScale = Vector3.Scale(transform.localScale, new Vector3(entityDirection, 1, 1));
 		healthBar.localScale = Vector3.Scale(healthBar.localScale, new Vector3(entityDirection, 1, 1));
   }

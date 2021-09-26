@@ -2,7 +2,7 @@
 
 public class Bullet : MonoBehaviour, IAttackable
 {
-	public float moveSpeed = 0.6f; //bullet movement speed
+	public float moveSpeed = 1.0f; //bullet movement speed
 
 	public int AttackDamage => 50;
 	

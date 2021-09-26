@@ -6848,10 +6848,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2989564761452528920, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.7571
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989564761452528920, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.658
+      objectReference: {fileID: 0}
     - target: {fileID: 6857483539444128489, guid: dc658e4cd373828428ff7446f77c773c,
         type: 3}
       propertyPath: m_Name
       value: Life Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458853296645729760, guid: dc658e4cd373828428ff7446f77c773c,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -0.00833106
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc658e4cd373828428ff7446f77c773c, type: 3}

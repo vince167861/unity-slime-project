@@ -10,10 +10,11 @@ public class LevelBoardHandler : MonoBehaviour
     public TextMeshProUGUI UserLevel;
     public Text UserName;
     float Lneedexp = 0, Nneedexp = 0;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,5 +25,15 @@ public class LevelBoardHandler : MonoBehaviour
         UserName.GetComponent<Text>().text = DataStorage.me;
         UserLevel.GetComponent<TextMeshProUGUI>().text = "Lv." + Game.chLevel;
         UserLevelAmount.GetComponent<Image>().fillAmount = (Game.totalexp - Lneedexp) / Nneedexp;
+    }
+
+    public void animedit()
+    {
+        animator.SetBool("editshine", true);
+    }
+
+    public void animeditdone()
+    {
+        animator.SetBool("editshine", false);
     }
 }
