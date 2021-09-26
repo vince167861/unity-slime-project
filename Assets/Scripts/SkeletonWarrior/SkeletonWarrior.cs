@@ -8,12 +8,17 @@ public class SkeletonWarrior : Entity
 	public bool isAttacking = false;
 	public Transform healthBar;
 	public GameObject dieEffect;
+	Vector3 transformOrg;
+
+	void Start()
+	{
+		transformOrg = transform.localScale;
+	}
 
 	void Update()
 	{
     transform.Translate(new Vector3(entityDirection * -0.03f, 0, 0));
-		transform.localScale = Vector3.Scale(transform.localScale, new Vector3(entityDirection, 1, 1));
-		healthBar.localScale = Vector3.Scale(healthBar.localScale, new Vector3(entityDirection, 1, 1));
+		transform.localScale = Vector3.Scale(transformOrg, new Vector3(entityDirection, 1, 1));
   }
 
 	void Attacking()

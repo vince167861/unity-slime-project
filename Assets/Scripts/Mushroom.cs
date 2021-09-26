@@ -8,13 +8,15 @@ public class Mushroom : Entity, IAttackable
 	public bool hasTarget = false;
 	public GameObject dieEffect, potion, paralysisEffect;
 
-	private Animator animator;
-	private Rigidbody2D rigidbody2d;
+	Animator animator;
+	Rigidbody2D rigidbody2d;
+	Vector3 transformOrg;
 
 	void Start()
 	{
 		animator = GetComponent<Animator>();
 		rigidbody2d = GetComponent<Rigidbody2D>();
+		transformOrg = transform.localScale;
 	}
 
 	void Update()
@@ -43,8 +45,7 @@ public class Mushroom : Entity, IAttackable
 						jumpSpan = -1;
 						animator.Play("Jump");
 						entityDirection = hasTarget ? Slime.instance.transform.position.x > transform.position.x ? 1 : -1 : Mathf.RoundToInt(Random.value) * -2 + 1;
-						Vector3 current = transform.localScale;
-						transform.localScale = new Vector3(-entityDirection * System.Math.Abs(current.x), current.y, current.z);
+						transform.localScale = Vector3.Scale(transformOrg, new Vector3(entityDirection, 1, 1));
 						rigidbody2d.AddForce(new Vector3(entityDirection * 80, 250, 0) * (hasTarget ? 2f : 1f));
 					}
 				}

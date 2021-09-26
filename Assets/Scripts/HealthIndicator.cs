@@ -22,7 +22,7 @@ public class HealthIndicator : MonoBehaviour
 			case Game.GameState.Shaking:
 			case Game.GameState.Playing:
 				if (filling.localScale.x <= 0.02) parent.Die();
-				transform.localScale = new Vector3(-1 * parent.entityDirection, 1, 1);
+				transform.localScale = new Vector3(parent.entityDirection, 1, 1);
 				fillingColor.color = Color.HSVToRGB(0.25f + (parent.healthPercentage - 1) * 0.25f, 1, 1);
 				if (filling.localScale.x - parent.healthPercentage > 0.02)
 					filling.localScale -= new Vector3(0.02f, 0, 0);

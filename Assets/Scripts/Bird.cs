@@ -15,17 +15,11 @@ public class Bird : Entity, IAttackable
 	private void Start()
 	{
 		GetComponent<Animator>().Play("colliderchange");
-		//progressBar = transform.Find("Progress Bar").gameObject;
-		//progressBar.SetActive(false);
-		//fillings = transform.Find("Progress Bar").Find("Fillings");
 	}
 
 	private void Update()
 	{
-		/*health = lifebarprefab.targethealth;
-		Debug.Log(health);*/
-		transform.localScale = new Vector2(-entityDirection * 0.5f, 0.5f);
-		/*LifeBar.GetComponent<Transform>().localScale = new Vector2(1, 1);*/
+		transform.localScale = new Vector2(entityDirection * 0.5f, 0.5f);
 		switch (Game.gameState)
 		{
 			case Game.GameState.Lobby:
@@ -80,7 +74,7 @@ public class Bird : Entity, IAttackable
 
 	void DieEffectStart()
 	{
-		Instantiate(effect).GetComponent<Transform>().position = this.transform.position;
+		Instantiate(effect, transform.position, Quaternion.identity);
 	}
 
 	void WallK()
