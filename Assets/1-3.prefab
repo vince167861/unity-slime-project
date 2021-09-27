@@ -3248,7 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dx: 0
-  dy: 800
+  dy: 1000
   fx: 1
   fy: 0
   acceptBullet: 0
@@ -4008,7 +4008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb18054aafac44645907dabe46269414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  where: {x: 270, y: 39, z: 0}
+  where: {x: 270, y: 45, z: 0}
 --- !u!1 &8839562865038353067
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,7 +5347,7 @@ PrefabInstance:
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
       propertyPath: dy
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
@@ -5872,7 +5872,7 @@ PrefabInstance:
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
       propertyPath: dy
-      value: 500
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
@@ -6178,6 +6178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4063295390257913375, guid: 2fbc2e897f4f77144b83e7f311f456ae,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9052896075439969430, guid: 2fbc2e897f4f77144b83e7f311f456ae,
         type: 3}
@@ -9062,7 +9067,7 @@ PrefabInstance:
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}
       propertyPath: dy
-      value: -100
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 7925284655868853787, guid: 0e504fc88ff963641aa895e127b8a364,
         type: 3}

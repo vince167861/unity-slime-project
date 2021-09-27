@@ -77,7 +77,7 @@ public class Slime : Entity
 				{
 					up = false;
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((50 * moveBase + 1.5f * jumpBase) * suppression);
+					rigidbody2d.AddForce((30 * moveBase + 1.2f * jumpBase) * suppression);
 					animator.Play("Jump Right");
 					direction = 1;
 					allowMove = bouncable = false;
@@ -86,7 +86,7 @@ public class Slime : Entity
 				{
 					up = false;
 					MainCameraHandler.PlayEntityClip(2);
-					rigidbody2d.AddForce((-50 * moveBase + 1.5f * jumpBase) * suppression);
+					rigidbody2d.AddForce((-30 * moveBase + 1.2f * jumpBase) * suppression);
 					animator.Play("Jump Left");
 					direction = -1;
 					allowMove = bouncable = false;

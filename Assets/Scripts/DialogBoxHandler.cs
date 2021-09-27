@@ -79,6 +79,7 @@ public class DialogBoxHandler : MonoBehaviour
 						GuildWoman.otheradvice = false;
 					}
 					else GuildWoman.trigger2 = false;
+					if(isChat)	isChat = false;
 					Game.gameState = lastgameState;
 				}
 				break;
